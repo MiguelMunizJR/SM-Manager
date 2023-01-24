@@ -1,23 +1,34 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        "navBar": "#001422",
-        "navBarB": "#00345A",
-        "navBarBH": "#003A64",
-        "navBarBA": "#003D69",
+        navBar: "#001422",
+        navBarB: "#00345A",
+        navBarBH: "#003A64",
+        navBarBA: "#003D69",
 
-        "itemsNav": "#28B892",
-        "itemsNavH": "#2BD3A6",
+        itemsNav: "#28B892",
+        itemsNavH: "#2BD3A6",
       },
       fontFamily: {
-        "default": ["Montserrat"]
-      }
+        default: ["Montserrat"],
+      },
+      keyframes: {
+        reload: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        modalForm: {
+          "0%": { transition: "opacity: 0" },
+          "100%": { transition: "opacity: 1" },
+        },
+      },
+      animation: {
+        reload: "reload .45s linear",
+        modalForm: "modalForm 1s linear",
+      },
     },
   },
   plugins: [],

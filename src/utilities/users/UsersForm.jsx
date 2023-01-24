@@ -68,7 +68,9 @@ const UsersForm = ({ register, handleSubmit, submitData }) => {
           {...register("birthday")}
         />
       </div>
-      <button className="w-3/4 mt-8 mx-auto py-2 flex justify-center items-center gap-3 bg-navBarBH text-gray-200 text-base rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-navBarBA">
+      <button
+        className="w-3/4 mt-8 mx-auto py-2 flex justify-center items-center gap-3 bg-navBarBH text-gray-200 text-base rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-navBarBA"
+      >
         <h4>Create User</h4>
         <i className="fa-solid fa-user text-sm"></i>
       </button>

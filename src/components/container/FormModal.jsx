@@ -2,7 +2,12 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import UsersForm from "../../utilities/users/UsersForm";
 
-const FormModal = ({ setIsShowForm, getAllUsers }) => {
+const FormModal = ({
+  setIsShowForm,
+  getAllUsers,
+  isAnimatedModal,
+  setIsAnimatedModal,
+}) => {
   const { register, handleSubmit, reset } = useForm();
 
   const submitData = (data) => {
@@ -19,6 +24,7 @@ const FormModal = ({ setIsShowForm, getAllUsers }) => {
           birthday: "",
         });
         getAllUsers();
+        setIsShowForm(false);
       })
       .catch((err) => {
         console.log(err);
@@ -26,7 +32,12 @@ const FormModal = ({ setIsShowForm, getAllUsers }) => {
   };
 
   return (
-    <section className="w-max min-h-max my-10 mx-auto pb-8 rounded-md bg-neutral-100 flex flex-col items-center drop-shadow-2xl overflow-x-hidden overflow-y-auto opacity-100 fixed inset-0 z-50 outline-none focus:outline-none">
+    <section
+      className={`${
+        isAnimatedModal && "animate-modalForm"
+      } w-max min-h-max my-10 mx-auto pb-8 rounded-md bg-neutral-100 flex flex-col items-center drop-shadow-2xl overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none`}
+      onAnimationEnd={() => setIsAnimatedModal(false)}
+    >
       <header className="w-full flex self-start justify-between items-center">
         <div className="mt-6 ml-4 flex items-center gap-2">
           <h3 className="font-default text-2xl text-black font-normal">

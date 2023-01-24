@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ButtonNewHeader from "../../utilities/container/ButtonNewHeader";
 
-const HeaderUser = ({ setIsShowForm }) => {
+const HeaderUser = ({ setIsShowForm, setIsAnimatedModal }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
 
@@ -16,7 +16,7 @@ const HeaderUser = ({ setIsShowForm }) => {
 
   return (
     <section className="mr-12 flex justify-center items-center gap-14">
-      <ButtonNewHeader setIsShowForm={setIsShowForm} />
+      <ButtonNewHeader setIsShowForm={setIsShowForm} setIsAnimatedModal={setIsAnimatedModal} />
       <article className="flex justify-center items-center gap-4">
         <button
           onClick={DarkModeToggle}
