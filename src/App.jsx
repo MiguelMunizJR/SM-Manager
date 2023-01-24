@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import ContainerCrud from "./components/ContainerCrud";
 

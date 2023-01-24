@@ -1,4 +1,4 @@
-import ButtonNew from "../utilities/ButtonNew";
+import ButtonNavBar from "../utilities/ButtonNavBar";
 import ListNav from "../utilities/ListNav";
 
 const NavBar = () => {
@@ -10,7 +10,7 @@ const NavBar = () => {
         </h1>
         <ListNav />
       </section>
-      <ButtonNew />
+      <ButtonNavBar />
     </nav>
   );
 };
