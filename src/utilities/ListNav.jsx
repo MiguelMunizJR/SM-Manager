@@ -23,7 +23,7 @@ const ListNav = () => {
       <ul className="w-full flex flex-col list-none">
         {
           itemsNav?.map(item => (
-            <li key={item.id} className="w-full py-2 px-8 flex items-center text-gray-100 font-default font-normal gap-3 cursor-pointer transition-all duration-75 ease-in hover:bg-itemsNav first:bg-itemsNav">
+            <li key={item.id} className="w-full py-2 px-8 flex items-center text-gray-200 font-default text-base font-extralight gap-3 cursor-pointer transition-all duration-75 ease-in hover:bg-itemsNav first:bg-itemsNav">
               <i className={item.icon}></i>
               <h4>{item.title}</h4>
             </li>
