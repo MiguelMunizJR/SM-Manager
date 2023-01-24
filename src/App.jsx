@@ -1,11 +1,9 @@
-import NavBar from "./components/NavBar";
-import ContainerCrud from "./components/ContainerCrud";
+import NavBar from "./components/navbar/NavBar";
+import ContainerCrud from "./components/container/ContainerCrud";
 import { useState } from "react";
 
 function App() {
   const [isShowForm, setIsShowForm] = useState(false);
-
-  console.log(isShowForm);
   
   return (
     <div className="flex">

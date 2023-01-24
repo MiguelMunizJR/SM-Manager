@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import UsersForm from "../utilities/UsersForm";
+import UsersForm from "../../utilities/users/UsersForm";
 
-const UserFormModal = ({ setIsShowForm, getAllUsers }) => {
+const FormModal = ({ setIsShowForm, getAllUsers }) => {
   const { register, handleSubmit, reset } = useForm();
 
   const submitData = (data) => {
@@ -10,8 +10,7 @@ const UserFormModal = ({ setIsShowForm, getAllUsers }) => {
 
     axios
       .post(URL, data)
-      .then((res) => {
-        console.log(res.data?.data);
+      .then(() => {
         reset({
           firstName: "",
           lastName: "",
@@ -51,4 +50,4 @@ const UserFormModal = ({ setIsShowForm, getAllUsers }) => {
   );
 };
 
-export default UserFormModal;
+export default FormModal;

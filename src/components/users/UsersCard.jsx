@@ -1,7 +1,7 @@
 import { useState } from "react";
-import UserListRender from "../utilities/UserListRender";
+import UserListRender from "../../utilities/users/UserListRender";
 
-const UsersCard = ({ users }) => {
+const UsersCard = ({ getAllUsers, users }) => {
   const [isSort, setIsSort] = useState(false);
 
   const setSort = () => {
@@ -48,7 +48,7 @@ const UsersCard = ({ users }) => {
             </tr>
           </thead>
           <tbody>
-            <UserListRender users={users} />
+            <UserListRender getAllUsers={getAllUsers} users={users} />
           </tbody>
         </table>
       </article>

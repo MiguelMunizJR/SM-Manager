@@ -1,5 +1,5 @@
-import ButtonNavBar from "../utilities/ButtonNavBar";
-import ListNav from "../utilities/ListNav";
+import ButtonNavBar from "../../utilities/navbar/ButtonNavBar";
+import ListNav from "../../utilities/navbar/ListNav";
 
 const NavBar = ({ setIsShowForm }) => {
 

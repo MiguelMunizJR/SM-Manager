@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ButtonNewUser from "../utilities/ButtonNewUser";
+import ButtonNewHeader from "../../utilities/container/ButtonNewHeader";
 
 const HeaderUser = ({ setIsShowForm }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -16,7 +16,7 @@ const HeaderUser = ({ setIsShowForm }) => {
 
   return (
     <section className="mr-12 flex justify-center items-center gap-14">
-      <ButtonNewUser setIsShowForm={setIsShowForm} />
+      <ButtonNewHeader setIsShowForm={setIsShowForm} />
       <article className="flex justify-center items-center gap-4">
         <button
           onClick={DarkModeToggle}

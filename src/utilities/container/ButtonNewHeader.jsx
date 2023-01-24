@@ -1,6 +1,4 @@
-import Form from "../components/UserFormModal";
-
-const ButtonNewUser = ({ setIsShowForm }) => {
+const ButtonNewHeader = ({ setIsShowForm }) => {
   const handleClick = () => {
     setIsShowForm(true);
   };
@@ -16,4 +14,4 @@ const ButtonNewUser = ({ setIsShowForm }) => {
   );
 };
 
-export default ButtonNewUser;
+export default ButtonNewHeader;
