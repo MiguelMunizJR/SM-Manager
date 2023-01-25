@@ -8,7 +8,7 @@ const SearchBar = () => {
   };
 
   return (
-    <article className="ml-10 w-1/3 flex items-center">
+    <article className="hidden md:flex ml-10 w-1/3 items-center">
       <span className="absolute flex items-center">
         <svg
           fill="none"
@@ -24,7 +24,7 @@ const SearchBar = () => {
         value={input}
         onChange={handleInput}
         placeholder="Search for users..."
-        className="hidden md:flex dark:placeholder:text-gray-500 dark:bg-gray-800 dark:text-gray-300 md:h-8 md:w-full pl-10 bg-gray-100 rounded shadow-sm shadow-gray-300 dark:shadow-black dark:shadow-sm dark:hover:shadow-black outline-none text-md font-default font-light text-gray-600 transition ease-in-out duration-150 placeholder:text-slate-400 focus:ring-2 focus:ring-itemsNavH hover:shadow-lg dark:hover:shadow-md"
+        className="dark:placeholder:text-gray-500 dark:bg-gray-800 dark:text-gray-300 md:h-8 md:w-full pl-10 bg-gray-100 rounded shadow-sm shadow-gray-300 dark:shadow-black dark:shadow-sm dark:hover:shadow-black outline-none text-md font-default font-light text-gray-600 transition ease-in-out duration-150 placeholder:text-slate-400 focus:ring-2 focus:ring-itemsNavH hover:shadow-lg dark:hover:shadow-md"
       />
     </article>
   );
