@@ -5,7 +5,7 @@ import HeaderUser from "./HeaderUser";
 import UsersCard from "../users/UsersCard";
 import FormModal from "./FormModal";
 
-const ContainerCrud = ({ isShowForm, setIsShowForm }) => {
+const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
   const [users, setUsers] = useState([]);
   const [isAnimatedModal, setIsAnimatedModal] = useState(false);
 
@@ -29,22 +29,32 @@ const ContainerCrud = ({ isShowForm, setIsShowForm }) => {
   return (
     <>
       {isShowForm ? (
-        <FormModal
-          setIsShowForm={setIsShowForm}
-          getAllUsers={getAllUsers}
-          isAnimatedModal={isAnimatedModal}
-          setIsAnimatedModal={setIsAnimatedModal}
-        />
+        <>
+          <FormModal
+            setIsShowForm={setIsShowForm}
+            getAllUsers={getAllUsers}
+            isAnimatedModal={isAnimatedModal}
+            setIsAnimatedModal={setIsAnimatedModal}
+            update={update}
+          />
+          <section className="w-screen h-screen fixed inset-0 bg-slate-300 z-10 opacity-25"></section>
+        </>
       ) : null}
       <section className="w-full h-screen flex flex-col justify-between bg-zinc-200">
         <article className="w-full mt-3 flex justify-between">
           <SearchBar />
-          <HeaderUser 
+          <HeaderUser
             setIsShowForm={setIsShowForm}
             setIsAnimatedModal={setIsAnimatedModal}
+            setUpdate={setUpdate}
           />
         </article>
-        <UsersCard getAllUsers={getAllUsers} users={users} />
+        <UsersCard
+          getAllUsers={getAllUsers}
+          users={users}
+          setUpdate={setUpdate}
+          setIsShowForm={setIsShowForm}
+        />
       </section>
     </>
   );

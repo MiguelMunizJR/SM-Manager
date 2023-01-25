@@ -4,11 +4,21 @@ import { useState } from "react";
 
 function App() {
   const [isShowForm, setIsShowForm] = useState(false);
-  
+  const [update, setUpdate] = useState();
+
   return (
     <div className="flex">
-      <NavBar setIsShowForm={setIsShowForm} />
-      <ContainerCrud isShowForm={isShowForm} setIsShowForm={setIsShowForm} />
+      <NavBar
+        setIsShowForm={setIsShowForm}
+        update={update}
+        setUpdate={setUpdate}
+      />
+      <ContainerCrud
+        isShowForm={isShowForm}
+        setIsShowForm={setIsShowForm}
+        update={update}
+        setUpdate={setUpdate}
+      />
     </div>
   );
 }

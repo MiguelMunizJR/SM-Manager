@@ -1,34 +1,63 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import UsersForm from "../../utilities/users/UsersForm";
+import { useEffect } from "react";
 
 const FormModal = ({
   setIsShowForm,
   getAllUsers,
   isAnimatedModal,
   setIsAnimatedModal,
+  update,
 }) => {
   const { register, handleSubmit, reset } = useForm();
 
-  const submitData = (data) => {
-    const URL = "https://crud-api-express.onrender.com/api/v1/users/";
+  useEffect(() => {
+    if (update) {
+      reset(update);
+    }
+  }, [update]);
 
-    axios
-      .post(URL, data)
-      .then(() => {
-        reset({
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-          birthday: "",
+  const submitData = (data) => {
+    if (update) {
+      const URL = `https://crud-api-express.onrender.com/api/v1/users/${update.id}/`;
+
+      axios
+        .patch(URL, data)
+        .then(() => {
+          reset({
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            birthday: "",
+          });
+          getAllUsers();
+          setIsShowForm(false);
+        })
+        .catch((err) => {
+          console.log(err);
         });
-        getAllUsers();
-        setIsShowForm(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    } else {
+      const URL = "https://crud-api-express.onrender.com/api/v1/users/";
+
+      axios
+        .post(URL, data)
+        .then(() => {
+          reset({
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            birthday: "",
+          });
+          getAllUsers();
+          setIsShowForm(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (
@@ -40,9 +69,15 @@ const FormModal = ({
     >
       <header className="w-full flex self-start justify-between items-center">
         <div className="mt-6 ml-4 flex items-center gap-2">
-          <h3 className="font-default text-2xl text-black font-normal">
-            Create User
-          </h3>
+          {update ? (
+            <h3 className="font-default text-2xl text-black font-normal">
+              Update User
+            </h3>
+          ) : (
+            <h3 className="font-default text-2xl text-black font-normal">
+              Create User
+            </h3>
+          )}
           <i className="fa-solid fa-user"></i>
         </div>
         <button
@@ -56,6 +91,7 @@ const FormModal = ({
         register={register}
         handleSubmit={handleSubmit}
         submitData={submitData}
+        update={update}
       />
     </section>
   );

@@ -1,9 +1,8 @@
 import axios from "axios";
 
-const UserListRender = ({ getAllUsers, users }) => {
+const UserListRender = ({ getAllUsers, users, setUpdate, setIsShowForm }) => {
   const deleteUser = (id) => {
     // Confirmation modal coming soon...
-
     const URL = `https://crud-api-express.onrender.com/api/v1/users/${id}/`;
 
     axios
@@ -15,6 +14,11 @@ const UserListRender = ({ getAllUsers, users }) => {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const updateUser = (user) => {
+    setUpdate(user);
+    setIsShowForm(true);
   };
 
   return (
@@ -41,7 +45,10 @@ const UserListRender = ({ getAllUsers, users }) => {
             {user.birthday}
           </td>
           <td className="flex h-10 items-center whitespace-nowrap justify-center gap-6">
-            <button className="ring-2 ring-sky-600 text-sky-600 p-1 text-sm rounded-md shadow-md shadow-neutral-300 transition duration-100 hover:bg-sky-700 hover:ring-sky-700 hover:text-gray-300 active:bg-sky-800 active:ring-sky-800">
+            <button
+              onClick={() => updateUser(user)}
+              className="ring-2 ring-sky-600 text-sky-600 p-1 text-sm rounded-md shadow-md shadow-neutral-300 transition duration-100 hover:bg-sky-700 hover:ring-sky-700 hover:text-gray-300 active:bg-sky-800 active:ring-sky-800"
+            >
               <i className="fa-solid fa-pen-to-square"></i>
             </button>
             <button
