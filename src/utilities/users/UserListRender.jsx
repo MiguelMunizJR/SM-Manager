@@ -33,7 +33,7 @@ const UserListRender = ({ getAllUsers, users, setUpdate, setIsShowForm }) => {
             {user.firstName + " " + user.lastName}
           </td>
           <td className="text-sm font-normal text-left pl-6 py-4
-          whitespace-normal">
+          whitespace-normal break-words">
             {user.email}
           </td>
           <td className="text-sm font-normal text-center py-4 whitespace-nowrap">

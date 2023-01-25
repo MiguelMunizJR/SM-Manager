@@ -46,8 +46,19 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
           <section className="w-screen h-screen fixed inset-0 bg-slate-300 dark:bg-navBarDark z-10 opacity-25 dark:opacity-40 transition-opacity duration-200 ease-in-out "></section>
         </>
       ) : null}
-      <section className="w-full h-screen flex flex-col justify-between bg-zinc-200 dark:bg-containerDark">
-        <article className="w-full mt-3 flex justify-between">
+      <section className="w-full h-screen flex flex-col justify-between bg-zinc-200 lg:bg-red-200 
+      md:bg-red-900 sm:bg-red-500 dark:bg-containerDark">
+        {/* Header */}
+        <article className="w-full h-14 md:mt-3 flex justify-between bg-navBar md:bg-transparent">
+          {/* Header in mobile */}
+          <section className="md:hidden ml-5 flex gap-4 items-center w-full text-gray-300 ">
+            <button className="">
+              <i className="fa-solid fa-bars"></i>
+            </button>
+            <h1 className="font-default text-lg font-medium">
+              CRUD | Manager
+            </h1>
+          </section>
           <SearchBar />
           <HeaderUser
             setIsShowForm={setIsShowForm}
@@ -61,6 +72,7 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
           setUpdate={setUpdate}
           setIsShowForm={setIsShowForm}
           isLoading={isLoading}
+          setIsAnimatedModal={setIsAnimatedModal}
         />
       </section>
     </>
