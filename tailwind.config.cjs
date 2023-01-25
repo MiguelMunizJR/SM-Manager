@@ -8,9 +8,12 @@ module.exports = {
         navBarB: "#00345A",
         navBarBH: "#003A64",
         navBarBA: "#003D69",
-
+        navBarDark: "#000308",
         itemsNav: "#28B892",
         itemsNavH: "#2BD3A6",
+        itemsNavDark: "#229D7C",
+        itemsNavDarkH: "#1F8E70",
+        containerDark: "#020711"
       },
       fontFamily: {
         default: ["Montserrat"],
@@ -32,4 +35,5 @@ module.exports = {
     },
   },
   plugins: [],
+  darkMode: "class",
 };

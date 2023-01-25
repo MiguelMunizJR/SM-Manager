@@ -64,27 +64,27 @@ const FormModal = ({
     <section
       className={`${
         isAnimatedModal && "animate-modalForm"
-      } w-max min-h-max my-10 mx-auto pb-8 rounded-md bg-neutral-100 flex flex-col items-center drop-shadow-2xl overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none`}
+      } w-max min-h-max my-10 mx-auto pb-8 rounded-md bg-neutral-100 dark:bg-navBarDark flex flex-col items-center drop-shadow-2xl overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none`}
       onAnimationEnd={() => setIsAnimatedModal(false)}
     >
       <header className="w-full flex self-start justify-between items-center">
         <div className="mt-6 ml-4 flex items-center gap-2">
           {update ? (
-            <h3 className="font-default text-2xl text-black font-normal">
+            <h3 className="font-default text-2xl text-black dark:text-gray-300 font-normal">
               Update User
             </h3>
           ) : (
-            <h3 className="font-default text-2xl text-black font-normal">
+            <h3 className="font-default text-2xl text-black dark:text-gray-300 font-normal">
               Create User
             </h3>
           )}
-          <i className="fa-solid fa-user"></i>
+          <i className="fa-solid fa-user text-black dark:text-gray-300"></i>
         </div>
         <button
           onClick={() => setIsShowForm(false)}
           className="mr-4 flex justify-center items-center text-2xl"
         >
-          <i className="fa-solid fa-xmark"></i>
+          <i className="fa-solid fa-xmark text-black dark:text-gray-400"></i>
         </button>
       </header>
       <UsersForm

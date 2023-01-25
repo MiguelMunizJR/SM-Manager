@@ -6,10 +6,14 @@ import UsersCard from "../users/UsersCard";
 import FormModal from "./FormModal";
 
 const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(null);
   const [isAnimatedModal, setIsAnimatedModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    if (!users) {
+      setIsLoading(true);
+    }
     getAllUsers();
   }, []);
 
@@ -20,9 +24,11 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
       .get(URL)
       .then((res) => {
         setUsers(res.data?.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(true);
       });
   };
 
@@ -37,10 +43,10 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
             setIsAnimatedModal={setIsAnimatedModal}
             update={update}
           />
-          <section className="w-screen h-screen fixed inset-0 bg-slate-300 z-10 opacity-25"></section>
+          <section className="w-screen h-screen fixed inset-0 bg-slate-300 dark:bg-navBarDark z-10 opacity-25 dark:opacity-40 transition-opacity duration-200 ease-in-out "></section>
         </>
       ) : null}
-      <section className="w-full h-screen flex flex-col justify-between bg-zinc-200">
+      <section className="w-full h-screen flex flex-col justify-between bg-zinc-200 dark:bg-containerDark">
         <article className="w-full mt-3 flex justify-between">
           <SearchBar />
           <HeaderUser
@@ -54,6 +60,7 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
           users={users}
           setUpdate={setUpdate}
           setIsShowForm={setIsShowForm}
+          isLoading={isLoading}
         />
       </section>
     </>
