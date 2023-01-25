@@ -47,12 +47,11 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
         </>
       ) : null}
       <section
-        className="w-full h-screen flex flex-col justify-between bg-zinc-200 lg:bg-red-200 
-      md:bg-red-900 sm:bg-red-500 dark:bg-containerDark"
+        className="w-full h-screen flex flex-col justify-between bg-zinc-200 dark:bg-containerDark"
       >
         {/* Header */}
+        {/* Header in mobile */}
         <article className="w-full h-14 md:mt-3 flex justify-between bg-navBar md:bg-transparent">
-          {/* Header in mobile */}
           <section className="w-full md:hidden ml-5 flex gap-4 items-center text-gray-300">
             <button className="">
               <i className="fa-solid fa-bars"></i>

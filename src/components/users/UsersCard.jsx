@@ -33,13 +33,13 @@ const UsersCard = ({
   return (
     <section className="w-full h-5/6 mt-10 mx-auto flex flex-col justify-center gap-4">
       <article className="w-full flex justify-between items-center">
-        <div className="flex items-center text-gray-900 dark:text-gray-300">
+        <div className="sm:ml-3 md:ml-6 lg:ml-8 flex items-center text-gray-900 dark:text-gray-300">
           <h2 className="ml-4 font-default text-3xl">Users</h2>
           <i className="fa-solid fa-users pl-2 text-md"></i>
         </div>
-        <div className="mr-4 flex justify-center items-center gap-3">
+        <div className="mr-4 sm:mr-8 md:mr-10 lg:mr-24 flex justify-center items-center gap-3">
           {/* button new user in mobile */}
-          <div className="mr-2">
+          <div className="mr-2 md:hidden">
             <ButtonNewHeader
               setIsShowForm={setIsShowForm}
               setIsAnimatedModal={setIsAnimatedModal}

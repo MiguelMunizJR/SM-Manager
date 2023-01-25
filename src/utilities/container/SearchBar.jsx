@@ -8,7 +8,7 @@ const SearchBar = () => {
   };
 
   return (
-    <article className="hidden md:flex ml-10 w-1/3 items-center">
+    <article className="hidden md:flex ml-8 lg:ml-12 w-1/3 items-center">
       <span className="absolute flex items-center">
         <svg
           fill="none"

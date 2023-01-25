@@ -4,7 +4,7 @@ const UsersForm = ({ register, handleSubmit, submitData, update }) => {
       onSubmit={handleSubmit(submitData)}
       className="mt-10 mx-4 flex flex-col gap-4 font-default text-sm"
     >
-      <article className="flex gap-4">
+      <article className="flex flex-col sm:flex-row gap-4">
         <div className="flex flex-col">
           <label
             htmlFor="firstname"
@@ -16,7 +16,7 @@ const UsersForm = ({ register, handleSubmit, submitData, update }) => {
             id="firstname"
             type="text"
             placeholder="Firstname"
-            className="h-10 pl-3 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
+            className="w-72 sm:w-auto h-10 pl-3 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
             {...register("firstName")}
           />
         </div>
@@ -31,7 +31,7 @@ const UsersForm = ({ register, handleSubmit, submitData, update }) => {
             id="lastname"
             type="text"
             placeholder="Lastname"
-            className="h-10 pl-3 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
+            className="w-72 sm:w-auto h-10 pl-3 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
             {...register("lastName")}
           />
         </div>
@@ -78,6 +78,7 @@ const UsersForm = ({ register, handleSubmit, submitData, update }) => {
           type="date"
           min={"1960-01-01"}
           max={"2023-01-01"}
+          value={"2000-01-01"}
           className="h-10 w-max mx-auto
           text-center px-4 rounded bg-slate-200 dark:bg-gray-800 dark:text-gray-300 outline-none drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH text-gray-900 font-light"
           {...register("birthday")}
