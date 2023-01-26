@@ -35,6 +35,7 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
         console.log(err);
         setIsLoading(true);
       });
+    console.log(users);
   };
 
   return (
@@ -55,6 +56,7 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
           setIsShowForm={setIsShowForm}
           getAllUsers={getAllUsers}
           update={update}
+          setUpdate={setUpdate}
         />
         <section className="w-screen h-screen opacity-30 dark:opacity-30 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
       </Transition>

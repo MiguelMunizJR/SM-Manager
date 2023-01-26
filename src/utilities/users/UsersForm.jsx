@@ -1,8 +1,22 @@
-const UsersForm = ({ register, handleSubmit, submitData, update }) => {
+import defaultValues from "../../utilities/users/defaultValues";
+
+const UsersForm = ({
+  register,
+  handleSubmit,
+  submitData,
+  update,
+  setUpdate,
+  reset,
+}) => {
+  const clearUpdate = () => {
+    reset(defaultValues);
+    setUpdate(null);
+  };
+
   return (
     <form
       onSubmit={handleSubmit(submitData)}
-      className="mt-8 mx-4 flex flex-col gap-3 font-default text-sm z-auto"
+      className="mt-6 mx-4 flex flex-col gap-2 font-default text-sm z-auto"
     >
       <article className="flex flex-col sm:flex-row gap-4">
         <div className="flex flex-col">
@@ -92,7 +106,7 @@ const UsersForm = ({ register, handleSubmit, submitData, update }) => {
           >
             Active:
           </label>
-          <div className="mt-2 mx-auto flex gap-4 font-default font-medium">
+          <div className="mt-1 mx-auto flex gap-4 font-default font-medium text-black dark:text-gray-300">
             <div className="flex gap-2">
               <label htmlFor="active">Active</label>
               <input
@@ -109,7 +123,7 @@ const UsersForm = ({ register, handleSubmit, submitData, update }) => {
               <input
                 type="radio"
                 name="is_active"
-                value={false}
+                value={JSON.parse(false)}
                 id="deactivated"
                 {...register("isActive")}
               />
@@ -121,6 +135,14 @@ const UsersForm = ({ register, handleSubmit, submitData, update }) => {
         {update ? <h4>Update User</h4> : <h4>Create User</h4>}
         <i className="fa-solid fa-user text-sm"></i>
       </button>
+      {update && (
+        <button
+          onClick={clearUpdate}
+          className="mx-auto mt-2 py-2 px-4 flex justify-center items-center gap-3 bg-red-400 dark:bg-red-600 text-gray-200 text-base rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-red-500 dark:hover:bg-red-700"
+        >
+          <h4>Clear Fields</h4>
+        </button>
+      )}
     </form>
   );
 };

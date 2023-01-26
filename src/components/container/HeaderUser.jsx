@@ -17,15 +17,12 @@ const HeaderUser = ({ setIsShowForm, setUpdate }) => {
   return (
     <section className="mr-5 flex justify-center items-center gap-8">
       <div className="hidden md:flex">
-        <ButtonNewHeader
-          setIsShowForm={setIsShowForm}
-          setUpdate={setUpdate}
-        />
+        <ButtonNewHeader setIsShowForm={setIsShowForm} setUpdate={setUpdate} />
       </div>
       <article className="lg:mr-8 flex justify-center items-center gap-4">
         <button
           onClick={DarkModeToggle}
-          className="px-4 py-1 rounded-lg shadow-sm text-lg transition ease-in-out duration-150 hover:bg-itemsNavDark hover:shadow-md dark:hover:shadow-md active:bg-itemsNavDarkH"
+          className="px-4 py-1 rounded-lg shadow-sm text-lg transition ease-in-out duration-150 bg-transparent md:bg-gray-100 dark:bg-transparent md:hover:bg-gray-100 md:active:ring-2 md:ring-itemsNav dark:hover:bg-itemsNavDark hover:shadow-md dark:hover:shadow-md"
         >
           {isDarkMode ? (
             <i className="fa-solid fa-sun text-gray-700 dark:text-gray-300 text-md transition ease-in-out rotate-45 duration-500"></i>
@@ -35,7 +32,7 @@ const HeaderUser = ({ setIsShowForm, setUpdate }) => {
         </button>
         <button
           onClick={userMenuToggle}
-          className="px-2 py-1 flex justify-center items-center gap-4 rounded-lg shadow-sm transition ease-in-out duration-150 hover:shadow-md hover:bg-itemsNavDark dark:hover:shadow-md active:bg-itemsNavDarkH"
+          className="px-2 py-1 flex justify-center items-center gap-4 rounded-lg shadow-sm bg-transparent md:bg-gray-100 dark:bg-transparent md:active:ring-2 md:ring-itemsNav transition ease-in-out duration-150 hover:shadow-md dark:hover:bg-itemsNavDark md:hover:bg-gray-100 dark:hover:shadow-md"
         >
           <p className="hidden lg:flex font-default text-sm font-light text-gray-500  dark:text-gray-400">
             Guest#2553

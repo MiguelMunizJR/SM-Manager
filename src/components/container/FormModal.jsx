@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import UsersForm from "../../utilities/users/UsersForm";
+import defaultValues from "../../utilities/users/defaultValues";
 import { useEffect } from "react";
 
-const FormModal = ({ setIsShowForm, getAllUsers, update }) => {
+const FormModal = ({ setIsShowForm, getAllUsers, update, setUpdate }) => {
   const { register, handleSubmit, reset } = useForm();
 
   useEffect(() => {
@@ -20,13 +21,7 @@ const FormModal = ({ setIsShowForm, getAllUsers, update }) => {
       axios
         .patch(URL, data)
         .then(() => {
-          reset({
-            firstName: "",
-            lastName: "",
-            email: "",
-            password: "",
-            birthday: "",
-          });
+          reset(defaultValues);
           getAllUsers();
           setIsShowForm(false);
         })
@@ -39,13 +34,7 @@ const FormModal = ({ setIsShowForm, getAllUsers, update }) => {
       axios
         .post(URL, data)
         .then(() => {
-          reset({
-            firstName: "",
-            lastName: "",
-            email: "",
-            password: "",
-            birthday: "",
-          });
+          reset(defaultValues);
           getAllUsers();
           setIsShowForm(false);
         })
@@ -56,7 +45,7 @@ const FormModal = ({ setIsShowForm, getAllUsers, update }) => {
   };
 
   return (
-    <section className="w-max min-h-max my-10 mx-auto pb-8 rounded-md bg-neutral-100 dark:bg-navBarDark flex flex-col items-center drop-shadow-2xl overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+    <section className="w-max min-h-max mx-auto pb-8 rounded-md bg-neutral-100 dark:bg-navBarDark flex flex-col items-center drop-shadow-2xl overflow-x-hidden overflow-y-auto fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 outline-none focus:outline-none">
       <header className="w-full flex self-start justify-between items-center">
         <div className="mt-6 ml-4 flex items-center gap-2">
           {update ? (
@@ -82,6 +71,8 @@ const FormModal = ({ setIsShowForm, getAllUsers, update }) => {
         handleSubmit={handleSubmit}
         submitData={submitData}
         update={update}
+        setUpdate={setUpdate}
+        reset={reset}
       />
     </section>
   );
