@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Transition } from "@headlessui/react";
 import axios from "axios";
 import SearchBar from "../../utilities/container/SearchBar";
 import HeaderUser from "./HeaderUser";
@@ -34,21 +35,23 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
 
   return (
     <>
-      {isShowForm ? (
-        <>
-          <FormModal
-            setIsShowForm={setIsShowForm}
-            getAllUsers={getAllUsers}
-            isAnimatedModal={isAnimatedModal}
-            setIsAnimatedModal={setIsAnimatedModal}
-            update={update}
-          />
-          <section className="w-screen h-screen fixed inset-0 bg-slate-300 dark:bg-navBarDark z-10 opacity-25 dark:opacity-40 transition-opacity duration-200 ease-in-out "></section>
-        </>
-      ) : null}
-      <section
-        className="w-full h-screen flex flex-col justify-between bg-zinc-200 dark:bg-containerDark"
+      <Transition
+        show={isShowForm}
+        enter="transition-opacity duration-75"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-150"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
       >
+        <FormModal
+          setIsShowForm={setIsShowForm}
+          getAllUsers={getAllUsers}
+          update={update}
+        />
+        <section className="w-screen h-screen fixed inset-0 bg-slate-300 dark:bg-navBarDark z-10 opacity-25 dark:opacity-40 transition-opacity duration-200 ease-in-out "></section>
+      </Transition>
+      <section className="w-full h-screen flex flex-col justify-between bg-zinc-200 dark:bg-containerDark">
         {/* Header */}
         {/* Header in mobile */}
         <article className="w-full h-14 md:mt-3 flex justify-between bg-navBar md:bg-transparent">
