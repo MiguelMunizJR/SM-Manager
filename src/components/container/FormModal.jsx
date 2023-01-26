@@ -55,7 +55,7 @@ const FormModal = ({ setIsShowForm, getAllUsers, update }) => {
   };
 
   return (
-    <section className="w-max min-h-max my-10 mx-auto pb-8 rounded-md bg-neutral-100 dark:bg-navBarDark dark:ring-1 dark:ring-itemsNavDark flex flex-col items-center drop-shadow-2xl overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+    <section className="w-max min-h-max my-10 mx-auto pb-8 rounded-md bg-neutral-100 dark:bg-navBarDark flex flex-col items-center drop-shadow-2xl overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
       <header className="w-full flex self-start justify-between items-center">
         <div className="mt-6 ml-4 flex items-center gap-2">
           {update ? (

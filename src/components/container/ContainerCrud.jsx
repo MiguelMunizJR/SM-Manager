@@ -5,7 +5,7 @@ import SearchBar from "../../utilities/container/SearchBar";
 import HeaderUser from "./HeaderUser";
 import UsersCard from "../users/UsersCard";
 import FormModal from "./FormModal";
-import { Button, Modal } from "flowbite-react";
+import ModalDelete from "../../utilities/container/ModalDelete";
 
 const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
   const [users, setUsers] = useState(null);
@@ -56,37 +56,24 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
           getAllUsers={getAllUsers}
           update={update}
         />
-        <section className="w-screen h-screen opacity-20 dark:opacity-30 absolute inset-0 bg-slate-300 dark:bg-navBarDark z-10"></section>
+        <section className="w-screen h-screen opacity-20 dark:opacity-30 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
       </Transition>
       {/* Modal Delete Confirm */}
-      <Modal
-        className="w-screen h-screen absolute inset-0 "
+      <Transition
+        as="section"
+        className={"fixed inset-0 z-50"}
         show={showDelete}
-        size="md"
-        popup={true}
-        onClose={() => setShowDelete(false)}
+        enter="transition-opacity duration-100"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-100"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
       >
-        <Modal.Body>
-          <div className="text-center font-default text-lg">
-            <i className="fa-solid fa-triangle-exclamation mx-auto my-4 text-6xl text-gray-400 dark:text-gray-200"></i>
-            <h3 className="mb-5 font-normal text-gray-500 dark:text-gray-400">
-              Are you sure you want to delete this user?
-            </h3>
-            <div className="flex justify-center gap-4">
-              <Button
-                color="failure"
-                className="transition-colors"
-                onClick={() => setIsDelete(true)}
-              >
-                Delete
-              </Button>
-              <Button color="gray" onClick={() => setShowDelete(false)}>
-                Cancel
-              </Button>
-            </div>
-          </div>
-        </Modal.Body>
-      </Modal>
+        <ModalDelete />
+        {/* MODAL DELETE CONFIRM HERE! */}
+        <section className="w-screen h-screen opacity-20 dark:opacity-30 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
+      </Transition>
       <section className="w-full h-screen flex flex-col justify-between bg-zinc-200 dark:bg-containerDark">
         {/* Header */}
         {/* Header in mobile */}
