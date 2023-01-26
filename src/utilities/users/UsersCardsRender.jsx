@@ -1,19 +1,47 @@
 import axios from "axios";
-import React from "react";
+import { useEffect, useState } from "react";
 
-const UsersCardsRender = ({ users, getAllUsers, setUpdate, setIsShowForm }) => {
+const UsersCardsRender = ({
+  users,
+  getAllUsers,
+  setUpdate,
+  setIsShowForm,
+  setShowDelete,
+  isDelete,
+  setIsDelete,
+}) => {
+  const [idUser, setIdUser] = useState(null);
+
+  useEffect(() => {
+    isDelete && deleteUserConfirm();
+  }, [isDelete]);
+
+  const deleteUserConfirm = (id) => {
+    setIdUser(id);
+    if (isDelete) {
+      deleteUser(idUser);
+    } else {
+      setShowDelete(true);
+    }
+  };
+
   const deleteUser = (id) => {
-    // Confirmation modal coming soon...
     const URL = `https://crud-api-express.onrender.com/api/v1/users/${id}/`;
 
     axios
       .delete(URL)
       .then(() => {
-        console.log(`User with ID: ${id}, deleted succesfully!`);
+        // console.log(`User with ID: ${id}, deleted succesfully!`);
         getAllUsers();
+        setIsDelete(false);
+        setShowDelete(false);
+        setIdUser(null);
       })
       .catch((err) => {
         console.log(err);
+        setIsDelete(false);
+        setShowDelete(false);
+        setIdUser(null);
       });
   };
 
@@ -48,7 +76,7 @@ const UsersCardsRender = ({ users, getAllUsers, setUpdate, setIsShowForm }) => {
                 <i className="fa-solid fa-pen-to-square"></i>
               </button>
               <button
-                onClick={() => deleteUser(user.id)}
+                onClick={() => deleteUserConfirm(user.id)}
                 className="text-red-500 text-lg"
               >
                 <i className="fa-solid fa-trash-can"></i>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ButtonNewHeader from "../../utilities/container/ButtonNewHeader";
 
-const HeaderUser = ({ setIsShowForm, setIsAnimatedModal, setUpdate }) => {
+const HeaderUser = ({ setIsShowForm, setUpdate }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
 
@@ -19,7 +19,6 @@ const HeaderUser = ({ setIsShowForm, setIsAnimatedModal, setUpdate }) => {
       <div className="hidden md:flex">
         <ButtonNewHeader
           setIsShowForm={setIsShowForm}
-          setIsAnimatedModal={setIsAnimatedModal}
           setUpdate={setUpdate}
         />
       </div>

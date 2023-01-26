@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -13,7 +17,7 @@ module.exports = {
         itemsNavH: "#2BD3A6",
         itemsNavDark: "#229D7C",
         itemsNavDarkH: "#1F8E70",
-        containerDark: "#020711"
+        containerDark: "#020711",
       },
       fontFamily: {
         default: ["Montserrat"],
@@ -34,6 +38,6 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("flowbite/plugin")],
   darkMode: "class",
 };

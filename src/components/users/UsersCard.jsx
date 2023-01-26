@@ -9,7 +9,9 @@ const UsersCard = ({
   setUpdate,
   setIsShowForm,
   isLoading,
-  setIsAnimatedModal,
+  setShowDelete,
+  isDelete,
+  setIsDelete
 }) => {
   const [isSort, setIsSort] = useState(false);
   const [reload, setReload] = useState(false);
@@ -31,18 +33,16 @@ const UsersCard = ({
   };
 
   return (
-    <section className="w-full h-5/6 mt-10 mx-auto z-0 flex flex-col justify-center gap-4">
+    <section className="w-full h-5/6 mt-10 mx-auto relative flex flex-col justify-center gap-4">
       <article className="w-full flex justify-between items-center">
         <div className="sm:ml-3 md:ml-6 lg:ml-8 flex items-center text-gray-900 dark:text-gray-300">
           <h2 className="ml-4 font-default text-3xl">Users</h2>
           <i className="fa-solid fa-users pl-2 text-md"></i>
         </div>
         <div className="mr-4 sm:mr-8 md:mr-10 lg:mr-24 flex justify-center items-center gap-3">
-          {/* button new user in mobile */}
           <div className="mr-2 md:hidden">
             <ButtonNewHeader
               setIsShowForm={setIsShowForm}
-              setIsAnimatedModal={setIsAnimatedModal}
               setUpdate={setUpdate}
             />
           </div>
@@ -67,7 +67,6 @@ const UsersCard = ({
           </button>
         </div>
       </article>
-      {/* Users Card */}
       <article className="w-11/12 mx-auto mb-4 rounded h-full md:h-5/6 md:rounded-lg bg-gray-100 dark:bg-gray-800 drop-shadow-md dark:drop-shadow-lg dark:shadow-black  overflow-y-auto">
         {reload || isLoading ? (
           <div className="w-full h-full flex flex-col justify-center items-center text-neutral-400 dark:text-gray-600 animate-pulse">
@@ -78,7 +77,6 @@ const UsersCard = ({
           <>
             <table className="invisible absolute -z-10 md:visible md:relative md:z-0 table-fixed w-full text-center">
               <thead>
-                {/* Refactorizar los headers con un componente map */}
                 <tr>
                   <th className="text-sm font-medium text-slate-400 py-3">
                     Name
@@ -106,15 +104,20 @@ const UsersCard = ({
                   users={users}
                   setUpdate={setUpdate}
                   setIsShowForm={setIsShowForm}
+                  setShowDelete={setShowDelete}
+                  isDelete={isDelete}
+                  setIsDelete={setIsDelete}
                 />
               </tbody>
             </table>
-            {/* Cards in mobile */}
             <UsersCardsRender
               users={users}
               getAllUsers={getAllUsers}
               setUpdate={setUpdate}
               setIsShowForm={setIsShowForm}
+              setShowDelete={setShowDelete}
+              isDelete={isDelete}
+              setIsDelete={setIsDelete}
             />
           </>
         )}

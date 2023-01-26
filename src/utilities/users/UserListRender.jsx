@@ -1,18 +1,47 @@
 import axios from "axios";
+import { useEffect, useState } from "react";
 
-const UserListRender = ({ getAllUsers, users, setUpdate, setIsShowForm }) => {
+const UserListRender = ({
+  getAllUsers,
+  users,
+  setUpdate,
+  setIsShowForm,
+  setShowDelete,
+  isDelete,
+  setIsDelete,
+}) => {
+  const [idUser, setIdUser] = useState(null);
+
+  useEffect(() => {
+    isDelete && deleteUserConfirm();
+  }, [isDelete]);
+
+  const deleteUserConfirm = (id) => {
+    setIdUser(id);
+    if (isDelete) {
+      deleteUser(idUser);
+    } else {
+      setShowDelete(true);
+    }
+  };
+
   const deleteUser = (id) => {
-    // Confirmation modal coming soon...
     const URL = `https://crud-api-express.onrender.com/api/v1/users/${id}/`;
 
     axios
       .delete(URL)
       .then(() => {
-        console.log(`User with ID: ${id}, deleted succesfully!`);
+        // console.log(`User with ID: ${id}, deleted succesfully!`);
         getAllUsers();
+        setIsDelete(false);
+        setShowDelete(false);
+        setIdUser(null);
       })
       .catch((err) => {
         console.log(err);
+        setIsDelete(false);
+        setShowDelete(false);
+        setIdUser(null);
       });
   };
 
@@ -32,8 +61,10 @@ const UserListRender = ({ getAllUsers, users, setUpdate, setIsShowForm }) => {
             <div>{user.isActive ? "🟢" : "🔴"}</div>
             {user.firstName + " " + user.lastName}
           </td>
-          <td className="text-sm font-normal text-left pl-6 py-4
-          whitespace-normal break-words">
+          <td
+            className="text-sm font-normal text-left pl-6 py-4
+          whitespace-normal break-words"
+          >
             {user.email}
           </td>
           <td className="text-sm font-normal text-center py-4 whitespace-nowrap">
@@ -54,7 +85,7 @@ const UserListRender = ({ getAllUsers, users, setUpdate, setIsShowForm }) => {
               <i className="fa-solid fa-pen-to-square"></i>
             </button>
             <button
-              onClick={() => deleteUser(user.id)}
+              onClick={() => deleteUserConfirm(user.id)}
               className=" ring-2 ring-red-400 text-red-400 dark:bg-red-500 dark:text-gray-300 dark:ring-red-500 dark:hover:bg-red-600 dark:hover:ring-red-600 p-1 text-sm rounded-md shadow-md transition duration-100 hover:bg-red-500 hover:ring-red-500 hover:text-gray-300 active:bg-red-600 active:ring-red-600"
             >
               <i className="fa-solid fa-trash-can"></i>

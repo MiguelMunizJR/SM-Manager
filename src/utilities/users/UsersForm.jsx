@@ -2,7 +2,7 @@ const UsersForm = ({ register, handleSubmit, submitData, update }) => {
   return (
     <form
       onSubmit={handleSubmit(submitData)}
-      className="mt-10 mx-4 flex flex-col gap-4 font-default text-sm"
+      className="mt-10 mx-4 flex flex-col gap-4 font-default text-sm z-auto"
     >
       <article className="flex flex-col sm:flex-row gap-4">
         <div className="flex flex-col">

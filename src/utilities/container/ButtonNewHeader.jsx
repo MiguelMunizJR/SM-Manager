@@ -1,6 +1,5 @@
-const ButtonNewHeader = ({ setIsShowForm, setIsAnimatedModal, setUpdate }) => {
+const ButtonNewHeader = ({ setIsShowForm, setUpdate }) => {
   const handleClick = () => {
-    setIsAnimatedModal(true);
     setIsShowForm(true);
     setUpdate(null);
   };
