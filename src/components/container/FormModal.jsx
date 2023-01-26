@@ -13,6 +13,7 @@ const FormModal = ({ setIsShowForm, getAllUsers, update }) => {
   }, [update]);
 
   const submitData = (data) => {
+    console.log(data);
     if (update) {
       const URL = `https://crud-api-express.onrender.com/api/v1/users/${update.id}/`;
 

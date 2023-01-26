@@ -61,7 +61,7 @@ const UsersCardsRender = ({
         >
           <div className="w-full flex justify-between">
             <div className="flex flex-col">
-              <h4 className="text-xl font-medium text-gray-800 dark:text-gray-300">
+              <h4 className="text-lg font-medium text-gray-800 dark:text-gray-300">
                 {user.firstName + " " + user.lastName}
               </h4>
               <p className="text-sm font-ligth text-gray-500 dark:text-gray-400">

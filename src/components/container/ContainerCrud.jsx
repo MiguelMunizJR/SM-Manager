@@ -56,7 +56,7 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
           getAllUsers={getAllUsers}
           update={update}
         />
-        <section className="w-screen h-screen opacity-20 dark:opacity-30 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
+        <section className="w-screen h-screen opacity-30 dark:opacity-30 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
       </Transition>
       {/* Modal Delete Confirm */}
       <Transition
@@ -66,13 +66,13 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
         enter="transition-opacity duration-100"
         enterFrom="opacity-0"
         enterTo="opacity-100"
-        leave="transition-opacity duration-100"
+        leave="transition-opacity duration-75"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <ModalDelete />
+        <ModalDelete setShowDelete={setShowDelete} setIsDelete={setIsDelete} />
         {/* MODAL DELETE CONFIRM HERE! */}
-        <section className="w-screen h-screen opacity-20 dark:opacity-30 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
+        <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
       </Transition>
       <section className="w-full h-screen flex flex-col justify-between bg-zinc-200 dark:bg-containerDark">
         {/* Header */}

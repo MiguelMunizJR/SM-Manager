@@ -2,7 +2,7 @@ const UsersForm = ({ register, handleSubmit, submitData, update }) => {
   return (
     <form
       onSubmit={handleSubmit(submitData)}
-      className="mt-10 mx-4 flex flex-col gap-4 font-default text-sm z-auto"
+      className="mt-8 mx-4 flex flex-col gap-3 font-default text-sm z-auto"
     >
       <article className="flex flex-col sm:flex-row gap-4">
         <div className="flex flex-col">
@@ -78,13 +78,46 @@ const UsersForm = ({ register, handleSubmit, submitData, update }) => {
           type="date"
           min={"1960-01-01"}
           max={"2023-01-01"}
-          value={"2000-01-01"}
           className="h-10 w-max mx-auto
           text-center px-4 rounded bg-slate-200 dark:bg-gray-800 dark:text-gray-300 outline-none drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH text-gray-900 font-light"
           {...register("birthday")}
         />
       </div>
-      <button className="w-3/4 mt-8 mx-auto py-2 flex justify-center items-center gap-3 bg-navBarBH dark:bg-itemsNavDark text-gray-200 text-base rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-navBarBA dark:hover:bg-itemsNavDarkH">
+      {update && (
+        <div className="flex flex-col text-center font-default">
+          <label
+            htmlFor="is_active"
+            name="isActive"
+            className="pb-1 font-semibold self-center text-black  dark:text-gray-300"
+          >
+            Active:
+          </label>
+          <div className="mt-2 mx-auto flex gap-4 font-default font-medium">
+            <div className="flex gap-2">
+              <label htmlFor="active">Active</label>
+              <input
+                type="radio"
+                name="is_active"
+                value={true}
+                id="active"
+                defaultChecked
+                {...register("isActive")}
+              />
+            </div>
+            <div className="flex gap-2">
+              <label htmlFor="deactivated">Deactivate</label>
+              <input
+                type="radio"
+                name="is_active"
+                value={false}
+                id="deactivated"
+                {...register("isActive")}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+      <button className="w-3/4 mt-4 mx-auto py-2 flex justify-center items-center gap-3 bg-navBarBH dark:bg-itemsNavDark text-gray-200 text-base rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-navBarBA dark:hover:bg-itemsNavDarkH">
         {update ? <h4>Update User</h4> : <h4>Create User</h4>}
         <i className="fa-solid fa-user text-sm"></i>
       </button>
