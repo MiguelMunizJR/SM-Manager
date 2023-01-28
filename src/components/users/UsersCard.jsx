@@ -6,12 +6,13 @@ import UsersCardsRender from "../../utilities/users/UsersCardsRender";
 const UsersCard = ({
   getAllUsers,
   users,
+  filterUsers,
   setUpdate,
   setIsShowForm,
   isLoading,
   setShowDelete,
   isDelete,
-  setIsDelete
+  setIsDelete,
 }) => {
   const [isSort, setIsSort] = useState(false);
   const [reload, setReload] = useState(false);
@@ -102,6 +103,7 @@ const UsersCard = ({
                 <UserListRender
                   getAllUsers={getAllUsers}
                   users={users}
+                  filterUsers={filterUsers}
                   setUpdate={setUpdate}
                   setIsShowForm={setIsShowForm}
                   setShowDelete={setShowDelete}

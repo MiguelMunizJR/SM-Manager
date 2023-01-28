@@ -1,10 +1,12 @@
-import { useState } from "react";
-
-const SearchBar = () => {
-  const [input, setInput] = useState("");
-
+const SearchBar = ({ setFilterUsers, users }) => {
   const handleInput = (e) => {
-    setInput(e.target.value);
+    const value = e.target.value;
+
+    const filterUsers = users?.filter((user) => {
+      if (e.target.value === "") return users;
+      return user?.firstName.toLowerCase().includes(value.toLowerCase());
+    });
+    setFilterUsers(filterUsers);
   };
 
   return (
@@ -21,7 +23,7 @@ const SearchBar = () => {
       </span>
       <input
         type="text"
-        value={input}
+        id="search"
         onChange={handleInput}
         placeholder="Search for users..."
         className="dark:placeholder:text-gray-500 dark:bg-gray-800 dark:text-gray-300 md:h-8 md:w-full pl-10 bg-gray-100 rounded shadow-sm shadow-gray-300 dark:shadow-black dark:shadow-sm dark:hover:shadow-black outline-none text-md font-default font-light text-gray-600 transition ease-in-out duration-150 placeholder:text-slate-400 focus:ring-2 focus:ring-itemsNavH hover:shadow-lg dark:hover:shadow-md"

@@ -22,7 +22,7 @@ const HeaderUser = ({ setIsShowForm, setUpdate }) => {
       <article className="lg:mr-8 flex justify-center items-center gap-4">
         <button
           onClick={DarkModeToggle}
-          className="px-4 py-1 rounded-lg shadow-sm text-lg transition ease-in-out duration-150 bg-transparent md:bg-gray-100 dark:bg-transparent md:hover:bg-gray-100 md:active:ring-2 md:ring-itemsNav dark:hover:bg-itemsNavDark hover:shadow-md dark:hover:shadow-md"
+          className="px-4 py-1 rounded-lg shadow-sm text-lg transition ease-in-out duration-150 bg-transparent md:bg-gray-100 md:dark:bg-gray-800 md:hover:bg-gray-100 md:active:ring-2 md:ring-itemsNav dark:hover:bg-itemsNavDark hover:shadow-md dark:hover:shadow-md"
         >
           {isDarkMode ? (
             <i className="fa-solid fa-sun text-gray-700 dark:text-gray-300 text-md transition ease-in-out rotate-45 duration-500"></i>
@@ -32,9 +32,10 @@ const HeaderUser = ({ setIsShowForm, setUpdate }) => {
         </button>
         <button
           onClick={userMenuToggle}
-          className="px-2 py-1 flex justify-center items-center gap-4 rounded-lg shadow-sm bg-transparent md:bg-gray-100 dark:bg-transparent md:active:ring-2 md:ring-itemsNav transition ease-in-out duration-150 hover:shadow-md dark:hover:bg-itemsNavDark md:hover:bg-gray-100 dark:hover:shadow-md"
+          className="px-2 py-1 flex justify-center items-center gap-4 rounded-lg shadow-sm bg-transparent md:bg-gray-100 md:dark:bg-gray-800 md:active:ring-2 md:ring-itemsNav transition ease-in-out duration-150 hover:shadow-md text-gray-500
+          dark:text-gray-400 dark:hover:bg-itemsNavDark dark:hover:text-gray-200 md:hover:bg-gray-100 dark:hover:shadow-md"
         >
-          <p className="hidden lg:flex font-default text-sm font-light text-gray-500  dark:text-gray-400">
+          <p className="hidden lg:flex font-default text-sm font-light">
             Guest#2553
           </p>
           <div className="flex gap-2 items-center">

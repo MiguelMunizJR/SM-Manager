@@ -9,16 +9,15 @@ import ModalDelete from "../../utilities/container/ModalDelete";
 
 const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
   const [users, setUsers] = useState(null);
+  const [filterUsers, setFilterUsers] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
 
   useEffect(() => {
-    if (!users) {
-      setIsLoading(true);
-    }
+    !users && setIsLoading(true);
     getAllUsers();
-  }, []);
+  }, [filterUsers]);
 
   const getAllUsers = () => {
     const URL = "https://crud-api-express.onrender.com/api/v1/users";
@@ -35,7 +34,6 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
         console.log(err);
         setIsLoading(true);
       });
-    console.log(users);
   };
 
   return (
@@ -86,12 +84,13 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
             </button>
             <h1 className="font-default text-lg font-medium">CRUD Manager</h1>
           </section>
-          <SearchBar />
+          <SearchBar setFilterUsers={setFilterUsers} users={users} />
           <HeaderUser setIsShowForm={setIsShowForm} setUpdate={setUpdate} />
         </article>
         <UsersCard
           getAllUsers={getAllUsers}
           users={users}
+          filterUsers={filterUsers}
           setUpdate={setUpdate}
           setIsShowForm={setIsShowForm}
           isLoading={isLoading}
