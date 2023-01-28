@@ -41,7 +41,7 @@ const HeaderUser = ({ setIsShowForm, setUpdate }) => {
           <div className="flex gap-2 items-center">
             <i className="fa-regular fa-circle-user text-gray-200 dark:text-gray-300 md:text-gray-700 text-xl"></i>
             {showUserMenu ? (
-              <i className="fa-solid fa-caret-up text-gray-200 dark:text-gray-300 text-sm"></i>
+              <i className="fa-solid fa-caret-up text-gray-200 dark:text-gray-300 md:text-gray-700 text-sm"></i>
             ) : (
               <i className="fa-solid fa-caret-down text-gray-200 md:text-gray-700 dark:text-gray-300 text-sm"></i>
             )}

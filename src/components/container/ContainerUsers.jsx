@@ -7,7 +7,7 @@ import UsersCard from "../users/UsersCard";
 import FormModal from "./FormModal";
 import ModalDelete from "../../utilities/container/ModalDelete";
 
-const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
+const ContainerUsers = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
   const [users, setUsers] = useState(null);
   const [filterUsers, setFilterUsers] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,9 +17,10 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
   useEffect(() => {
     !users && setIsLoading(true);
     getAllUsers();
-  }, [filterUsers]);
+  }, []);
 
   const getAllUsers = () => {
+    setIsLoading(true);
     const URL = "https://crud-api-express.onrender.com/api/v1/users";
 
     axios
@@ -32,7 +33,6 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
       })
       .catch((err) => {
         console.log(err);
-        setIsLoading(true);
       });
   };
 
@@ -66,7 +66,7 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
         enter="transition-opacity duration-100"
         enterFrom="opacity-0"
         enterTo="opacity-100"
-        leave="transition-opacity duration-75"
+        leave="transition-opacity duration-100"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
@@ -90,7 +90,9 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
         <UsersCard
           getAllUsers={getAllUsers}
           users={users}
+          setUsers={setUsers}
           filterUsers={filterUsers}
+          setFilterUsers={setFilterUsers}
           setUpdate={setUpdate}
           setIsShowForm={setIsShowForm}
           isLoading={isLoading}
@@ -103,4 +105,4 @@ const ContainerCrud = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
   );
 };
 
-export default ContainerCrud;
+export default ContainerUsers;

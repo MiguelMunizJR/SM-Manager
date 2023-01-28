@@ -5,17 +5,27 @@ const UsersForm = ({
   handleSubmit,
   submitData,
   update,
-  setUpdate,
   reset,
+  setIsShowForm,
 }) => {
   const clearUpdate = () => {
     reset(defaultValues);
-    setUpdate(null);
+  };
+
+  const checkKeyPress = (e) => {
+    const { keyCode } = e;
+
+    if (keyCode === 13) {
+      handleSubmit(submitData);
+    } else if (keyCode === 27) {
+      setIsShowForm(false);
+    }
   };
 
   return (
     <form
       onSubmit={handleSubmit(submitData)}
+      onKeyDown={checkKeyPress}
       className="mt-6 mx-4 flex flex-col gap-2 font-default text-sm z-auto"
     >
       <article className="flex flex-col sm:flex-row gap-4">
@@ -32,6 +42,7 @@ const UsersForm = ({
             placeholder="Firstname"
             className="w-72 sm:w-auto h-10 pl-3 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
             {...register("firstName")}
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -47,6 +58,7 @@ const UsersForm = ({
             placeholder="Lastname"
             className="w-72 sm:w-auto h-10 pl-3 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
             {...register("lastName")}
+            required
           />
         </div>
       </article>
@@ -61,8 +73,9 @@ const UsersForm = ({
           id="email"
           type="email"
           placeholder="Email"
-          className="h-10 pl-3 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light invalid:ring-1 invalid:ring-red-500"
+          className="h-10 pl-3 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
           {...register("email")}
+          required
         />
       </div>
       <div className="flex flex-col">
@@ -78,6 +91,7 @@ const UsersForm = ({
           placeholder="Password"
           className="h-10 pl-3 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
           {...register("password")}
+          required
         />
       </div>
       <div className="flex flex-col">
@@ -95,6 +109,7 @@ const UsersForm = ({
           className="h-10 w-max mx-auto
           text-center px-4 rounded bg-slate-200 dark:bg-gray-800 dark:text-gray-300 outline-none drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH text-gray-900 font-light"
           {...register("birthday")}
+          required
         />
       </div>
       {update && (

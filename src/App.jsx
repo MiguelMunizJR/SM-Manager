@@ -1,5 +1,5 @@
 import NavBar from "./components/navbar/NavBar";
-import ContainerCrud from "./components/container/ContainerCrud";
+import ContainerUsers from "./components/container/ContainerUsers";
 import { useState } from "react";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         update={update}
         setUpdate={setUpdate}
       />
-      <ContainerCrud
+      <ContainerUsers
         isShowForm={isShowForm}
         setIsShowForm={setIsShowForm}
         update={update}

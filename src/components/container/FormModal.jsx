@@ -14,7 +14,6 @@ const FormModal = ({ setIsShowForm, getAllUsers, update, setUpdate }) => {
   }, [update]);
 
   const submitData = (data) => {
-    console.log(data);
     if (update) {
       const URL = `https://crud-api-express.onrender.com/api/v1/users/${update.id}/`;
 
@@ -23,6 +22,7 @@ const FormModal = ({ setIsShowForm, getAllUsers, update, setUpdate }) => {
         .then(() => {
           reset(defaultValues);
           getAllUsers();
+          setUpdate(null);
           setIsShowForm(false);
         })
         .catch((err) => {
@@ -71,8 +71,8 @@ const FormModal = ({ setIsShowForm, getAllUsers, update, setUpdate }) => {
         handleSubmit={handleSubmit}
         submitData={submitData}
         update={update}
-        setUpdate={setUpdate}
         reset={reset}
+        setIsShowForm={setIsShowForm}
       />
     </section>
   );
