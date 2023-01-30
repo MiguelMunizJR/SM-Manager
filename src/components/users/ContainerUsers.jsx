@@ -2,9 +2,9 @@ import { useEffect, useState, startTransition } from "react";
 import { Transition } from "@headlessui/react";
 import axios from "axios";
 import SearchBar from "../../utilities/container/SearchBar";
-import HeaderUser from "./HeaderUser";
-import UsersCard from "../users/UsersCard";
-import FormModal from "./FormModal";
+import HeaderUser from "../container/HeaderUser";
+import UsersCard from "./UsersCard";
+import FormModal from "../container/FormModal";
 import ModalDelete from "../../utilities/container/ModalDelete";
 
 const ContainerUsers = ({ isShowForm, setIsShowForm, update, setUpdate }) => {

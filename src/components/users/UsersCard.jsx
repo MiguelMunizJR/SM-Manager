@@ -34,7 +34,7 @@ const UsersCard = ({
   };
 
   return (
-    <section className="w-full h-5/6 mt-10 mx-auto relative flex flex-col justify-center gap-4">
+    <section className="w-full h-5/6 mt-10 mx-auto relative z-0 flex flex-col justify-center gap-4">
       <article className="w-full flex justify-between items-center">
         <div className="sm:ml-3 md:ml-6 lg:ml-8 flex items-center text-gray-900 dark:text-gray-300">
           <h2 className="ml-4 font-default text-3xl">Users</h2>
