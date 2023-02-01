@@ -1,9 +1,10 @@
 import NavBar from "./components/navbar/NavBar";
-import ContainerUsers from "./components/users/ContainerUsers";
+import Home from "./components/home/Home";
+import Users from "./components/users/Users";
 import NotFound from "./components/container/NotFound";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import { ContainerTasks } from "./components/tasks/ContainerTasks";
+import Tasks from "./components/tasks/Tasks";
 
 function App() {
   const [isShowForm, setIsShowForm] = useState(false);
@@ -16,23 +17,27 @@ function App() {
         update={update}
         setUpdate={setUpdate}
       />
-      <HashRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ContainerUsers
-                isShowForm={isShowForm}
-                setIsShowForm={setIsShowForm}
-                update={update}
-                setUpdate={setUpdate}
-              />
-            }
-          />
-          <Route path="/tasks" element={<ContainerTasks />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </HashRouter>
+      {/* ROUTES */}
+      <Routes>
+        {/* Home Route */}
+        <Route path="/" element={<Home />} />
+        {/* Users Route */}
+        <Route
+          path="/users"
+          element={
+            <Users
+              isShowForm={isShowForm}
+              setIsShowForm={setIsShowForm}
+              update={update}
+              setUpdate={setUpdate}
+            />
+          }
+        />
+        {/* Tasks Route */}
+        <Route path="/tasks" element={<Tasks />} />
+        {/* Route not found 404 */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }

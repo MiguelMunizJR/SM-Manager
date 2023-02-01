@@ -7,7 +7,7 @@ import UsersCard from "./UsersCard";
 import FormModal from "../container/FormModal";
 import ModalDelete from "../../utilities/container/ModalDelete";
 
-const ContainerUsers = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
+const Users = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
   const [users, setUsers] = useState(null);
   const [filterUsers, setFilterUsers] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -105,4 +105,4 @@ const ContainerUsers = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
   );
 };
 
-export default ContainerUsers;
+export default Users;
