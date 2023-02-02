@@ -6,7 +6,7 @@ const UsersForm = ({
   submitData,
   update,
   reset,
-  setIsShowForm,
+  setIsShowUsersForm,
 }) => {
   const clearUpdate = () => {
     reset(defaultValues);
@@ -18,7 +18,7 @@ const UsersForm = ({
     if (keyCode === 13) {
       handleSubmit(submitData);
     } else if (keyCode === 27) {
-      setIsShowForm(false);
+      setIsShowUsersForm(false);
     }
   };
 

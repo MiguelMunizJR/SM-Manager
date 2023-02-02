@@ -6,7 +6,7 @@ const UserListRender = ({
   users,
   filterUsers,
   setUpdate,
-  setIsShowForm,
+  setIsShowUsersForm,
   setShowDelete,
   isDelete,
   setIsDelete,
@@ -48,7 +48,7 @@ const UserListRender = ({
 
   const updateUser = (user) => {
     setUpdate(user);
-    setIsShowForm(true);
+    setIsShowUsersForm(true);
   };
 
   return (

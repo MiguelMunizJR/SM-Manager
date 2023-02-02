@@ -1,7 +1,7 @@
 import ButtonNavBar from "../../utilities/navbar/ButtonNavBar";
 import ListNav from "../../utilities/navbar/ListNav";
 
-const NavBar = ({ setIsShowForm, setUpdate }) => {
+const NavBar = ({ setIsShowUsersForm, setIsShowTasksForm, setUpdate }) => {
   return (
     <nav className="hidden md:flex md:w-52 h-screen pt-5 flex-col items-center justify-between bg-navBar dark:bg-navBarDark dark:drop-shadow-2xl drop-shadow-2xl shadow-black">
       <section className="w-full flex flex-col justify-between">
@@ -10,7 +10,10 @@ const NavBar = ({ setIsShowForm, setUpdate }) => {
         </h1>
         <ListNav />
       </section>
-      <ButtonNavBar setIsShowForm={setIsShowForm} setUpdate={setUpdate} />
+      <ButtonNavBar
+        setIsShowUsersForm={setIsShowUsersForm}
+        setUpdate={setUpdate}
+      />
     </nav>
   );
 };

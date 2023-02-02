@@ -1,6 +1,6 @@
 import React from "react";
 
-const Home = () => {
+const Settings = () => {
   return (
     <>
       <section className="w-full h-screen flex flex-col justify-between bg-zinc-200 dark:bg-containerDark">
@@ -10,4 +10,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Settings;

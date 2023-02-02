@@ -1,18 +1,12 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import ButtonNewHeader from "../../utilities/container/ButtonNewHeader";
-import UserListRender from "../../utilities/users/UserListRender";
-import UsersCardsRender from "../../utilities/users/UsersCardsRender";
 
-const UsersCard = ({
-  getAllUsers,
-  users,
-  filterUsers,
-  setUpdate,
-  setIsShowUsersForm,
+const TasksCard = ({
+  tasks,
+  getAllTasks,
+  // isShowForm,
+  setIsShowForm,
   isLoading,
-  setShowDelete,
-  isDelete,
-  setIsDelete,
 }) => {
   const [isSort, setIsSort] = useState(false);
   const [reload, setReload] = useState(false);
@@ -22,29 +16,28 @@ const UsersCard = ({
   };
 
   const reloadUsers = () => {
-    getAllUsers();
+    getAllTasks();
     setReload(true);
   };
 
   const usersReady = () => {
-    if (users) {
+    if (tasks) {
       setReload(false);
     }
     setReload(false);
   };
-
   return (
     <section className="w-full h-5/6 mt-10 mx-auto relative z-0 flex flex-col justify-center gap-4">
       <article className="w-full flex justify-between items-center">
         <div className="sm:ml-3 md:ml-6 lg:ml-8 flex items-center text-gray-900 dark:text-gray-300">
-          <h2 className="ml-4 font-default text-3xl">Users</h2>
-          <i className="fa-solid fa-users pl-2 text-md"></i>
+          <h2 className="ml-4 font-default text-3xl">Tasks</h2>
+          <i className="fa-solid fa-list-check pl-2 text-md"></i>
         </div>
         <div className="mr-4 sm:mr-8 md:mr-10 lg:mr-24 flex justify-center items-center gap-3">
           <div className="mr-2 md:hidden">
             <ButtonNewHeader
-              setIsShowUsersForm={setIsShowUsersForm}
-              setUpdate={setUpdate}
+              setIsShowForm={setIsShowForm}
+              // setUpdate={setUpdate}
             />
           </div>
           <button
@@ -76,51 +69,18 @@ const UsersCard = ({
           </div>
         ) : (
           <>
-            <table className="invisible absolute -z-10 md:visible md:relative md:z-0 table-fixed w-full text-center">
-              <thead>
-                <tr>
-                  <th className="text-sm font-medium text-slate-400 py-3">
-                    Name
-                  </th>
-                  <th className="text-sm font-medium text-slate-400 py-3">
-                    Email
-                  </th>
-                  <th className="text-sm font-medium text-slate-400 py-3">
-                    Firstname
-                  </th>
-                  <th className="text-sm font-medium text-slate-400 py-3">
-                    Lastname
-                  </th>
-                  <th className="text-sm font-medium text-slate-400 py-3">
-                    Birthday
-                  </th>
-                  <th className="text-sm font-medium text-slate-400 py-3">
-                    Edit / Delete
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <UserListRender
-                  getAllUsers={getAllUsers}
-                  users={users}
-                  filterUsers={filterUsers}
-                  setUpdate={setUpdate}
-                  setIsShowUsersForm={setIsShowUsersForm}
-                  setShowDelete={setShowDelete}
-                  isDelete={isDelete}
-                  setIsDelete={setIsDelete}
-                />
-              </tbody>
-            </table>
-            <UsersCardsRender
+            <article>
+              Hola
+            </article>
+            {/* <UsersCardsRender
               users={users}
               getAllUsers={getAllUsers}
               setUpdate={setUpdate}
-              setIsShowUsersForm={setIsShowUsersForm}
+              setIsShowForm={setIsShowForm}
               setShowDelete={setShowDelete}
               isDelete={isDelete}
               setIsDelete={setIsDelete}
-            />
+            /> */}
           </>
         )}
       </article>
@@ -128,4 +88,4 @@ const UsersCard = ({
   );
 };
 
-export default UsersCard;
+export default TasksCard;

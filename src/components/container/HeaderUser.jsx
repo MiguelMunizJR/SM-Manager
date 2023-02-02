@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import ButtonNewHeader from "../../utilities/container/ButtonNewHeader";
 
-const HeaderUser = ({ setIsShowForm, setUpdate }) => {
+const HeaderUser = ({ setIsShowUsersForm, setUpdate }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const DarkModeToggle = () => {
@@ -13,7 +13,7 @@ const HeaderUser = ({ setIsShowForm, setUpdate }) => {
   return (
     <section className="mr-5 flex justify-center items-center gap-8">
       <div className="hidden md:flex">
-        <ButtonNewHeader setIsShowForm={setIsShowForm} setUpdate={setUpdate} />
+        <ButtonNewHeader setIsShowForm={setIsShowUsersForm} setUpdate={setUpdate} />
       </div>
       <article className="lg:mr-8 flex justify-center items-center gap-4">
         <button

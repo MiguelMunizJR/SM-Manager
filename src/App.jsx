@@ -5,16 +5,20 @@ import NotFound from "./components/container/NotFound";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import Tasks from "./components/tasks/Tasks";
+import Settings from "./components/settings/Settings";
 
 function App() {
-  const [isShowForm, setIsShowForm] = useState(false);
+  const [isShowUsersForm, setIsShowUsersForm] = useState(false);
+  const [isShowTasksForm, setIsShowTasksForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const [update, setUpdate] = useState();
 
   return (
     <div className="flex">
       <NavBar
-        setIsShowForm={setIsShowForm}
-        update={update}
+        setIsShowUsersForm={setIsShowUsersForm}
+        setIsShowTasksForm={setIsShowTasksForm}
         setUpdate={setUpdate}
       />
       {/* ROUTES */}
@@ -26,15 +30,34 @@ function App() {
           path="/users"
           element={
             <Users
-              isShowForm={isShowForm}
-              setIsShowForm={setIsShowForm}
+              isShowUsersForm={isShowUsersForm}
+              setIsShowUsersForm={setIsShowUsersForm}
               update={update}
               setUpdate={setUpdate}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              showDelete={showDelete}
+              setShowDelete={setShowDelete}
             />
           }
         />
         {/* Tasks Route */}
-        <Route path="/tasks" element={<Tasks />} />
+        <Route
+          path="/tasks"
+          element={
+            <Tasks
+              isShowTasksForm={isShowTasksForm}
+              setIsShowTasksForm={setIsShowTasksForm}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              setUpdate={setUpdate}
+              showDelete={showDelete}
+              setShowDelete={setShowDelete}
+            />
+          }
+        />
+        {/* Settings Route */}
+        <Route path="/settings" element={<Settings />} />
         {/* Route not found 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -1,6 +1,6 @@
-const ButtonNavBar = ({ setIsShowForm, setUpdate }) => {
+const ButtonNavBar = ({ setIsShowUsersForm, setUpdate }) => {
   const handleClick = () => {
-    setIsShowForm(true);
+    setIsShowUsersForm(true);
     setUpdate(null);
   };
 

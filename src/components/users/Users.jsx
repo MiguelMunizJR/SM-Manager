@@ -7,11 +7,18 @@ import UsersCard from "./UsersCard";
 import FormModal from "../container/FormModal";
 import ModalDelete from "../../utilities/container/ModalDelete";
 
-const Users = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
+const Users = ({
+  isShowUsersForm,
+  setIsShowUsersForm,
+  update,
+  setUpdate,
+  isLoading,
+  setIsLoading,
+  showDelete,
+  setShowDelete,
+}) => {
   const [users, setUsers] = useState(null);
   const [filterUsers, setFilterUsers] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [showDelete, setShowDelete] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
 
   useEffect(() => {
@@ -42,7 +49,7 @@ const Users = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
       <Transition
         as="section"
         className={"fixed inset-0 z-50"}
-        show={isShowForm}
+        show={isShowUsersForm}
         enter="transition-opacity duration-100"
         enterFrom="opacity-0"
         enterTo="opacity-100"
@@ -51,7 +58,7 @@ const Users = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
         leaveTo="opacity-0"
       >
         <FormModal
-          setIsShowForm={setIsShowForm}
+          setIsShowUsersForm={setIsShowUsersForm}
           getAllUsers={getAllUsers}
           update={update}
           setUpdate={setUpdate}
@@ -84,8 +91,11 @@ const Users = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
             </button>
             <h1 className="font-default text-lg font-medium">CRUD Manager</h1>
           </section>
-          <SearchBar setFilterUsers={setFilterUsers} users={users} />
-          <HeaderUser setIsShowForm={setIsShowForm} setUpdate={setUpdate} />
+          <SearchBar placeholder="Search for users..." setFilterUsers={setFilterUsers} users={users} />
+          <HeaderUser
+            setIsShowUsersForm={setIsShowUsersForm}
+            setUpdate={setUpdate}
+          />
         </article>
         <UsersCard
           getAllUsers={getAllUsers}
@@ -94,7 +104,7 @@ const Users = ({ isShowForm, setIsShowForm, update, setUpdate }) => {
           filterUsers={filterUsers}
           setFilterUsers={setFilterUsers}
           setUpdate={setUpdate}
-          setIsShowForm={setIsShowForm}
+          setIsShowUsersForm={setIsShowUsersForm}
           isLoading={isLoading}
           setShowDelete={setShowDelete}
           isDelete={isDelete}

@@ -4,7 +4,7 @@ import UsersForm from "../../utilities/users/UsersForm";
 import defaultValues from "../../utilities/users/defaultValues";
 import { useEffect } from "react";
 
-const FormModal = ({ setIsShowForm, getAllUsers, update, setUpdate }) => {
+const FormModal = ({ setIsShowUsersForm, getAllUsers, update, setUpdate }) => {
   const { register, handleSubmit, reset } = useForm();
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const FormModal = ({ setIsShowForm, getAllUsers, update, setUpdate }) => {
           reset(defaultValues);
           getAllUsers();
           setUpdate(null);
-          setIsShowForm(false);
+          setIsShowUsersForm(false);
         })
         .catch((err) => {
           console.log(err);
@@ -36,7 +36,7 @@ const FormModal = ({ setIsShowForm, getAllUsers, update, setUpdate }) => {
         .then(() => {
           reset(defaultValues);
           getAllUsers();
-          setIsShowForm(false);
+          setIsShowUsersForm(false);
         })
         .catch((err) => {
           console.log(err);
@@ -60,7 +60,7 @@ const FormModal = ({ setIsShowForm, getAllUsers, update, setUpdate }) => {
           <i className="fa-solid fa-user text-black dark:text-gray-300"></i>
         </div>
         <button
-          onClick={() => setIsShowForm(false)}
+          onClick={() => setIsShowUsersForm(false)}
           className="mr-4 flex justify-center items-center text-2xl"
         >
           <i className="fa-solid fa-xmark text-black dark:text-gray-400"></i>
@@ -72,7 +72,7 @@ const FormModal = ({ setIsShowForm, getAllUsers, update, setUpdate }) => {
         submitData={submitData}
         update={update}
         reset={reset}
-        setIsShowForm={setIsShowForm}
+        setIsShowUsersForm={setIsShowUsersForm}
       />
     </section>
   );
