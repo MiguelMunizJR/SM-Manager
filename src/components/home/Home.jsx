@@ -1,11 +1,13 @@
-import React from "react";
+import { useEffect } from "react";
 
-const Home = () => {
+const Home = ({ activePage, setActivePage }) => {
+  useEffect(() => {
+    setActivePage("/");
+  }, []);
+
   return (
     <>
-      <section className="w-full h-screen flex flex-col justify-between bg-zinc-200 dark:bg-containerDark">
-        
-      </section>
+      <section className="w-full h-screen flex flex-col justify-between bg-zinc-200 dark:bg-containerDark"></section>
     </>
   );
 };

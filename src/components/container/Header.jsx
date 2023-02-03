@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import ButtonNewHeader from "../../utilities/container/ButtonNewHeader";
+import ButtonHeader from "../../utilities/container/ButtonHeader";
 
-const HeaderUser = ({ setIsShowUsersForm, setUpdate }) => {
+const Header = ({
+  setIsShowUsersForm,
+  setIsShowTasksForm,
+  setUpdate,
+  activePage,
+}) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const DarkModeToggle = () => {
@@ -13,7 +18,12 @@ const HeaderUser = ({ setIsShowUsersForm, setUpdate }) => {
   return (
     <section className="mr-5 flex justify-center items-center gap-8">
       <div className="hidden md:flex">
-        <ButtonNewHeader setIsShowForm={setIsShowUsersForm} setUpdate={setUpdate} />
+        <ButtonHeader
+          setIsShowUsersForm={setIsShowUsersForm}
+          setIsShowTasksForm={setIsShowTasksForm}
+          setUpdate={setUpdate}
+          activePage={activePage}
+        />
       </div>
       <article className="lg:mr-8 flex justify-center items-center gap-4">
         <button
@@ -26,7 +36,7 @@ const HeaderUser = ({ setIsShowUsersForm, setUpdate }) => {
             <i className="fa-solid fa-moon text-gray-200 md:text-gray-700 dark:text-gray-300 text-md transition ease-out duration-500"></i>
           )}
         </button>
-        <Menu as="div" className="relative z-50 inline-block">
+        <Menu as="div" className="relative z-10 inline-block">
           <div>
             <Menu.Button className="px-4 py-1 flex justify-center items-center gap-4 rounded-lg shadow-sm bg-transparent md:bg-gray-100 md:dark:bg-gray-800 md:active:ring-2 md:ring-itemsNav transition ease-in-out duration-150 hover:shadow-md text-gray-500 dark:text-gray-400 dark:hover:bg-itemsNavDark dark:hover:text-gray-200 md:hover:bg-gray-100 dark:hover:shadow-md">
               <div className="flex gap-2 items-center">
@@ -80,4 +90,4 @@ const HeaderUser = ({ setIsShowUsersForm, setUpdate }) => {
   );
 };
 
-export default HeaderUser;
+export default Header;

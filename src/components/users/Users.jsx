@@ -2,7 +2,7 @@ import { useEffect, useState, startTransition } from "react";
 import { Transition } from "@headlessui/react";
 import axios from "axios";
 import SearchBar from "../../utilities/container/SearchBar";
-import HeaderUser from "../container/HeaderUser";
+import Header from "../container/Header";
 import UsersCard from "./UsersCard";
 import FormModal from "../container/FormModal";
 import ModalDelete from "../../utilities/container/ModalDelete";
@@ -16,6 +16,8 @@ const Users = ({
   setIsLoading,
   showDelete,
   setShowDelete,
+  activePage,
+  setActivePage,
 }) => {
   const [users, setUsers] = useState(null);
   const [filterUsers, setFilterUsers] = useState(null);
@@ -24,6 +26,7 @@ const Users = ({
   useEffect(() => {
     !users && setIsLoading(true);
     getAllUsers();
+    setActivePage("/users");
   }, []);
 
   const getAllUsers = () => {
@@ -91,10 +94,15 @@ const Users = ({
             </button>
             <h1 className="font-default text-lg font-medium">CRUD Manager</h1>
           </section>
-          <SearchBar placeholder="Search for users..." setFilterUsers={setFilterUsers} users={users} />
-          <HeaderUser
+          <SearchBar
+            placeholder="Search for users..."
+            setFilterUsers={setFilterUsers}
+            users={users}
+          />
+          <Header
             setIsShowUsersForm={setIsShowUsersForm}
             setUpdate={setUpdate}
+            activePage={activePage}
           />
         </article>
         <UsersCard

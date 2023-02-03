@@ -1,6 +1,15 @@
-const ButtonNavBar = ({ setIsShowUsersForm, setUpdate }) => {
+const ButtonNavBar = ({
+  setIsShowUsersForm,
+  setIsShowTasksForm,
+  setUpdate,
+  activePage,
+}) => {
   const handleClick = () => {
-    setIsShowUsersForm(true);
+    if (activePage === "/users") {
+      setIsShowUsersForm(true);
+    } else if (activePage === "/tasks") {
+      setIsShowTasksForm(true);
+    }
     setUpdate(null);
   };
 

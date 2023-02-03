@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ModalDelete from "../../utilities/container/ModalDelete";
 import SearchBar from "../../utilities/container/SearchBar";
-import HeaderUser from "../container/HeaderUser";
+import Header from "../container/Header";
 import TasksCard from "./TasksCard";
 
 const Tasks = ({
@@ -13,13 +13,16 @@ const Tasks = ({
   setIsLoading,
   setUpdate,
   showDelete,
-  setShowDelete
+  setShowDelete,
+  activePage,
+  setActivePage,
 }) => {
   const [tasks, setTasks] = useState(null);
 
   useEffect(() => {
     !tasks && setIsLoading(true);
     // getAllTasks();
+    setActivePage("/tasks");
   }, []);
 
   const getAllTasks = () => {
@@ -70,9 +73,9 @@ const Tasks = ({
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <ModalDelete 
-          setShowDelete={setShowDelete} 
-          // setIsDelete={setIsDelete} 
+        <ModalDelete
+          setShowDelete={setShowDelete}
+          // setIsDelete={setIsDelete}
         />
         {/* MODAL DELETE CONFIRM HERE! */}
         <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
@@ -85,10 +88,11 @@ const Tasks = ({
             </button>
             <h1 className="font-default text-lg font-medium">CRUD Manager</h1>
           </section>
-          <SearchBar placeholder="Search for tasks..."/>
-          <HeaderUser
+          <SearchBar placeholder="Search for tasks..." />
+          <Header
             setIsShowTasksForm={setIsShowTasksForm}
             setUpdate={setUpdate}
+            activePage={activePage}
           />
         </article>
         <TasksCard

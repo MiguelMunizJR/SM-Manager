@@ -12,6 +12,7 @@ function App() {
   const [isShowTasksForm, setIsShowTasksForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
+  const [activePage, setActivePage] = useState(null);
   const [update, setUpdate] = useState();
 
   return (
@@ -20,11 +21,12 @@ function App() {
         setIsShowUsersForm={setIsShowUsersForm}
         setIsShowTasksForm={setIsShowTasksForm}
         setUpdate={setUpdate}
+        activePage={activePage}
       />
       {/* ROUTES */}
       <Routes>
         {/* Home Route */}
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home activePage={activePage} setActivePage={setActivePage} />} />
         {/* Users Route */}
         <Route
           path="/users"
@@ -38,6 +40,8 @@ function App() {
               setIsLoading={setIsLoading}
               showDelete={showDelete}
               setShowDelete={setShowDelete}
+              activePage={activePage}
+              setActivePage={setActivePage}
             />
           }
         />
@@ -53,11 +57,16 @@ function App() {
               setUpdate={setUpdate}
               showDelete={showDelete}
               setShowDelete={setShowDelete}
+              activePage={activePage}
+              setActivePage={setActivePage}
             />
           }
         />
         {/* Settings Route */}
-        <Route path="/settings" element={<Settings />} />
+        <Route
+          path="/settings"
+          element={<Settings activePage={activePage} setActivePage={setActivePage} />}
+        />
         {/* Route not found 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>

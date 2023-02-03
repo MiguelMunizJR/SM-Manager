@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ButtonNewHeader from "../../utilities/container/ButtonNewHeader";
+import ButtonNewUser from "../../utilities/container/ButtonHeader";
 import UserListRender from "../../utilities/users/UserListRender";
 import UsersCardsRender from "../../utilities/users/UsersCardsRender";
 
@@ -42,7 +42,7 @@ const UsersCard = ({
         </div>
         <div className="mr-4 sm:mr-8 md:mr-10 lg:mr-24 flex justify-center items-center gap-3">
           <div className="mr-2 md:hidden">
-            <ButtonNewHeader
+            <ButtonNewUser
               setIsShowUsersForm={setIsShowUsersForm}
               setUpdate={setUpdate}
             />
