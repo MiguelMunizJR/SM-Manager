@@ -61,6 +61,7 @@ const Users = ({
         leaveTo="opacity-0"
       >
         <FormModal
+          activePage={activePage}
           setIsShowUsersForm={setIsShowUsersForm}
           getAllUsers={getAllUsers}
           update={update}
@@ -95,7 +96,7 @@ const Users = ({
             <h1 className="font-default text-lg font-medium">CRUD Manager</h1>
           </section>
           <SearchBar
-            placeholder="Search for users..."
+            activePage={activePage}
             setFilterUsers={setFilterUsers}
             users={users}
           />

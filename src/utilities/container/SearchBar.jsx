@@ -1,12 +1,15 @@
-const SearchBar = ({ placeholder, setFilterUsers, users }) => {
+const SearchBar = ({ activePage, setFilterUsers, users }) => {
   const handleInput = (e) => {
     const value = e.target.value;
 
-    const filterUsers = users?.filter((user) => {
-      if (e.target.value === "") return users;
-      return user?.firstName.toLowerCase().includes(value.toLowerCase());
-    });
-    setFilterUsers(filterUsers);
+    if (activePage === "/users") {
+      const filterUsers = users?.filter((user) => {
+        if (e.target.value === "") return users;
+        return user?.firstName.toLowerCase().includes(value.toLowerCase());
+      });
+      setFilterUsers(filterUsers);
+    } else if (activePage === "/tasks") {
+    }
   };
 
   return (
@@ -25,7 +28,11 @@ const SearchBar = ({ placeholder, setFilterUsers, users }) => {
         type="text"
         id="search"
         onChange={handleInput}
-        placeholder={placeholder}
+        placeholder={
+          activePage === "/users"
+            ? "Search for users..."
+            : "Search for tasks..."
+        }
         className="dark:placeholder:text-gray-500 dark:bg-gray-800 dark:text-gray-300 md:h-8 md:w-full pl-10 bg-gray-100 rounded shadow-sm shadow-gray-300 dark:shadow-black dark:shadow-sm dark:hover:shadow-black outline-none text-md font-default font-light text-gray-600 transition ease-in-out duration-150 placeholder:text-slate-400 focus:ring-2 focus:ring-itemsNavH hover:shadow-lg dark:hover:shadow-md"
       />
     </article>

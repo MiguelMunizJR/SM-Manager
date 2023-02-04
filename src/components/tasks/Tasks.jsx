@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ModalDelete from "../../utilities/container/ModalDelete";
 import SearchBar from "../../utilities/container/SearchBar";
+import FormModal from "../container/FormModal";
 import Header from "../container/Header";
 import TasksCard from "./TasksCard";
 
@@ -11,6 +12,7 @@ const Tasks = ({
   setIsShowTasksForm,
   isLoading,
   setIsLoading,
+  update,
   setUpdate,
   showDelete,
   setShowDelete,
@@ -20,7 +22,7 @@ const Tasks = ({
   const [tasks, setTasks] = useState(null);
 
   useEffect(() => {
-    !tasks && setIsLoading(true);
+    // !tasks && setIsLoading(true);
     // getAllTasks();
     setActivePage("/tasks");
   }, []);
@@ -53,12 +55,13 @@ const Tasks = ({
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        {/* <FormModal
-          setIsShowForm={setIsShowForm}
-          getAllUsers={getAllUsers}
+        <FormModal
+          activePage={activePage}
+          setIsShowTasksForm={setIsShowTasksForm}
+          getAllTasks={getAllTasks}
           update={update}
           setUpdate={setUpdate}
-        /> */}
+        />
         <section className="w-screen h-screen opacity-30 dark:opacity-30 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
       </Transition>
       {/* Modal Delete Confirm */}
@@ -88,7 +91,7 @@ const Tasks = ({
             </button>
             <h1 className="font-default text-lg font-medium">CRUD Manager</h1>
           </section>
-          <SearchBar placeholder="Search for tasks..." />
+          <SearchBar activePage={activePage} />
           <Header
             setIsShowTasksForm={setIsShowTasksForm}
             setUpdate={setUpdate}

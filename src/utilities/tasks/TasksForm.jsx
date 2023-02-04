@@ -1,27 +1,26 @@
-import { defaultUsersValues } from "../../utilities/users/defaultValues";
+import { defaultTasksValues } from "../users/defaultValues";
 
-const UsersForm = ({
+const TasksForm = ({
   register,
   handleSubmit,
-  submitUsersData,
+  submitTaskData,
   update,
   reset,
-  setIsShowUsersForm,
+  setIsShowTasksForm,
 }) => {
   const clearUpdate = () => {
-    reset(defaultUsersValues);
+    reset(defaultTasksValues);
   };
 
   const checkKeyPress = (e) => {
     const { keyCode } = e;
 
     if (keyCode === 13) {
-      handleSubmit(submitUsersData);
+      handleSubmit(submitTaskData);
     } else if (keyCode === 27) {
-      setIsShowUsersForm(false);
+      setIsShowTasksForm(false);
     }
   };
-
   return (
     <form
       onSubmit={handleSubmit(submitUsersData)}
@@ -162,4 +161,4 @@ const UsersForm = ({
   );
 };
 
-export default UsersForm;
+export default TasksForm;

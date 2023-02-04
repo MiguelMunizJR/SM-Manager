@@ -26,7 +26,12 @@ function App() {
       {/* ROUTES */}
       <Routes>
         {/* Home Route */}
-        <Route path="/" element={<Home activePage={activePage} setActivePage={setActivePage} />} />
+        <Route
+          path="/"
+          element={
+            <Home activePage={activePage} setActivePage={setActivePage} />
+          }
+        />
         {/* Users Route */}
         <Route
           path="/users"
@@ -54,6 +59,7 @@ function App() {
               setIsShowTasksForm={setIsShowTasksForm}
               isLoading={isLoading}
               setIsLoading={setIsLoading}
+              update={update}
               setUpdate={setUpdate}
               showDelete={showDelete}
               setShowDelete={setShowDelete}
@@ -65,7 +71,9 @@ function App() {
         {/* Settings Route */}
         <Route
           path="/settings"
-          element={<Settings activePage={activePage} setActivePage={setActivePage} />}
+          element={
+            <Settings activePage={activePage} setActivePage={setActivePage} />
+          }
         />
         {/* Route not found 404 */}
         <Route path="*" element={<NotFound />} />

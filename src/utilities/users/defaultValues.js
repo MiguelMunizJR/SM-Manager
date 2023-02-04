@@ -1,4 +1,4 @@
-const defaultValues = {
+export const defaultUsersValues = {
   firstName: "",
   lastName: "",
   email: "",
@@ -6,4 +6,8 @@ const defaultValues = {
   birthday: "",
 };
 
-export default defaultValues;
+export const defaultTasksValues = {
+  title: "",
+  description: "",
+  isCompleted: "",
+};

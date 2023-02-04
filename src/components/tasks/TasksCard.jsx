@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ButtonNewHeader from "../../utilities/container/ButtonHeader";
+import TaskListRender from "../../utilities/tasks/TaskListRender";
 
 const TasksCard = ({
   tasks,
@@ -69,8 +70,8 @@ const TasksCard = ({
           </div>
         ) : (
           <>
-            <article>
-              Hola
+            <article className="mx-auto">
+              <TaskListRender />
             </article>
             {/* <UsersCardsRender
               users={users}
