@@ -7,7 +7,7 @@ const TaskListRender = ({
   setUpdate,
   isDelete,
   setIsDelete,
-  setShowDelete
+  setShowDelete,
 }) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [idTask, setIdTask] = useState(null);
@@ -19,30 +19,29 @@ const TaskListRender = ({
   const deleteTaskConfirm = (id) => {
     setIdTask(id);
     if (isDelete) {
-      deleteUser(idTask);
+      deleteTask(idTask);
     } else {
       setShowDelete(true);
     }
   };
 
-  // const deleteUser = (id) => {
-  //   const URL = `https://crud-api-express.onrender.com/api/v1/users/${id}/`;
-
-  //   axios
-  //     .delete(URL)
-  //     .then(() => {
-  //       getAllUsers();
-  //       setIsDelete(false);
-  //       setShowDelete(false);
-  //       setIdTask(null);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       setIsDelete(false);
-  //       setShowDelete(false);
-  //       setIdTask(null);
-  //     });
-  // };
+  const deleteTask = (id) => {
+    // const URL = `https://crud-api-express.onrender.com/api/v1/users/${id}/`;
+    // axios
+    //   .delete(URL)
+    //   .then(() => {
+    //     getAllUsers();
+    //     setIsDelete(false);
+    //     setShowDelete(false);
+    //     setIdTask(null);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     setIsDelete(false);
+    //     setShowDelete(false);
+    //     setIdTask(null);
+    //   });
+  };
 
   const handleCompleted = () => {
     setIsCompleted(!isCompleted);

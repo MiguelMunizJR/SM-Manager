@@ -25,7 +25,7 @@ const SearchBar = ({ activePage, setFilterUsers, users }) => {
         </svg>
       </span>
       <input
-        type="text"
+        type="search"
         id="search"
         onChange={handleInput}
         placeholder={
