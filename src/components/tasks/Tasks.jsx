@@ -20,6 +20,7 @@ const Tasks = ({
   setActivePage,
 }) => {
   const [tasks, setTasks] = useState(null);
+  const [isDelete, setIsDelete] = useState(false);
 
   useEffect(() => {
     // !tasks && setIsLoading(true);
@@ -104,6 +105,12 @@ const Tasks = ({
           isShowTasksForm={isShowTasksForm}
           setIsShowTasksForm={setIsShowTasksForm}
           isLoading={isLoading}
+          setUpdate={setUpdate}
+          update={update}
+          isDelete={isDelete}
+          setIsDelete={setIsDelete}
+          showDelete={showDelete}
+          setShowDelete={setShowDelete}
         />
       </section>
     </>

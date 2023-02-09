@@ -1,37 +1,56 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import exampleTasks from "./exampleTasks";
 
-const exampleTasks = [
-  {
-    id: 1,
-    title: "Buy eggs in Walmart",
-    description: "lorem lorem lorem",
-    isComplete: false,
-  },
-  {
-    id: 2,
-    title: "Take a shower",
-    description: "lorem lorem lorem",
-    isComplete: false,
-  },
-  {
-    id: 3,
-    title: "Clean my clothes",
-    description: "lorem lorem lorem",
-    isComplete: false,
-  },
-  {
-    id: 4,
-    title: "Buy 2 milks in Walmart",
-    description: "lorem lorem lorem",
-    isComplete: false,
-  },
-];
-
-const TaskListRender = () => {
+const TaskListRender = ({
+  setIsShowTasksForm,
+  setUpdate,
+  isDelete,
+  setIsDelete,
+  setShowDelete
+}) => {
   const [isCompleted, setIsCompleted] = useState(false);
+  const [idTask, setIdTask] = useState(null);
+
+  useEffect(() => {
+    isDelete && deleteTaskConfirm();
+  }, [isDelete]);
+
+  const deleteTaskConfirm = (id) => {
+    setIdTask(id);
+    if (isDelete) {
+      deleteUser(idTask);
+    } else {
+      setShowDelete(true);
+    }
+  };
+
+  // const deleteUser = (id) => {
+  //   const URL = `https://crud-api-express.onrender.com/api/v1/users/${id}/`;
+
+  //   axios
+  //     .delete(URL)
+  //     .then(() => {
+  //       getAllUsers();
+  //       setIsDelete(false);
+  //       setShowDelete(false);
+  //       setIdTask(null);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       setIsDelete(false);
+  //       setShowDelete(false);
+  //       setIdTask(null);
+  //     });
+  // };
 
   const handleCompleted = () => {
     setIsCompleted(!isCompleted);
+  };
+
+  const updateTask = (task) => {
+    setUpdate(task);
+    setIsShowTasksForm(true);
   };
 
   return (
@@ -83,6 +102,7 @@ const TaskListRender = () => {
           </div>
           <div className="mr-2 md:mr-6 flex gap-6">
             <button
+              onClick={() => updateTask(task)}
               className={
                 isCompleted
                   ? "ring-2 ring-green-300 dark:ring-green-700 text-green-300 dark:text-green-700 p-1 text-sm rounded-md shadow-md transition duration-100 cursor-default"
@@ -92,6 +112,7 @@ const TaskListRender = () => {
               <i className="fa-solid fa-pen"></i>
             </button>
             <button
+              onClick={() => deleteTaskConfirm(task.id)}
               className={
                 isCompleted
                   ? "ring-2 ring-green-300 dark:ring-green-700 text-green-300 dark:text-green-700 p-1 text-sm rounded-md shadow-md transition duration-100 cursor-default"

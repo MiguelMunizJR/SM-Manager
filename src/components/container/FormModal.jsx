@@ -95,9 +95,9 @@ const FormModal = ({
   };
 
   return (
-    <section className="w-max min-h-max mx-auto pb-8 rounded-md bg-neutral-100 dark:bg-navBarDark flex flex-col items-center drop-shadow-2xl overflow-x-hidden overflow-y-auto fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 outline-none focus:outline-none">
+    <section className="w-max h-max mx-auto pb-8 rounded-md bg-neutral-100 dark:bg-navBarDark flex flex-col items-center drop-shadow-2xl overflow-x-hidden overflow-y-auto fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 outline-none focus:outline-none">
       <header className="w-full flex self-start justify-between items-center">
-        <div className="mt-6 ml-4 flex items-center gap-2">
+        <div className="mt-6 ml-6 flex items-center gap-2">
           {update ? (
             <h3 className="font-default text-2xl text-black dark:text-gray-300 font-normal">
               {activePage === "/users" ? "Update User" : "Update Task"}

@@ -5,9 +5,15 @@ import TaskListRender from "../../utilities/tasks/TaskListRender";
 const TasksCard = ({
   tasks,
   getAllTasks,
-  // isShowForm,
-  setIsShowForm,
+  isShowTasksForm,
+  setIsShowTasksForm,
   isLoading,
+  setUpdate,
+  update,
+  isDelete,
+  setIsDelete,
+  showDelete,
+  setShowDelete,
 }) => {
   const [isSort, setIsSort] = useState(false);
   const [reload, setReload] = useState(false);
@@ -37,7 +43,7 @@ const TasksCard = ({
         <div className="mr-4 sm:mr-8 md:mr-10 lg:mr-24 flex justify-center items-center gap-3">
           <div className="mr-2 md:hidden">
             <ButtonNewHeader
-              setIsShowForm={setIsShowForm}
+              setIsShowTasksForm={setIsShowTasksForm}
               // setUpdate={setUpdate}
             />
           </div>
@@ -71,7 +77,13 @@ const TasksCard = ({
         ) : (
           <>
             <article className="mx-auto">
-              <TaskListRender />
+              <TaskListRender
+                setIsShowTasksForm={setIsShowTasksForm}
+                setUpdate={setUpdate}
+                isDelete={isDelete}
+                setIsDelete={setIsDelete}
+                setShowDelete={setShowDelete}
+              />
             </article>
             {/* <UsersCardsRender
               users={users}
