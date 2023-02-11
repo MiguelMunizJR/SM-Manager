@@ -75,7 +75,11 @@ const FormModal = ({
       const URL = "https://crud-api-express.onrender.com/api/v1/tasks/";
 
       axios
-        .post(URL, data)
+        .post(URL, {
+          title: data.title,
+          description: !data.description ? "No description" : data.description,
+          isCompleted: data.isCompleted,
+        })
         .then(() => {
           reset(defaultTasksValues);
           getAllTasks();

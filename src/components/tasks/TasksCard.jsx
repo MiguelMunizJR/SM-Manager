@@ -18,7 +18,8 @@ const TasksCard = ({
   const [reload, setReload] = useState(false);
 
   const setSort = () => {
-    setIsSort(!isSort);
+    // setIsSort(!isSort);
+    //! Filter task completed and not completed
   };
 
   const reloadTasks = () => {
