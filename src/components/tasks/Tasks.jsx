@@ -83,7 +83,6 @@ const Tasks = ({
           setIsDelete={setIsDelete}
           activePage={activePage}
         />
-        {/* MODAL DELETE CONFIRM HERE! */}
         <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
       </Transition>
       <section className="w-full h-screen flex flex-col justify-between bg-zinc-200 dark:bg-containerDark">
