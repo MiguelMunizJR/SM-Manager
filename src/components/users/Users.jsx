@@ -81,7 +81,7 @@ const Users = ({
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <ModalDelete setShowDelete={setShowDelete} setIsDelete={setIsDelete} />
+        <ModalDelete setShowDelete={setShowDelete} setIsDelete={setIsDelete} activePage={activePage} />
         {/* MODAL DELETE CONFIRM HERE! */}
         <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
       </Transition>

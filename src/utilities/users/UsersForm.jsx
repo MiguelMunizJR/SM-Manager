@@ -1,4 +1,4 @@
-import { defaultUsersValues } from "../../utilities/users/defaultValues";
+import { defaultUsersValues } from "../defaultValues";
 
 const UsersForm = ({
   register,

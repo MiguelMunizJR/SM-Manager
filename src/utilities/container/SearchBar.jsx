@@ -1,14 +1,27 @@
-const SearchBar = ({ activePage, setFilterUsers, users }) => {
+const SearchBar = ({
+  activePage,
+  setFilterUsers,
+  setFilterTasks,
+  users,
+  tasks,
+}) => {
   const handleInput = (e) => {
     const value = e.target.value;
 
     if (activePage === "/users") {
+
       const filterUsers = users?.filter((user) => {
         if (e.target.value === "") return users;
         return user?.firstName.toLowerCase().includes(value.toLowerCase());
       });
       setFilterUsers(filterUsers);
     } else if (activePage === "/tasks") {
+
+      const filterTasks = tasks?.filter((task) => {
+        if (e.target.value === "") return tasks;
+        return task?.title.toLowerCase().includes(value.toLowerCase());
+      });
+      setFilterTasks(filterTasks);
     }
   };
 

@@ -20,11 +20,12 @@ const Tasks = ({
   setActivePage,
 }) => {
   const [tasks, setTasks] = useState(null);
+  const [filterTasks, setFilterTasks] = useState(null);
   const [isDelete, setIsDelete] = useState(false);
 
   useEffect(() => {
-    // !tasks && setIsLoading(true);
-    // getAllTasks();
+    !tasks && setIsLoading(true);
+    getAllTasks();
     setActivePage("/tasks");
   }, []);
 
@@ -35,7 +36,7 @@ const Tasks = ({
     axios
       .get(URL)
       .then((res) => {
-        setTasks(res.data);
+        setTasks(res.data?.data);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -79,7 +80,8 @@ const Tasks = ({
       >
         <ModalDelete
           setShowDelete={setShowDelete}
-          // setIsDelete={setIsDelete}
+          setIsDelete={setIsDelete}
+          activePage={activePage}
         />
         {/* MODAL DELETE CONFIRM HERE! */}
         <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
@@ -92,7 +94,11 @@ const Tasks = ({
             </button>
             <h1 className="font-default text-lg font-medium">CRUD Manager</h1>
           </section>
-          <SearchBar activePage={activePage} />
+          <SearchBar
+            tasks={tasks}
+            activePage={activePage}
+            setFilterTasks={setFilterTasks}
+          />
           <Header
             setIsShowTasksForm={setIsShowTasksForm}
             setUpdate={setUpdate}
@@ -102,15 +108,14 @@ const Tasks = ({
         <TasksCard
           tasks={tasks}
           getAllTasks={getAllTasks}
-          isShowTasksForm={isShowTasksForm}
           setIsShowTasksForm={setIsShowTasksForm}
           isLoading={isLoading}
           setUpdate={setUpdate}
-          update={update}
           isDelete={isDelete}
           setIsDelete={setIsDelete}
-          showDelete={showDelete}
           setShowDelete={setShowDelete}
+          activePage={activePage}
+          filterTasks={filterTasks}
         />
       </section>
     </>

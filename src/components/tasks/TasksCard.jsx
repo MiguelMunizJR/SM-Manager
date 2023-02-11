@@ -5,15 +5,14 @@ import TaskListRender from "../../utilities/tasks/TaskListRender";
 const TasksCard = ({
   tasks,
   getAllTasks,
-  isShowTasksForm,
   setIsShowTasksForm,
   isLoading,
   setUpdate,
-  update,
   isDelete,
   setIsDelete,
-  showDelete,
   setShowDelete,
+  activePage,
+  filterTasks,
 }) => {
   const [isSort, setIsSort] = useState(false);
   const [reload, setReload] = useState(false);
@@ -22,12 +21,12 @@ const TasksCard = ({
     setIsSort(!isSort);
   };
 
-  const reloadUsers = () => {
+  const reloadTasks = () => {
     getAllTasks();
     setReload(true);
   };
 
-  const usersReady = () => {
+  const tasksReady = () => {
     if (tasks) {
       setReload(false);
     }
@@ -44,13 +43,14 @@ const TasksCard = ({
           <div className="mr-2 md:hidden">
             <ButtonNewHeader
               setIsShowTasksForm={setIsShowTasksForm}
-              // setUpdate={setUpdate}
+              setUpdate={setUpdate}
+              activePage={activePage}
             />
           </div>
           <button
             className="bg-gray-100 dark:bg-gray-800 dark:text-gray-300 rounded p-2 text-md shadow-md transition ease-in-out duration-150 hover:shadow-lg dark:hover:shadow-lg dark:hover:shadow-black active:ring-2 active:ring-itemsNavH"
-            onClick={reloadUsers}
-            onAnimationEnd={usersReady}
+            onClick={reloadTasks}
+            onAnimationEnd={tasksReady}
           >
             <i
               className={`${reload && "animate-reload"} fa-solid fa-rotate`}
@@ -76,24 +76,26 @@ const TasksCard = ({
           </div>
         ) : (
           <>
-            <article className="mx-auto">
-              <TaskListRender
-                setIsShowTasksForm={setIsShowTasksForm}
-                setUpdate={setUpdate}
-                isDelete={isDelete}
-                setIsDelete={setIsDelete}
-                setShowDelete={setShowDelete}
-              />
+            <article className="w-full h-full mx-auto">
+              {tasks?.length === 0 ? (
+                <article className="w-full h-full flex flex-col justify-center items-center font-default text-gray-400 gap-2">
+                  <i className="fa-regular fa-face-frown text-7xl"></i>
+                  <h2 className="font-medium text-3xl">Empty Tasks</h2>
+                  <h4 className="text-xl">Press + to add new tasks</h4>
+                </article>
+              ) : (
+                <TaskListRender
+                  tasks={tasks}
+                  getAllTasks={getAllTasks}
+                  setIsShowTasksForm={setIsShowTasksForm}
+                  setUpdate={setUpdate}
+                  isDelete={isDelete}
+                  setIsDelete={setIsDelete}
+                  setShowDelete={setShowDelete}
+                  filterTasks={filterTasks}
+                />
+              )}
             </article>
-            {/* <UsersCardsRender
-              users={users}
-              getAllUsers={getAllUsers}
-              setUpdate={setUpdate}
-              setIsShowForm={setIsShowForm}
-              setShowDelete={setShowDelete}
-              isDelete={isDelete}
-              setIsDelete={setIsDelete}
-            /> */}
           </>
         )}
       </article>

@@ -1,12 +1,13 @@
-const ModalDelete = ({ setShowDelete, setIsDelete }) => {
-
+const ModalDelete = ({ setShowDelete, setIsDelete, activePage }) => {
   return (
-    <article
-      className="w-8/12 sm:w-1/2 md:w-2/5 lg:w-1/4 h-1/3 mx-auto mt-auto lg:px-2 sm:px-2 flex flex-col justify-evenly items-center rounded-lg drop-shadow-lg font-default font-medium text-center bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50"
-    >
+    <article className="w-8/12 sm:w-1/2 md:w-2/5 lg:w-1/4 h-1/3 mx-auto mt-auto lg:px-2 sm:px-2 flex flex-col justify-evenly items-center rounded-lg drop-shadow-lg font-default font-medium text-center bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
       <div className="flex flex-col justify-center items-center">
         <i className="fa-solid fa-triangle-exclamation mb-4 text-5xl"></i>
-        <h4 className="px-2">Are you sure you want to delete this user?</h4>
+        <h4 className="px-2">
+          {activePage === "/users"
+            ? "Are you sure you want to delete this user?"
+            : "Are you sure you want to delete this task?"}
+        </h4>
       </div>
       <div className="flex gap-6">
         <button
