@@ -40,7 +40,7 @@ const UsersForm = ({
             id="firstname"
             type="text"
             placeholder="Firstname"
-            className="w-72 sm:w-auto h-10 pl-3 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
+            className="w-72 sm:w-auto h-10 pl-3 rounded bg-slate-100 outline-none text-gray-900 font-medium shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-1 focus:ring-blue-400"
             {...register("firstName")}
             required
           />
@@ -56,7 +56,7 @@ const UsersForm = ({
             id="lastname"
             type="text"
             placeholder="Lastname"
-            className="w-72 sm:w-auto h-10 pl-3 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
+            className="w-72 sm:w-auto h-10 pl-3 rounded bg-slate-100 outline-none text-gray-900 font-medium shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-1 focus:ring-blue-400"
             {...register("lastName")}
             required
           />
@@ -73,7 +73,7 @@ const UsersForm = ({
           id="email"
           type="email"
           placeholder="Email"
-          className="h-10 pl-3 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
+          className="h-10 pl-3 rounded bg-slate-100 outline-none text-gray-900 font-medium shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-1 focus:ring-blue-400"
           {...register("email")}
           required
         />
@@ -89,7 +89,7 @@ const UsersForm = ({
           id="password"
           type="password"
           placeholder="Password"
-          className="h-10 pl-3 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
+          className="h-10 pl-3 rounded bg-slate-100 outline-none text-gray-900 font-medium shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-1 focus:ring-blue-400"
           {...register("password")}
           required
         />
@@ -107,7 +107,7 @@ const UsersForm = ({
           min={"1960-01-01"}
           max={"2023-01-01"}
           className="h-10 w-max mx-auto
-          text-center px-4 rounded bg-slate-200 dark:bg-gray-800 dark:text-gray-300 outline-none drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH text-gray-900 font-light"
+          text-center px-4 rounded bg-slate-100 outline-none shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-1 focus:ring-blue-400 text-gray-900 font-light"
           {...register("birthday")}
           required
         />
@@ -146,14 +146,14 @@ const UsersForm = ({
           </div>
         </div>
       )}
-      <button className="w-3/4 mt-4 mx-auto py-2 flex justify-center items-center gap-3 bg-navBarBH dark:bg-itemsNavDark text-gray-200 text-base rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-navBarBA dark:hover:bg-itemsNavDarkH">
+      <button className="w-3/4 mt-4 mx-auto py-2 flex justify-center items-center gap-3 bg-blue-600 text-gray-100 font-medium rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-blue-700">
         {update ? <h4>Update User</h4> : <h4>Create User</h4>}
         <i className="fa-solid fa-user text-sm"></i>
       </button>
       {update && (
         <button
           onClick={clearUpdate}
-          className="mx-auto mt-2 py-2 px-4 flex justify-center items-center gap-3 bg-red-400 dark:bg-red-600 text-gray-200 text-base rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-red-500 dark:hover:bg-red-700"
+          className="mx-auto mt-2 py-2 px-4 flex justify-center items-center gap-3 bg-red-400 text-gray-200 text-base rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-red-500"
         >
           <h4>Clear Fields</h4>
         </button>

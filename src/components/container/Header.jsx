@@ -8,12 +8,12 @@ const Header = ({
   setUpdate,
   activePage,
 }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const DarkModeToggle = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
-  };
+  // const DarkModeToggle = () => {
+  //   setIsDarkMode(!isDarkMode);
+  //   document.documentElement.classList.toggle("dark");
+  // };
 
   return (
     <section className="mr-5 flex justify-center items-center gap-8">
@@ -25,22 +25,23 @@ const Header = ({
           activePage={activePage}
         />
       </div>
-      <article className="lg:mr-8 flex justify-center items-center gap-4">
-        <button
+      <article className="lg:mr-8 flex justify-center items-center gap-2">
+        {/* DARK MODE */}
+        {/* <button
           onClick={DarkModeToggle}
-          className="px-5 py-1 rounded-lg shadow-sm text-lg transition ease-in-out duration-150 bg-transparent md:bg-gray-100 md:dark:bg-gray-800 md:hover:bg-gray-100 md:active:ring-2 md:ring-itemsNav dark:hover:bg-itemsNavDark hover:shadow-md dark:hover:shadow-md"
+          className="p-2 drop-shadow-sm text-lg transition ease-in-out duration-150 bg-transparent"
         >
           {isDarkMode ? (
-            <i className="fa-solid fa-sun text-gray-700 dark:text-gray-300 text-md transition ease-in-out rotate-45 duration-500"></i>
+            <i className="fa-solid fa-sun text-gray-700 dark:text-gray-600 text-md transition ease-in-out rotate-45 duration-500"></i>
           ) : (
-            <i className="fa-solid fa-moon text-gray-200 md:text-gray-700 dark:text-gray-300 text-md transition ease-out duration-500"></i>
+            <i className="fa-solid fa-moon text-gray-600 md:text-gray-700 dark:text-gray-300 text-md transition ease-out duration-500"></i>
           )}
-        </button>
+        </button> */}
         <Menu as="div" className="relative z-10 inline-block">
           <div>
-            <Menu.Button className="px-4 py-1 flex justify-center items-center gap-4 rounded-lg shadow-sm bg-transparent md:bg-gray-100 md:dark:bg-gray-800 md:active:ring-2 md:ring-itemsNav transition ease-in-out duration-150 hover:shadow-md text-gray-500 dark:text-gray-400 dark:hover:bg-itemsNavDark dark:hover:text-gray-200 md:hover:bg-gray-100 dark:hover:shadow-md">
+            <Menu.Button className="p-2 flex justify-center items-center gap-4 drop-shadow-sm bg-transparent transition ease-in-out duration-150 text-gray-600">
               <div className="flex gap-2 items-center">
-                <i className="fa-regular fa-circle-user text-gray-200 dark:text-gray-300 md:text-gray-700 text-xl"></i>
+                <i className="fa-regular fa-circle-user text-gray-700 text-2xl"></i>
               </div>
             </Menu.Button>
           </div>

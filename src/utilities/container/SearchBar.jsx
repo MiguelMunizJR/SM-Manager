@@ -26,13 +26,13 @@ const SearchBar = ({
   };
 
   return (
-    <article className="hidden md:flex ml-8 lg:ml-12 w-1/3 items-center">
-      <span className="absolute flex items-center">
+    <article className="mt-5 flex justify-center items-center mx-auto w-5/6">
+      <span className="absolute left-10">
         <svg
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
-          className="hidden md:flex md:w-8 md:h-8 md:pl-2 text-slate-400 dark:text-gray-500"
+          className="flex w-8 text-gray-500"
         >
           <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
         </svg>
@@ -43,10 +43,10 @@ const SearchBar = ({
         onChange={handleInput}
         placeholder={
           activePage === "/users"
-            ? "Search for users..."
-            : "Search for tasks..."
+            ? "Search Users"
+            : "Search Tasks"
         }
-        className="dark:placeholder:text-gray-500 dark:bg-gray-800 dark:text-gray-300 md:h-8 md:w-full pl-10 bg-gray-100 rounded shadow-sm shadow-gray-300 dark:shadow-black dark:shadow-sm dark:hover:shadow-black outline-none text-md font-default font-light text-gray-600 transition ease-in-out duration-150 placeholder:text-slate-400 focus:ring-2 focus:ring-itemsNavH hover:shadow-lg dark:hover:shadow-md"
+        className="w-full h-12 pl-12 rounded outline-none shadow-sm focus:ring-1 focus:ring-blue-400 bg-gray-100"
       />
     </article>
   );

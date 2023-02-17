@@ -13,6 +13,7 @@ const UsersCard = ({
   setShowDelete,
   isDelete,
   setIsDelete,
+  activePage
 }) => {
   const [isSort, setIsSort] = useState(false);
   const [reload, setReload] = useState(false);
@@ -34,21 +35,22 @@ const UsersCard = ({
   };
 
   return (
-    <section className="w-full h-5/6 mt-10 mx-auto relative z-0 flex flex-col justify-center gap-4">
+    <section className="w-full h-5/6 mt-7 mx-auto relative z-0 flex flex-col justify-center gap-4">
       <article className="w-full flex justify-between items-center">
         <div className="sm:ml-3 md:ml-6 lg:ml-8 flex items-center text-gray-900 dark:text-gray-300">
-          <h2 className="ml-4 font-default text-3xl">Users</h2>
+          <h2 className="ml-4 font-default text-2xl font-medium">Users</h2>
           <i className="fa-solid fa-users pl-2 text-md"></i>
         </div>
-        <div className="mr-4 sm:mr-8 md:mr-10 lg:mr-24 flex justify-center items-center gap-3">
+        <div className="mr-4 sm:mr-8 md:mr-10 lg:mr-24 flex justify-center items-center gap-2">
           <div className="mr-2 md:hidden">
             <ButtonNewUser
               setIsShowUsersForm={setIsShowUsersForm}
               setUpdate={setUpdate}
+              activePage={activePage}
             />
           </div>
           <button
-            className="bg-gray-100 dark:bg-gray-800 dark:text-gray-300 rounded p-2 text-md shadow-md transition ease-in-out duration-150 hover:shadow-lg dark:hover:shadow-lg dark:hover:shadow-black active:ring-2 active:ring-itemsNavH"
+            className="p-2 text-lg drop-shadow-sm text-gray-800"
             onClick={reloadUsers}
             onAnimationEnd={usersReady}
           >
@@ -58,7 +60,7 @@ const UsersCard = ({
           </button>
           <button
             onClick={setSort}
-            className="bg-gray-100 dark:bg-gray-800 dark:text-gray-300  rounded p-2 text-md shadow-md transition ease-in-out duration-150 hover:shadow-lg dark:hover:shadow-lg dark:hover:shadow-black active:ring-2 active:ring-itemsNavH"
+            className="p-2 text-lg drop-shadow-sm text-gray-800"
           >
             {isSort ? (
               <i className="fa-solid fa-arrow-up-short-wide"></i>
