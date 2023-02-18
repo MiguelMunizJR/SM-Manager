@@ -1,26 +1,11 @@
-import ButtonNavBar from "../../utilities/navbar/ButtonNavBar";
 import ListNav from "../../utilities/navbar/ListNav";
 
-const NavBar = ({
-  setIsShowUsersForm,
-  setIsShowTasksForm,
-  setUpdate,
-  activePage
-}) => {
+const NavBar = () => {
   return (
-    <nav className="hidden md:flex md:w-52 h-screen pt-5 flex-col items-center justify-between bg-gray-100 dark:bg-navBarDark dark:drop-shadow-2xl drop-shadow-2xl shadow-black">
-      <section className="w-full flex flex-col justify-between">
-        <h1 className="w-full pb-5 flex justify-center text-gray-900 text-xl font-default font-medium">
-          SM Manager
-        </h1>
+    <nav className="fixed mt-12 w-48 h-screen pt-6 flex-col items-center justify-between bg-gray-50 shadow-sm z-40 -translate-x-48">
+      <section className="w-full flex flex-col justify-between text-gray-700">
         <ListNav />
       </section>
-      <ButtonNavBar
-        setIsShowUsersForm={setIsShowUsersForm}
-        setIsShowTasksForm={setIsShowTasksForm}
-        setUpdate={setUpdate}
-        activePage={activePage}
-      />
     </nav>
   );
 };

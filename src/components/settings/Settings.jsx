@@ -1,8 +1,14 @@
 import { useEffect } from "react";
 
-const Settings = ({ activePage, setActivePage }) => {
+const Settings = ({ 
+  activePage, 
+  setActivePage,  
+  setShowSideBar,
+  showSideBar 
+}) => {
   useEffect(() => {
     setActivePage("/settings");
+    setShowSideBar(false);
   }, []);
 
   return (

@@ -4,15 +4,15 @@ import itemsNav from "./itemsNav";
 const ListNav = () => {
   return (
     <section className="w-full flex flex-col">
-      <ul className="w-full flex flex-col list-none">
+      <ul className="w-full flex flex-col gap-2 list-none">
         {itemsNav?.map((item) => (
           <NavLink
             key={item.id}
             to={item.route}
             className={({ isActive }) =>
               isActive
-                ? "w-full py-3 px-8 flex items-center gap-3 cursor-pointer transition-all duration-75 ease-in bg-itemsNav text-lg text-gray-200"
-                : "w-full py-2 px-8 flex items-center text-gray-300 font-default text-base font-extralight gap-3 cursor-pointer transition-all duration-75 ease-in hover:bg-itemsNav dark:hover:bg-itemsNavDark"
+                ? "w-full py-2 px-8 flex items-center gap-3 cursor-pointer transition-all duration-75 ease-in bg-gray-700 text-gray-50"
+                : "w-full py-2 px-8 flex items-center text-gray-500 font-default text-base font-medium gap-3 cursor-pointer transition-all duration-75 ease-in hover:bg-gray-100"
             }
           >
             <i className={item.icon}></i>

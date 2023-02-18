@@ -1,61 +1,54 @@
+import { Transition } from "@headlessui/react";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import NavBar from "../navbar/NavBar";
 import Header from "../container/Header";
 
-const Home = ({ activePage, setActivePage }) => {
+const Home = ({ activePage, setActivePage, setShowSideBar, showSideBar }) => {
+
   useEffect(() => {
     setActivePage("/");
+    setShowSideBar(false);
   }, []);
+
+  const handleSidebar = () => {
+    setShowSideBar(!showSideBar);
+  };
 
   return (
     <>
-      {/* Form Animation */}
-      {/* <Transition
+      {/* Sidebar Animation */}
+      <Transition
         as="section"
-        className={"fixed inset-0 z-50"}
-        show={isShowUsersForm}
-        enter="transition-opacity duration-100"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity duration-100"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
+        className={"fixed inset-0 z-40"}
+        show={showSideBar}
+        enter="transition duration-200"
+        enterFrom=" -translate-x-48"
+        enterTo="translate-x-48"
+        leave="transition duration-200"
+        leaveFrom="translate-x-48"
+        leaveTo="-translate-x-48"
       >
-        <FormModal
-          activePage={activePage}
-          setIsShowUsersForm={setIsShowUsersForm}
-          getAllUsers={getAllUsers}
-          update={update}
-          setUpdate={setUpdate}
-        />
-        <section className="w-screen h-screen opacity-10 absolute inset-0 bg-slate-800 z-10"></section>
-      </Transition> */}
-      {/* Modal Delete Confirm */}
-      {/* <Transition
-        as="section"
-        className={"fixed inset-0 z-50"}
-        show={showDelete}
-        enter="transition-opacity duration-100"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity duration-100"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <ModalDelete
-          setShowDelete={setShowDelete}
-          setIsDelete={setIsDelete}
-          activePage={activePage}
-        /> */}
-      {/* MODAL DELETE CONFIRM HERE! */}
-      {/* <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
-      </Transition> */}
+        <NavBar activePage={activePage} />
+        <Transition.Child
+          as="section"
+          className={"fixed inset-0 z-10"}
+          enter="transition-opacity duration-50"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity duration-100"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <section onClick={() => setShowSideBar(!showSideBar)} className="w-screen h-screen opacity-10 absolute inset-0 bg-slate-800 z-10"></section>
+        </Transition.Child>
+      </Transition>
       <section className="w-full h-screen flex flex-col bg-gray-50">
         {/* Header */}
         {/* Header in mobile */}
-        <article className="w-full h-14 md:mt-3 flex justify-between bg-gray-50 md:bg-transparent">
+        <article className="w-full h-14 md:mt-3 flex justify-between bg-gray-50 z-40 md:bg-transparent">
           <section className="w-full md:hidden ml-5 flex gap-4 items-center text-gray-800">
-            <button className="">
+            <button onClick={handleSidebar}>
               <i className="fa-solid fa-bars"></i>
             </button>
             <h1 className="font-default text-lg font-semibold">SM Manager</h1>

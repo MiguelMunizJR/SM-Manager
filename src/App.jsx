@@ -13,6 +13,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [activePage, setActivePage] = useState(null);
+  const [showSideBar, setShowSideBar] = useState(false);
   const [update, setUpdate] = useState();
 
   return (
@@ -29,7 +30,12 @@ function App() {
         <Route
           path="/"
           element={
-            <Home activePage={activePage} setActivePage={setActivePage} />
+            <Home 
+              activePage={activePage} 
+              setActivePage={setActivePage}
+              setShowSideBar={setShowSideBar}
+              showSideBar={showSideBar} 
+            />
           }
         />
         {/* Users Route */}
@@ -47,6 +53,8 @@ function App() {
               setShowDelete={setShowDelete}
               activePage={activePage}
               setActivePage={setActivePage}
+              setShowSideBar={setShowSideBar}
+              showSideBar={showSideBar} 
             />
           }
         />
@@ -65,6 +73,8 @@ function App() {
               setShowDelete={setShowDelete}
               activePage={activePage}
               setActivePage={setActivePage}
+              setShowSideBar={setShowSideBar}
+              showSideBar={showSideBar} 
             />
           }
         />
@@ -72,7 +82,12 @@ function App() {
         <Route
           path="/settings"
           element={
-            <Settings activePage={activePage} setActivePage={setActivePage} />
+            <Settings 
+              activePage={activePage} 
+              setActivePage={setActivePage}
+              setShowSideBar={setShowSideBar}
+              showSideBar={showSideBar} 
+            />
           }
         />
         {/* Route not found 404 */}
