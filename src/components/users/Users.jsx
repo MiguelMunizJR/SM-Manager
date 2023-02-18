@@ -9,6 +9,7 @@ import ModalDelete from "../../utilities/container/ModalDelete";
 import { NavLink } from "react-router-dom";
 import NavBar from "../navbar/NavBar";
 import LoginButtons from "../../utilities/login/LoginButtons";
+import ButtonMobile from "../../utilities/navbar/ButtonMobile";
 
 const Users = ({
   isShowUsersForm,
@@ -22,7 +23,7 @@ const Users = ({
   activePage,
   setActivePage,
   setShowSideBar,
-  showSideBar
+  showSideBar,
 }) => {
   const [users, setUsers] = useState(null);
   const [filterUsers, setFilterUsers] = useState(null);
@@ -81,7 +82,10 @@ const Users = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <section onClick={handleSidebar} className="w-screen h-screen opacity-10 absolute inset-0 bg-slate-800 z-10"></section>
+          <section
+            onClick={handleSidebar}
+            className="w-screen h-screen opacity-10 absolute inset-0 bg-slate-800 z-10"
+          ></section>
         </Transition.Child>
       </Transition>
       {/* Form Animation */}
@@ -179,6 +183,11 @@ const Users = ({
           setShowDelete={setShowDelete}
           isDelete={isDelete}
           setIsDelete={setIsDelete}
+          activePage={activePage}
+        />
+        <ButtonMobile
+          setIsShowUsersForm={setIsShowUsersForm}
+          setUpdate={setUpdate}
           activePage={activePage}
         />
       </section>

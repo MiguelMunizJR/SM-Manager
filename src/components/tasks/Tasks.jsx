@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import ModalDelete from "../../utilities/container/ModalDelete";
 import SearchBar from "../../utilities/container/SearchBar";
 import LoginButtons from "../../utilities/login/LoginButtons";
+import ButtonMobile from "../../utilities/navbar/ButtonMobile";
 import FormModal from "../container/FormModal";
 // import Header from "../container/Header";
 import NavBar from "../navbar/NavBar";
@@ -172,6 +173,11 @@ const Tasks = ({
           setShowDelete={setShowDelete}
           activePage={activePage}
           filterTasks={filterTasks}
+        />
+        <ButtonMobile
+          setIsShowTasksForm={setIsShowTasksForm}
+          setUpdate={setUpdate}
+          activePage={activePage}
         />
       </section>
     </>
