@@ -27,20 +27,20 @@ const Dashboard = ({
         className={"fixed inset-0 z-40"}
         show={showSideBar}
         enter="transition duration-200"
-        enterFrom=" -translate-x-48"
-        enterTo="translate-x-48"
+        enterFrom=" -translate-x-44"
+        enterTo="translate-x-44"
         leave="transition duration-200"
-        leaveFrom="translate-x-48"
-        leaveTo="-translate-x-48"
+        leaveFrom="translate-x-44"
+        leaveTo="-translate-x-44"
       >
         <NavBar activePage={activePage} />
         <Transition.Child
           as="section"
           className={"fixed inset-0 z-10"}
-          enter="transition-opacity duration-50"
+          enter="transition-opacity duration-0"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave="transition-opacity duration-100"
+          leave="transition-opacity duration-50"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >

@@ -2,12 +2,13 @@ import { useEffect, useState, startTransition } from "react";
 import { Transition } from "@headlessui/react";
 import axios from "axios";
 import SearchBar from "../../utilities/container/SearchBar";
-import Header from "../container/Header";
+// import Header from "../container/Header";
 import UsersCard from "./UsersCard";
 import FormModal from "../container/FormModal";
 import ModalDelete from "../../utilities/container/ModalDelete";
 import { NavLink } from "react-router-dom";
 import NavBar from "../navbar/NavBar";
+import LoginButtons from "../../utilities/login/LoginButtons";
 
 const Users = ({
   isShowUsersForm,
@@ -63,20 +64,20 @@ const Users = ({
         className={"fixed inset-0 z-40"}
         show={showSideBar}
         enter="transition duration-200"
-        enterFrom=" -translate-x-48"
-        enterTo="translate-x-48"
+        enterFrom=" -translate-x-44"
+        enterTo="translate-x-44"
         leave="transition duration-200"
-        leaveFrom="translate-x-48"
-        leaveTo="-translate-x-48"
+        leaveFrom="translate-x-44"
+        leaveTo="-translate-x-44"
       >
         <NavBar activePage={activePage} />
         <Transition.Child
           as="section"
           className={"fixed inset-0 z-10"}
-          enter="transition-opacity duration-50"
+          enter="transition-opacity duration-0"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave="transition-opacity duration-100"
+          leave="transition-opacity duration-50"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
@@ -134,11 +135,12 @@ const Users = ({
             </button>
             <h1 className="font-default text-lg font-semibold">SM Manager</h1>
           </section>
-          <Header
+          {/* <Header
             setIsShowUsersForm={setIsShowUsersForm}
             setUpdate={setUpdate}
             activePage={activePage}
-          />
+          /> */}
+          <LoginButtons />
         </article>
         <article className="min-h-max mt-3 ml-4 flex items-center gap-3 text-gray-600">
           <NavLink to="/" className="flex items-center gap-1 text-sm">
