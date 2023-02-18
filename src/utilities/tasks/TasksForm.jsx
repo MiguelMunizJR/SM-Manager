@@ -40,7 +40,7 @@ const TasksForm = ({
           id="title"
           type="text"
           placeholder="Title"
-          className="w-80 h-10 pl-2 rounded bg-slate-200 dark:bg-gray-800 dark:placeholder:text-gray-500 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
+          className="w-80 sm:w-auto h-10 pl-3 rounded bg-slate-100 outline-none text-gray-900 font-medium shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-2 focus:ring-blue-400"
           {...register("title")}
           required
         />
@@ -55,11 +55,11 @@ const TasksForm = ({
         <textarea
           id="description"
           placeholder="Description"
-          className="w-80 h-32 p-2 rounded bg-slate-200 resize-none dark:bg-gray-800 outline-none text-gray-900 dark:text-gray-300 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:drop-shadow-md dark:hover:ring-2 dark:hover:ring-itemsNavDark focus:drop-shadow-md focus:ring-2 focus:ring-itemsNavH placeholder:font-light"
+          className="w-80 h-32 p-2 rounded bg-slate-100 resize-none outline-none text-gray-900 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-2 focus:ring-blue-400"
           {...register("description")}
         />
       </div>
-      <button className="w-2/4 mt-4 mx-auto py-2 flex justify-center items-center gap-3 bg-navBarBH dark:bg-itemsNavDark text-gray-200 text-base rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-navBarBA dark:hover:bg-itemsNavDarkH">
+      <button className="w-3/4 mt-4 mx-auto py-2 flex justify-center items-center gap-3 bg-blue-600 text-gray-100 font-medium rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-blue-700">
         {update ? <h4>Update Task</h4> : <h4>Create Task</h4>}
         <i className="fa-solid fa-list-check text-sm"></i>
       </button>

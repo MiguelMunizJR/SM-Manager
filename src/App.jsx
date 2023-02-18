@@ -6,6 +6,8 @@ import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import Tasks from "./components/tasks/Tasks";
 import Settings from "./components/settings/Settings";
+import Dashboard from "./components/dashboard/Dashboard";
+import Account from "./components/account/Account";
 
 function App() {
   const [isShowUsersForm, setIsShowUsersForm] = useState(false);
@@ -35,6 +37,30 @@ function App() {
               setActivePage={setActivePage}
               setShowSideBar={setShowSideBar}
               showSideBar={showSideBar} 
+            />
+          }
+        />
+        {/* Dashboard Route */}
+        <Route 
+          path="/dashboard"
+          element={
+            <Dashboard 
+              activePage={activePage} 
+              setActivePage={setActivePage}
+              setShowSideBar={setShowSideBar}
+              showSideBar={showSideBar}
+            />
+          }
+        />
+        {/* Account Route */}
+        <Route 
+          path="/users/me"
+          element={
+            <Account 
+              activePage={activePage} 
+              setActivePage={setActivePage}
+              setShowSideBar={setShowSideBar}
+              showSideBar={showSideBar}
             />
           }
         />

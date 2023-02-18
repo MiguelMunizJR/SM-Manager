@@ -147,7 +147,7 @@ const UsersForm = ({
         </div>
       )}
       <button className="w-3/4 mt-4 mx-auto py-2 flex justify-center items-center gap-3 bg-blue-600 text-gray-100 font-medium rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-blue-700">
-        {update ? <h4>Update User</h4> : <h4>Create User</h4>}
+        {update ? <h4>Update Client</h4> : <h4>Create Client</h4>}
         <i className="fa-solid fa-user text-sm"></i>
       </button>
       {update && (

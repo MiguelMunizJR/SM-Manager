@@ -11,7 +11,7 @@ const Dashboard = ({
   showSideBar,
 }) => {
   useEffect(() => {
-    setActivePage("/settings");
+    setActivePage("/users/me");
     setShowSideBar(false);
   }, []);
 
@@ -73,8 +73,8 @@ const Dashboard = ({
           </NavLink>
           <div className="w-2 h-2 rounded-full bg-gray-400"></div>
           <div className="flex items-center gap-1 text-sm">
-            <i className="fa-solid fa-gear"></i>
-            <p>Settings</p>
+            <i className="fa-solid fa-user"></i>
+            <p>Account</p>
           </div>
         </article>
         <section className="pl-4 font-default text-gray-800">
