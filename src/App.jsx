@@ -34,7 +34,7 @@ function App() {
         />
         {/* Users Route */}
         <Route
-          path="/users"
+          path="/clients"
           element={
             <Users
               isShowUsersForm={isShowUsersForm}

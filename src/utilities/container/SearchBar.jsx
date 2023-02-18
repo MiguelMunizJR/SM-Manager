@@ -8,7 +8,7 @@ const SearchBar = ({
   const handleInput = (e) => {
     const value = e.target.value;
 
-    if (activePage === "/users") {
+    if (activePage === "/clients") {
 
       const filterUsers = users?.filter((user) => {
         if (e.target.value === "") return users;
@@ -42,8 +42,8 @@ const SearchBar = ({
         id="search"
         onChange={handleInput}
         placeholder={
-          activePage === "/users"
-            ? "Search Users"
+          activePage === "/clients"
+            ? "Search Clients"
             : "Search Tasks"
         }
         className="w-full h-12 pl-12 rounded outline-none shadow-sm focus:ring-1 focus:ring-blue-400 bg-gray-100"

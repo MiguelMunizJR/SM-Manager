@@ -6,6 +6,7 @@ import Header from "../container/Header";
 import UsersCard from "./UsersCard";
 import FormModal from "../container/FormModal";
 import ModalDelete from "../../utilities/container/ModalDelete";
+import { NavLink } from "react-router-dom";
 
 const Users = ({
   isShowUsersForm,
@@ -26,7 +27,7 @@ const Users = ({
   useEffect(() => {
     !users && setIsLoading(true);
     getAllUsers();
-    setActivePage("/users");
+    setActivePage("/clients");
   }, []);
 
   const getAllUsers = () => {
@@ -89,7 +90,7 @@ const Users = ({
         {/* MODAL DELETE CONFIRM HERE! */}
         <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
       </Transition>
-      <section className="w-full h-screen flex flex-col justify-between bg-gray-50 dark:bg-containerDark">
+      <section className="w-full h-screen flex flex-col justify-between bg-gray-50">
         {/* Header */}
         {/* Header in mobile */}
         <article className="w-full h-14 md:mt-3 flex justify-between bg-gray-50 md:bg-transparent">
@@ -105,12 +106,24 @@ const Users = ({
             activePage={activePage}
           />
         </article>
-        <article className="mt-5 pl-4 font-default text-gray-800">
+        <article className="min-h-max mt-3 ml-4 flex items-center gap-3 text-gray-600">
+          <NavLink to="/" className="flex items-center gap-1 text-sm">
+            <i className="fa-solid fa-home"></i>
+            <p>Home</p>
+          </NavLink>
+          <div className="w-2 h-2 rounded-full bg-gray-400"></div>
+          <div className="flex items-center gap-1 text-sm">
+            <i className="fa-solid fa-user"></i>
+            <p>Clients</p>
+          </div>
+        </article>
+        <article className="mt-6 pl-4 font-default text-gray-800">
           <h4 className="text-lg font-medium text-blue-600">
-            Hola, <span className="text-gray-800">Junior</span>
+            Hi, <span className="text-gray-800">Junior</span>
           </h4>
           <h2 className="mt-1 pl-4 font-medium text-2xl text-gray-700">
-            You have <span className="text-blue-600">5</span> active clients today
+            You have <span className="text-blue-600">5</span> active clients
+            today
           </h2>
         </article>
         <SearchBar

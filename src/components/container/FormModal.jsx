@@ -92,7 +92,7 @@ const FormModal = ({
   };
 
   const closeModal = () => {
-    if (activePage === "/users") {
+    if (activePage === "/clients") {
       setIsShowUsersForm(false);
     }
     setIsShowTasksForm(false);
@@ -104,16 +104,16 @@ const FormModal = ({
         <div className="mt-6 ml-6 flex items-center gap-2">
           {update ? (
             <h3 className="font-default text-2xl text-black dark:text-gray-300 font-normal">
-              {activePage === "/users" ? "Update User" : "Update Task"}
+              {activePage === "/clients" ? "Update Client" : "Update Task"}
             </h3>
           ) : (
             <h3 className="font-default text-2xl text-black dark:text-gray-300 font-normal">
-              {activePage === "/users" ? "Create User" : "Create Task"}
+              {activePage === "/clients" ? "Create Client" : "Create Task"}
             </h3>
           )}
           <i
             className={
-              activePage === "/users"
+              activePage === "/clients"
                 ? "fa-solid fa-user text-black dark:text-gray-300"
                 : "fa-solid fa-list-check text-black dark:text-gray-300"
             }
@@ -126,7 +126,7 @@ const FormModal = ({
           <i className="fa-solid fa-xmark text-black dark:text-gray-400"></i>
         </button>
       </header>
-      {activePage === "/users" ? (
+      {activePage === "/clients" ? (
         <UsersForm
           register={register}
           handleSubmit={handleSubmit}
