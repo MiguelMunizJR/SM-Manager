@@ -1,10 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import TimelineNav from "../../utilities/container/TimelineNav";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
 const Register = () => {
   const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
 
   const submitForm = (data) => {
     const URL = "https://crud-api-express.onrender.com/api/v1/auth/register";
@@ -19,6 +20,7 @@ const Register = () => {
           email: "",
           password: "",
         });
+        navigate("/auth/login");
       })
       .catch((err) => {
         console.error(err);

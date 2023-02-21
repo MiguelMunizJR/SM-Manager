@@ -1,9 +1,8 @@
-import NavBar from "./components/navbar/NavBar";
 import Home from "./components/home/Home";
 import Users from "./components/users/Users";
 import NotFound from "./components/container/NotFound";
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tasks from "./components/tasks/Tasks";
 import Settings from "./components/settings/Settings";
 import Dashboard from "./components/dashboard/Dashboard";
@@ -11,6 +10,7 @@ import Account from "./components/account/Account";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Login from "./components/login/Login";
 import Register from "./components/login/Register";
+import Header from "./components/container/Header";
 
 function App() {
   const [isShowUsersForm, setIsShowUsersForm] = useState(false);
@@ -20,16 +20,22 @@ function App() {
   const [activePage, setActivePage] = useState(null);
   const [showSideBar, setShowSideBar] = useState(false);
   const [update, setUpdate] = useState();
+  const [userSession, setUserSession] = useState(null);
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    setUserSession(token ? true : false);
+  }, []);
 
   return (
     <div className="flex">
-      <NavBar
-        setIsShowUsersForm={setIsShowUsersForm}
-        setIsShowTasksForm={setIsShowTasksForm}
-        setUpdate={setUpdate}
-        activePage={activePage}
-      />
       {/* ROUTES */}
+      <Header 
+        setShowSideBar={setShowSideBar} 
+        showSideBar={showSideBar}
+        setUserSession={setUserSession}
+        userSession={userSession} 
+      />
       <Routes>
         {/* Home Route */}
         <Route
@@ -95,6 +101,22 @@ function App() {
             />
           }
         />
+        <Route
+          path="/auth/login"
+          element={
+            <Login
+              activePage={activePage}
+              userSession={userSession}
+              setUserSession={setUserSession}
+            />
+          }
+        />
+        <Route
+          path="/auth/register"
+          element={
+            <Register activePage={activePage} userSession={userSession} />
+          }
+        />
 
         {/* Route not found 404 */}
         <Route path="*" element={<NotFound />} />
@@ -125,16 +147,6 @@ function App() {
               />
             }
           />
-          <Route path="/auth/login" element={
-            <Login
-              activePage={activePage}
-            />
-          } />
-          <Route path="/auth/register" element={
-            <Register 
-              activePage={activePage}
-            />
-          } />
         </Route>
       </Routes>
     </div>

@@ -1,12 +1,9 @@
 import { useEffect } from "react";
 import TimelineNav from "../../utilities/container/TimelineNav";
-import Header from "../container/Header";
 
 const Dashboard = ({
-  activePage,
   setActivePage,
   setShowSideBar,
-  showSideBar,
 }) => {
   useEffect(() => {
     setActivePage("/dashboard");
@@ -16,12 +13,6 @@ const Dashboard = ({
   return (
     <>
       <section className="w-full h-screen flex flex-col bg-gray-50">
-        {/* Header */}
-        <Header 
-          setShowSideBar={setShowSideBar} 
-          showSideBar={showSideBar} 
-          activePage={activePage} 
-        />
         <TimelineNav 
           actualPage="Dashboard" 
           actualIcon="fa-solid fa-gauge" 

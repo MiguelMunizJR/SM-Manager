@@ -18,6 +18,7 @@ const FormModal = ({
   setUpdate,
 }) => {
   const { register, handleSubmit, reset } = useForm();
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (update) {
@@ -30,7 +31,11 @@ const FormModal = ({
       const URL = `https://crud-api-express.onrender.com/api/v1/clients/${update.id}/`;
 
       axios
-        .patch(URL, data)
+        .patch(URL, data, {
+          headers: {
+            Authorization: `JWT ${token}`,
+          },
+        })
         .then(() => {
           reset(defaultUsersValues);
           getAllUsers();
@@ -44,7 +49,11 @@ const FormModal = ({
       const URL = "https://crud-api-express.onrender.com/api/v1/clients/";
 
       axios
-        .post(URL, data)
+        .post(URL, data, {
+          headers: {
+            Authorization: `JWT ${token}`,
+          },
+        })
         .then(() => {
           reset(defaultUsersValues);
           getAllUsers();
@@ -61,7 +70,11 @@ const FormModal = ({
       const URL = `https://crud-api-express.onrender.com/api/v1/tasks/${update.id}/`;
 
       axios
-        .patch(URL, data)
+        .patch(URL, data, {
+          headers: {
+            Authorization: `JWT ${token}`,
+          },
+        })
         .then(() => {
           reset(defaultTasksValues);
           getAllTasks();
@@ -75,11 +88,21 @@ const FormModal = ({
       const URL = "https://crud-api-express.onrender.com/api/v1/tasks/";
 
       axios
-        .post(URL, {
-          title: data.title,
-          description: !data.description ? "No description" : data.description,
-          isCompleted: data.isCompleted,
-        })
+        .post(
+          URL,
+          {
+            title: data.title,
+            description: !data.description
+              ? "No description"
+              : data.description,
+            isCompleted: data.isCompleted,
+          },
+          {
+            headers: {
+              Authorization: `JWT ${token}`,
+            },
+          }
+        )
         .then(() => {
           reset(defaultTasksValues);
           getAllTasks();

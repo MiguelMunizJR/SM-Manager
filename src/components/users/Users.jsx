@@ -6,7 +6,6 @@ import SearchBar from "../../utilities/container/SearchBar";
 import UsersCard from "./UsersCard";
 import FormModal from "../container/FormModal";
 import ModalDelete from "../../utilities/container/ModalDelete";
-import { NavLink } from "react-router-dom";
 import ButtonMobile from "../../utilities/navbar/ButtonMobile";
 import Header from "../container/Header";
 import TimelineNav from "../../utilities/container/TimelineNav";
@@ -28,6 +27,7 @@ const Users = ({
   const [users, setUsers] = useState(null);
   const [filterUsers, setFilterUsers] = useState(null);
   const [isDelete, setIsDelete] = useState(false);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     !users && setIsLoading(true);
@@ -41,7 +41,11 @@ const Users = ({
     const URL = "https://crud-api-express.onrender.com/api/v1/clients";
 
     axios
-      .get(URL)
+      .get(URL, {
+        headers: {
+          Authorization: `JWT ${token}`,
+        },
+      })
       .then((res) => {
         startTransition(() => {
           setUsers(res.data?.data);
@@ -97,13 +101,11 @@ const Users = ({
         <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
       </Transition>
       <section className="w-full h-screen flex flex-col justify-between bg-gray-50">
-        {/* Header */}
-        <Header setShowSideBar={setShowSideBar} showSideBar={showSideBar} />
-        <TimelineNav 
-          actualPage="Clients" 
-          actualIcon="fa-solid fa-users" 
-          prevPag="Home" 
-          prevIcon="fa-solid fa-home" 
+        <TimelineNav
+          actualPage="Clients"
+          actualIcon="fa-solid fa-users"
+          prevPag="Home"
+          prevIcon="fa-solid fa-home"
         />
         <article className="mt-6 pl-4 font-default text-gray-800">
           <h4 className="text-lg font-medium text-blue-600">

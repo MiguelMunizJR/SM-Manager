@@ -13,6 +13,7 @@ const TaskListRender = ({
 }) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [idTask, setIdTask] = useState(null);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     isDelete && deleteTaskConfirm();
@@ -29,8 +30,13 @@ const TaskListRender = ({
 
   const deleteTask = (id) => {
     const URL = `https://crud-api-express.onrender.com/api/v1/tasks/${id}/`;
+
     axios
-      .delete(URL)
+      .delete(URL, {
+        headers: {
+          Authorization: `JWT ${token}`,
+        },
+      })
       .then(() => {
         getAllTasks();
         setIsDelete(false);
@@ -48,11 +54,18 @@ const TaskListRender = ({
   const handleCompleted = (task) => {
     setIsCompleted(!isCompleted);
 
-    const URL = `https://crud-api-express.onrender.com/api/v1/tasks/${task.id}/`;
+    const URL = `https://crud-api-express.onrender.com/api/v1/tasks/${task?.id}/`;
+
+    console.log(task.id);
 
     axios
       .patch(URL, {
         isCompleted: !task.isCompleted,
+      },
+      {
+        headers: {
+          "Authorization": `JWT ${token}`,
+        },
       })
       .then(() => {
         getAllTasks();

@@ -11,6 +11,7 @@ const UsersCardsRender = ({
   setIsDelete,
 }) => {
   const [idUser, setIdUser] = useState(null);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     isDelete && deleteUserConfirm();
@@ -29,7 +30,11 @@ const UsersCardsRender = ({
     const URL = `https://crud-api-express.onrender.com/api/v1/users/${id}/`;
 
     axios
-      .delete(URL)
+      .delete(URL, {
+        headers: {
+          Authorization: `JWT ${token}`,
+        },
+      })
       .then(() => {
         // console.log(`User with ID: ${id}, deleted succesfully!`);
         getAllUsers();

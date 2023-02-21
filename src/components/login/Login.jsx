@@ -1,27 +1,29 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import TimelineNav from "../../utilities/container/TimelineNav";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-const Login = () => {
+const Login = ({ setUserSession }) => {
   const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
 
   const submitForm = (data) => {
-    const URL = "https://crud-api-express.onrender.com/api/v1/";
+    const URL = "https://crud-api-express.onrender.com/api/v1/auth/login";
 
     axios
       .post(URL, data)
       .then((res) => {
-        console.log(res);
+        localStorage.setItem("token", res?.data.token);
+        reset({
+          email: "",
+          password: "",
+        });
+        setUserSession(true);
+        navigate("/");
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
-
-    reset({
-      email: "",
-      password: "",
-    });
   };
 
   return (
