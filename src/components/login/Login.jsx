@@ -27,8 +27,8 @@ const Login = () => {
   return (
     <>
       <section className="w-full h-screen flex flex-col bg-gray-50">
-        <article className="w-full h-16 md:mt-3 flex justify-between items-center bg-gray-50 z-40 md:bg-transparent">
-          <section className="w-full md:hidden ml-5 flex gap-4 items-center text-gray-800">
+        <article className="w-full h-16 flex justify-between items-center bg-gray-50 z-40">
+          <section className="w-full ml-5 flex gap-4 items-center text-gray-800">
             <NavLink to="/">
               <h1 className="py-2 font-default text-xl font-semibold">
                 SM Manager
@@ -100,7 +100,7 @@ const Login = () => {
             </form>
             <h5 className="mt-4 mx-auto text-sm font-medium text-gray-500">
               don&apos;t have an account?
-              <NavLink to="/register" className="font-semibold text-blue-500">
+              <NavLink to="/auth/register" className="font-semibold text-blue-500">
                 {" "}
                 Sign up
               </NavLink>

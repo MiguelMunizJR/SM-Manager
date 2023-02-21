@@ -7,28 +7,29 @@ const Register = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const submitForm = (data) => {
-    const URL = "";
+    const URL = "https://crud-api-express.onrender.com/api/v1/auth/register";
 
     axios
       .post(URL, data)
       .then((res) => {
         console.log(res);
+        reset({
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+        });
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
-
-    reset({
-      email: "",
-      password: "",
-    });
   };
 
   return (
     <>
       <section className="w-full h-screen flex flex-col bg-gray-50">
-        <article className="w-full h-16 md:mt-3 flex justify-between items-center bg-gray-50 z-40 md:bg-transparent">
-          <section className="w-full md:hidden ml-5 flex gap-4 items-center text-gray-800">
+        <article className="w-full h-16 flex justify-between items-center bg-gray-50 z-40">
+          <section className="w-full ml-5 flex gap-4 items-center text-gray-800">
             <NavLink to="/">
               <h1 className="py-2 font-default text-xl font-semibold">
                 SM Manager
@@ -46,7 +47,10 @@ const Register = () => {
           <article className="w-5/6 h-full mt-24 font-default flex flex-col">
             <h4 className="text-xs text-blue-500 font-semibold">Welcome</h4>
             <h2 className="mt-2 text-gray-800 font-medium text-3xl">Sign up</h2>
-            <form className="w-full min-h-max mt-8 flex flex-col gap-4 justify-center items-center" onSubmit={handleSubmit(submitForm)}>
+            <form
+              className="w-full min-h-max mt-8 flex flex-col gap-4 justify-center items-center"
+              onSubmit={handleSubmit(submitForm)}
+            >
               <div className="w-full min-h-max flex mx-auto flex-col gap-1 p-2 justify-center">
                 <label
                   htmlFor="firstName"
@@ -125,7 +129,7 @@ const Register = () => {
             </form>
             <h5 className="mt-4 mx-auto text-sm font-medium text-gray-500">
               Already have a account?
-              <NavLink to="/login" className="font-semibold text-blue-500">
+              <NavLink to="/auth/login" className="font-semibold text-blue-500">
                 {" "}
                 Login
               </NavLink>

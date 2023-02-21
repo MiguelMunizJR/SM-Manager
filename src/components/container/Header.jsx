@@ -41,8 +41,8 @@ const Header = ({ showSideBar, setShowSideBar, activePage }) => {
         </Transition.Child>
       </Transition>
       {/* Header */}
-      <article className="w-full h-16 md:mt-3 flex justify-between items-center bg-gray-50 z-40 md:bg-transparent">
-        <section className="w-full md:hidden ml-5 flex gap-4 items-center text-gray-800">
+      <article className="w-full h-16 flex justify-between items-center bg-gray-50 z-40">
+        <section className="w-full ml-5 flex gap-4 items-center text-gray-800">
           <button onClick={handleSidebar}>
             <i className="fa-solid fa-bars"></i>
           </button>

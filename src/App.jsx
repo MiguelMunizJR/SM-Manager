@@ -125,14 +125,16 @@ function App() {
               />
             }
           />
-          <Route path="/login" element={
-            <Login 
-              setShowSideBar={setShowSideBar}
-              showSideBar={showSideBar} 
+          <Route path="/auth/login" element={
+            <Login
               activePage={activePage}
             />
           } />
-          <Route path="/register" element={<Register />} />
+          <Route path="/auth/register" element={
+            <Register 
+              activePage={activePage}
+            />
+          } />
         </Route>
       </Routes>
     </div>
