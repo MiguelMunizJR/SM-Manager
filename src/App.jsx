@@ -8,6 +8,9 @@ import Tasks from "./components/tasks/Tasks";
 import Settings from "./components/settings/Settings";
 import Dashboard from "./components/dashboard/Dashboard";
 import Account from "./components/account/Account";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+import Login from "./components/login/Login";
+import Register from "./components/login/Register";
 
 function App() {
   const [isShowUsersForm, setIsShowUsersForm] = useState(false);
@@ -32,39 +35,15 @@ function App() {
         <Route
           path="/"
           element={
-            <Home 
-              activePage={activePage} 
-              setActivePage={setActivePage}
-              setShowSideBar={setShowSideBar}
-              showSideBar={showSideBar} 
-            />
-          }
-        />
-        {/* Dashboard Route */}
-        <Route 
-          path="/dashboard"
-          element={
-            <Dashboard 
-              activePage={activePage} 
+            <Home
+              activePage={activePage}
               setActivePage={setActivePage}
               setShowSideBar={setShowSideBar}
               showSideBar={showSideBar}
             />
           }
         />
-        {/* Account Route */}
-        <Route 
-          path="/users/me"
-          element={
-            <Account 
-              activePage={activePage} 
-              setActivePage={setActivePage}
-              setShowSideBar={setShowSideBar}
-              showSideBar={showSideBar}
-            />
-          }
-        />
-        {/* Users Route */}
+        {/* Clients Route */}
         <Route
           path="/clients"
           element={
@@ -80,7 +59,7 @@ function App() {
               activePage={activePage}
               setActivePage={setActivePage}
               setShowSideBar={setShowSideBar}
-              showSideBar={showSideBar} 
+              showSideBar={showSideBar}
             />
           }
         />
@@ -100,7 +79,7 @@ function App() {
               activePage={activePage}
               setActivePage={setActivePage}
               setShowSideBar={setShowSideBar}
-              showSideBar={showSideBar} 
+              showSideBar={showSideBar}
             />
           }
         />
@@ -108,16 +87,53 @@ function App() {
         <Route
           path="/settings"
           element={
-            <Settings 
-              activePage={activePage} 
+            <Settings
+              activePage={activePage}
               setActivePage={setActivePage}
               setShowSideBar={setShowSideBar}
-              showSideBar={showSideBar} 
+              showSideBar={showSideBar}
             />
           }
         />
+
         {/* Route not found 404 */}
         <Route path="*" element={<NotFound />} />
+
+        {/* Protected Routes */}
+        <Route element={<ProtectedRoutes />}>
+          {/* Dashboard Route */}
+          <Route
+            path="/dashboard"
+            element={
+              <Dashboard
+                activePage={activePage}
+                setActivePage={setActivePage}
+                setShowSideBar={setShowSideBar}
+                showSideBar={showSideBar}
+              />
+            }
+          />
+          {/* Account Route */}
+          <Route
+            path="/users/me"
+            element={
+              <Account
+                activePage={activePage}
+                setActivePage={setActivePage}
+                setShowSideBar={setShowSideBar}
+                showSideBar={showSideBar}
+              />
+            }
+          />
+          <Route path="/login" element={
+            <Login 
+              setShowSideBar={setShowSideBar}
+              showSideBar={showSideBar} 
+              activePage={activePage}
+            />
+          } />
+          <Route path="/register" element={<Register />} />
+        </Route>
       </Routes>
     </div>
   );

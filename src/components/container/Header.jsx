@@ -1,93 +1,63 @@
-import { useState } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import ButtonHeader from "../../utilities/container/ButtonHeader";
+import { Transition } from "@headlessui/react";
+import { NavLink } from "react-router-dom";
+import LoginButtons from "../../utilities/login/LoginButtons";
+import NavBar from "../navbar/NavBar";
 
-const Header = ({
-  setIsShowUsersForm,
-  setIsShowTasksForm,
-  setUpdate,
-  activePage,
-}) => {
-  // const [isDarkMode, setIsDarkMode] = useState(false);
+const Header = ({ showSideBar, setShowSideBar, activePage }) => {
 
-  // const DarkModeToggle = () => {
-  //   setIsDarkMode(!isDarkMode);
-  //   document.documentElement.classList.toggle("dark");
-  // };
+  const handleSidebar = () => {
+    setShowSideBar(!showSideBar);
+  };
 
   return (
-    <section className="mr-5 flex justify-center items-center gap-8">
-      <div className="hidden md:flex">
-        <ButtonHeader
-          setIsShowUsersForm={setIsShowUsersForm}
-          setIsShowTasksForm={setIsShowTasksForm}
-          setUpdate={setUpdate}
-          activePage={activePage}
-        />
-      </div>
-      <article className="lg:mr-8 flex justify-center items-center gap-2">
-        {/* DARK MODE */}
-        {/* <button
-          onClick={DarkModeToggle}
-          className="p-2 drop-shadow-sm text-lg transition ease-in-out duration-150 bg-transparent"
+    <>
+      {/* Sidebar Animation */}
+      <Transition
+        as="section"
+        className={"fixed inset-0 z-40"}
+        show={showSideBar}
+        enter="transition-all duration-200"
+        enterFrom=" -translate-x-44"
+        enterTo="translate-x-44"
+        leave="transition-all duration-400"
+        leaveFrom="translate-x-44"
+        leaveTo="-translate-x-44"
+      >
+        <NavBar activePage={activePage} />
+        <Transition.Child
+          as="section"
+          className={"fixed inset-0 z-10"}
+          enter="transition-opacity"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
         >
-          {isDarkMode ? (
-            <i className="fa-solid fa-sun text-gray-700 dark:text-gray-600 text-md transition ease-in-out rotate-45 duration-500"></i>
-          ) : (
-            <i className="fa-solid fa-moon text-gray-600 md:text-gray-700 dark:text-gray-300 text-md transition ease-out duration-500"></i>
-          )}
-        </button> */}
-        <Menu as="div" className="relative z-10 inline-block">
-          <div>
-            <Menu.Button className="p-2 flex justify-center items-center gap-4 drop-shadow-sm bg-transparent transition ease-in-out duration-150 text-gray-600">
-              <div className="flex gap-2 items-center">
-                <i className="fa-regular fa-circle-user text-gray-700 text-2xl"></i>
-              </div>
-            </Menu.Button>
-          </div>
-          <Transition
-            as="div"
-            enter="transition ease-out duration-100"
-            enterFrom="transform opacity-0 scale-95"
-            enterTo="transform opacity-100 scale-100"
-            leave="transition ease-in duration-75"
-            leaveFrom="transform opacity-100 scale-100"
-            leaveTo="transform opacity-0 scale-95"
-          >
-            <Menu.Items className="absolute right-0 mt-1 md:mt-3 w-40 origin-top-right rounded bg-gray-100 dark:bg-gray-800 font-default font-medium shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active
-                        ? "bg-navBarBA dark:bg-itemsNavDarkH text-gray-200"
-                        : "text-gray-600 dark:text-gray-300"
-                    } flex w-full justify-center gap-2 items-center rounded py-3 text-sm`}
-                  >
-                    <i className="fa-solid fa-right-to-bracket"></i>
-                    Login
-                  </button>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active
-                        ? "bg-navBarBA dark:bg-itemsNavDarkH text-gray-200"
-                        : "text-gray-600 dark:text-gray-300"
-                    } flex w-full gap-2 justify-center items-center rounded py-3 text-sm`}
-                  >
-                    <i className="fa-solid fa-key"></i>
-                    Sign up
-                  </button>
-                )}
-              </Menu.Item>
-            </Menu.Items>
-          </Transition>
-        </Menu>
+          <section
+            onClick={handleSidebar}
+            className="w-screen h-screen opacity-10 absolute inset-0 bg-slate-800 z-10"
+          ></section>
+        </Transition.Child>
+      </Transition>
+      {/* Header */}
+      <article className="w-full h-16 md:mt-3 flex justify-between items-center bg-gray-50 z-40 md:bg-transparent">
+        <section className="w-full md:hidden ml-5 flex gap-4 items-center text-gray-800">
+          <button onClick={handleSidebar}>
+            <i className="fa-solid fa-bars"></i>
+          </button>
+          <NavLink to="/">
+            <h1 className="font-default text-lg font-semibold">SM Manager</h1>
+          </NavLink>
+        </section>
+        {/* <Header
+            setIsShowUsersForm={setIsShowUsersForm}
+            setUpdate={setUpdate}
+            activePage={activePage} 
+          /> */}
+        <LoginButtons />
       </article>
-    </section>
+    </>
   );
 };
 

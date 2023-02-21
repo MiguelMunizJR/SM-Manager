@@ -7,9 +7,9 @@ import UsersCard from "./UsersCard";
 import FormModal from "../container/FormModal";
 import ModalDelete from "../../utilities/container/ModalDelete";
 import { NavLink } from "react-router-dom";
-import NavBar from "../navbar/NavBar";
-import LoginButtons from "../../utilities/login/LoginButtons";
 import ButtonMobile from "../../utilities/navbar/ButtonMobile";
+import Header from "../container/Header";
+import TimelineNav from "../../utilities/container/TimelineNav";
 
 const Users = ({
   isShowUsersForm,
@@ -53,41 +53,8 @@ const Users = ({
       });
   };
 
-  const handleSidebar = () => {
-    setShowSideBar(!showSideBar);
-  };
-
   return (
     <>
-      {/* Sidebar Animation */}
-      <Transition
-        as="section"
-        className={"fixed inset-0 z-40"}
-        show={showSideBar}
-        enter="transition duration-200"
-        enterFrom=" -translate-x-44"
-        enterTo="translate-x-44"
-        leave="transition duration-200"
-        leaveFrom="translate-x-44"
-        leaveTo="-translate-x-44"
-      >
-        <NavBar activePage={activePage} />
-        <Transition.Child
-          as="section"
-          className={"fixed inset-0 z-10"}
-          enter="transition-opacity duration-0"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity duration-50"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <section
-            onClick={handleSidebar}
-            className="w-screen h-screen opacity-10 absolute inset-0 bg-slate-800 z-10"
-          ></section>
-        </Transition.Child>
-      </Transition>
       {/* Form Animation */}
       <Transition
         as="section"
@@ -131,32 +98,13 @@ const Users = ({
       </Transition>
       <section className="w-full h-screen flex flex-col justify-between bg-gray-50">
         {/* Header */}
-        {/* Header in mobile */}
-        <article className="w-full h-14 md:mt-3 flex justify-between bg-gray-50 z-40 md:bg-transparent">
-          <section className="w-full md:hidden ml-5 flex gap-4 items-center text-gray-800">
-            <button onClick={handleSidebar}>
-              <i className="fa-solid fa-bars"></i>
-            </button>
-            <h1 className="font-default text-lg font-semibold">SM Manager</h1>
-          </section>
-          {/* <Header
-            setIsShowUsersForm={setIsShowUsersForm}
-            setUpdate={setUpdate}
-            activePage={activePage}
-          /> */}
-          <LoginButtons />
-        </article>
-        <article className="min-h-max mt-3 ml-4 flex items-center gap-3 text-gray-600">
-          <NavLink to="/" className="flex items-center gap-1 text-sm">
-            <i className="fa-solid fa-home"></i>
-            <p>Home</p>
-          </NavLink>
-          <div className="w-2 h-2 rounded-full bg-gray-400"></div>
-          <div className="flex items-center gap-1 text-sm">
-            <i className="fa-solid fa-user"></i>
-            <p>Clients</p>
-          </div>
-        </article>
+        <Header setShowSideBar={setShowSideBar} showSideBar={showSideBar} />
+        <TimelineNav 
+          actualPage="Clients" 
+          actualIcon="fa-solid fa-users" 
+          prevPag="Home" 
+          prevIcon="fa-solid fa-home" 
+        />
         <article className="mt-6 pl-4 font-default text-gray-800">
           <h4 className="text-lg font-medium text-blue-600">
             Hi, <span className="text-gray-800">Junior</span>
