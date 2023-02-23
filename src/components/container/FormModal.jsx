@@ -16,6 +16,7 @@ const FormModal = ({
   getAllUsers,
   update,
   setUpdate,
+  setIsLoading,
 }) => {
   const { register, handleSubmit, reset } = useForm();
   const token = localStorage.getItem("token");
@@ -27,33 +28,26 @@ const FormModal = ({
   }, [update]);
 
   const submitUsersData = (data) => {
+    setIsLoading(true);
     if (update) {
       const URL = `https://crud-api-express.onrender.com/api/v1/clients/${update.id}/`;
 
-      console.log(data);
-
       axios
-        .patch(URL, {
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
-          password: data.password,
-          birthday: data.birthday,
-          phone: data.phone,
-          status: data.status
-        }, {
+        .patch(URL, data, {
           headers: {
             Authorization: `JWT ${token}`,
           },
         })
         .then(() => {
-          reset(defaultUsersValues);
-          getAllUsers();
-          setUpdate(null);
           setIsShowUsersForm(false);
+          getAllUsers();
+          reset(defaultUsersValues);
+          setUpdate(null);
+          setIsLoading(false);
         })
         .catch((err) => {
           console.log(err);
+          setIsLoading(false);
         });
     } else {
       const URL = "https://crud-api-express.onrender.com/api/v1/clients/";
@@ -65,17 +59,20 @@ const FormModal = ({
           },
         })
         .then(() => {
-          reset(defaultUsersValues);
-          getAllUsers();
           setIsShowUsersForm(false);
+          getAllUsers();
+          reset(defaultUsersValues);
+          setIsLoading(false);
         })
         .catch((err) => {
           console.log(err);
+          setIsLoading(false);
         });
     }
   };
 
   const submitTaskData = (data) => {
+    setIsLoading(true);
     if (update) {
       const URL = `https://crud-api-express.onrender.com/api/v1/tasks/${update.id}/`;
 
@@ -86,13 +83,15 @@ const FormModal = ({
           },
         })
         .then(() => {
-          reset(defaultTasksValues);
-          getAllTasks();
-          setUpdate(null);
           setIsShowTasksForm(false);
+          getAllTasks();
+          reset(defaultTasksValues);
+          setUpdate(null);
+          setIsLoading(false);
         })
         .catch((err) => {
           console.log(err);
+          setIsLoading(false);
         });
     } else {
       const URL = "https://crud-api-express.onrender.com/api/v1/tasks/";
@@ -114,12 +113,14 @@ const FormModal = ({
           }
         )
         .then(() => {
-          reset(defaultTasksValues);
-          getAllTasks();
           setIsShowTasksForm(false);
+          getAllTasks();
+          reset(defaultTasksValues);
+          setIsLoading(false);
         })
         .catch((err) => {
           console.log(err);
+          setIsLoading(false);
         });
     }
   };
@@ -127,12 +128,13 @@ const FormModal = ({
   const closeModal = () => {
     if (activePage === "/clients") {
       setIsShowUsersForm(false);
+    } else if (activePage === "/tasks") {
+      setIsShowTasksForm(false);
     }
-    setIsShowTasksForm(false);
   };
 
   return (
-    <section className="w-max h-max mx-auto pb-8 rounded-md bg-gray-50 flex flex-col items-center drop-shadow-2xl overflow-x-hidden overflow-y-auto fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 outline-none focus:outline-none">
+    <section className="w-max h-max mx-auto pb-8 rounded-md bg-gray-50 flex flex-col items-center drop-shadow-2xl overflow-x-hidden overflow-y-auto fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 outline-none focus:outline-none">
       <header className="w-full flex self-start justify-between items-center">
         <div className="mt-6 ml-6 flex items-center gap-2">
           {update ? (

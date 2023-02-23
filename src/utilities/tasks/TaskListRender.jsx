@@ -10,8 +10,9 @@ const TaskListRender = ({
   setIsDelete,
   setShowDelete,
   filterTasks,
+  setIsReload,
+  setIsLoading,
 }) => {
-  const [isCompleted, setIsCompleted] = useState(false);
   const [idTask, setIdTask] = useState(null);
   const token = localStorage.getItem("token");
 
@@ -42,34 +43,39 @@ const TaskListRender = ({
         setIsDelete(false);
         setShowDelete(false);
         setIdTask(null);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
         setIsDelete(false);
         setShowDelete(false);
         setIdTask(null);
+        setIsLoading(false);
       });
   };
 
   const handleCompleted = (task) => {
-    setIsCompleted(!isCompleted);
-
-    const URL = `https://crud-api-express.onrender.com/api/v1/tasks/${task.id}/`;
+    setIsReload(true);
+    const URL = `https://crud-api-express.onrender.com/api/v1/tasks/${task?.id}`;
 
     axios
-      .patch(URL, {
-        isCompleted: !task.isCompleted,
-      },
-      {
-        headers: {
-          "Authorization": `JWT ${token}`,
+      .patch(
+        URL,
+        {
+          status: task?.status === "completed" ? "not_completed" : "completed",
         },
-      })
+        {
+          headers: {
+            Authorization: `JWT ${token}`,
+          },
+        }
+      )
       .then(() => {
         getAllTasks();
       })
       .catch((err) => {
         console.log(err);
+        setIsReload(false);
       });
   };
 
@@ -85,7 +91,7 @@ const TaskListRender = ({
           <article
             key={task.id}
             className={
-              task.isCompleted
+              task.status === "completed"
                 ? "w-full min-h-full py-4 px-3 md:px-6 flex justify-between items-center font-default bg-green-200 dark:bg-green-900 even:bg-green-200 ring-1 ring-green-400 dark:ring-green-700 line-through decoration-green-800 dark:decoration-green-400"
                 : "w-full min-h-full py-4 px-3 md:px-6 flex justify-between items-center font-default bg-gray-100 dark:bg-gray-700 even:bg-gray-200 dark:odd:bg-gray-800 border-b border-gray-300 dark:border-gray-600"
             }
@@ -94,12 +100,12 @@ const TaskListRender = ({
               <button
                 onClick={() => handleCompleted(task)}
                 className={
-                  task.isCompleted
+                  task.status === "completed"
                     ? "p-2 rounded-2xl transition-all duration-200 hover:bg-green-300 text-green-500 dark:text-green-400 text-xl"
                     : "p-2 rounded-2xl transition-all duration-200 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-400 text-xl"
                 }
               >
-                {task.isCompleted ? (
+                {task.status === "completed" ? (
                   <i className="fa-solid fa-square-check"></i>
                 ) : (
                   <i className="fa-regular fa-square-check"></i>
@@ -108,7 +114,7 @@ const TaskListRender = ({
               <div className="flex flex-col">
                 <h3
                   className={
-                    task.isCompleted
+                    task.status === "completed"
                       ? "font-medium text-base text-green-700 dark:text-green-400"
                       : "font-medium text-base text-gray-900 dark:text-gray-200"
                   }
@@ -117,7 +123,7 @@ const TaskListRender = ({
                 </h3>
                 <p
                   className={
-                    task.isCompleted
+                    task.status === "completed"
                       ? "font-medium text-sm text-green-500 dark:text-green-600"
                       : "font-medium text-sm text-gray-500"
                   }
@@ -128,9 +134,11 @@ const TaskListRender = ({
             </div>
             <div className="mr-2 md:mr-6 flex gap-6">
               <button
-                onClick={() => !task.isCompleted && updateTask(task)}
+                onClick={() =>
+                  !task.status === "completed" && updateTask(task)
+                }
                 className={
-                  task.isCompleted
+                  task.status === "completed"
                     ? "ring-2 ring-green-300 dark:ring-green-700 text-green-300 dark:text-green-700 p-1 text-sm rounded-md shadow-md transition duration-100 cursor-default"
                     : "ring-2 ring-sky-600 text-sky-600 dark:bg-sky-600 dark:text-gray-300 dark:hover:bg-sky-700 p-1 text-sm rounded-md shadow-md transition duration-100 hover:bg-sky-700 hover:ring-sky-700 hover:text-gray-300 active:bg-sky-800 active:ring-sky-800 cursor-pointer"
                 }
@@ -150,7 +158,7 @@ const TaskListRender = ({
           <article
             key={task.id}
             className={
-              task.isCompleted
+              task.status === "completed"
                 ? "w-full min-h-full py-4 px-3 md:px-6 flex justify-between items-center font-default bg-green-200 dark:bg-green-900 even:bg-green-200 ring-1 ring-green-400 dark:ring-green-700 line-through decoration-green-800 dark:decoration-green-400"
                 : "w-full min-h-full py-4 px-3 md:px-6 flex justify-between items-center font-default bg-gray-100 dark:bg-gray-700 even:bg-gray-200 dark:odd:bg-gray-800 border-b border-gray-300 dark:border-gray-600"
             }
@@ -159,12 +167,12 @@ const TaskListRender = ({
               <button
                 onClick={() => handleCompleted(task)}
                 className={
-                  task.isCompleted
+                  task.status === "completed"
                     ? "p-2 rounded-2xl transition-all duration-200 hover:bg-green-300 text-green-500 dark:text-green-400 text-xl"
                     : "p-2 rounded-2xl transition-all duration-200 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-400 text-xl"
                 }
               >
-                {task.isCompleted ? (
+                {task.status === "completed" ? (
                   <i className="fa-solid fa-square-check"></i>
                 ) : (
                   <i className="fa-regular fa-square-check"></i>
@@ -173,7 +181,7 @@ const TaskListRender = ({
               <div className="flex flex-col">
                 <h3
                   className={
-                    task.isCompleted
+                    task.status === "completed"
                       ? "font-medium text-base text-green-700 dark:text-green-400"
                       : "font-medium text-base text-gray-900 dark:text-gray-200"
                   }
@@ -182,7 +190,7 @@ const TaskListRender = ({
                 </h3>
                 <p
                   className={
-                    task.isCompleted
+                    task.status === "completed"
                       ? "font-medium text-sm text-green-500 dark:text-green-600"
                       : "font-medium text-sm text-gray-500"
                   }
@@ -193,9 +201,11 @@ const TaskListRender = ({
             </div>
             <div className="mr-2 md:mr-6 flex gap-6">
               <button
-                onClick={() => !task.isCompleted && updateTask(task)}
+                onClick={() =>
+                  task.status === "not_completed" && updateTask(task)
+                }
                 className={
-                  task.isCompleted
+                  task.status === "completed"
                     ? "ring-2 ring-green-300 dark:ring-green-700 text-green-300 dark:text-green-700 p-1 text-sm rounded-md shadow-md transition duration-100 cursor-default"
                     : "ring-2 ring-sky-600 text-sky-600 dark:bg-sky-600 dark:text-gray-300 dark:hover:bg-sky-700 p-1 text-sm rounded-md shadow-md transition duration-100 hover:bg-sky-700 hover:ring-sky-700 hover:text-gray-300 active:bg-sky-800 active:ring-sky-800 cursor-pointer"
                 }

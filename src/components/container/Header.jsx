@@ -42,7 +42,7 @@ const Header = ({ showSideBar, setShowSideBar, activePage, userSession }) => {
         </Transition.Child>
       </Transition>
       {/* Header */}
-      <article className="w-full h-14 px-4 flex justify-between items-center bg-gray-50 z-50 fixed top-0 left-0">
+      <article className="w-full h-14 px-4 flex justify-between items-center bg-gray-50 z-40 fixed top-0 left-0">
         <section className="w-full flex gap-4 items-center text-gray-800">
           {userSession && (
             <button onClick={handleSidebar}>
@@ -55,7 +55,7 @@ const Header = ({ showSideBar, setShowSideBar, activePage, userSession }) => {
             </h1>
           </NavLink>
         </section>
-        {userSession ? <UserMenu /> : <LoginButtons />}
+        {userSession ? <UserMenu userSession={userSession} /> : <LoginButtons />}
       </article>
     </>
   );

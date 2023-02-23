@@ -9,11 +9,11 @@ const UsersCard = ({
   filterUsers,
   setUpdate,
   setIsShowUsersForm,
-  isLoading,
   setShowDelete,
   isDelete,
   setIsDelete,
-  activePage
+  activePage,
+  setIsLoading
 }) => {
   const [isSort, setIsSort] = useState(false);
   const [reload, setReload] = useState(false);
@@ -23,8 +23,8 @@ const UsersCard = ({
   };
 
   const reloadUsers = () => {
-    getAllUsers();
     setReload(true);
+    getAllUsers();
   };
 
   const usersReady = () => {
@@ -71,11 +71,17 @@ const UsersCard = ({
         </div>
       </article>
       <article className="w-11/12 mx-auto mb-4 rounded h-full md:h-5/6 md:rounded-lg bg-gray-100 dark:bg-gray-800 drop-shadow-md dark:drop-shadow-lg dark:shadow-black z-0 overflow-y-auto">
-        {reload || isLoading ? (
+        {reload ? (
           <div className="w-full h-full flex flex-col justify-center items-center text-neutral-400 dark:text-gray-600 animate-pulse">
             <i className="fa-solid fa-bars-progress text-8xl"></i>
             <h2 className="font-default text-2xl ">Loading Data ...</h2>
           </div>
+        ) : users?.length === 0 ? (
+          <article className="w-full h-full flex flex-col justify-center items-center font-default text-gray-400 gap-2">
+            <i className="fa-regular fa-face-frown text-7xl"></i>
+            <h2 className="font-medium text-3xl">Empty Clients</h2>
+            <h4 className="text-xl">Press + to add new clients</h4>
+          </article>
         ) : (
           <>
             <table className="invisible absolute -z-10 md:visible md:relative md:z-0 table-fixed w-full text-center">

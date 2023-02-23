@@ -2,12 +2,23 @@ import { NavLink, useNavigate } from "react-router-dom";
 import TimelineNav from "../../utilities/container/TimelineNav";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useEffect } from "react";
 
-const Login = ({ setUserSession }) => {
+const Login = ({ getUserInfo, setActivePage, setIsLoading, loadingEnd }) => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    setIsLoading(true);
+    setActivePage("/auth");
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+  
+
   const submitForm = (data) => {
+    setIsLoading(true);
     const URL = "https://crud-api-express.onrender.com/api/v1/auth/login";
 
     axios
@@ -18,19 +29,21 @@ const Login = ({ setUserSession }) => {
           email: "",
           password: "",
         });
-        setUserSession(true);
+        loadingEnd();
+        getUserInfo();
         navigate("/");
       })
       .catch((err) => {
         console.error(err);
+        setIsLoading(false);
       });
   };
 
   return (
     <>
       <section className="w-full h-screen flex flex-col bg-gray-50">
-        <article className="w-full h-16 flex justify-between items-center bg-gray-50 z-40">
-          <section className="w-full ml-5 flex gap-4 items-center text-gray-800">
+        <article className="w-full h-14 flex justify-between items-center bg-gray-50 z-40 fixed top-0 left-0">
+          <section className="w-full ml-4 flex gap-4 items-center text-gray-800">
             <NavLink to="/">
               <h1 className="py-2 font-default text-xl font-semibold">
                 SM Manager
@@ -51,7 +64,10 @@ const Login = ({ setUserSession }) => {
             <h4 className="mt-2 text-sm font-medium text-gray-400">
               Please sign in to continue
             </h4>
-            <form className="w-full min-h-max mt-8 flex flex-col gap-4 justify-center items-center" onSubmit={handleSubmit(submitForm)}>
+            <form
+              className="w-full min-h-max mt-8 flex flex-col gap-4 justify-center items-center"
+              onSubmit={handleSubmit(submitForm)}
+            >
               <div className="w-full min-h-max flex mx-auto flex-col gap-2 p-2 justify-center">
                 <label
                   htmlFor="email"
@@ -88,9 +104,9 @@ const Login = ({ setUserSession }) => {
                 <i className="fa-solid fa-key"></i>
                 Forgot Password
               </p>
-              <button className="w-1/2 h-10 flex justify-center items-center gap-2 self-end mt-4 font-medium rounded drop-shadow-lg text-gray-50 bg-blue-500">
+              <button className="w-1/2 h-10 flex justify-center items-center gap-2 self-end mt-4 rounded drop-shadow-lg text-gray-50 bg-blue-500">
                 Login
-                <i className="fa-solid fa-arrow-right-long"></i>
+                <i className="fa-solid fa-arrow-right-long "></i>
               </button>
               <div className="w-full h-min-max mt-2 flex py-5 items-center">
                 <div className="flex-grow border-t border-gray-300"></div>
@@ -102,7 +118,10 @@ const Login = ({ setUserSession }) => {
             </form>
             <h5 className="mt-4 mx-auto text-sm font-medium text-gray-500">
               don&apos;t have an account?
-              <NavLink to="/auth/register" className="font-semibold text-blue-500">
+              <NavLink
+                to="/auth/register"
+                className="font-semibold text-blue-500"
+              >
                 {" "}
                 Sign up
               </NavLink>

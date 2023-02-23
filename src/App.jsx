@@ -11,31 +11,65 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import Login from "./components/login/Login";
 import Register from "./components/login/Register";
 import Header from "./components/container/Header";
+import axios from "axios";
+import Loading from "./components/loading/Loading";
 
 function App() {
   const [isShowUsersForm, setIsShowUsersForm] = useState(false);
   const [isShowTasksForm, setIsShowTasksForm] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [showDelete, setShowDelete] = useState(false);
   const [activePage, setActivePage] = useState(null);
   const [showSideBar, setShowSideBar] = useState(false);
   const [update, setUpdate] = useState();
-  const [userSession, setUserSession] = useState(null);
+  const [userSession, setUserSession] = useState();
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    setUserSession(token ? true : false);
+    token && getUserInfo();
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
   }, []);
+
+  const loadingEnd = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      window.location.reload();
+      setIsLoading(false);
+    }, 10);
+  };
+
+  const getUserInfo = () => {
+    const URL = "https://crud-api-express.onrender.com/api/v1/users/me";
+
+    axios
+      .get(URL, {
+        headers: {
+          Authorization: `JWT ${token}`,
+        },
+      })
+      .then((res) => {
+        setUserSession(res?.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="flex">
+      <Loading isLoading={isLoading} />
       {/* ROUTES */}
-      <Header 
-        setShowSideBar={setShowSideBar} 
-        showSideBar={showSideBar}
-        setUserSession={setUserSession}
-        userSession={userSession} 
-      />
+      {activePage !== "/auth" ? (
+        <Header
+          setShowSideBar={setShowSideBar}
+          showSideBar={showSideBar}
+          userSession={userSession}
+        />
+      ) : null}
+
       <Routes>
         {/* Home Route */}
         <Route
@@ -46,46 +80,7 @@ function App() {
               setActivePage={setActivePage}
               setShowSideBar={setShowSideBar}
               showSideBar={showSideBar}
-            />
-          }
-        />
-        {/* Clients Route */}
-        <Route
-          path="/clients"
-          element={
-            <Users
-              isShowUsersForm={isShowUsersForm}
-              setIsShowUsersForm={setIsShowUsersForm}
-              update={update}
-              setUpdate={setUpdate}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-              showDelete={showDelete}
-              setShowDelete={setShowDelete}
-              activePage={activePage}
-              setActivePage={setActivePage}
-              setShowSideBar={setShowSideBar}
-              showSideBar={showSideBar}
-            />
-          }
-        />
-        {/* Tasks Route */}
-        <Route
-          path="/tasks"
-          element={
-            <Tasks
-              isShowTasksForm={isShowTasksForm}
-              setIsShowTasksForm={setIsShowTasksForm}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-              update={update}
-              setUpdate={setUpdate}
-              showDelete={showDelete}
-              setShowDelete={setShowDelete}
-              activePage={activePage}
-              setActivePage={setActivePage}
-              setShowSideBar={setShowSideBar}
-              showSideBar={showSideBar}
+              userSession={userSession}
             />
           }
         />
@@ -105,17 +100,17 @@ function App() {
           path="/auth/login"
           element={
             <Login
+              setActivePage={setActivePage}
               activePage={activePage}
-              userSession={userSession}
-              setUserSession={setUserSession}
+              getUserInfo={getUserInfo}
+              loadingEnd={loadingEnd}
+              setIsLoading={setIsLoading}
             />
           }
         />
         <Route
           path="/auth/register"
-          element={
-            <Register activePage={activePage} userSession={userSession} />
-          }
+          element={<Register setActivePage={setActivePage} setIsLoading={setIsLoading} />}
         />
 
         {/* Route not found 404 */}
@@ -123,6 +118,46 @@ function App() {
 
         {/* Protected Routes */}
         <Route element={<ProtectedRoutes />}>
+          {/* Clients Route */}
+          <Route
+            path="/clients"
+            element={
+              <Users
+                isShowUsersForm={isShowUsersForm}
+                setIsShowUsersForm={setIsShowUsersForm}
+                update={update}
+                setUpdate={setUpdate}
+                setIsLoading={setIsLoading}
+                showDelete={showDelete}
+                setShowDelete={setShowDelete}
+                activePage={activePage}
+                setActivePage={setActivePage}
+                setShowSideBar={setShowSideBar}
+                showSideBar={showSideBar}
+                userSession={userSession}
+              />
+            }
+          />
+          {/* Tasks Route */}
+          <Route
+            path="/tasks"
+            element={
+              <Tasks
+                isShowTasksForm={isShowTasksForm}
+                setIsShowTasksForm={setIsShowTasksForm}
+                setIsLoading={setIsLoading}
+                update={update}
+                setUpdate={setUpdate}
+                showDelete={showDelete}
+                setShowDelete={setShowDelete}
+                activePage={activePage}
+                setActivePage={setActivePage}
+                setShowSideBar={setShowSideBar}
+                showSideBar={showSideBar}
+                userSession={userSession}
+              />
+            }
+          />
           {/* Dashboard Route */}
           <Route
             path="/dashboard"

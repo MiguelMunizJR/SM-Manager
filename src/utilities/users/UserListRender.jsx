@@ -28,7 +28,7 @@ const UserListRender = ({
   };
 
   const deleteUser = (id) => {
-    const URL = `https://crud-api-express.onrender.com/api/v1/clients/${id}/`;
+    const URL = `https://crud-api-express.onrender.com/api/v1/clients/${id}`;
 
     axios
       .delete(URL, {
@@ -37,18 +37,15 @@ const UserListRender = ({
         },
       })
       .then(() => {
-        // console.log(`User with ID: ${id}, deleted succesfully!`);
         getAllUsers();
-        setIsDelete(false);
-        setShowDelete(false);
-        setIdUser(null);
       })
       .catch((err) => {
         console.log(err);
-        setIsDelete(false);
-        setShowDelete(false);
-        setIdUser(null);
       });
+      
+    setIsDelete(false);
+    setShowDelete(false);
+    setIdUser(null);
   };
 
   const updateUser = (user) => {

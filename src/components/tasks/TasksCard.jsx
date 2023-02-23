@@ -6,32 +6,33 @@ const TasksCard = ({
   tasks,
   getAllTasks,
   setIsShowTasksForm,
-  isLoading,
   setUpdate,
   isDelete,
   setIsDelete,
   setShowDelete,
   activePage,
   filterTasks,
+  setIsLoading,
+  isReload,
+  setIsReload
 }) => {
   const [isSort, setIsSort] = useState(false);
-  const [reload, setReload] = useState(false);
 
   const setSort = () => {
-    // setIsSort(!isSort);
+    setIsSort(!isSort);
     //! Filter task completed and not completed
   };
 
   const reloadTasks = () => {
     getAllTasks();
-    setReload(true);
+    setIsReload(true);
   };
 
   const tasksReady = () => {
     if (tasks) {
-      setReload(false);
+      setIsReload(false);
     }
-    setReload(false);
+    setIsReload(false);
   };
   return (
     <section className="w-full h-5/6 mt-7 mx-auto relative z-0 flex flex-col justify-center gap-4">
@@ -54,7 +55,7 @@ const TasksCard = ({
             onAnimationEnd={tasksReady}
           >
             <i
-              className={`${reload && "animate-reload"} fa-solid fa-rotate`}
+              className={`${isReload && "animate-reload"} fa-solid fa-rotate`}
             ></i>
           </button>
           <button
@@ -70,7 +71,7 @@ const TasksCard = ({
         </div>
       </article>
       <article className="w-11/12 mx-auto mb-4 rounded h-full md:h-5/6 md:rounded-lg bg-gray-100 dark:bg-gray-800 drop-shadow-md dark:drop-shadow-lg dark:shadow-black z-0 overflow-y-auto">
-        {reload || isLoading ? (
+        {isReload ? (
           <div className="w-full h-full flex flex-col justify-center items-center text-neutral-400 dark:text-gray-600 animate-pulse">
             <i className="fa-solid fa-bars-progress text-8xl"></i>
             <h2 className="font-default text-2xl ">Loading Data ...</h2>
@@ -94,6 +95,8 @@ const TasksCard = ({
                   setIsDelete={setIsDelete}
                   setShowDelete={setShowDelete}
                   filterTasks={filterTasks}
+                  setIsReload={setIsReload}
+                  setIsLoading={setIsLoading}
                 />
               )}
             </article>

@@ -1,6 +1,11 @@
-const ModalDelete = ({ setShowDelete, setIsDelete, activePage }) => {
+const ModalDelete = ({ setShowDelete, setIsDelete, activePage, setIsLoading }) => {
+  const handleDelete = () => {
+    setIsDelete(true);
+    setIsLoading(true);
+  };
+
   return (
-    <article className="w-8/12 sm:w-1/2 md:w-2/5 lg:w-1/4 h-1/3 mx-auto my-52 py-5 lg:px-2 sm:px-2 flex flex-col justify-evenly items-center rounded-lg drop-shadow-lg font-default font-medium text-center bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 fixed inset-0 z-50">
+    <article className="w-8/12 sm:w-1/2 md:w-2/5 lg:w-1/4 h-1/3 mx-auto my-52 py-5 lg:px-2 sm:px-2 flex flex-col justify-evenly items-center rounded-lg drop-shadow-lg font-default font-medium text-center bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 fixed inset-0 z-40">
       <div className="flex flex-col justify-center items-center">
         <i className="fa-solid fa-triangle-exclamation mb-3 text-5xl"></i>
         <h4 className="px-2">
@@ -11,7 +16,7 @@ const ModalDelete = ({ setShowDelete, setIsDelete, activePage }) => {
       </div>
       <div className="flex gap-6">
         <button
-          onClick={() => setIsDelete(true)}
+          onClick={handleDelete}
           className="bg-red-600 py-2 px-4 text-gray-200 dark:text-gray-300 font-medium drop-shadow-md rounded-md text-base hover:bg-red-700 dark:hover:bg-red-700"
         >
           Delete

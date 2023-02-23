@@ -2,12 +2,23 @@ import { NavLink, useNavigate } from "react-router-dom";
 import TimelineNav from "../../utilities/container/TimelineNav";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useEffect } from "react";
 
-const Register = () => {
+const Register = ({ setActivePage, setIsLoading }) => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    setIsLoading(true);
+    setActivePage("/auth");
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+  
+
   const submitForm = (data) => {
+    setIsLoading(true);
     const URL = "https://crud-api-express.onrender.com/api/v1/auth/register";
 
     axios
@@ -30,8 +41,8 @@ const Register = () => {
   return (
     <>
       <section className="w-full h-screen flex flex-col bg-gray-50">
-        <article className="w-full h-16 flex justify-between items-center bg-gray-50 z-40">
-          <section className="w-full ml-5 flex gap-4 items-center text-gray-800">
+        <article className="w-full h-14 flex justify-between items-center bg-gray-50 z-40 fixed top-0 left-0">
+          <section className="w-full ml-4 flex gap-4 items-center text-gray-800">
             <NavLink to="/">
               <h1 className="py-2 font-default text-xl font-semibold">
                 SM Manager
@@ -46,7 +57,7 @@ const Register = () => {
           prevIcon="fa-solid fa-home"
         />
         <section className="w-full h-full flex items-center justify-center">
-          <article className="w-5/6 h-full mt-24 font-default flex flex-col">
+          <article className="w-5/6 h-full mt-20 font-default flex flex-col">
             <h4 className="text-xs text-blue-500 font-semibold">Welcome</h4>
             <h2 className="mt-2 text-gray-800 font-medium text-3xl">Sign up</h2>
             <form
@@ -117,7 +128,7 @@ const Register = () => {
                   required
                 />
               </div>
-              <button className="w-1/2 h-10 flex justify-center items-center gap-2 self-end mt-4 font-medium rounded drop-shadow-lg text-gray-50 bg-blue-500">
+              <button className="w-1/2 h-10 flex justify-center items-center gap-2 self-end mt-4 rounded drop-shadow-lg text-gray-50 bg-blue-500">
                 Sign up
                 <i className="fa-solid fa-arrow-right-long"></i>
               </button>

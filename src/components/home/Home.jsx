@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-const Home = ({ setActivePage, setShowSideBar }) => {
+const Home = ({ setActivePage, setShowSideBar, userSession }) => {
+
   useEffect(() => {
     setActivePage("/");
     setShowSideBar(false);
@@ -17,9 +18,17 @@ const Home = ({ setActivePage, setShowSideBar }) => {
             <h5>Home</h5>
           </div>
           <article className="pl-4 font-default text-gray-800">
-            <h4 className="mt-5 text-xl font-medium text-blue-600">
-              Welcome, <span className="text-gray-800">Junior</span>
-            </h4>
+            <div className="flex gap-1 items-center mt-5 text-xl font-medium">
+              <h4 className="text-blue-600">Welcome</h4>
+              <span className="text-gray-800">
+                {
+                  userSession ? userSession?.firstName.charAt(0).toUpperCase() +
+              userSession?.firstName.slice(1)
+                    : null
+                }
+              </span>
+
+            </div>
             <h2 className="mt-2 pl-4 font-medium text-xl text-gray-700">
               Manage your <span className="text-blue-600">clients</span> or{" "}
               <span className="text-blue-600">tasks</span> for your day-to-day
@@ -29,7 +38,9 @@ const Home = ({ setActivePage, setShowSideBar }) => {
           <section className="w-11/12 min-h-max mt-7 mx-auto flex flex-col gap-10 font-default">
             <article className="w-full min-h-max flex gap-4">
               <NavLink
-                to="/clients"
+                to={ 
+                  userSession ? "/clients" : "/auth/login"
+                }
                 className="w-full h-64 flex justify-center rounded-lg drop-shadow-md hover:drop-shadow-lg bg-gray-100 cursor-pointer"
               >
                 <div className="flex gap-1 items-center">
@@ -38,7 +49,9 @@ const Home = ({ setActivePage, setShowSideBar }) => {
                 </div>
               </NavLink>
               <NavLink
-                to="/tasks"
+                to={ 
+                  userSession ? "/tasks" : "/auth/login"
+                }
                 className="w-full h-64 flex justify-center rounded-lg drop-shadow-md hover:drop-shadow-lg bg-gray-100 cursor-pointer"
               >
                 <div className="flex gap-1 items-center">
@@ -48,7 +61,9 @@ const Home = ({ setActivePage, setShowSideBar }) => {
               </NavLink>
             </article>
             <NavLink
-              to="/dashboard"
+              to={ 
+                userSession ? "/dashboard" : "/auth/login"
+              }
               className="w-full h-36 flex rounded-lg drop-shadow-md hover:drop-shadow-lg bg-gray-100 cursor-pointer"
             >
               <div className="ml-4 flex gap-1 items-center">

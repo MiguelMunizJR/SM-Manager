@@ -26,7 +26,7 @@ const TasksForm = ({
     <form
       onSubmit={handleSubmit(submitTaskData)}
       onKeyDown={checkKeyPress}
-      className="mt-6 mx-4 flex flex-col gap-2 font-default text-sm z-auto"
+      className="mt-6 mx-4 flex flex-col gap-2 font-default text-sm z-40"
     >
       <article className="flex flex-col sm:flex-row gap-4"></article>
       <div className="flex flex-col">

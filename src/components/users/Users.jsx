@@ -1,13 +1,11 @@
-import { useEffect, useState, startTransition } from "react";
+import { useEffect, useState } from "react";
 import { Transition } from "@headlessui/react";
 import axios from "axios";
 import SearchBar from "../../utilities/container/SearchBar";
-// import Header from "../container/Header";
 import UsersCard from "./UsersCard";
 import FormModal from "../container/FormModal";
 import ModalDelete from "../../utilities/container/ModalDelete";
 import ButtonMobile from "../../utilities/navbar/ButtonMobile";
-import Header from "../container/Header";
 import TimelineNav from "../../utilities/container/TimelineNav";
 
 const Users = ({
@@ -15,14 +13,13 @@ const Users = ({
   setIsShowUsersForm,
   update,
   setUpdate,
-  isLoading,
   setIsLoading,
   showDelete,
   setShowDelete,
   activePage,
   setActivePage,
   setShowSideBar,
-  showSideBar,
+  userSession,
 }) => {
   const [users, setUsers] = useState(null);
   const [filterUsers, setFilterUsers] = useState(null);
@@ -37,7 +34,6 @@ const Users = ({
   }, []);
 
   const getAllUsers = () => {
-    setIsLoading(true);
     const URL = "https://crud-api-express.onrender.com/api/v1/clients";
 
     axios
@@ -47,10 +43,8 @@ const Users = ({
         },
       })
       .then((res) => {
-        startTransition(() => {
-          setUsers(res.data?.data);
-          setIsLoading(false);
-        });
+        setUsers(res.data?.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -62,7 +56,7 @@ const Users = ({
       {/* Form Animation */}
       <Transition
         as="section"
-        className={"fixed inset-0 z-50"}
+        className={"fixed inset-0 z-40"}
         show={isShowUsersForm}
         enter="transition-opacity duration-100"
         enterFrom="opacity-0"
@@ -77,6 +71,7 @@ const Users = ({
           getAllUsers={getAllUsers}
           update={update}
           setUpdate={setUpdate}
+          setIsLoading={setIsLoading}
         />
         <section className="w-screen h-screen opacity-10 absolute inset-0 bg-slate-800 z-10"></section>
       </Transition>
@@ -96,6 +91,7 @@ const Users = ({
           setShowDelete={setShowDelete}
           setIsDelete={setIsDelete}
           activePage={activePage}
+          setIsLoading={setIsLoading}
         />
         {/* MODAL DELETE CONFIRM HERE! */}
         <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
@@ -109,11 +105,20 @@ const Users = ({
         />
         <article className="mt-6 pl-4 font-default text-gray-800">
           <h4 className="text-lg font-medium text-blue-600">
-            Hi, <span className="text-gray-800">Junior</span>
+            Hi,{" "}
+            <span className="text-gray-800">
+              {userSession?.firstName.charAt(0).toUpperCase() +
+                userSession?.firstName.slice(1)}
+            </span>
           </h4>
           <h2 className="mt-1 pl-4 font-medium text-2xl text-gray-700">
-            You have <span className="text-blue-600">5</span> active clients
-            today
+            You have{" "}
+            <span className="text-blue-600">
+              {
+                users?.filter(user => user.status === "active").length
+              }
+            </span> active
+            clients today
           </h2>
         </article>
         <SearchBar
@@ -129,11 +134,11 @@ const Users = ({
           setFilterUsers={setFilterUsers}
           setUpdate={setUpdate}
           setIsShowUsersForm={setIsShowUsersForm}
-          isLoading={isLoading}
           setShowDelete={setShowDelete}
           isDelete={isDelete}
           setIsDelete={setIsDelete}
           activePage={activePage}
+          setIsLoading={setIsLoading}
         />
         <ButtonMobile
           setIsShowUsersForm={setIsShowUsersForm}

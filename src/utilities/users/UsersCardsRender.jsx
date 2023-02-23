@@ -51,15 +51,13 @@ const UsersCardsRender = ({
   };
 
   const updateUser = (user) => {
-    console.log(user);
     setUpdate(user);
     setIsShowUsersForm(true);
   };
 
   return (
     <>
-      {users?.map((user) => { 
-        console.log(user);
+      {users?.map((user) => {
         return (
           <article
             key={user.id}
@@ -67,7 +65,7 @@ const UsersCardsRender = ({
               user.status === "not_active"
                 ? "border-l-red-500"
                 : "border-l-green-500"
-            } md:hidden mb-1 py-2 px-4 border-l-8 border-l-green-500 border-b border-b-gray-300 dark:border-b-gray-700 flex flex-col font-default bg-gray-100 dark:bg-gray-800 odd:bg-slate-200 dark:odd:bg-gray-900`}
+            } md:hidden mb-1 py-2 px-4 border-l-8 border-b border-b-gray-300 dark:border-b-gray-700 flex flex-col font-default bg-gray-100 dark:bg-gray-800 odd:bg-slate-200 dark:odd:bg-gray-900`}
           >
             <div className="w-full flex justify-between">
               <div className="flex flex-col">
@@ -114,7 +112,8 @@ const UsersCardsRender = ({
               </div>
             </div>
           </article>
-        );})}
+        );
+      })}
     </>
   );
 };
