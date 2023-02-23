@@ -30,8 +30,18 @@ const FormModal = ({
     if (update) {
       const URL = `https://crud-api-express.onrender.com/api/v1/clients/${update.id}/`;
 
+      console.log(data);
+
       axios
-        .patch(URL, data, {
+        .patch(URL, {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          password: data.password,
+          birthday: data.birthday,
+          phone: data.phone,
+          status: data.status
+        }, {
           headers: {
             Authorization: `JWT ${token}`,
           },

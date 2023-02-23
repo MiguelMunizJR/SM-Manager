@@ -28,7 +28,7 @@ const UserListRender = ({
   };
 
   const deleteUser = (id) => {
-    const URL = `https://crud-api-express.onrender.com/api/v1/users/${id}/`;
+    const URL = `https://crud-api-express.onrender.com/api/v1/clients/${id}/`;
 
     axios
       .delete(URL, {

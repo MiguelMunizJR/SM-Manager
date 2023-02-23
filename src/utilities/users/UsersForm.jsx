@@ -78,22 +78,25 @@ const UsersForm = ({
           required
         />
       </div>
-      <div className="flex flex-col">
-        <label
-          htmlFor="password"
-          className="pb-1 font-semibold text-black dark:text-gray-300"
-        >
+      {
+        update ? null : (
+          <div className="flex flex-col">
+            <label
+              htmlFor="password"
+              className="pb-1 font-semibold text-black dark:text-gray-300"
+            >
           Password: *
-        </label>
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          className="h-10 pl-3 rounded bg-slate-100 outline-none text-gray-900 font-medium shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-1 focus:ring-blue-400"
-          {...register("password")}
-          required
-        />
-      </div>
+            </label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              className="h-10 pl-3 rounded bg-slate-100 outline-none text-gray-900 font-medium shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-1 focus:ring-blue-400"
+              {...register("password")}
+            />
+          </div>
+        )
+      }
       <div className="flex flex-col">
         <label
           htmlFor="birthday"
@@ -115,8 +118,7 @@ const UsersForm = ({
       {update && (
         <div className="flex flex-col text-center font-default">
           <label
-            htmlFor="is_active"
-            name="isActive"
+            htmlFor="status"
             className="pb-1 font-semibold self-center text-black  dark:text-gray-300"
           >
             Active:
@@ -126,21 +128,21 @@ const UsersForm = ({
               <label htmlFor="active">Active</label>
               <input
                 type="radio"
-                name="is_active"
-                value={true}
+                name="status"
+                value="active"
                 id="active"
-                defaultChecked
-                {...register("isActive")}
+                // defaultChecked
+                {...register("status")}
               />
             </div>
             <div className="flex gap-2">
-              <label htmlFor="deactivated">Deactivate</label>
+              <label htmlFor="not_active">Deactivate</label>
               <input
                 type="radio"
-                name="is_active"
-                value={JSON.parse(false)}
-                id="deactivated"
-                {...register("isActive")}
+                name="status"
+                value="not_active"
+                id="not_active"
+                {...register("status")}
               />
             </div>
           </div>

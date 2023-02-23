@@ -54,9 +54,7 @@ const TaskListRender = ({
   const handleCompleted = (task) => {
     setIsCompleted(!isCompleted);
 
-    const URL = `https://crud-api-express.onrender.com/api/v1/tasks/${task?.id}/`;
-
-    console.log(task.id);
+    const URL = `https://crud-api-express.onrender.com/api/v1/tasks/${task.id}/`;
 
     axios
       .patch(URL, {
