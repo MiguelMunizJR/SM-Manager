@@ -25,7 +25,7 @@ const Header = ({
           animate={{ translateX: 175 }}
           transition={{ duration: 0.3 }}
         >
-          <NavBar activePage={activePage} />
+          <NavBar activePage={activePage} userSession={userSession} />
         </motion.section>
       )}
       {showSideBar && (
