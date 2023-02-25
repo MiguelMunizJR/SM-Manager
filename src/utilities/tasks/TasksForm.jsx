@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { defaultTasksValues } from "../defaultValues";
 
 const TasksForm = ({
@@ -8,6 +9,8 @@ const TasksForm = ({
   reset,
   setIsShowTasksForm,
 }) => {
+  const { titleId, descriptionId } = useId();
+
   const clearUpdate = () => {
     reset(defaultTasksValues);
   };
@@ -31,13 +34,13 @@ const TasksForm = ({
       <article className="flex flex-col sm:flex-row gap-4"></article>
       <div className="flex flex-col">
         <label
-          htmlFor="title"
+          htmlFor={titleId}
           className="pb-1 font-semibold text-black dark:text-gray-300"
         >
           Title: *
         </label>
         <input
-          id="title"
+          id={titleId}
           type="text"
           placeholder="Title"
           className="w-80 sm:w-auto h-10 pl-3 rounded bg-slate-100 outline-none text-gray-900 font-medium shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-2 focus:ring-blue-400"
@@ -47,13 +50,13 @@ const TasksForm = ({
       </div>
       <div className="flex flex-col">
         <label
-          htmlFor="description"
+          htmlFor={descriptionId}
           className="pb-1 font-semibold text-black dark:text-gray-300"
         >
           Description:
         </label>
         <textarea
-          id="description"
+          id={descriptionId}
           placeholder="Description"
           className="w-80 h-32 p-2 rounded bg-slate-100 resize-none outline-none text-gray-900 font-medium drop-shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-2 focus:ring-blue-400"
           {...register("description")}

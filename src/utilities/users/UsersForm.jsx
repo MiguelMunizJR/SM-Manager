@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { defaultUsersValues } from "../defaultValues";
 
 const UsersForm = ({
@@ -8,6 +9,9 @@ const UsersForm = ({
   reset,
   setIsShowUsersForm,
 }) => {
+  const { firstNameId, lastNameId, emailId, passwordId, birthdayId, activeId } =
+    useId();
+
   const clearUpdate = () => {
     reset(defaultUsersValues);
   };
@@ -31,13 +35,13 @@ const UsersForm = ({
       <article className="flex flex-col sm:flex-row gap-4">
         <div className="flex flex-col">
           <label
-            htmlFor="firstname"
+            htmlFor={firstNameId}
             className="pb-1 font-semibold text-black dark:text-gray-300"
           >
             Firstname: *
           </label>
           <input
-            id="firstname"
+            id={firstNameId}
             type="text"
             placeholder="Firstname"
             className="w-72 sm:w-auto h-10 pl-3 rounded bg-slate-100 outline-none text-gray-900 font-medium shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-1 focus:ring-blue-400"
@@ -47,13 +51,13 @@ const UsersForm = ({
         </div>
         <div className="flex flex-col">
           <label
-            htmlFor="lastname"
+            htmlFor={lastNameId}
             className="pb-1 font-semibold text-black dark:text-gray-300"
           >
             Lastname: *
           </label>
           <input
-            id="lastname"
+            id={lastNameId}
             type="text"
             placeholder="Lastname"
             className="w-72 sm:w-auto h-10 pl-3 rounded bg-slate-100 outline-none text-gray-900 font-medium shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-1 focus:ring-blue-400"
@@ -64,13 +68,13 @@ const UsersForm = ({
       </article>
       <div className="flex flex-col">
         <label
-          htmlFor="email"
+          htmlFor={emailId}
           className="pb-1 font-semibold text-black dark:text-gray-300"
         >
           Email: *
         </label>
         <input
-          id="email"
+          id={emailId}
           type="email"
           placeholder="Email"
           className="h-10 pl-3 rounded bg-slate-100 outline-none text-gray-900 font-medium shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-1 focus:ring-blue-400"
@@ -78,34 +82,32 @@ const UsersForm = ({
           required
         />
       </div>
-      {
-        update ? null : (
-          <div className="flex flex-col">
-            <label
-              htmlFor="password"
-              className="pb-1 font-semibold text-black dark:text-gray-300"
-            >
-          Password: *
-            </label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Password"
-              className="h-10 pl-3 rounded bg-slate-100 outline-none text-gray-900 font-medium shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-1 focus:ring-blue-400"
-              {...register("password")}
-            />
-          </div>
-        )
-      }
+      {update ? null : (
+        <div className="flex flex-col">
+          <label
+            htmlFor={passwordId}
+            className="pb-1 font-semibold text-black dark:text-gray-300"
+          >
+            Password: *
+          </label>
+          <input
+            id={passwordId}
+            type="password"
+            placeholder="Password"
+            className="h-10 pl-3 rounded bg-slate-100 outline-none text-gray-900 font-medium shadow-sm transition ease-in-out duration-150 hover:shadow-md focus:shadow-md focus:ring-1 focus:ring-blue-400"
+            {...register("password")}
+          />
+        </div>
+      )}
       <div className="flex flex-col">
         <label
-          htmlFor="birthday"
+          htmlFor={birthdayId}
           className="pb-1 font-semibold self-center text-black dark:text-gray-300"
         >
           Birthday: *
         </label>
         <input
-          id="birthday"
+          id={birthdayId}
           type="date"
           min={"1960-01-01"}
           max={"2023-01-01"}
@@ -118,7 +120,7 @@ const UsersForm = ({
       {update && (
         <div className="flex flex-col text-center font-default">
           <label
-            htmlFor="status"
+            htmlFor={activeId}
             className="pb-1 font-semibold self-center text-black  dark:text-gray-300"
           >
             Active:
@@ -130,7 +132,7 @@ const UsersForm = ({
                 type="radio"
                 name="status"
                 value="active"
-                id="active"
+                id={activeId}
                 // defaultChecked
                 {...register("status")}
               />
@@ -141,7 +143,7 @@ const UsersForm = ({
                 type="radio"
                 name="status"
                 value="not_active"
-                id="not_active"
+                id={activeId}
                 {...register("status")}
               />
             </div>
