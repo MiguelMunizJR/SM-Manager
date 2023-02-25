@@ -5,12 +5,12 @@ const itemsNav = [
     route: "/",
     icon: "fa-solid fa-house",
   },
-  {
-    id: 2,
-    title: "Dashboard",
-    route: "/dashboard",
-    icon: "fa-solid fa-gauge",
-  },
+  // {
+  //   id: 2,
+  //   title: "Dashboard",
+  //   route: "/dashboard",
+  //   icon: "fa-solid fa-gauge",
+  // },
   {
     id: 3,
     title: "Clients",
@@ -29,12 +29,12 @@ const itemsNav = [
     route: "/users/me",
     icon: "fa-solid fa-user",
   },
-  {
-    id: 6,
-    title: "Settings",
-    route: "/settings",
-    icon: "fa-solid fa-gear",
-  },
+  // {
+  //   id: 6,
+  //   title: "Settings",
+  //   route: "/settings",
+  //   icon: "fa-solid fa-gear",
+  // },
 ];
 
 export default itemsNav;
