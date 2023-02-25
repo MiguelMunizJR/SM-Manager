@@ -1,7 +1,6 @@
-import { Transition } from "@headlessui/react";
+import { motion } from "framer-motion";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { set } from "react-hook-form";
 import ModalDelete from "../../utilities/container/ModalDelete";
 import SearchBar from "../../utilities/container/SearchBar";
 import TimelineNav from "../../utilities/container/TimelineNav";
@@ -57,76 +56,106 @@ const Tasks = ({
   return (
     <>
       {/* Form Animation */}
-      <Transition
-        as="section"
-        className={"fixed inset-0 z-40"}
-        show={isShowTasksForm}
-        enter="transition-opacity duration-100"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity duration-100"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <FormModal
-          activePage={activePage}
-          setIsShowTasksForm={setIsShowTasksForm}
-          getAllTasks={getAllTasks}
-          update={update}
-          setUpdate={setUpdate}
-          setIsLoading={setIsLoading}
-        />
-        <section className="w-screen h-screen opacity-30 dark:opacity-30 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
-      </Transition>
+      {isShowTasksForm && (
+        <motion.section
+          className="fixed inset-0 z-40"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.1,
+          }}
+        >
+          <FormModal
+            activePage={activePage}
+            setIsShowTasksForm={setIsShowTasksForm}
+            getAllTasks={getAllTasks}
+            update={update}
+            setUpdate={setUpdate}
+            setIsLoading={setIsLoading}
+          />
+          <section className="w-screen h-screen opacity-30 dark:opacity-30 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
+        </motion.section>
+      )}
       {/* Modal Delete Confirm */}
-      <Transition
-        as="section"
-        className={"fixed inset-0 z-40"}
-        show={showDelete}
-        enter="transition-opacity duration-100"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity duration-100"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <ModalDelete
-          setShowDelete={setShowDelete}
-          setIsDelete={setIsDelete}
-          activePage={activePage}
-          setIsLoading={setIsLoading}
-        />
-        <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
-      </Transition>
+      {showDelete && (
+        <motion.section
+          className="fixed inset-0 z-40"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.1,
+          }}
+        >
+          <ModalDelete
+            setShowDelete={setShowDelete}
+            setIsDelete={setIsDelete}
+            activePage={activePage}
+            setIsLoading={setIsLoading}
+          />
+          <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
+        </motion.section>
+      )}
       <section className="w-full h-screen flex flex-col justify-between bg-gray-50">
-        <TimelineNav
-          actualPage="Tasks"
-          actualIcon="fa-solid fa-list-check"
-          prevPag="Home"
-          prevIcon="fa-solid fa-home"
-        />
-        <article className="mt-6 pl-4 font-default text-gray-800">
-          <h4 className="text-lg font-medium text-blue-600">
-            Hi,{" "}
-            <span className="text-gray-800">
-              {userSession?.firstName.charAt(0).toUpperCase() +
-                userSession?.firstName.slice(1)}
-            </span>
-          </h4>
-          <h2 className="mt-1 pl-4 font-medium text-2xl text-gray-700">
-            You have <span className="text-blue-600">
-              {
-                tasks?.filter(task => task.status === "not_completed").length
-              }
-            </span> pending tasks
-            today
-          </h2>
-        </article>
-        <SearchBar
-          activePage={activePage}
-          setFilterTasks={setFilterTasks}
-          tasks={tasks}
-        />
+        <motion.div
+          initial={{ opacity: 0, translateY: -10 }}
+          animate={{ opacity: 1, translateY: 0 }}
+          transition={{
+            duration: 0.4,
+            delay: 0.3,
+            ease: "easeInOut",
+          }}
+        >
+          <TimelineNav
+            actualPage="Tasks"
+            actualIcon="fa-solid fa-list-check"
+            prevPag="Home"
+            prevIcon="fa-solid fa-home"
+          />
+        </motion.div>
+        <motion.article
+          initial={{ opacity: 0, translateY: -10 }}
+          animate={{ opacity: 1, translateY: 0 }}
+          transition={{
+            duration: 0.4,
+            delay: 0.4,
+            ease: "easeInOut",
+          }}
+        >
+          <article className="mt-6 pl-4 font-default text-gray-800">
+            <h4 className="text-lg font-medium text-blue-600">
+              Hi,{" "}
+              <span className="text-gray-800">
+                {userSession?.firstName.charAt(0).toUpperCase() +
+                  userSession?.firstName.slice(1)}
+              </span>
+            </h4>
+            <h2 className="mt-1 pl-4 font-medium text-2xl text-gray-700">
+              You have{" "}
+              <span className="text-blue-600">
+                {
+                  tasks?.filter((task) => task.status === "not_completed")
+                    .length
+                }
+              </span>{" "}
+              pending tasks today
+            </h2>
+          </article>
+        </motion.article>
+        <motion.div
+          initial={{ opacity: 0, translateY: -10 }}
+          animate={{ opacity: 1, translateY: 0 }}
+          transition={{
+            duration: 0.4,
+            delay: 0.5,
+            ease: "easeInOut",
+          }}
+        >
+          <SearchBar
+            activePage={activePage}
+            setFilterTasks={setFilterTasks}
+            tasks={tasks}
+          />
+        </motion.div>
         <TasksCard
           tasks={tasks}
           getAllTasks={getAllTasks}

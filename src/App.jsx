@@ -13,6 +13,7 @@ import Register from "./components/login/Register";
 import Header from "./components/container/Header";
 import axios from "axios";
 import Loading from "./components/loading/Loading";
+import { motion } from "framer-motion";
 
 function App() {
   const [isShowUsersForm, setIsShowUsersForm] = useState(false);
@@ -29,7 +30,7 @@ function App() {
     token && getUserInfo();
     setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 1000);
   }, []);
 
   const loadingEnd = () => {
@@ -63,11 +64,21 @@ function App() {
       <Loading isLoading={isLoading} />
       {/* ROUTES */}
       {activePage !== "/auth" ? (
-        <Header
-          setShowSideBar={setShowSideBar}
-          showSideBar={showSideBar}
-          userSession={userSession}
-        />
+        <motion.header
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.5,
+            delay: 0.3,
+          }}
+        >
+          <Header
+            setShowSideBar={setShowSideBar}
+            showSideBar={showSideBar}
+            userSession={userSession}
+            setIsLoading={setIsLoading}
+          />
+        </motion.header>
       ) : null}
 
       <Routes>
@@ -110,7 +121,12 @@ function App() {
         />
         <Route
           path="/auth/register"
-          element={<Register setActivePage={setActivePage} setIsLoading={setIsLoading} />}
+          element={
+            <Register
+              setActivePage={setActivePage}
+              setIsLoading={setIsLoading}
+            />
+          }
         />
 
         {/* Route not found 404 */}
