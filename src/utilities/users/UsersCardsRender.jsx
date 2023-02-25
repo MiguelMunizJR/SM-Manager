@@ -83,7 +83,7 @@ const UsersCardsRender = ({
                   user.status === "not_active"
                     ? "border-l-red-500"
                     : "border-l-green-500"
-                } md:hidden mb-1 py-2 px-4 border-l-8 border-b border-b-gray-300 dark:border-b-gray-700 flex flex-col font-default bg-gray-100 dark:bg-gray-800 odd:bg-slate-200 dark:odd:bg-gray-900`}
+                } md:hidden mb-1 py-2 px-4 border-l-8 border-b border-b-gray-300 dark:border-b-gray-700 flex flex-col font-default bg-gray-100 dark:bg-gray-800 odd:bg-slate-100 dark:odd:bg-gray-900`}
               >
                 <div className="w-full flex justify-between">
                   <div className="flex flex-col">
@@ -140,6 +140,11 @@ const UsersCardsRender = ({
           ))
           : users?.map((user, i) => (
             <motion.article
+              className={`${
+                user.status === "not_active"
+                  ? "border-l-red-500"
+                  : "border-l-green-500"
+              } md:hidden mb-2 py-2 px-4 border-l-8 border-b border-b-gray-300 dark:border-b-gray-700 flex flex-col font-default bg-gray-100 dark:bg-gray-800 odd:bg-gray-200 dark:odd:bg-gray-900`}
               initial={{ opacity: 0, translateY: -30 }}
               animate={{ opacity: 1, translateY: 0 }}
               transition={{
@@ -148,13 +153,7 @@ const UsersCardsRender = ({
               }}
               key={user.id}
             >
-              <article
-                className={`${
-                  user.status === "not_active"
-                    ? "border-l-red-500"
-                    : "border-l-green-500"
-                } md:hidden mb-1 py-2 px-4 border-l-8 border-b border-b-gray-300 dark:border-b-gray-700 flex flex-col font-default bg-gray-100 dark:bg-gray-800 odd:bg-slate-200 dark:odd:bg-gray-900`}
-              >
+              <article>
                 <div className="w-full flex justify-between">
                   <div className="flex flex-col">
                     <h4 className="text-lg font-medium text-gray-800 dark:text-gray-300">

@@ -77,11 +77,21 @@ const FormModal = ({
       const URL = `https://crud-api-express.onrender.com/api/v1/tasks/${update.id}/`;
 
       axios
-        .patch(URL, data, {
-          headers: {
-            Authorization: `JWT ${token}`,
+        .patch(
+          URL,
+          {
+            title: data.title,
+            description: !data.description
+              ? "No description"
+              : data.description,
+            isCompleted: data.isCompleted,
           },
-        })
+          {
+            headers: {
+              Authorization: `JWT ${token}`,
+            },
+          }
+        )
         .then(() => {
           setIsShowTasksForm(false);
           getAllTasks();

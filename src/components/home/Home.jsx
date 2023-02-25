@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
+import itemsHome from "../../utilities/home/itemsHome";
 
 const Home = ({ setActivePage, setShowSideBar, userSession }) => {
   useEffect(() => {
@@ -62,73 +63,32 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
               </h2>
             </motion.div>
           </article>
-          <section className="w-11/12 min-h-max mt-7 mx-auto flex flex-col gap-10 font-default">
-            <article className="w-full min-h-max flex gap-4">
+          <section className="w-11/12 min-h-max mx-auto mt-10 flex justify-center gap-8 font-default">
+            {itemsHome.map((item, i) => (
               <motion.article
                 className="w-full min-h-max flex gap-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{
                   duration: 0.3,
-                  delay: 0.6,
+                  delay: i + 0.1,
                   ease: "easeInOut",
                 }}
+                key={item.id}
               >
                 <NavLink
-                  to={userSession ? "/clients" : "/auth/login"}
-                  className="w-full h-64 flex justify-center rounded-lg drop-shadow-md hover:drop-shadow-lg bg-gray-100 cursor-pointer"
+                  to={userSession ? item.route : "/auth/login"}
+                  className={item.className}
                 >
                   <div className="flex gap-1 items-center">
-                    <i className="fa-solid fa-users"></i>
+                    <i className={item.icon}></i>
                     <h2 className="font-medium text-xl text-gray-800">
-                      Clients
+                      {item.title}
                     </h2>
                   </div>
                 </NavLink>
               </motion.article>
-              <motion.article
-                className="w-full min-h-max flex gap-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  duration: 0.3,
-                  delay: 0.8,
-                  ease: "easeInOut",
-                }}
-              >
-                <NavLink
-                  to={userSession ? "/tasks" : "/auth/login"}
-                  className="w-full h-64 flex justify-center rounded-lg drop-shadow-md hover:drop-shadow-lg bg-gray-100 cursor-pointer"
-                >
-                  <div className="flex gap-1 items-center">
-                    <i className="fa-solid fa-list-check"></i>
-                    <h2 className="font-medium text-xl text-gray-800">Tasks</h2>
-                  </div>
-                </NavLink>
-              </motion.article>
-            </article>
-            <motion.article
-              className="w-full min-h-max flex gap-4"
-              initial={{ opacity: 0, translateY: -30 }}
-              animate={{ opacity: 1, translateY: 0 }}
-              transition={{
-                duration: 0.4,
-                delay: 0.9,
-                ease: "easeInOut",
-              }}
-            >
-              <NavLink
-                to={userSession ? "/dashboard" : "/auth/login"}
-                className="w-full h-36 flex rounded-lg drop-shadow-md hover:drop-shadow-lg bg-gray-100 cursor-pointer"
-              >
-                <div className="ml-4 flex gap-1 items-center">
-                  <i className="fa-solid fa-gauge"></i>
-                  <h2 className="font-medium text-xl text-gray-800">
-                    Dashboard
-                  </h2>
-                </div>
-              </NavLink>
-            </motion.article>
+            ))}
           </section>
         </section>
       </section>
