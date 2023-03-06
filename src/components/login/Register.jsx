@@ -77,10 +77,9 @@ const Register = ({ setActivePage, setIsLoading }) => {
           }}
         >
           <TimelineNav
+            activePage="/auth/register"
             actualPage="Sign up"
             actualIcon="fa-solid fa-key"
-            prevPag="Home"
-            prevIcon="fa-solid fa-home"
           />
         </motion.div>
         <section className="w-full h-full flex items-center justify-center">

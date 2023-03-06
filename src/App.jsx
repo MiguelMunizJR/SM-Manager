@@ -1,7 +1,7 @@
 import Home from "./components/home/Home";
 import Users from "./components/users/Users";
 import NotFound from "./components/container/NotFound";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Tasks from "./components/tasks/Tasks";
 import Settings from "./components/settings/Settings";
@@ -25,8 +25,10 @@ function App() {
   const [update, setUpdate] = useState();
   const [userSession, setUserSession] = useState();
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   useEffect(() => {
+    !token && navigate("/auth/login");
     token && getUserInfo();
     setTimeout(() => {
       setIsLoading(false);
@@ -82,19 +84,6 @@ function App() {
       ) : null}
 
       <Routes>
-        {/* Home Route */}
-        <Route
-          path="/"
-          element={
-            <Home
-              activePage={activePage}
-              setActivePage={setActivePage}
-              setShowSideBar={setShowSideBar}
-              showSideBar={showSideBar}
-              userSession={userSession}
-            />
-          }
-        />
         {/* Settings Route */}
         <Route
           path="/settings"
@@ -134,6 +123,19 @@ function App() {
 
         {/* Protected Routes */}
         <Route element={<ProtectedRoutes />}>
+          {/* Home Route */}
+          <Route
+            path="/"
+            element={
+              <Home
+                activePage={activePage}
+                setActivePage={setActivePage}
+                setShowSideBar={setShowSideBar}
+                showSideBar={showSideBar}
+                userSession={userSession}
+              />
+            }
+          />
           {/* Clients Route */}
           <Route
             path="/clients"
