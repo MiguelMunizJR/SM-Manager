@@ -35,6 +35,9 @@ module.exports = {
         reload: "reload .45s linear",
         modalForm: "modalForm 1s linear",
       },
+      backgroundImage: {
+        "hero-login": "url(./public/pexels-jonathan-borba-2922326.jpg)"
+      }
     },
   },
   plugins: [],

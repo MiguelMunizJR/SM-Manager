@@ -43,8 +43,8 @@ const Login = ({ getUserInfo, setActivePage, setIsLoading, loadingEnd }) => {
 
   return (
     <>
-      <section className="w-full min-h-screen flex flex-col bg-gray-50">
-        <header className="w-full h-14 flex justify-between items-center bg-gray-50 z-40 fixed top-0 left-0">
+      <section className="w-full min-h-screen flex flex-col bg-gray-50 overflow-y-hidden">
+        <header className="w-full h-14 flex justify-between items-center bg-gray-50 sm:bg-transparent z-40 fixed top-0 left-0">
           <motion.header
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -53,15 +53,16 @@ const Login = ({ getUserInfo, setActivePage, setIsLoading, loadingEnd }) => {
               delay: 1,
             }}
           >
-            <article className="w-screen pl-4 pr-6 flex items-center justify-between gap-4 text-gray-800">
-              <NavLink to="/">
-                <h1 className="py-2 font-default text-xl font-semibold drop-shadow-xl">
-                  SM Manager
-                </h1>
-              </NavLink>
+            <article className="w-screen px-4 lg:px-6 flex items-center justify-between text-gray-800 sm:text-gray-800">
+              <h1 className="py-2 font-default text-xl md:text-xl font-semibold drop-shadow-sm">
+                <span className="py-1 px-2 rounded-md bg-blue-700 text-gray-50 font-bold drop-shadow-md">
+                    SM
+                </span>{" "}
+                  Manager
+              </h1>
               <NavLink
                 to="/auth/register"
-                className="mt-1 px-4 py-2 text-gray-50 text-sm bg-blue-500 rounded-md cursor-pointer drop-shadow-sm sm:px-6"
+                className="mt-1 px-4 py-2 text-gray-50 text-sm md:text-lg bg-blue-600 transition-all duration-100 hover:bg-blue-700 rounded-md cursor-pointer drop-shadow-md sm:drop-shadow-lg sm:px-6"
               >
                 Sign up
               </NavLink>
@@ -83,10 +84,18 @@ const Login = ({ getUserInfo, setActivePage, setIsLoading, loadingEnd }) => {
             actualIcon="fa-solid fa-key"
           />
         </motion.div> */}
-        <section className="w-full h-full mt-14 pt-6 flex items-center justify-center">
-          <article className="w-5/6 h-full pt-12 font-default flex flex-col sm:w-3/5 md:w-3/4 md:min-h-max md:shadow-lg md:p-6 md:ring-1 md:ring-gray-200 md:rounded-md  lg:max-w-4xl">
-            <div className="w-full min-h-max flex flex-col justify-center">
+        <section className="w-full h-screen sm:h-screen mt-14 pt-6 flex justify-center bg-gray-50 overflow-y-hidden">
+          <article className="w-full h-screen hidden sm:block absolute inset-0 z-0">
+            <img
+              src="../../../public/pexels-jonathan-borba-2922326.jpg"
+              alt="hero_login"
+              className="w-full h-full object-cover filter blur-sm opacity-70 bg-gray-800"
+            />
+          </article>
+          <article className="w-5/6 max-w-3xl min-h-max lg:h-5/6 pt-10 sm:pt-0 font-default flex flex-col bg-gray-50 sm:w-3/5 sm:min-h-max sm:items-center sm:absolute sm:inset-0 sm:inset-x-auto sm:z-10 sm:mt-20 sm:shadow-lg sm:rounded-lg md:w-3/6 md:flex-row lg:w-2/3">
+            <div className="w-full min-h-max sm:p-6 flex flex-col">
               <motion.div
+                className="min-w-full flex flex-row-reverse"
                 initial={{ opacity: 0, translateY: -10 }}
                 animate={{ opacity: 1, translateY: 0 }}
                 transition={{
@@ -95,11 +104,20 @@ const Login = ({ getUserInfo, setActivePage, setIsLoading, loadingEnd }) => {
                   ease: "easeInOut",
                 }}
               >
-                <h4 className="text-xs text-blue-500 font-semibold">Welcome</h4>
-                <h2 className="mt-2 text-gray-800 font-medium text-3xl">Login</h2>
-                <h4 className="mt-2 text-sm font-medium text-gray-400">
-                Please sign in to continue
-                </h4>
+                <div className="w-full min-h-max flex flex-col">
+                  <h4 className="text-xs text-blue-500 font-semibold">
+                    Welcome back!
+                  </h4>
+                  <h2 className="mt-2 text-gray-800 font-medium text-4xl">
+                    Login
+                  </h2>
+                  <h4 className="mt-2 text-sm font-medium text-gray-400">
+                    Please sign in to continue
+                  </h4>
+                </div>
+                <div className="w-1/4 min-h-max hidden justify-center items-center sm:flex">
+                  <i className="fa-solid fa-user text-4xl text-gray-800"></i>
+                </div>
               </motion.div>
               <motion.form
                 className="w-full min-h-max mt-8 flex flex-col gap-4 justify-center items-center"
@@ -112,18 +130,18 @@ const Login = ({ getUserInfo, setActivePage, setIsLoading, loadingEnd }) => {
                 }}
                 onSubmit={handleSubmit(submitForm)}
               >
-                <div className="w-full min-h-max flex mx-auto flex-col gap-2 p-2 justify-center">
+                <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
                   <label
                     htmlFor={emailId}
-                    className="font-semibold text-gray-900 text-sm"
+                    className="sm:pl-6 font-semibold text-gray-900 text-sm"
                   >
-                  Email: *
+                    Email: *
                   </label>
                   <input
                     id={emailId}
                     type="email"
                     placeholder="Email"
-                    className="w-full h-10 bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-500 hover:border-blue-500 text-lg font-normal text-gray-700"
+                    className="w-4/5 sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-semibold placeholder:font-normal text-gray-700"
                     {...register("email")}
                     required
                   />
@@ -131,68 +149,72 @@ const Login = ({ getUserInfo, setActivePage, setIsLoading, loadingEnd }) => {
                 <div className="w-full min-h-max flex mx-auto flex-col gap-2 p-2 justify-center">
                   <label
                     htmlFor={passwordId}
-                    className="font-semibold text-gray-900 text-sm"
+                    className="sm:pl-6 font-semibold text-gray-900 text-sm"
                   >
-                  Password: *
+                    Password: *
                   </label>
                   <input
                     id={passwordId}
                     type="password"
                     placeholder="Password"
-                    className="w-full h-10 bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-500 hover:border-blue-500
-                    text-lg font-normal text-gray-700"
+                    className="w-4/5 sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50
+                    text-md font-semibold text-gray-700 placeholder:font-normal"
                     {...register("password")}
                     required
                   />
                 </div>
-                <p className="text-sm font-medium text-gray-400 self-end flex items-center gap-1">
-                  <i className="fa-solid fa-key"></i>
-                Forgot Password
-                </p>
-                <motion.button
-                  className="w-2/5 h-10 flex justify-center items-center gap-2 self-end mt-4 rounded drop-shadow-lg text-gray-50 bg-blue-500"
-                  initial={{ opacity: 0, translateY: -20 }}
-                  animate={{ opacity: 1, translateY: 0 }}
-                  transition={{
-                    duration: 0.4,
-                    delay: 1.3,
-                    ease: "easeInOut",
-                  }}
-                >
-                Login
-                  <i className="fa-solid fa-arrow-right-long "></i>
-                </motion.button>
-                <div className="w-full h-min-max mt-2 mb-14 flex py-5 items-center">
+                <div className="w-full min-h-max flex justify-between">
+                  <button className="text-sm lg:text-xs lg:pl-6 font-light text-gray-400 transition-colors duration-200 hover:text-gray-500 self-start flex items-center gap-1">
+                    <i className="fa-solid fa-key"></i>
+                    Forgot Password
+                  </button>
+                  <motion.button
+                    className="w-2/5 h-10 flex justify-center items-center gap-2 self-end mt-4 rounded drop-shadow-lg text-gray-50 bg-blue-600 transition-all duration-100 hover:bg-blue-700"
+                    initial={{ opacity: 0, translateY: -20 }}
+                    animate={{ opacity: 1, translateY: 0 }}
+                    transition={{
+                      duration: 0.4,
+                      delay: 1.3,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    Login
+                    <i className="fa-solid fa-arrow-right-long "></i>
+                  </motion.button>
+                </div>
+                <div className="w-full h-min-max hidden mt-2 mb-14 py-5 items-center">
                   <div className="flex-grow border-t border-gray-300"></div>
                   <span className="flex-shrink mx-4 text-gray-300">
-                  Or login with
+                    Or login with
                   </span>
                   <div className="flex-grow border-t border-gray-300"></div>
                 </div>
               </motion.form>
-              <motion.h5
-                className="mt-4 mx-auto text-sm font-medium text-gray-500"
-                initial={{ opacity: 0, translateY: -20 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 1.4,
-                  ease: "easeInOut",
-                }}
-              >
-              don&apos;t have an account?
-                <NavLink
-                  to="/auth/register"
-                  className="font-semibold text-blue-500"
+              <div className="w-full min-h-max flex justify-center fixed sm:relative bottom-6 sm:bottom-0 sm:top-4 lg:top-8 left-1/2 -translate-x-1/2">
+                <motion.h5
+                  className="mx-auto mt-2 text-sm font-medium text-gray-500"
+                  initial={{ opacity: 0, translateY: -20 }}
+                  animate={{ opacity: 1, translateY: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 1.4,
+                    ease: "easeInOut",
+                  }}
                 >
-                  {" "}
-                Sign up
-                </NavLink>
-              </motion.h5>
+                  don&apos;t have an account?
+                  <NavLink
+                    to="/auth/register"
+                    className="font-semibold text-blue-600 transition-colors duration-200 hover:text-blue-700"
+                  >
+                    {" "}
+                    Sign up
+                  </NavLink>
+                </motion.h5>
+              </div>
             </div>
             {/* Login Image Card */}
-            <div className="">
-              <img src="" alt="" />
+            <div className="w-full min-h-full lg:h-5/6 hidden rounded-r-lg lg:flex">
+              <img src="../../../public/pexels-jonathan-borba-2922326.jpg" alt="hero-login" className="w-full h-full rounded-r-lg object-contain"/>
             </div>
           </article>
         </section>
