@@ -38,7 +38,7 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
               }}
             >
               <div className="flex gap-1 items-center mt-5 text-xl font-medium">
-                <h4 className="text-blue-600">Welcome</h4>
+                <h4 className="text-blue-700">Welcome</h4>
                 <span className="text-gray-800">
                   {userSession
                     ? userSession?.firstName.charAt(0).toUpperCase() +
@@ -56,9 +56,9 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
                 ease: "easeInOut",
               }}
             >
-              <h2 className="mt-2 pl-4 font-medium text-xl text-gray-700">
-                Manage your <span className="text-blue-600">clients</span> or{" "}
-                <span className="text-blue-600">tasks</span> for your day-to-day
+              <h2 className="mt-2 pl-4 font-normal text-lg text-gray-600">
+                Manage your <span className="text-blue-700">clients</span> or{" "}
+                <span className="text-blue-700">tasks</span> for your day-to-day
                 operations
               </h2>
             </motion.div>

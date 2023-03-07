@@ -12,8 +12,8 @@ const UserMenu = ({ userSession }) => {
   return (
     <>
       <Menu>
-        <Menu.Button className="text-gray-600 text-2xl hover:drop-shadow-sm">
-          <i className="fa-regular fa-circle-user"></i>
+        <Menu.Button className="w-12 h-11 rounded-full shadow-md">
+          <img src="https://i.postimg.cc/xdHGV1kX/7309681.jpg" alt="avatar-image" className="w-full h-full object-cover rounded-full" />
         </Menu.Button>
         <Menu.Items className="w-1/2 h-40 absolute right-2 top-12 flex flex-col p-4 bg-gray-50 shadow-xl font-default">
           <motion.menu

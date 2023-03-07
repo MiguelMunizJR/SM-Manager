@@ -46,15 +46,18 @@ const Header = ({
         <section className="w-full flex gap-4 items-center text-gray-800">
           {userSession && (
             <button onClick={handleSidebar}>
-              <i className="fa-solid fa-bars"></i>
+              <i className="fa-solid fa-bars text-lg"></i>
             </button>
           )}
           <NavLink
             to="/"
             onClick={() => !activePage === "/" && setIsLoading(true)}
           >
-            <h1 className="font-default text-xl font-semibold drop-shadow-xl">
-              SM Manager
+            <h1 className="py-2 font-default text-xl md:text-xl font-semibold drop-shadow-sm">
+              <span className="py-1 px-2 rounded-md bg-blue-700 text-gray-50 font-bold drop-shadow-md">
+                  SM
+              </span>{" "}
+                Manager
             </h1>
           </NavLink>
         </section>
