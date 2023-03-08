@@ -4,7 +4,7 @@ const WelcomeInfo = ({ userSession }) => {
       <header className="w-full md:hidden md:mx-auto min-h-max py-4">
         <article className="font-default text-gray-800 pl-4">
           {userSession ? (
-            <div className="flex gap-1 items-center mt-5 text-xl md:text-2xl lg:text-3xl font-medium">
+            <div className="flex gap-1 items-center mt-5 text-xl md:text-2xl lg:text-3xl font-semibold">
               <h4 className="text-blue-700">Hello,</h4>
               <span className="text-gray-800">
                 {userSession
@@ -23,7 +23,7 @@ const WelcomeInfo = ({ userSession }) => {
           )}
         </article>
         <article className="w-11/12 min-h-max mx-auto flex justify-center items-center">
-          <h2 className="my-5 font-semibold text-3xl text-gray-800">
+          <h2 className="my-5 font-semibold text-3xl text-center text-gray-800">
             Organize your your work and your life.
           </h2>
         </article>

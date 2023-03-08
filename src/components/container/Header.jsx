@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import LoginButtons from "../auth/LoginButtons";
 import UserMenu from "../navbar/UserMenu";
 import NavBar from "../navbar/NavBar";
+import { Menu } from "@headlessui/react";
 
 const Header = ({
   showSideBar,
@@ -38,20 +39,18 @@ const Header = ({
       )}
       {showSideBar && (
         <motion.section
-          className={"fixed inset-0 z-10"}
+          className={"fixed inset-0 z-20"}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
+          onClick={() => setShowSideBar(false)}
         >
-          <section
-            onClick={handleSidebar}
-            className="w-screen h-screen opacity-10 absolute inset-0 bg-gray-400 z-10"
-          ></section>
+          <section className="w-screen h-screen opacity-20 absolute inset-0 bg-gray-600 z-10"></section>
         </motion.section>
       )}
       {/* Header */}
       <motion.header
-        className="w-full h-14 px-4 md:px-6 flex justify-between items-center bg-gray-50 z-40 fixed top-0 left-0"
+        className="w-full h-14 px-4 md:px-6 flex justify-between drop-shadow-sm items-center bg-gray-50 z-50 fixed top-0 left-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{

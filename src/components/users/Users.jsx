@@ -8,6 +8,7 @@ import ModalDelete from "../container/ModalDelete";
 import ButtonMobile from "../navbar/ButtonMobile";
 import TimelineNav from "../container/TimelineNav";
 import { useNavigate } from "react-router-dom";
+import ReturnButton from "../container/ReturnButton";
 
 const Users = ({
   isShowUsersForm,
@@ -113,6 +114,7 @@ const Users = ({
             prevPag="Home"
             prevIcon="fa-solid fa-home"
           />
+          <ReturnButton />
         </motion.div>
         <motion.article
           initial={{ opacity: 0, translateY: -10 }}

@@ -7,6 +7,7 @@ import TimelineNav from "../container/TimelineNav";
 import ButtonMobile from "../navbar/ButtonMobile";
 import FormModal from "../container/FormModal";
 import TasksCard from "./TasksCard";
+import ReturnButton from "../container/ReturnButton";
 
 const Tasks = ({
   isShowTasksForm,
@@ -95,8 +96,9 @@ const Tasks = ({
           <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
         </motion.section>
       )}
-      <section className="w-full h-screen flex flex-col justify-between bg-gray-50">
+      <section className="w-full min-h-screen lg:ml-44 md:pl-8 flex flex-col justify-between bg-gray-50">
         <motion.div
+          className="w-full min-h-max flex justify-between"
           initial={{ opacity: 0, translateY: -10 }}
           animate={{ opacity: 1, translateY: 0 }}
           transition={{
@@ -111,6 +113,7 @@ const Tasks = ({
             prevPag="Home"
             prevIcon="fa-solid fa-home"
           />
+          <ReturnButton />
         </motion.div>
         <motion.article
           initial={{ opacity: 0, translateY: -10 }}
