@@ -24,7 +24,7 @@ const WelcomeInfo = ({ userSession }) => {
         </article>
         <article className="w-11/12 min-h-max mx-auto flex justify-center items-center">
           <h2 className="my-5 font-semibold text-3xl text-center text-gray-800">
-            Organize your your work and your life.
+            Organize your work and your life.
           </h2>
         </article>
       </header>

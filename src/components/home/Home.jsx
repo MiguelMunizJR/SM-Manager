@@ -61,7 +61,7 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
               </article>
               <article className="w-11/12 min-h-max hidden md:flex mx-auto justify-center items-center">
                 <h2 className="my-5 font-semibold text-center text-3xl text-gray-800">
-                  Organize your your work and your life.
+                  Organize your work and your life.
                 </h2>
               </article>
             </article>
