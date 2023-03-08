@@ -12,7 +12,7 @@ const NavBar = ({ activePage, userSession }) => {
             ) : (
               <h5 className="w-full h-20 py-5 px-6 flex items-center gap-3 transition-all duration-75 ease-in bg-blue-700 text-lg font-normal text-gray-50">
                 <i className="fa-solid fa-home"></i>
-                <h4>Home</h4>
+                <p>Home</p>
               </h5>
             )}
           </div>

@@ -42,7 +42,7 @@ const UserListRender = ({
       .catch((err) => {
         console.log(err);
       });
-      
+
     setIsDelete(false);
     setShowDelete(false);
     setIdUser(null);
@@ -62,7 +62,13 @@ const UserListRender = ({
             className="border dark:border dark:border-gray-900 content-center transition duration-75 ease-in-out bg-gray-100 dark:bg-slate-800 dark:text-gray-300 text-gray-800 odd:bg-gray-200 dark:odd:bg-slate-700"
           >
             <td className="flex h-22 items-center gap-2 py-4 pl-4 whitespace-normal text-sm font-normal text-left">
-              <div>{user.isActive ? "🟢" : "🔴"}</div>
+              <div>
+                {user.status === "active"
+                  ? "🟢"
+                  : user.status === "not_active"
+                    ? "🔴"
+                    : null}
+              </div>
               {user.firstName + " " + user.lastName}
             </td>
             <td
@@ -103,7 +109,13 @@ const UserListRender = ({
             className="border dark:border dark:border-gray-900 content-center transition duration-75 ease-in-out bg-gray-100 dark:bg-slate-800 dark:text-gray-300 text-gray-800 odd:bg-gray-200 dark:odd:bg-slate-700"
           >
             <td className="flex h-22 items-center gap-2 py-4 pl-4 whitespace-normal text-sm font-normal text-left">
-              <div>{user.isActive ? "🟢" : "🔴"}</div>
+              <div>
+                {user.status === "active"
+                  ? "🟢"
+                  : user.status === "not_active"
+                    ? "🔴"
+                    : null}
+              </div>
               {user.firstName + " " + user.lastName}
             </td>
             <td

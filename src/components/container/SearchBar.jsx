@@ -26,13 +26,13 @@ const SearchBar = ({
   };
 
   return (
-    <article className="mt-5 flex justify-center items-center mx-auto w-5/6">
-      <span className="absolute left-10">
+    <article className="mt-5 flex items-center mx-auto w-5/6">
+      <span className="w-max pl-1 absolute flex items-center">
         <svg
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
-          className="flex w-8 text-gray-500"
+          className="flex w-9 text-gray-500"
         >
           <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
         </svg>
