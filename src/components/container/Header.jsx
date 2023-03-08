@@ -15,6 +15,8 @@ const Header = ({
     setShowSideBar(!showSideBar);
   };
 
+  console.log(activePage);
+
   return (
     <>
       <motion.section
@@ -50,7 +52,15 @@ const Header = ({
         </motion.section>
       )}
       {/* Header */}
-      <article className="w-full h-14 px-4 md:px-6 flex justify-between items-center bg-gray-50 z-40 fixed top-0 left-0">
+      <motion.header
+        className="w-full h-14 px-4 md:px-6 flex justify-between items-center bg-gray-50 z-40 fixed top-0 left-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 0.4,
+          delay: 0.8,
+        }}
+      >
         <section className="w-full flex gap-4 items-center text-gray-800">
           {userSession && (
             <button className="flex lg:hidden" onClick={handleSidebar}>
@@ -71,10 +81,28 @@ const Header = ({
         </section>
         {userSession ? (
           <UserMenu userSession={userSession} />
-        ) : (
+        ) : activePage === "/" ? (
           <LoginButtons />
-        )}
-      </article>
+        ) : activePage === "/auth/login" ? (
+          <article className="w-full py-2 flex gap-3 md:gap-5 items-center justify-end font-default">
+            <NavLink
+              to="/auth/register"
+              className="px-2 md:px-6 py-2 transition-all duration-150 text-gray-50 text-sm md:text-base bg-blue-600 hover:bg-blue-700 rounded-md drop-shadow-sm cursor-pointer"
+            >
+              Sign up
+            </NavLink>
+          </article>
+        ) : activePage === "/auth/register" ? (
+          <article className="w-full py-2 flex gap-3 md:gap-5 items-center justify-end font-default">
+            <NavLink
+              to="/auth/login"
+              className="px-2 md:px-6 py-2 transition-all duration-150 text-blue-700 text-sm md:text-base font-medium ring-2 ring-blue-600 hover:bg-blue-600 hover:text-gray-50 rounded-sm drop-shadow-sm cursor-pointer"
+            >
+              Login
+            </NavLink>
+          </article>
+        ) : null}
+      </motion.header>
     </>
   );
 };

@@ -29,7 +29,7 @@ const RegisterCard = ({ handleSubmit, submitForm, register }) => {
             <i className="fa-solid fa-user text-4xl text-gray-800"></i>
           </div>
         </motion.div>
-        <motion.form
+        <motion.article
           initial={{ opacity: 0, translateY: -20 }}
           animate={{ opacity: 1, translateY: 0 }}
           transition={{
@@ -43,7 +43,7 @@ const RegisterCard = ({ handleSubmit, submitForm, register }) => {
             submitForm={submitForm}
             register={register}
           />
-        </motion.form>
+        </motion.article>
         <div className="w-full min-h-max flex justify-center fixed sm:relative bottom-6 sm:bottom-0 sm:top-4 lg:top-4 left-1/2 -translate-x-1/2">
           <motion.h5
             className="mx-auto mt-2 text-sm font-medium text-gray-500"

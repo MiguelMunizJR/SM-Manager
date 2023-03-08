@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import axios from "axios";
-import RegisterHeader from "./RegisterHeader";
 import RegisterCard from "./RegisterCard";
 
 const Register = ({ setActivePage, setIsLoading }) => {
@@ -11,7 +10,7 @@ const Register = ({ setActivePage, setIsLoading }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    setActivePage("/auth");
+    setActivePage("/auth/register");
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
@@ -42,7 +41,6 @@ const Register = ({ setActivePage, setIsLoading }) => {
   return (
     <>
       <section className="w-full min-h-screen flex flex-col pb-14">
-        <RegisterHeader />
         <section className="w-full min-h-screen sm:h-screen mt-4 pt-6 flex justify-center bg-gray-50 overflow-y-hidden">
           <article className="w-full md:mt-10 hidden sm:block fixed inset-0 z-0 bg-slate-800">
             <img

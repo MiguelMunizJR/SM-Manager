@@ -61,23 +61,22 @@ function App() {
     <div className="flex">
       <Loading isLoading={isLoading} />
       {/* ROUTES */}
-      {activePage !== "/auth" ? (
-        <motion.header
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.5,
-            delay: 0.3,
-          }}
-        >
-          <Header
-            setShowSideBar={setShowSideBar}
-            showSideBar={showSideBar}
-            userSession={userSession}
-            setIsLoading={setIsLoading}
-          />
-        </motion.header>
-      ) : null}
+      <motion.header
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 0.5,
+          delay: 0.3,
+        }}
+      >
+        <Header
+          activePage={activePage}
+          setShowSideBar={setShowSideBar}
+          showSideBar={showSideBar}
+          userSession={userSession}
+          setIsLoading={setIsLoading}
+        />
+      </motion.header>
 
       <Routes>
         {/* Home Route */}

@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useEffect } from "react";
-import LoginHeader from "./LoginHeader";
 import LoginCard from "./LoginCard";
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +10,7 @@ const Login = ({ getUserInfo, setActivePage, setIsLoading, loadingEnd }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    setActivePage("/auth");
+    setActivePage("/auth/login");
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
@@ -42,7 +41,6 @@ const Login = ({ getUserInfo, setActivePage, setIsLoading, loadingEnd }) => {
   return (
     <>
       <section className="w-full h-screen flex flex-col bg-gray-50 overflow-y-hidden">
-        <LoginHeader />
         <section className="w-full h-screen sm:h-screen mt-14 pt-6 flex justify-center bg-gray-50 overflow-y-hidden">
           <article className="w-full max-h-screen hidden sm:block absolute inset-0 z-0 bg-slate-500">
             <img

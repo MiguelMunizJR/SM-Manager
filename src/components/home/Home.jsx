@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import SecureInfo from "./SecureInfo";
 import HomeRender from "./HomeRender";
-import HomeHeader from "./HomeHeader";
+import WelcomeInfo from "./WelcomeInfo";
 
 const Home = ({ setActivePage, setShowSideBar, userSession }) => {
   useEffect(() => {
@@ -13,9 +13,9 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
   return (
     <>
       <section className="w-full h-screen">
-        <section className="flex flex-col pt-16 md:pt-0 bg-gray-50">
+        <section className="flex flex-col pt-16 md:pt-14 bg-gray-50">
           <motion.div
-            className="pt-2 ml-4 lg:ml-10 flex md:absolute gap-2 items-center text-gray-600 md:text-gray-700 text-md md:text-lg font-medium"
+            className="pt-2 ml-4 lg:ml-10 flex md:absolute gap-2 items-center text-gray-600 md:text-gray-900 text-md md:text-lg font-medium"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.2, delay: 0.5 }}
@@ -29,7 +29,7 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.2, delay: 0.5 }}
           >
-            <HomeHeader userSession={userSession} />
+            <WelcomeInfo userSession={userSession} />
           </motion.header>
           <motion.article
             className="md:w-11/12 md:flex md:mx-auto"
