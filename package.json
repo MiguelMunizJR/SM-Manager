@@ -1,7 +1,7 @@
 {
-  "name": "crud_react",
+  "name": "sm_manager",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -15,8 +15,8 @@
     "framer-motion": "^10.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.42.1",
-    "react-router-dom": "^6.8.0"
+    "react-hook-form": "7.42.1",
+    "react-router-dom": "6.8.0"
   },
   "devDependencies": {
     "@eslint/create-config": "0.4.2",
