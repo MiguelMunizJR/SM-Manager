@@ -1,7 +1,7 @@
 import Home from "./components/home/Home";
 import Users from "./components/users/Users";
 import NotFound from "./components/container/NotFound";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Tasks from "./components/tasks/Tasks";
 import Settings from "./components/settings/Settings";

@@ -17,6 +17,14 @@ const Header = ({
 
   return (
     <>
+      <motion.section
+        className={"hidden lg:flex"}
+        initial={{ translateX: -175 }}
+        animate={{ translateX: 175 }}
+        transition={{ duration: 0.4, delay: 0.4 }}
+      >
+        <NavBar activePage={activePage} userSession={userSession} />
+      </motion.section>
       {/* Sidebar Animation */}
       {showSideBar && (
         <motion.section
@@ -42,10 +50,10 @@ const Header = ({
         </motion.section>
       )}
       {/* Header */}
-      <article className="w-full h-14 px-4 flex justify-between items-center bg-gray-50 z-40 fixed top-0 left-0">
+      <article className="w-full h-14 px-4 md:px-6 flex justify-between items-center bg-gray-50 z-40 fixed top-0 left-0">
         <section className="w-full flex gap-4 items-center text-gray-800">
           {userSession && (
-            <button onClick={handleSidebar}>
+            <button className="flex lg:hidden" onClick={handleSidebar}>
               <i className="fa-solid fa-bars text-lg"></i>
             </button>
           )}
@@ -55,9 +63,9 @@ const Header = ({
           >
             <h1 className="py-2 font-default text-xl md:text-xl font-semibold drop-shadow-sm">
               <span className="py-1 px-2 rounded-md bg-blue-700 text-gray-50 font-bold drop-shadow-md">
-                  SM
+                SM
               </span>{" "}
-                Manager
+              Manager
             </h1>
           </NavLink>
         </section>

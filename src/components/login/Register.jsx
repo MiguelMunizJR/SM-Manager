@@ -1,5 +1,4 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import TimelineNav from "../../utilities/container/TimelineNav";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
@@ -216,7 +215,7 @@ const Register = ({ setActivePage, setIsLoading }) => {
                   <div className="flex-grow border-t border-gray-300"></div>
                 </div>
               </motion.form>
-              <div className="w-full min-h-max flex justify-center sm:relative bottom-6 sm:bottom-0 sm:top-4 lg:top-8 lg:left-1/2 lg:-translate-x-1/2">
+              <div className="w-full min-h-max flex justify-center fixed sm:relative bottom-6 sm:bottom-0 sm:top-4 lg:top-4 left-1/2 -translate-x-1/2">
                 <motion.h5
                   className="mx-auto mt-2 text-sm font-medium text-gray-500"
                   initial={{ opacity: 0, translateY: -20 }}

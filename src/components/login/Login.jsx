@@ -1,6 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import TimelineNav from "../../utilities/container/TimelineNav";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useEffect } from "react";
@@ -68,21 +67,6 @@ const Login = ({ getUserInfo, setActivePage, setIsLoading, loadingEnd }) => {
             Sign up
           </NavLink>
         </motion.header>
-        {/* <motion.div
-          initial={{ opacity: 0, translateY: -10 }}
-          animate={{ opacity: 1, translateY: 0 }}
-          transition={{
-            duration: 0.4,
-            delay: 1,
-            ease: "easeInOut",
-          }}
-        >
-          <TimelineNav
-            activePage="/auth/login"
-            actualPage="Login"
-            actualIcon="fa-solid fa-key"
-          />
-        </motion.div> */}
         <section className="w-full h-screen sm:h-screen mt-14 pt-6 flex justify-center bg-gray-50 overflow-y-hidden">
           <article className="w-full max-h-screen hidden sm:block absolute inset-0 z-0 bg-slate-500">
             <img
