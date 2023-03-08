@@ -15,12 +15,10 @@ const Header = ({
     setShowSideBar(!showSideBar);
   };
 
-  console.log(activePage);
-
   return (
     <>
       <motion.section
-        className={"hidden lg:flex"}
+        className={"bg-gray-50 z-40 fixed left-0 inset-y-auto hidden lg:flex"}
         initial={{ translateX: -175 }}
         animate={{ translateX: 175 }}
         transition={{ duration: 0.4, delay: 0.4 }}

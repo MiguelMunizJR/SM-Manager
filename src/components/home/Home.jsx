@@ -13,7 +13,7 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
   return (
     <>
       <section className="w-full h-screen">
-        <section className="flex flex-col pt-16 md:pt-14 bg-gray-50">
+        <section className="flex flex-col pt-16 lg:ml-44 md:pt-14 bg-gray-50">
           <motion.div
             className="pt-2 ml-4 lg:ml-10 flex md:absolute gap-2 items-center text-gray-600 md:text-gray-900 text-md md:text-lg font-medium"
             initial={{ opacity: 0 }}

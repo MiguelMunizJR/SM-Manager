@@ -44,7 +44,7 @@ const RegisterCard = ({ handleSubmit, submitForm, register }) => {
             register={register}
           />
         </motion.article>
-        <div className="w-full min-h-max flex justify-center fixed sm:relative bottom-6 sm:bottom-0 sm:top-4 lg:top-4 left-1/2 -translate-x-1/2">
+        <div className="w-full min-h-max flex justify-center fixed sm:relative bottom-6 sm:bottom-0 sm:top-4 lg:top-8 left-1/2 -translate-x-1/2">
           <motion.h5
             className="mx-auto mt-2 text-sm font-medium text-gray-500"
             initial={{ opacity: 0, translateY: -20 }}

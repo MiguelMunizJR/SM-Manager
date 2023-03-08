@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import itemsNav from "../../utilities/navbar/itemsNav";
 
-const ListNav = () => {
+const ListNav = ({ userSession }) => {
   return (
     <section className="w-full flex flex-col">
       <ul className="w-full flex flex-col list-none">

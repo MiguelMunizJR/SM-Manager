@@ -4,7 +4,7 @@ import LoginForm from "./LoginForm";
 
 const LoginCard = ({ handleSubmit, submitForm, register }) => {
   return (
-    <article className="w-5/6 max-w-2xl min-h-max pt-10 sm:py-2 font-default flex flex-col bg-gray-50 sm:mt-20 sm:w-3/5 sm:min-h-max sm:items-center sm:absolute sm:inset-0 sm:inset-x-auto sm:z-10 sm:shadow-lg sm:rounded-lg md:w-3/6 md:flex-row lg:w-2/3">
+    <article className="w-5/6 max-w-2xl min-h-max pt-10 sm:py-0 font-default flex flex-col bg-gray-50 sm:mt-20 sm:w-3/5 sm:min-h-max sm:items-center sm:absolute sm:inset-0 sm:inset-x-auto sm:z-10 sm:shadow-lg sm:rounded-lg md:w-3/6 md:flex-row lg:w-2/3">
       <div className="w-full min-h-max sm:py-6 lg:py-2 sm:px-6 flex flex-col">
         <motion.div
           className="min-w-full flex flex-row-reverse"

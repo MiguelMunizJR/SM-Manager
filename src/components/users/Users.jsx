@@ -7,6 +7,7 @@ import FormModal from "../container/FormModal";
 import ModalDelete from "../container/ModalDelete";
 import ButtonMobile from "../navbar/ButtonMobile";
 import TimelineNav from "../container/TimelineNav";
+import { useNavigate } from "react-router-dom";
 
 const Users = ({
   isShowUsersForm,
@@ -25,8 +26,10 @@ const Users = ({
   const [filterUsers, setFilterUsers] = useState(null);
   const [isDelete, setIsDelete] = useState(false);
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   useEffect(() => {
+    !token && navigate("/auth/login");
     !users && setIsLoading(true);
     getAllUsers();
     setActivePage("/clients");
