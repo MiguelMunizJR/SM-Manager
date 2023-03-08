@@ -1,7 +1,7 @@
 import { useNavigate, Outlet } from "react-router-dom";
 
-const ProtectedRoutes = () => {
-  const isLogged = localStorage.getItem("token");
+const ProtectedRoutes = async () => {
+  const isLogged = localStorage?.getItem("token");
   const navigate = useNavigate();
 
   if (isLogged) {
