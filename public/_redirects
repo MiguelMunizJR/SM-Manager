@@ -2,7 +2,7 @@
 
 /\* /index.html 200
 
-/
+/ https://crud-api-express.onrender.com/api/v1/ 301
 /users/me https://crud-api-express.onrender.com/api/v1/users/me 301
 /tasks https://crud-api-express.onrender.com/api/v1/users/me 301
 /clients https://crud-api-express.onrender.com/api/v1/users/me 301
