@@ -67,7 +67,7 @@ const RegisterCard = ({ handleSubmit, submitForm, register }) => {
         </div>
       </div>
       {/* Login Image Card */}
-      <div className="w-full min-h-full lg:h-5/6 hidden rounded-r-lg lg:flex bg-red-300">
+      <div className="w-full min-h-full lg:h-5/6 hidden rounded-r-lg lg:flex">
         <img
           src="https://i.postimg.cc/7LQZtSDg/pexels-tima-miroshnichenko-5717640.jpg"
           alt="hero-login"
