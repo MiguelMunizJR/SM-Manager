@@ -1,1 +1,10 @@
-/* /index.html 200
+# this is a comment
+
+/\* /index.html 200
+
+/ https://sparkly-lokum-ed7995.netlify.app/ 301
+/users/me https://sparkly-lokum-ed7995.netlify.app/users/me 301
+/tasks https://sparkly-lokum-ed7995.netlify.app/tasks 301
+/clients https://sparkly-lokum-ed7995.netlify.app/clients 301
+/auth/login https://sparkly-lokum-ed7995.netlify.app/auth/login 302
+/auth/register https://sparkly-lokum-ed7995.netlify.app/auth/register 302
