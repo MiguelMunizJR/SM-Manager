@@ -5,6 +5,12 @@ const itemsNav = [
     route: "/",
     icon: "fa-solid fa-house",
   },
+  {
+    id: 2,
+    title: "Account",
+    route: "/users/me",
+    icon: "fa-solid fa-user",
+  },
   // {
   //   id: 2,
   //   title: "Dashboard",
@@ -22,12 +28,6 @@ const itemsNav = [
     title: "Tasks",
     route: "/tasks",
     icon: "fa-solid fa-list-check",
-  },
-  {
-    id: 5,
-    title: "Account",
-    route: "/users/me",
-    icon: "fa-solid fa-user",
   },
   // {
   //   id: 6,

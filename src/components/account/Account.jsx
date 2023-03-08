@@ -13,7 +13,7 @@ const Dashboard = ({
   return (
     <>
       {/* Sidebar Animation */}
-      <section className="w-full h-screen flex flex-col bg-gray-50">
+      <section className="w-full min-h-screen mt-2 ml-44 pl-4 flex flex-col bg-gray-50">
         <TimelineNav 
           actualPage="Account" 
           actualIcon="fa-solid fa-user" 
