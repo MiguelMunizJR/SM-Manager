@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
-import LoginButtons from "../../utilities/login/LoginButtons";
-import UserMenu from "../../utilities/navbar/UserMenu";
+import LoginButtons from "../auth/LoginButtons";
+import UserMenu from "../navbar/UserMenu";
 import NavBar from "../navbar/NavBar";
 
 const Header = ({

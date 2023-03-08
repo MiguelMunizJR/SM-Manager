@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ButtonNewUser from "../../utilities/container/ButtonHeader";
-import UserListRender from "../../utilities/users/UserListRender";
-import UsersCardsRender from "../../utilities/users/UsersCardsRender";
+import ButtonHeader from "../container/ButtonHeader";
+import UserListRender from "./UserListRender";
+import UsersCardsRender from "./UsersCardsRender";
 import { motion } from "framer-motion";
 
 const UsersCard = ({
@@ -53,7 +53,7 @@ const UsersCard = ({
           </div>
           <div className="mr-4 sm:mr-8 md:mr-10 lg:mr-24 flex justify-center items-center gap-2">
             <div className="mr-2 md:hidden">
-              <ButtonNewUser
+              <ButtonHeader
                 setIsShowUsersForm={setIsShowUsersForm}
                 setUpdate={setUpdate}
                 activePage={activePage}

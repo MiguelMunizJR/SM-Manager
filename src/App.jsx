@@ -4,12 +4,10 @@ import NotFound from "./components/container/NotFound";
 import { Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Tasks from "./components/tasks/Tasks";
-import Settings from "./components/settings/Settings";
-import Dashboard from "./components/dashboard/Dashboard";
 import Account from "./components/account/Account";
 import ProtectedRoutes from "./components/ProtectedRoutes";
-import Login from "./components/login/Login";
-import Register from "./components/login/Register";
+import Login from "./components/auth/login/Login";
+import Register from "./components/auth/register/Register";
 import Header from "./components/container/Header";
 import axios from "axios";
 import Loading from "./components/loading/Loading";
@@ -95,18 +93,6 @@ function App() {
             />
           }
         />
-        {/* Settings Route */}
-        <Route
-          path="/settings"
-          element={
-            <Settings
-              activePage={activePage}
-              setActivePage={setActivePage}
-              setShowSideBar={setShowSideBar}
-              showSideBar={showSideBar}
-            />
-          }
-        />
         <Route
           path="/auth/login"
           element={
@@ -171,18 +157,6 @@ function App() {
                 setShowSideBar={setShowSideBar}
                 showSideBar={showSideBar}
                 userSession={userSession}
-              />
-            }
-          />
-          {/* Dashboard Route */}
-          <Route
-            path="/dashboard"
-            element={
-              <Dashboard
-                activePage={activePage}
-                setActivePage={setActivePage}
-                setShowSideBar={setShowSideBar}
-                showSideBar={showSideBar}
               />
             }
           />

@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ModalDelete from "../../utilities/container/ModalDelete";
-import SearchBar from "../../utilities/container/SearchBar";
-import TimelineNav from "../../utilities/container/TimelineNav";
-import ButtonMobile from "../../utilities/navbar/ButtonMobile";
+import ModalDelete from "../container/ModalDelete";
+import SearchBar from "../container/SearchBar";
+import TimelineNav from "../container/TimelineNav";
+import ButtonMobile from "../navbar/ButtonMobile";
 import FormModal from "../container/FormModal";
 import TasksCard from "./TasksCard";
 

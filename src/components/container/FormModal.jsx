@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import UsersForm from "../../utilities/users/UsersForm";
+import UsersForm from "../users/UsersForm";
 import {
   defaultUsersValues,
   defaultTasksValues,
 } from "../../utilities/defaultValues";
 import { useEffect } from "react";
-import TasksForm from "../../utilities/tasks/TasksForm";
+import TasksForm from "../tasks/TasksForm";
 
 const FormModal = ({
   activePage,

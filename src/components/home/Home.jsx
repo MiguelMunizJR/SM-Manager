@@ -68,7 +68,7 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
             <SecureInfo />
           </motion.article>
           <motion.section
-            className="w-11/12 lg:w-5/6 md:mt-16 min-h-max mx-auto mt-10 flex justify-center gap-8 lg:gap-16 font-default"
+            className="w-11/12 lg:w-5/6 md:mt-16 pb-8 min-h-max mx-auto mt-10 flex justify-center gap-8 lg:gap-16 font-default"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3, delay: 0.8 }}

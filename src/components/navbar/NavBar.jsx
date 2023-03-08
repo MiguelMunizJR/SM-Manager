@@ -1,4 +1,4 @@
-import ListNav from "../../utilities/navbar/ListNav";
+import ListNav from "./ListNav";
 
 const NavBar = () => {
   return (

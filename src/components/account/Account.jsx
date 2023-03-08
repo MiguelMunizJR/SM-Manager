@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import TimelineNav from "../../utilities/container/TimelineNav";
+import TimelineNav from "../container/TimelineNav";
 
 const Dashboard = ({
   setActivePage,

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import itemsNav from "./itemsNav";
+import itemsNav from "../../utilities/navbar/itemsNav";
 
 const ListNav = () => {
   return (

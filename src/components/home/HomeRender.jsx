@@ -6,7 +6,7 @@ const HomeRender = ({ userSession }) => {
   return (
     <>
       {itemsHome.map((item, i) => (
-        <motion.NavLink
+        <motion.article
           className={item.className}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -32,7 +32,7 @@ const HomeRender = ({ userSession }) => {
               </div>
             </div>
           </NavLink>
-        </motion.NavLink>
+        </motion.article>
       ))}
     </>
   );

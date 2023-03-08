@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import ButtonNewHeader from "../../utilities/container/ButtonHeader";
-import TaskListRender from "../../utilities/tasks/TaskListRender";
+import ButtonHeader from "../container/ButtonHeader";
+import TaskListRender from "./TaskListRender";
 
 const TasksCard = ({
   tasks,
@@ -53,7 +53,7 @@ const TasksCard = ({
           </div>
           <div className="mr-4 sm:mr-8 md:mr-10 lg:mr-24 flex justify-center items-center gap-3">
             <div className="mr-2 md:hidden">
-              <ButtonNewHeader
+              <ButtonHeader
                 setIsShowTasksForm={setIsShowTasksForm}
                 setUpdate={setUpdate}
                 activePage={activePage}

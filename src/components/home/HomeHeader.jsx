@@ -29,7 +29,12 @@ const HomeHeader = ({ userSession }) => {
         </article>
       </header>
       <section className="w-full h-80 mb-8 hidden md:flex bg-red-300 shadow-md">
-        <img src="https://i.postimg.cc/G2xq1P35/pexels-pixabay-265685.jpg" alt="hero-image" className="w-full h-full object-cover"/>
+        <img
+          src="https://i.postimg.cc/G2xq1P35/pexels-pixabay-265685.jpg"
+          alt="hero-image"
+          className="w-full h-full object-cover"
+          draggable={false}
+        />
       </section>
     </>
   );

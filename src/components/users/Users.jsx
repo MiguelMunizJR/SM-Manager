@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import SearchBar from "../../utilities/container/SearchBar";
+import SearchBar from "../container/SearchBar";
 import UsersCard from "./UsersCard";
 import FormModal from "../container/FormModal";
-import ModalDelete from "../../utilities/container/ModalDelete";
-import ButtonMobile from "../../utilities/navbar/ButtonMobile";
-import TimelineNav from "../../utilities/container/TimelineNav";
+import ModalDelete from "../container/ModalDelete";
+import ButtonMobile from "../navbar/ButtonMobile";
+import TimelineNav from "../container/TimelineNav";
 
 const Users = ({
   isShowUsersForm,
