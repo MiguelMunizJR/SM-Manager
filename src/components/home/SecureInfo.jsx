@@ -1,6 +1,6 @@
 const SecureInfo = () => {
   return (
-    <article className="w-full md:mx-auto md:w-5/6 lg:2/3 md:rounded-sm min-h-max shadow-lg py-4 bg-gray-700">
+    <article className="w-full md:mx-auto md:w-5/6 lg:2/3 md:rounded-sm min-h-max shadow-lg py-4 bg-gradient-to-tr from-gray-700 to-gray-800">
       <div className="w-5/6 min-h-max mx-auto flex flex-col gap-3 font-default text-gray-100 text-center">
         <h4 className="text-xl font-bold">Secure</h4>
         <p className="text-sm font-medium">

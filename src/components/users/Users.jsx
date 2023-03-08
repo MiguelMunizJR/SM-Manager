@@ -126,16 +126,16 @@ const Users = ({
           }}
         >
           <article className="mt-6 pl-4 font-default text-gray-800">
-            <h4 className="text-lg font-medium text-blue-600">
+            <h4 className="text-xl font-medium text-blue-700">
               Hi,{" "}
-              <span className="text-gray-800">
+              <span className="text-gray-900">
                 {userSession?.firstName.charAt(0).toUpperCase() +
                   userSession?.firstName.slice(1)}
               </span>
             </h4>
-            <h2 className="mt-1 pl-4 font-medium text-2xl text-gray-700">
+            <h2 className="mt-1 pl-4 font-semibold text-2xl text-gray-800">
               You have{" "}
-              <span className="text-blue-600">
+              <span className="text-blue-700">
                 {users?.filter((user) => user.status === "active").length}
               </span>{" "}
               active clients today

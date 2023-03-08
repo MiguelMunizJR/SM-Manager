@@ -26,7 +26,7 @@ const SearchBar = ({
   };
 
   return (
-    <article className="mt-5 flex items-center mx-auto w-5/6">
+    <article className="mt-5 flex items-center drop-shadow-sm mx-auto w-5/6">
       <span className="w-max pl-1 absolute flex items-center">
         <svg
           fill="none"

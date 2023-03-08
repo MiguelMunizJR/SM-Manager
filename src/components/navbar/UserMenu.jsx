@@ -52,7 +52,7 @@ const UserMenu = ({ userSession }) => {
             <Menu.Item>
               <NavLink
                 to="/users/me"
-                className="mx-auto flex items-center justify-center mt-2 text-gray-600 font-medium text-md"
+                className="mx-auto flex items-center justify-center mt-2 transition-colors duration-150 text-gray-600 hover:text-gray-700 font-medium text-md"
               >
                 My Account
               </NavLink>
@@ -60,7 +60,7 @@ const UserMenu = ({ userSession }) => {
           </motion.menu>
           <Menu.Item>
             <button
-              className="mx-auto mt-6 px-6 py-1 flex gap-1 items-center justify-center absolute bottom-4 right-4 rounded-sm drop-shadow-md bg-red-400 text-gray-50"
+              className="mx-auto mt-6 px-6 py-1 flex gap-1 items-center justify-center absolute bottom-4 right-4 rounded-sm transition-colors duration-200 drop-shadow-md bg-red-500 hover:bg-red-600 text-gray-50"
               onClick={handleLogout}
             >
               <i className="fa-solid fa-right-from-bracket"></i>

@@ -6,15 +6,16 @@ const HomeRender = ({ userSession }) => {
   return (
     <>
       {itemsHome.map((item, i) => (
-        <motion.article
-          className={item.className}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2, delay: i + 0.1 }}
+        <NavLink
           key={item.id}
+          to={userSession ? item.route : "/auth/login"}
+          className={item.className}
         >
-          <NavLink
-            to={userSession ? item.route : "/auth/login"}
+          <motion.article
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2, delay: i + 0.1 }}
+            key={item.id}
           >
             <div className="py-1 px-4 flex gap-2 items-center">
               <i className={item.icon}></i>
@@ -31,8 +32,8 @@ const HomeRender = ({ userSession }) => {
                 </button>
               </div>
             </div>
-          </NavLink>
-        </motion.article>
+          </motion.article>
+        </NavLink>
       ))}
     </>
   );

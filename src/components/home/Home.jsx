@@ -12,7 +12,7 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
 
   return (
     <>
-      <section className="w-full h-screen">
+      <section className="w-full min-h-screen">
         <section className="flex flex-col pt-16 lg:ml-44 md:pt-14 bg-gray-50">
           <motion.div
             className="pt-2 ml-4 lg:ml-10 flex md:absolute gap-2 items-center text-gray-600 md:text-gray-800 text-md md:text-lg font-semibold"
@@ -40,8 +40,8 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
             <article className="w-full hidden md:flex flex-col gap-3 font-default text-gray-800">
               <article className="hidden md:flex flex-col font-default text-gray-800">
                 {userSession ? (
-                  <div className="flex gap-1 items-center mt-5 text-xl md:text-2xl lg:text-3xl font-medium">
-                    <h4 className="text-blue-700">Hello,</h4>
+                  <div className="flex gap-1 items-center mt-5 text-xl md:text-2xl lg:text-3xl font-semibold">
+                    <h4 className="text-blue-700">Welcome back,</h4>
                     <span className="text-gray-800">
                       {userSession
                         ? userSession?.firstName.charAt(0).toUpperCase() +
@@ -51,7 +51,7 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
                     </span>
                   </div>
                 ) : (
-                  <div className="flex gap-1 items-center mt-5 text-xl md:text-2xl font-medium">
+                  <div className="flex gap-1 items-center mt-5 text-xl md:text-2xl font-semibold">
                     <h4 className="text-gray-700">
                       Welcome to{" "}
                       <span className="text-blue-700">SM Manager!</span>
