@@ -44,31 +44,30 @@ const Login = ({ getUserInfo, setActivePage, setIsLoading, loadingEnd }) => {
   return (
     <>
       <section className="w-full h-screen flex flex-col bg-gray-50 overflow-y-hidden">
-        <header className="w-full h-14 py-6 flex justify-between items-center transition-colors duration-150 bg-gray-50 z-40 fixed top-0 left-0">
-          <motion.header
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 0.5,
-              delay: 1,
-            }}
+        <motion.header
+          className="w-full h-14 py-6 px-2 flex justify-between items-center transition-colors duration-150 bg-gray-50 z-40 fixed top-0 left-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.5,
+            delay: 1,
+          }}
+        >
+          <NavLink to="/">
+            <h1 className="py-2 font-default text-xl md:text-xl font-bold drop-shadow-sm">
+              <span className="py-1 px-2 rounded-md bg-blue-700 text-gray-50 font-bold drop-shadow-md">
+                SM
+              </span>{" "}
+              Manager
+            </h1>
+          </NavLink>
+          <NavLink
+            to="/auth/register"
+            className="px-4 py-2 mt- text-gray-50 text-sm md:text-base bg-blue-600 transition-all duration-100 hover:bg-blue-700 rounded-md cursor-pointer drop-shadow-md sm:drop-shadow-lg sm:px-6"
           >
-            <article className="w-screen px-4 lg:px-6 flex items-center justify-between text-gray-900 sm:text-gray-800">
-              <h1 className="py-2 font-default text-xl md:text-xl font-bold drop-shadow-sm">
-                <span className="py-1 px-2 rounded-md bg-blue-700 text-gray-50 font-bold drop-shadow-md">
-                  SM
-                </span>{" "}
-                Manager
-              </h1>
-              <NavLink
-                to="/auth/register"
-                className="px-4 py-2 mt- text-gray-50 text-sm md:text-base bg-blue-600 transition-all duration-100 hover:bg-blue-700 rounded-md cursor-pointer drop-shadow-md sm:drop-shadow-lg sm:px-6"
-              >
-                Sign up
-              </NavLink>
-            </article>
-          </motion.header>
-        </header>
+            Sign up
+          </NavLink>
+        </motion.header>
         {/* <motion.div
           initial={{ opacity: 0, translateY: -10 }}
           animate={{ opacity: 1, translateY: 0 }}

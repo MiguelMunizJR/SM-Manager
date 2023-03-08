@@ -44,31 +44,30 @@ const Register = ({ setActivePage, setIsLoading }) => {
   return (
     <>
       <section className="w-full min-h-screen flex flex-col pb-14">
-        <header className="w-full h-14 py-6 flex justify-between items-center transition-colors duration-150 bg-gray-50 z-40 fixed top-0 left-0">
-          <motion.header
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 0.5,
-              delay: 1,
-            }}
+        <motion.header
+          className="w-full h-14 py-6 px-2 flex justify-between items-center transition-colors duration-150 bg-gray-50 z-40 fixed top-0 left-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.5,
+            delay: 1,
+          }}
+        >
+          <NavLink to="/">
+            <h1 className="py-2 font-default text-xl md:text-xl font-bold drop-shadow-sm">
+              <span className="py-1 px-2 rounded-md bg-blue-700 text-gray-50 font-bold drop-shadow-md">
+                SM
+              </span>{" "}
+              Manager
+            </h1>
+          </NavLink>
+          <NavLink
+            to="/auth/login"
+            className="px-4 py-2 mt- text-blue-600 text-sm md:text-base border-2 border-blue-600 transition-all duration-100 hover:bg-blue-700 hover:border-blue-700 hover:text-gray-200 rounded-lg cursor-pointer drop-shadow-md sm:drop-shadow-lg sm:px-6"
           >
-            <article className="w-screen min-h-screen px-4 lg:px-6 flex items-center justify-between text-gray-900 sm:text-gray-800">
-              <h1 className="py-2 font-default text-xl md:text-xl font-bold drop-shadow-sm">
-                <span className="py-1 px-2 rounded-md bg-blue-700 text-gray-50 font-bold drop-shadow-md">
-                  SM
-                </span>{" "}
-                Manager
-              </h1>
-              <NavLink
-                to="/auth/login"
-                className="px-4 py-2 mt- text-blue-600 text-sm md:text-base border-2 border-blue-600 transition-all duration-100 hover:bg-blue-700 hover:border-blue-700 hover:text-gray-200 rounded-lg cursor-pointer drop-shadow-md sm:drop-shadow-lg sm:px-6"
-              >
-                Login
-              </NavLink>
-            </article>
-          </motion.header>
-        </header>
+            Login
+          </NavLink>
+        </motion.header>
         {/* <motion.div
           initial={{ opacity: 0, translateY: -10 }}
           animate={{ opacity: 1, translateY: 0 }}
@@ -130,7 +129,7 @@ const Register = ({ setActivePage, setIsLoading }) => {
                 }}
                 onSubmit={handleSubmit(submitForm)}
               >
-                <div className="w-full min-h-max flex gap-2 justify-center items-center sm:w-5/6">
+                <div className="w-full min-h-max flex justify-between items-center sm:w-5/6">
                   <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
                     <label
                       htmlFor={firstNameId}
@@ -142,7 +141,7 @@ const Register = ({ setActivePage, setIsLoading }) => {
                       id={firstNameId}
                       type="text"
                       placeholder="First name"
-                      className="w-full lg:w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-semibold placeholder:font-normal text-gray-700"
+                      className="w-full lg:w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-normal text-gray-600"
                       {...register("firstName")}
                       required
                     />
@@ -158,7 +157,7 @@ const Register = ({ setActivePage, setIsLoading }) => {
                       id={lastNameId}
                       type="text"
                       placeholder="Last name"
-                      className="w-full lg:w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-semibold placeholder:font-normal text-gray-700"
+                      className="w-full lg:w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-normal text-gray-600"
                       {...register("lastName")}
                       required
                     />
@@ -175,7 +174,7 @@ const Register = ({ setActivePage, setIsLoading }) => {
                     id={emailId}
                     type="email"
                     placeholder="Email"
-                    className="w-full sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-semibold placeholder:font-normal text-gray-700"
+                    className="w-full sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-normal text-gray-600"
                     {...register("email")}
                     required
                   />
@@ -191,7 +190,7 @@ const Register = ({ setActivePage, setIsLoading }) => {
                     id={passwordId}
                     type="password"
                     placeholder="Password"
-                    className="w-full sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-semibold placeholder:font-normal text-gray-700"
+                    className="w-full sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-normal text-gray-600"
                     {...register("password")}
                     required
                   />

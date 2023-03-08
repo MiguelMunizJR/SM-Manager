@@ -25,10 +25,8 @@ function App() {
   const [update, setUpdate] = useState();
   const [userSession, setUserSession] = useState();
   const token = localStorage.getItem("token");
-  const navigate = useNavigate();
 
   useEffect(() => {
-    !token && navigate("/auth/login");
     token && getUserInfo();
     setTimeout(() => {
       setIsLoading(false);
@@ -84,6 +82,19 @@ function App() {
       ) : null}
 
       <Routes>
+        {/* Home Route */}
+        <Route
+          path="/"
+          element={
+            <Home
+              activePage={activePage}
+              setActivePage={setActivePage}
+              setShowSideBar={setShowSideBar}
+              showSideBar={showSideBar}
+              userSession={userSession}
+            />
+          }
+        />
         {/* Settings Route */}
         <Route
           path="/settings"
@@ -123,19 +134,6 @@ function App() {
 
         {/* Protected Routes */}
         <Route element={<ProtectedRoutes />}>
-          {/* Home Route */}
-          <Route
-            path="/"
-            element={
-              <Home
-                activePage={activePage}
-                setActivePage={setActivePage}
-                setShowSideBar={setShowSideBar}
-                showSideBar={showSideBar}
-                userSession={userSession}
-              />
-            }
-          />
           {/* Clients Route */}
           <Route
             path="/clients"
