@@ -6,15 +6,16 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
 
   return (
     <form
-      className="w-full min-h-max mt-8 flex flex-col gap-2 md:gap-1 justify-center items-center"
+      className="w-full min-h-max mt-8 flex flex-col gap-4 md:gap-1 justify-center items-center"
       onSubmit={handleSubmit(submitForm)}
     >
       <div className="w-full min-h-max flex justify-between items-center sm:w-5/6">
         <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
           <label
             htmlFor={firstNameId}
-            className="font-semibold text-gray-900 text-sm"
+            className="flex items-center gap-2 font-semibold text-gray-700 text-sm"
           >
+            <i className="fa-solid fa-id-card"></i>
             First Name: *
           </label>
           <input
@@ -29,8 +30,9 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
         <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
           <label
             htmlFor={lastNameId}
-            className="font-semibold text-gray-900 text-sm"
+            className="flex items-center gap-2 font-semibold text-gray-700 text-sm"
           >
+            <i className="fa-solid fa-id-card"></i>
             Last Name: *
           </label>
           <input
@@ -46,8 +48,9 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
       <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
         <label
           htmlFor={emailId}
-          className="sm:pl-6 font-semibold text-gray-900 text-sm"
+          className="sm:pl-6 flex items-center gap-2 font-semibold text-gray-700 text-sm"
         >
+          <i className="fa-solid fa-envelope"></i>
           Email: *
         </label>
         <input
@@ -62,8 +65,9 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
       <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
         <label
           htmlFor={passwordId}
-          className="sm:pl-6 font-semibold text-gray-900 text-sm"
+          className="sm:pl-6 flex items-center gap-2 font-semibold text-gray-700 text-sm"
         >
+          <i className="fa-solid fa-key"></i>
           Password: *
         </label>
         <input
