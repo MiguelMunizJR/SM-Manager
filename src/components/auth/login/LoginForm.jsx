@@ -1,13 +1,60 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 import { motion } from "framer-motion";
 
 const LoginForm = ({ handleSubmit, submitForm, register }) => {
   const { emailId, passwordId } = useId();
+  const [showPass, setShowPass] = useState(false);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+
+    const eyeSlashIcon = document.querySelector(".button-pass");
+    const xmarkIcon = document.querySelector(".button-email");
+    const evt = e.target;
+
+    if (evt.name === "password") {
+      if (evt.value !== "") {
+        eyeSlashIcon.classList.remove("hidden");
+      } else {
+        eyeSlashIcon.classList.add("hidden");
+      }
+    } else {
+      if (evt.value !== "") {
+        xmarkIcon.classList.remove("hidden");
+      } else {
+        xmarkIcon.classList.add("hidden");
+      }
+    }
+    return;
+  };
+
+  const handleShowPass = () => {
+    const passInput = document.querySelector(".password");
+
+    if (passInput.type === "password") {
+      passInput.type = "text";
+    } else {
+      passInput.type = "password";
+    }
+    setShowPass(!showPass);
+  };
+
+  const handleClearInput = () => {
+    const emailInput = document.querySelector(".email");
+    emailInput.value = "";
+
+    const emailIcon = document.querySelector(".fa-envelope");
+    const xmarkIcon = document.querySelector(".button-email");
+
+    xmarkIcon.classList.add("hidden");
+    emailIcon.classList.remove("hidden");
+  };
 
   return (
     <form
       className="w-full min-h-max mt-8 flex flex-col gap-4 justify-center items-center"
       onSubmit={handleSubmit(submitForm)}
+      onChange={handleChange}
     >
       <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
         <label
@@ -16,14 +63,23 @@ const LoginForm = ({ handleSubmit, submitForm, register }) => {
         >
           Email: *
         </label>
-        <input
-          id={emailId}
-          type="email"
-          placeholder="Email"
-          className="w-full sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-semibold placeholder:font-normal text-gray-700"
-          {...register("email")}
-          required
-        />
+        <div className="flex">
+          <input
+            id={emailId}
+            type="email"
+            placeholder="Email"
+            className="w-full sm:w-5/6 email lg:w-4/5 h-10 pl-12 lg:pl-9 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-semibold placeholder:font-medium text-gray-500"
+            {...register("email")}
+            required
+          />
+          <i className="w-max fa-solid fa-envelope text-gray-400 text-xl absolute left-14 sm:left-16"></i>
+          <button
+            className="hidden w-max button-email text-2xl absolute right-14 sm:right-16 md:right-20 lg:right-96 text-gray-400 transition-all duration-150 hover:text-gray-500"
+            onClick={handleClearInput}
+          >
+            <i className="fa-solid fa-xmark"></i>
+          </button>
+        </div>
       </div>
       <div className="w-full min-h-max flex mx-auto flex-col gap-2 p-2 justify-center">
         <label
@@ -32,20 +88,33 @@ const LoginForm = ({ handleSubmit, submitForm, register }) => {
         >
           Password: *
         </label>
-        <input
-          id={passwordId}
-          type="password"
-          placeholder="Password"
-          className="w-full sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50
-                    text-md font-semibold text-gray-700 placeholder:font-normal"
-          {...register("password")}
-          required
-        />
+        <div className="flex justify-center items-center">
+          <input
+            id={passwordId}
+            type="password"
+            placeholder="Password"
+            className="w-full sm:w-5/6 lg:w-4/5 h-10 pl-12 lg:pl-9 sm:mx-auto password bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50
+            text-md font-medium text-gray-500 placeholder:font-medium"
+            {...register("password")}
+            required
+          />
+          <i className="fa-solid fa-key w-max text-gray-400 text-xl absolute left-14 sm:left-16"></i>
+          <button
+            className="hidden button-pass w-max text-gray-400 text-xl absolute right-14 sm:right-16 md:right-20 lg:right-96 transition-all duration-150 hover:text-gray-500"
+            onClick={handleShowPass}
+          >
+            {showPass ? (
+              <i className="fa-solid fa-eye"></i>
+            ) : (
+              <i className="fa-solid fa-eye-slash"></i>
+            )}
+          </button>
+        </div>
       </div>
       <div className="w-full min-h-max flex justify-between">
-        <button className="text-sm sm:pl-6 lg:text-xs font-light text-gray-400 transition-colors duration-200 hover:text-gray-500 self-start flex items-center gap-1">
-          <i className="fa-solid fa-key"></i>
+        <button className="text-sm pl-2 sm:pl-8 lg:text-xs font-light text-gray-400 transition-colors duration-200 hover:text-gray-500 self-start flex items-center gap-1">
           Forgot Password
+          <i className="fa-solid fa-unlock"></i>
         </button>
       </div>
       <motion.button
