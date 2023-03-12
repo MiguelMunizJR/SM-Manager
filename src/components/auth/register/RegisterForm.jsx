@@ -22,7 +22,7 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
             id={firstNameId}
             type="text"
             placeholder="First name"
-            className="w-full lg:w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-normal text-gray-600"
+            className="w-full lg:w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
             {...register("firstName")}
             required
           />
@@ -39,7 +39,7 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
             id={lastNameId}
             type="text"
             placeholder="Last name"
-            className="w-full lg:w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-normal text-gray-600"
+            className="w-full lg:w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
             {...register("lastName")}
             required
           />
@@ -57,7 +57,7 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
           id={emailId}
           type="email"
           placeholder="Email"
-          className="w-full sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-normal text-gray-600"
+          className="w-full sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
           {...register("email")}
           required
         />
@@ -74,7 +74,7 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
           id={passwordId}
           type="password"
           placeholder="Password"
-          className="w-full sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-normal text-gray-600"
+          className="w-full sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
           {...register("password")}
           required
         />

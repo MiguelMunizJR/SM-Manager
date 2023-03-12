@@ -29,7 +29,7 @@ const LoginForm = ({ handleSubmit, submitForm, register }) => {
             id={emailId}
             type="email"
             placeholder="Email"
-            className="w-full sm:w-5/6 email lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-semibold placeholder:font-medium text-gray-500"
+            className="w-full sm:w-5/6 email lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
             {...register("email")}
             required
           />
