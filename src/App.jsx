@@ -1,17 +1,19 @@
-import Home from "./components/home/Home";
-import Users from "./components/users/Users";
-import NotFound from "./components/container/NotFound";
-import { Route, Routes } from "react-router-dom";
+// Dependencies
 import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import axios from "axios";
+import { motion } from "framer-motion";
+// Components & utils
+import Users from "./components/users/Users";
+import Home from "./components/home/Home";
+import NotFound from "./components/container/NotFound";
 import Tasks from "./components/tasks/Tasks";
 import Account from "./components/account/Account";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Login from "./components/auth/login/Login";
 import Register from "./components/auth/register/Register";
 import Header from "./components/container/Header";
-import axios from "axios";
 import Loading from "./components/loading/Loading";
-import { motion } from "framer-motion";
 
 function App() {
   const [isShowUsersForm, setIsShowUsersForm] = useState(false);

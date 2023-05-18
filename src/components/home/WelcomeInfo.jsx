@@ -29,7 +29,7 @@ const WelcomeInfo = ({ userSession }) => {
         </article>
       </header>
       {/* Home Hero */}
-      <section className="w-full h-72 pl-10 bg-[url('https://i.postimg.cc/G2xq1P35/pexels-pixabay-265685.jpg')] mb-8 hidden md:flex shadow-md bg-cover bg-center items-center">
+      <section className="w-full h-72 pl-10 bg-[url('https://i.postimg.cc/Hs6JF90v/home-hero.jpg')] mb-8 hidden md:flex shadow-md bg-cover bg-center items-center">
         <h1 className="py-2 font-default text-4xl lg:text-5xl font-semibold drop-shadow-sm">
           <span className="py-1 px-2 rounded-md bg-blue-700 text-gray-50 font-bold drop-shadow-md">
             SM

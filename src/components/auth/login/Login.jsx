@@ -44,8 +44,8 @@ const Login = ({ getUserInfo, setActivePage, setIsLoading, loadingEnd }) => {
         <section className="w-full h-screen sm:h-screen mt-14 pt-6 flex justify-center bg-gray-50 overflow-y-hidden">
           <article className="w-full max-h-screen hidden sm:block absolute inset-0 z-0 bg-slate-500">
             <img
-              src="https://i.postimg.cc/G2xq1P35/pexels-pixabay-265685.jpg"
-              alt="hero_login"
+              src="https://i.postimg.cc/Hs6JF90v/home-hero.jpg"
+              alt="hero_background"
               className="w-full h-full object-cover filter blur-sm opacity-70 bg-gray-800"
               draggable={false}
             />

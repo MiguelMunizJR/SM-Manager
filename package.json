@@ -13,6 +13,7 @@
     "@headlessui/react": "^1.7.12",
     "axios": "^1.2.3",
     "framer-motion": "^10.0.0",
+    "pnpm": "^8.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "7.42.1",

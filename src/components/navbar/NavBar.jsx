@@ -10,7 +10,7 @@ const NavBar = ({ activePage, userSession }) => {
             <article className="w-full h-32 bg-gray-800 flex items-center font-default">
               <div className="w-max h-full flex pl-4 items-center">
                 <img
-                  src="https://i.postimg.cc/xdHGV1kX/7309681.jpg"
+                  src="https://i.postimg.cc/Hk0x00Zk/profile-img.jpg"
                   alt="avatar-image"
                   className="w-16 object-cover rounded-full"
                   draggable={false}

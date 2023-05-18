@@ -14,7 +14,7 @@ const UserMenu = ({ userSession }) => {
       <Menu>
         <Menu.Button className="w-10 rounded-full shadow-md">
           <img
-            src="https://i.postimg.cc/xdHGV1kX/7309681.jpg"
+            src="https://i.postimg.cc/Hk0x00Zk/profile-img.jpg"
             alt="avatar-image"
             className="w-full h-full object-cover rounded-full"
             draggable={false}

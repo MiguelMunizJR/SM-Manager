@@ -71,7 +71,7 @@ const LoginCard = ({ handleSubmit, submitForm, register }) => {
       {/* Login Image Card */}
       <div className="w-full min-h-full lg:h-5/6 hidden rounded-r-lg lg:flex">
         <img
-          src="https://i.postimg.cc/ZRQgVmnb/pexels-cottonbro-studio-4069289.jpg"
+          src="https://i.postimg.cc/8PSs7n40/login-card.jpg"
           alt="hero-login"
           className="w-full h-full rounded-r-lg object-contain"
           draggable={false}

@@ -66,11 +66,11 @@ const RegisterCard = ({ handleSubmit, submitForm, register }) => {
           </motion.h5>
         </div>
       </div>
-      {/* Login Image Card */}
+      {/* Signup Image Card */}
       <div className="w-full min-h-full lg:h-5/6 hidden rounded-r-lg lg:flex">
         <img
-          src="https://i.postimg.cc/7LQZtSDg/pexels-tima-miroshnichenko-5717640.jpg"
-          alt="hero-login"
+          src="https://i.postimg.cc/fyXwDFLZ/signup-card.jpg"
+          alt="signup-card"
           className="w-full h-full rounded-r-lg object-contain"
           draggable={false}
         />

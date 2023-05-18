@@ -17,7 +17,7 @@ const SecureInfo = () => {
           <div className="min-h-max flex items-center justify-center gap-3">
             <span className="font-bold text-gray-100 text-2xl">4.5</span>
             <img
-              src="https://i.postimg.cc/50VRHzkC/estrella-removebg-preview.png"
+              src="https://i.postimg.cc/HsR5vt90/estrella-removebg-preview.png"
               alt="star-icon"
               className="w-8 object-cover pb-1"
               draggable={false}

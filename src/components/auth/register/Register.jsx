@@ -44,8 +44,8 @@ const Register = ({ setActivePage, setIsLoading }) => {
         <section className="w-full min-h-screen sm:h-screen mt-4 pt-6 flex justify-center bg-gray-50 overflow-y-hidden">
           <article className="w-full md:mt-10 hidden sm:block fixed inset-0 z-0 bg-slate-800">
             <img
-              src="https://i.postimg.cc/wvBGWsFY/pexels-d-vaughn-bell-2068664.jpg"
-              alt="hero_login"
+              src="https://i.postimg.cc/XqTJLs6p/signup-background.jpg"
+              alt="signup_background"
               className="w-full h-full object-cover filter blur-sm opacity-70 bg-gray-200"
               draggable={false}
             />
