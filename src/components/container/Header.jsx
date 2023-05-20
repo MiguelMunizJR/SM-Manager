@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
-import LoginButtons from "../auth/LoginButtons";
+import LoginButtons from "../auth/authButtons";
 import UserMenu from "../navbar/UserMenu";
 import NavBar from "../navbar/NavBar";
 

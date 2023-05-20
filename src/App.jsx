@@ -1,24 +1,23 @@
 // Dependencies
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import axios from "axios";
 import { motion } from "framer-motion";
+import axios from "axios";
 // Components & utils
-import Users from "./components/users/Users";
-import Home from "./components/home/Home";
-import NotFound from "./components/container/NotFound";
-import Tasks from "./components/tasks/Tasks";
-import Account from "./components/account/Account";
-import ProtectedRoutes from "./components/ProtectedRoutes";
-import Login from "./components/auth/login/Login";
-import Register from "./components/auth/register/Register";
-import Header from "./components/container/Header";
-import Loading from "./components/loading/Loading";
+const Users = lazy(() => import("./components/users/Users"));
+const Home = lazy(() => import("./components/home/Home"));
+const NotFound = lazy(() => import("./components/NotFound"));
+const Tasks = lazy(() => import("./components/tasks/Tasks"));
+const Account = lazy(() => import("./components/Account"));
+const ProtectedRoutes = lazy(() => import("./components/ProtectedRoutes"));
+const Login = lazy(() => import("./components/auth/login/Login"));
+const Register = lazy(() => import("./components/auth/register/Register"));
+const Header = lazy(() => import("./components/container/Header"));
+const Loading = lazy(() => import("./components/Loading"));
 
 function App() {
   const [isShowUsersForm, setIsShowUsersForm] = useState(false);
   const [isShowTasksForm, setIsShowTasksForm] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [showDelete, setShowDelete] = useState(false);
   const [activePage, setActivePage] = useState(null);
   const [showSideBar, setShowSideBar] = useState(false);
@@ -28,18 +27,7 @@ function App() {
 
   useEffect(() => {
     token && getUserInfo();
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
   }, []);
-
-  const loadingEnd = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      window.location.reload();
-      setIsLoading(false);
-    }, 10);
-  };
 
   const getUserInfo = () => {
     const URL = "https://crud-api-express.onrender.com/api/v1/users/me";
@@ -52,7 +40,6 @@ function App() {
       })
       .then((res) => {
         setUserSession(res?.data);
-        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -61,78 +48,30 @@ function App() {
 
   return (
     <div className="flex">
-      <Loading isLoading={isLoading} />
-      {/* ROUTES */}
-      <motion.header
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          duration: 0.5,
-          delay: 0.3,
-        }}
-      >
-        <Header
-          activePage={activePage}
-          setShowSideBar={setShowSideBar}
-          showSideBar={showSideBar}
-          userSession={userSession}
-          setIsLoading={setIsLoading}
-        />
-      </motion.header>
+      <Suspense fallback={<Loading />}>
+        {/* ROUTES */}
+        <motion.header
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.5,
+            delay: 0.3,
+          }}
+        >
+          <Header
+            activePage={activePage}
+            setShowSideBar={setShowSideBar}
+            showSideBar={showSideBar}
+            userSession={userSession}
+          />
+        </motion.header>
 
-      <Routes>
-        {/* Home Route */}
-        <Route
-          path="/"
-          element={
-            <Home
-              activePage={activePage}
-              setActivePage={setActivePage}
-              setShowSideBar={setShowSideBar}
-              showSideBar={showSideBar}
-              userSession={userSession}
-            />
-          }
-        />
-        <Route
-          path="/auth/login"
-          element={
-            <Login
-              setActivePage={setActivePage}
-              activePage={activePage}
-              getUserInfo={getUserInfo}
-              loadingEnd={loadingEnd}
-              setIsLoading={setIsLoading}
-            />
-          }
-        />
-        <Route
-          path="/auth/register"
-          element={
-            <Register
-              setActivePage={setActivePage}
-              setIsLoading={setIsLoading}
-            />
-          }
-        />
-
-        {/* Route not found 404 */}
-        <Route path="*" element={<NotFound />} />
-
-        {/* Protected Routes */}
-        <Route element={<ProtectedRoutes />}>
-          {/* Clients Route */}
+        <Routes>
+          {/* Home Route */}
           <Route
-            path="/clients"
+            path="/"
             element={
-              <Users
-                isShowUsersForm={isShowUsersForm}
-                setIsShowUsersForm={setIsShowUsersForm}
-                update={update}
-                setUpdate={setUpdate}
-                setIsLoading={setIsLoading}
-                showDelete={showDelete}
-                setShowDelete={setShowDelete}
+              <Home
                 activePage={activePage}
                 setActivePage={setActivePage}
                 setShowSideBar={setShowSideBar}
@@ -141,40 +80,83 @@ function App() {
               />
             }
           />
-          {/* Tasks Route */}
           <Route
-            path="/tasks"
+            path="/auth/login"
             element={
-              <Tasks
-                isShowTasksForm={isShowTasksForm}
-                setIsShowTasksForm={setIsShowTasksForm}
-                setIsLoading={setIsLoading}
-                update={update}
-                setUpdate={setUpdate}
-                showDelete={showDelete}
-                setShowDelete={setShowDelete}
-                activePage={activePage}
+              <Login
                 setActivePage={setActivePage}
-                setShowSideBar={setShowSideBar}
-                showSideBar={showSideBar}
-                userSession={userSession}
+                activePage={activePage}
+                getUserInfo={getUserInfo}
               />
             }
           />
-          {/* Account Route */}
           <Route
-            path="/users/me"
+            path="/auth/register"
             element={
-              <Account
-                activePage={activePage}
+              <Register
                 setActivePage={setActivePage}
-                setShowSideBar={setShowSideBar}
-                showSideBar={showSideBar}
               />
             }
           />
-        </Route>
-      </Routes>
+
+          {/* Route not found 404 */}
+          <Route path="*" element={<NotFound />} />
+
+          {/* Protected Routes */}
+          <Route element={<ProtectedRoutes />}>
+            {/* Clients Route */}
+            <Route
+              path="/clients"
+              element={
+                <Users
+                  isShowUsersForm={isShowUsersForm}
+                  setIsShowUsersForm={setIsShowUsersForm}
+                  update={update}
+                  setUpdate={setUpdate}
+                  showDelete={showDelete}
+                  setShowDelete={setShowDelete}
+                  activePage={activePage}
+                  setActivePage={setActivePage}
+                  setShowSideBar={setShowSideBar}
+                  showSideBar={showSideBar}
+                  userSession={userSession}
+                />
+              }
+            />
+            {/* Tasks Route */}
+            <Route
+              path="/tasks"
+              element={
+                <Tasks
+                  isShowTasksForm={isShowTasksForm}
+                  setIsShowTasksForm={setIsShowTasksForm}
+                  update={update}
+                  setUpdate={setUpdate}
+                  showDelete={showDelete}
+                  setShowDelete={setShowDelete}
+                  activePage={activePage}
+                  setActivePage={setActivePage}
+                  setShowSideBar={setShowSideBar}
+                  showSideBar={showSideBar}
+                  userSession={userSession}
+                />
+              }
+            />
+            {/* Account Route */}
+            <Route
+              path="/users/me"
+              element={
+                <Account
+                  activePage={activePage}
+                  setActivePage={setActivePage}
+                  setShowSideBar={setShowSideBar}
+                  showSideBar={showSideBar}
+                />
+              }
+            />
+          </Route>
+        </Routes>
+      </Suspense>
     </div>
   );
 }

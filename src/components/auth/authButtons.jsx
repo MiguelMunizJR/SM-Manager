@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const LoginButtons = () => {
+const authButtons = () => {
   return (
     <article className="w-full py-2 flex gap-3 md:gap-5 items-center justify-end font-default">
       <NavLink
@@ -19,4 +19,4 @@ const LoginButtons = () => {
   );
 };
 
-export default LoginButtons;
+export default authButtons;

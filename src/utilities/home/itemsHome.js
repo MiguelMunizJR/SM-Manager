@@ -17,11 +17,6 @@ const itemsHome = [
     className:
       "w-full md:max-w-lg h-52 py-4 flex flex-col rounded-lg text-gray-50 bg-gradient-to-bl from-orange-500 to-yellow-300 drop-shadow-lg hover:drop-shadow-2xl cursor-pointer transition-all duration-250 hover:transform hover:scale-105",
   },
-  // {
-  //   id: 3,
-  //   title: "Dashboard",
-  //   icon: "fa-solid fa-gauge",
-  //   route: "/dashboard",
 ];
 
 export default itemsHome;
