@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { deleteClient } from "../../services/clientsServices";
+import { toast } from "sonner";
+import { createNewClient, deleteClient } from "../../services/clientsServices";
 
 
 const ClientsCardRender = ({
@@ -11,18 +12,35 @@ const ClientsCardRender = ({
 }) => {
 
   //* Eliminar cliente
-  const handleDelete = (id) => {
-    deleteClient(id)
+  const handleDelete = (client) => {
+    deleteClient(client?.id)
       .then(() => {
         getAllClients();
+        toast("Client successfully eliminated", {
+          action: {
+            label: "Undo",
+            onClick: async () => {
+              await createNewClient({
+                firstName: client?.firstName,
+                lastName: client?.lastName,
+                // Edit the model for remove password
+                email: client?.email,
+                password: client?.password,
+                birthday: client?.birthday,
+                status: client?.status
+              });
+              getAllClients();
+            }
+          },
+        });
       })
       .catch(() => {
-        console.error("Error when deleting client");
+        toast.error("Error when deleting client");
       });
   };
 
-  const updateUser = (user) => {
-    setUpdate(user);
+  const updateClient = (client) => {
+    setUpdate(client);
     setIsShowClientsForm(true);
   };
 
@@ -37,7 +55,7 @@ const ClientsCardRender = ({
         }}
       >
         {filterClients
-          ? filterClients?.map((user, i) => (
+          ? filterClients?.map((client, i) => (
             <motion.article
               initial={{ opacity: 0, translateY: -30 }}
               animate={{ opacity: 1, translateY: 0 }}
@@ -45,11 +63,11 @@ const ClientsCardRender = ({
                 duration: 0.3,
                 delay: i - 0.2,
               }}
-              key={user.id}
+              key={client.id}
             >
               <article
                 className={`${
-                  user.status === "not_active"
+                  client.status === "not_active"
                     ? "border-l-red-500"
                     : "border-l-green-500"
                 } md:hidden mb-1 py-2 px-4 border-l-8 border-b border-b-gray-300 dark:border-b-gray-700 flex flex-col font-default bg-gray-100 dark:bg-gray-800 odd:bg-slate-100 dark:odd:bg-gray-900`}
@@ -57,21 +75,21 @@ const ClientsCardRender = ({
                 <div className="w-full flex justify-between">
                   <div className="flex flex-col">
                     <h4 className="text-lg font-medium text-gray-800 dark:text-gray-300">
-                      {user.firstName + " " + user.lastName}
+                      {client.firstName + " " + client.lastName}
                     </h4>
                     <p className="text-sm font-ligth text-gray-500 dark:text-gray-400">
-                      {user.email}
+                      {client.email}
                     </p>
                   </div>
                   <div className="flex gap-6">
                     <button
-                      onClick={() => updateUser(user)}
+                      onClick={() => updateClient(client)}
                       className="text-sky-700 text-lg"
                     >
                       <i className="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button
-                      onClick={() => handleDelete(user.id)}
+                      onClick={() => handleDelete(client)}
                       className="text-red-500 text-lg"
                     >
                       <i className="fa-solid fa-trash-can"></i>
@@ -84,7 +102,7 @@ const ClientsCardRender = ({
                         Firstname:
                     </p>
                     <h5 className="text-base font-medium text-gray-800 dark:text-gray-300">
-                      {user.firstName}
+                      {client.firstName}
                     </h5>
                   </div>
                   <div>
@@ -92,7 +110,7 @@ const ClientsCardRender = ({
                         Lastname:
                     </p>
                     <h5 className="text-base font-medium text-gray-800 dark:text-gray-300">
-                      {user.lastName}
+                      {client.lastName}
                     </h5>
                   </div>
                   <div>
@@ -100,17 +118,17 @@ const ClientsCardRender = ({
                         Birthday:
                     </p>
                     <h5 className="text-base font-medium text-gray-800 dark:text-gray-300">
-                      {user.birthday}
+                      {client.birthday}
                     </h5>
                   </div>
                 </div>
               </article>
             </motion.article>
           ))
-          : clients?.map((user, i) => (
+          : clients?.map((client, i) => (
             <motion.article
               className={`${
-                user.status === "not_active"
+                client.status === "not_active"
                   ? "border-l-red-500"
                   : "border-l-green-500"
               } md:hidden mb-2 py-2 px-4 border-l-8 border-b border-b-gray-300 dark:border-b-gray-700 flex flex-col font-default bg-gray-100 dark:bg-gray-800 odd:bg-gray-200 dark:odd:bg-gray-900`}
@@ -120,27 +138,27 @@ const ClientsCardRender = ({
                 duration: 0.3,
                 delay: i - 0.2,
               }}
-              key={user.id}
+              key={client.id}
             >
               <article>
                 <div className="w-full flex justify-between">
                   <div className="flex flex-col">
                     <h4 className="text-lg font-medium text-gray-800 dark:text-gray-300">
-                      {user.firstName + " " + user.lastName}
+                      {client.firstName + " " + client.lastName}
                     </h4>
                     <p className="text-sm font-ligth text-gray-500 dark:text-gray-400">
-                      {user.email}
+                      {client.email}
                     </p>
                   </div>
                   <div className="flex gap-6">
                     <button
-                      onClick={() => updateUser(user)}
+                      onClick={() => updateClient(client)}
                       className="text-sky-700 text-lg"
                     >
                       <i className="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button
-                      onClick={() => handleDelete(user.id)}
+                      onClick={() => handleDelete(client)}
                       className="text-red-500 text-lg"
                     >
                       <i className="fa-solid fa-trash-can"></i>
@@ -153,7 +171,7 @@ const ClientsCardRender = ({
                         Firstname:
                     </p>
                     <h5 className="text-base font-medium text-gray-800 dark:text-gray-300">
-                      {user.firstName}
+                      {client.firstName}
                     </h5>
                   </div>
                   <div>
@@ -161,7 +179,7 @@ const ClientsCardRender = ({
                         Lastname:
                     </p>
                     <h5 className="text-base font-medium text-gray-800 dark:text-gray-300">
-                      {user.lastName}
+                      {client.lastName}
                     </h5>
                   </div>
                   <div>
@@ -169,7 +187,7 @@ const ClientsCardRender = ({
                         Birthday:
                     </p>
                     <h5 className="text-base font-medium text-gray-800 dark:text-gray-300">
-                      {user.birthday}
+                      {client.birthday}
                     </h5>
                   </div>
                 </div>

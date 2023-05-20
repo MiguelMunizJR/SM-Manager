@@ -1,6 +1,7 @@
 // Dependencies
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 // Components & utils
 import {
   defaultClientsValues,
@@ -39,9 +40,10 @@ const FormModal = ({
           getAllClients();
           reset(defaultClientsValues);
           setUpdate(null);
+          toast.success("User successfully updated");
         })
         .catch(() => {
-          console.error("Error when updating client");
+          toast.error("Error when updating client");
         });
     } else {
       //* Creamos un nuevo cliente
@@ -50,9 +52,10 @@ const FormModal = ({
           setIsShowClientsForm(false);
           getAllClients();
           reset(defaultClientsValues);
+          toast.success("User successfully created");
         })
         .catch(() => {
-          console.error("Error when creating a new client");
+          toast.error("Error when creating a new client");
         });
     }
   };
@@ -67,9 +70,10 @@ const FormModal = ({
           getAllTasks();
           reset(defaultTasksValues);
           setUpdate(null);
+          toast.success("Task successfully updated");
         })
         .catch(() => {
-          console.error("Error while updating the task");
+          toast.error("Error while updating the task");
         });
     } else {
       //* Creamos una nueva tarea
@@ -78,9 +82,10 @@ const FormModal = ({
           setIsShowTasksForm(false);
           getAllTasks();
           reset(defaultTasksValues);
+          toast.success("Task successfully created");
         })
         .catch(() => {
-          console.error("Error when creating a new task");
+          toast.error("Error when creating a new task");
         });
     }
   };

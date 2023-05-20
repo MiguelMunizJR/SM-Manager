@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { ROUTES_PATH } from "../consts";
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -7,7 +8,7 @@ const NotFound = () => {
     <>
       <article className="w-full h-14 flex justify-between items-center bg-gray-50 z-40 fixed top-0 left-0">
         <section className="w-full ml-4 flex gap-4 items-center text-gray-800">
-          <NavLink to="/">
+          <NavLink to={ROUTES_PATH.HOME}>
             <h1 className="py-2 font-default text-xl font-semibold">
                 SM Manager
             </h1>

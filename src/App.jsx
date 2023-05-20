@@ -21,7 +21,6 @@ function App() {
   const [isLogin, setIsLogin] = useState();
   const [isShowClientsForm, setIsShowClientsForm] = useState(false);
   const [isShowTasksForm, setIsShowTasksForm] = useState(false);
-  const [showDelete, setShowDelete] = useState(false);
   const [activePage, setActivePage] = useState(null);
   const [showSideBar, setShowSideBar] = useState(false);
   const [update, setUpdate] = useState();
@@ -106,12 +105,9 @@ function App() {
                   setIsShowClientsForm={setIsShowClientsForm}
                   update={update}
                   setUpdate={setUpdate}
-                  showDelete={showDelete}
-                  setShowDelete={setShowDelete}
                   activePage={activePage}
                   setActivePage={setActivePage}
                   setShowSideBar={setShowSideBar}
-                  showSideBar={showSideBar}
                 />
               }
             />
@@ -125,12 +121,9 @@ function App() {
                   setIsShowTasksForm={setIsShowTasksForm}
                   update={update}
                   setUpdate={setUpdate}
-                  showDelete={showDelete}
-                  setShowDelete={setShowDelete}
                   activePage={activePage}
                   setActivePage={setActivePage}
                   setShowSideBar={setShowSideBar}
-                  showSideBar={showSideBar}
                 />
               }
             />

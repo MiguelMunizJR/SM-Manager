@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 
-import { completeTask, deleteTask } from "../../services/tasksServices";
+import { completeTask, createNewTask, deleteTask } from "../../services/tasksServices";
 
 const TaskListRender = ({
   tasks,
@@ -12,13 +13,26 @@ const TaskListRender = ({
 }) => {
 
   //* Eliminar tarea
-  const handleDelete = (id) => {
-    deleteTask(id)
+  const handleDelete = (task) => {
+    deleteTask(task.id)
       .then(() => {
         getAllTasks();
+        toast("Task successfully eliminated", {
+          action: {
+            label: "Undo",
+            onClick: async () => {
+              await createNewTask({
+                title: task?.title,
+                description: task?.description,
+                status: task?.status
+              });
+              getAllTasks();
+            }
+          },
+        });
       })
       .catch(() => {
-        console.error("Error when deleting task");
+        toast.error("Error when deleting task");
       });
   };
 
@@ -30,9 +44,10 @@ const TaskListRender = ({
       .then(() => {
         getAllTasks();
         setIsReload(false);
+        toast.success("Task successfully completed");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        toast.error("Error when completing task");
         setIsReload(false);
       });
   };
@@ -120,7 +135,7 @@ const TaskListRender = ({
                     <i className="fa-solid fa-pen"></i>
                   </button>
                   <button
-                    onClick={() => handleDelete(task?.id)}
+                    onClick={() => handleDelete(task)}
                     className="ring-2 ring-red-400 text-red-400 dark:bg-red-500 dark:text-gray-300 dark:ring-red-500 dark:hover:bg-red-600 dark:hover:ring-red-600 p-1 text-sm rounded-md shadow-md transition duration-100 hover:bg-red-500 hover:ring-red-500 hover:text-gray-300 active:bg-red-600 active:ring-red-600"
                   >
                     <i className="fa-solid fa-trash"></i>
@@ -196,7 +211,7 @@ const TaskListRender = ({
                     <i className="fa-solid fa-pen"></i>
                   </button>
                   <button
-                    onClick={() => handleDelete(task?.id)}
+                    onClick={() => handleDelete(task)}
                     className="ring-2 ring-red-400 text-red-400 dark:bg-red-500 dark:text-gray-300 dark:ring-red-500 dark:hover:bg-red-600 dark:hover:ring-red-600 p-1 text-sm rounded-md shadow-md transition duration-100 hover:bg-red-500 hover:ring-red-500 hover:text-gray-300 active:bg-red-600 active:ring-red-600"
                   >
                     <i className="fa-solid fa-trash"></i>
