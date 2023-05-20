@@ -25,6 +25,9 @@ dependencies:
   react-router-dom:
     specifier: 6.8.0
     version: 6.8.0(react-dom@18.2.0)(react@18.2.0)
+  sonner:
+    specifier: ^0.3.5
+    version: 0.3.5(react-dom@18.2.0)(react@18.2.0)
 
 devDependencies:
   '@eslint/create-config':
@@ -2052,6 +2055,16 @@ packages:
       get-intrinsic: 1.2.1
       object-inspect: 1.12.3
     dev: true
+
+  /sonner@0.3.5(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-yIwaQ4dftMvFApuruto2t7wGyyaPRpj5qYBWYJIz4Z7uGcVn0IfqI/hWN0JyJN4izNbZFuCYZISf3fOGnvSlNQ==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}

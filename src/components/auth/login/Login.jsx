@@ -1,41 +1,38 @@
-import { useForm } from "react-hook-form";
-import axios from "axios";
+// Dependencies
 import { useEffect } from "react";
-import LoginCard from "./LoginCard";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "sonner";
+// Components & utils
+import { ROUTES_PATH, URL_API } from "../../../consts";
+import LoginCard from "./LoginCard";
 
-const Login = ({ getUserInfo, setActivePage, setIsLoading, loadingEnd }) => {
+const Login = ({ isLogin, setIsLogin, setActivePage }) => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
   useEffect(() => {
-    setIsLoading(true);
-    setActivePage("/auth/login");
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
+    isLogin && navigate(ROUTES_PATH.HOME);
+    setActivePage(ROUTES_PATH.LOGIN);
   }, []);
 
   const submitForm = async (data) => {
-    setIsLoading(true);
-    const URL = "https://crud-api-express.onrender.com/api/v1/auth/login";
+    const URL = `${URL_API}${ROUTES_PATH.LOGIN}`;
 
     await axios
       .post(URL, data)
       .then((res) => {
-        localStorage.setItem("token", res?.data.token);
+        localStorage.setItem("token", res.data?.token);
+        setIsLogin(true);
+        toast.success("You are logged in");
+        navigate(ROUTES_PATH.HOME);
         reset({
           email: "",
           password: "",
         });
-        loadingEnd();
-        getUserInfo();
-        navigate("/");
       })
-      .catch((err) => {
-        console.error(err);
-        setIsLoading(false);
-      });
+      .catch(() => toast.error("Error trying to log in"));
   };
 
   return (

@@ -1,41 +1,38 @@
+// Dependencies
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { toast } from "sonner";
 import axios from "axios";
+// Components & utils
 import RegisterCard from "./RegisterCard";
+import { ROUTES_PATH, URL_API } from "../../../consts";
 
-const Register = ({ setActivePage, setIsLoading }) => {
+const Register = ({ setActivePage, isLogin }) => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
   useEffect(() => {
-    setIsLoading(true);
-    setActivePage("/auth/register");
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
+    isLogin && navigate(ROUTES_PATH.HOME);
+    setActivePage(ROUTES_PATH.REGISTER);
   }, []);
 
   const submitForm = (data) => {
-    setIsLoading(true);
-    const URL = "https://crud-api-express.onrender.com/api/v1/auth/register";
+    const URL = `${URL_API}${ROUTES_PATH.REGISTER}`;
 
     axios
       .post(URL, data)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        toast.success("You are successfully registered");
         reset({
           firstName: "",
           lastName: "",
           email: "",
           password: "",
         });
-        navigate("/auth/login");
+        navigate(ROUTES_PATH.LOGIN);
       })
-      .catch((err) => {
-        console.error(err);
-        setIsLoading(false);
-      });
+      .catch(() => toast.error("Error when trying to register"));
   };
 
   return (
