@@ -25,10 +25,11 @@ function App() {
   const [activePage, setActivePage] = useState(null);
   const [showSideBar, setShowSideBar] = useState(false);
   const [update, setUpdate] = useState();
-  const { user, getUserInfo } = useUser();
+  const { getUserInfo } = useUser();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+
     if (token) {
       setIsLogin(true);
       getUserInfo();
@@ -52,6 +53,7 @@ function App() {
             activePage={activePage}
             setShowSideBar={setShowSideBar}
             showSideBar={showSideBar}
+            isLogin={isLogin}
           />
         </motion.header>
 
@@ -96,7 +98,7 @@ function App() {
           <Route element={<ProtectedRoutes />}>
             {/* Clients Route */}
             <Route
-              path={ROUTES_PATH.CLIENT}
+              path={ROUTES_PATH.CLIENTS}
               element={
                 <Users
                   isShowUsersForm={isShowUsersForm}

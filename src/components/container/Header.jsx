@@ -1,16 +1,20 @@
+// Dependencies
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+// Components & utils
 import LoginButtons from "../auth/authButtons";
 import UserMenu from "../navbar/UserMenu";
 import NavBar from "../navbar/NavBar";
+import { ROUTES_PATH } from "../../consts";
 
 const Header = ({
   showSideBar,
   setShowSideBar,
   activePage,
-  userSession,
-  setIsLoading,
+  isLogin
 }) => {
+
+
   const handleSidebar = () => {
     setShowSideBar(!showSideBar);
   };
@@ -23,7 +27,7 @@ const Header = ({
         animate={{ translateX: 175 }}
         transition={{ duration: 0.4, delay: 0.4 }}
       >
-        <NavBar activePage={activePage} userSession={userSession} />
+        <NavBar isLogin={isLogin} />
       </motion.section>
       {/* Sidebar Animation */}
       {showSideBar && (
@@ -33,7 +37,7 @@ const Header = ({
           animate={{ translateX: 175 }}
           transition={{ duration: 0.3 }}
         >
-          <NavBar activePage={activePage} userSession={userSession} />
+          <NavBar isLogin={isLogin} />
         </motion.section>
       )}
       {showSideBar && (
@@ -58,40 +62,39 @@ const Header = ({
         }}
       >
         <section className="w-full flex gap-4 items-center text-gray-800">
-          {userSession && (
+          {isLogin && (
             <button className="flex lg:hidden" onClick={handleSidebar}>
               <i className="fa-solid fa-bars text-lg"></i>
             </button>
           )}
           <NavLink
-            to="/"
-            onClick={() => !activePage === "/" && setIsLoading(true)}
+            to={ROUTES_PATH.HOME}
           >
-            <h1 className="py-2 font-default text-xl md:text-xl font-semibold drop-shadow-sm">
+            <h1 className="py-2 font-default flex items-center gap-1 text-xl md:text-xl font-semibold drop-shadow-sm">
               <span className="py-1 px-2 rounded-md bg-blue-700 text-gray-50 font-bold drop-shadow-md">
                 SM
-              </span>{" "}
+              </span>
               Manager
             </h1>
           </NavLink>
         </section>
-        {userSession ? (
-          <UserMenu userSession={userSession} />
-        ) : activePage === "/" ? (
+        {isLogin ? (
+          <UserMenu />
+        ) : activePage === ROUTES_PATH.HOME ? (
           <LoginButtons />
-        ) : activePage === "/auth/login" ? (
+        ) : activePage === ROUTES_PATH.LOGIN ? (
           <article className="w-full py-2 flex gap-3 md:gap-5 items-center justify-end font-default">
             <NavLink
-              to="/auth/register"
+              to={ROUTES_PATH.REGISTER}
               className="px-2 md:px-6 py-2 transition-all duration-150 text-gray-50 text-sm md:text-base bg-blue-600 hover:bg-blue-700 rounded-md drop-shadow-sm cursor-pointer"
             >
               Sign up
             </NavLink>
           </article>
-        ) : activePage === "/auth/register" ? (
+        ) : activePage === ROUTES_PATH.REGISTER ? (
           <article className="w-full py-2 flex gap-3 md:gap-5 items-center justify-end font-default">
             <NavLink
-              to="/auth/login"
+              to={ROUTES_PATH.LOGIN}
               className="px-2 md:px-6 py-2 transition-all duration-150 text-blue-700 text-sm md:text-base font-medium ring-2 ring-blue-600 hover:bg-blue-600 hover:text-gray-50 rounded-sm drop-shadow-sm cursor-pointer"
             >
               Login

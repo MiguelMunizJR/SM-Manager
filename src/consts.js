@@ -4,7 +4,7 @@ export const ROUTES_PATH = Object.freeze({
   HOME: "/",
   LOGIN: "/auth/login",
   REGISTER: "/auth/register",
-  CLIENT: "/client",
+  CLIENTS: "/clients",
   TASKS: "/tasks",
   USER: "/users/me",
   NOT_FOUND: "*"

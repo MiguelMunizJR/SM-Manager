@@ -26,8 +26,8 @@ const Register = ({ setActivePage, isLogin }) => {
         toast.success("You are successfully registered");
         reset({
           firstName: "",
-          lastName: "",
           email: "",
+          lastName: "",
           password: "",
         });
         navigate(ROUTES_PATH.LOGIN);

@@ -1,9 +1,9 @@
 import { Menu } from "@headlessui/react";
 import { motion } from "framer-motion";
-import { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 
-const UserMenu = ({ userSession }) => {
+const UserMenu = () => {
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.reload();
@@ -33,11 +33,11 @@ const UserMenu = ({ userSession }) => {
             </Menu.Item>
             <Menu.Item disabled>
               <span className="text-md self-start text-gray-700 font-semibold">
-                {userSession?.firstName.charAt(0).toUpperCase() +
+                {/* {userSession?.firstName.charAt(0).toUpperCase() +
                   userSession?.firstName.slice(1) +
                   " " +
                   userSession?.lastName.charAt(0).toUpperCase() +
-                  userSession?.lastName.slice(1)}
+                  userSession?.lastName.slice(1)} */}
               </span>
             </Menu.Item>
           </motion.menu>
