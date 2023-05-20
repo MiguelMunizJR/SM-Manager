@@ -1,34 +1,30 @@
 import { useId } from "react";
-import { defaultUsersValues } from "../../utilities/defaultValues";
+
+import { defaultClientsValues } from "../../utilities/defaultValues";
 
 const ClientsForm = ({
   register,
   handleSubmit,
-  submitUsersData,
+  submitClientData,
   update,
   reset,
-  setIsShowUsersForm,
+  setIsShowClientsForm,
 }) => {
   const { firstNameId, lastNameId, emailId, passwordId, birthdayId, activeId } =
     useId();
 
-  const clearUpdate = () => {
-    reset(defaultUsersValues);
-  };
+  //* Cerramos el formulario si el usuario ha presionado la tecla "ESC"
+  const checkKeyPress = (evt) => {
+    const { keyCode } = evt;
 
-  const checkKeyPress = (e) => {
-    const { keyCode } = e;
-
-    if (keyCode === 13) {
-      handleSubmit(submitUsersData);
-    } else if (keyCode === 27) {
-      setIsShowUsersForm(false);
+    if (keyCode === 27) {
+      setIsShowClientsForm(false);
     }
   };
 
   return (
     <form
-      onSubmit={handleSubmit(submitUsersData)}
+      onSubmit={handleSubmit(submitClientData)}
       onKeyDown={checkKeyPress}
       className="mt-6 mx-4 flex flex-col gap-2 font-default text-sm z-auto"
     >
@@ -156,7 +152,7 @@ const ClientsForm = ({
       </button>
       {update && (
         <button
-          onClick={clearUpdate}
+          onClick={() => reset(defaultClientsValues)}
           className="mx-auto mt-2 py-2 px-4 flex justify-center items-center gap-3 bg-red-400 text-gray-200 text-base rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-red-500"
         >
           <h4>Clear Fields</h4>

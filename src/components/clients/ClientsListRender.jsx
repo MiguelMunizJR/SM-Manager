@@ -1,62 +1,33 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { deleteClient } from "../../services/clientsServices";
 
 const ClientsListRender = ({
-  getAllUsers,
-  users,
-  filterUsers,
+  getAllClients,
+  clients,
+  filterClients,
   setUpdate,
-  setIsShowUsersForm,
-  setShowDelete,
-  isDelete,
-  setIsDelete,
+  setIsShowClientsForm,
 }) => {
-  const [idUser, setIdUser] = useState(null);
-  const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    isDelete && deleteUserConfirm();
-  }, [isDelete]);
-
-  const deleteUserConfirm = (id) => {
-    setIdUser(id);
-    if (isDelete) {
-      deleteUser(idUser);
-    } else {
-      setShowDelete(true);
-    }
-  };
-
-  const deleteUser = (id) => {
-    const URL = `https://crud-api-express.onrender.com/api/v1/clients/${id}`;
-
-    axios
-      .delete(URL, {
-        headers: {
-          Authorization: `JWT ${token}`,
-        },
-      })
+  //* Eliminar cliente
+  const handleDelete = (id) => {
+    deleteClient(id)
       .then(() => {
-        getAllUsers();
+        getAllClients();
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        console.error("Error when deleting client");
       });
-
-    setIsDelete(false);
-    setShowDelete(false);
-    setIdUser(null);
   };
 
   const updateUser = (user) => {
     setUpdate(user);
-    setIsShowUsersForm(true);
+    setIsShowClientsForm(true);
   };
 
   return (
     <>
-      {filterUsers
-        ? filterUsers?.map((user) => (
+      {filterClients
+        ? filterClients?.map((user) => (
           <tr
             key={user.id}
             className="border dark:border dark:border-gray-900 content-center transition duration-75 ease-in-out bg-gray-100 dark:bg-slate-800 dark:text-gray-300 text-gray-800 odd:bg-gray-200 dark:odd:bg-slate-700"
@@ -95,7 +66,7 @@ const ClientsListRender = ({
                 <i className="fa-solid fa-pen-to-square"></i>
               </button>
               <button
-                onClick={() => deleteUserConfirm(user.id)}
+                onClick={() => handleDelete(user.id)}
                 className=" ring-2 ring-red-400 text-red-400 dark:bg-red-500 dark:text-gray-300 dark:ring-red-500 dark:hover:bg-red-600 dark:hover:ring-red-600 p-1 text-sm rounded-md shadow-md transition duration-100 hover:bg-red-500 hover:ring-red-500 hover:text-gray-300 active:bg-red-600 active:ring-red-600"
               >
                 <i className="fa-solid fa-trash-can"></i>
@@ -103,7 +74,7 @@ const ClientsListRender = ({
             </td>
           </tr>
         ))
-        : users?.map((user) => (
+        : clients?.map((user) => (
           <tr
             key={user.id}
             className="border dark:border dark:border-gray-900 content-center transition duration-75 ease-in-out bg-gray-100 dark:bg-slate-800 dark:text-gray-300 text-gray-800 odd:bg-gray-200 dark:odd:bg-slate-700"
@@ -142,7 +113,7 @@ const ClientsListRender = ({
                 <i className="fa-solid fa-pen-to-square"></i>
               </button>
               <button
-                onClick={() => deleteUserConfirm(user.id)}
+                onClick={() => handleDelete(user.id)}
                 className="ring-2 ring-red-400 text-red-400 dark:bg-red-500 dark:text-gray-300 dark:ring-red-500 dark:hover:bg-red-600 dark:hover:ring-red-600 p-1 text-sm rounded-md shadow-md transition duration-100 hover:bg-red-500 hover:ring-red-500 hover:text-gray-300 active:bg-red-600 active:ring-red-600"
               >
                 <i className="fa-solid fa-trash-can"></i>

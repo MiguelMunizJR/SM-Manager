@@ -9,12 +9,9 @@ import ClientsCardRender from "./ClientsCardRender";
 const ClientsCard = ({
   clients,
   getAllClients,
-  filterUsers,
+  filterClients,
   setUpdate,
-  setIsShowUsersForm,
-  setShowDelete,
-  isDelete,
-  setIsDelete,
+  setIsShowClientsForm,
   activePage,
 }) => {
   const [isSort, setIsSort] = useState(false);
@@ -55,7 +52,7 @@ const ClientsCard = ({
           <div className="mr-4 sm:mr-8 md:mr-10 lg:mr-24 flex justify-center items-center gap-2">
             <div className="mr-2 md:hidden">
               <ButtonHeader
-                setIsShowUsersForm={setIsShowUsersForm}
+                setIsShowClientsForm={setIsShowClientsForm}
                 setUpdate={setUpdate}
                 activePage={activePage}
               />
@@ -123,24 +120,18 @@ const ClientsCard = ({
                 <ClientsListRender
                   getAllClients={getAllClients}
                   clients={clients}
-                  filterUsers={filterUsers}
+                  filterClients={filterClients}
                   setUpdate={setUpdate}
-                  setIsShowUsersForm={setIsShowUsersForm}
-                  setShowDelete={setShowDelete}
-                  isDelete={isDelete}
-                  setIsDelete={setIsDelete}
+                  setIsShowClientsForm={setIsShowClientsForm}
                 />
               </tbody>
             </table>
             <ClientsCardRender
               clients={clients}
-              filterUsers={filterUsers}
+              filterClients={filterClients}
               getAllClients={getAllClients}
               setUpdate={setUpdate}
-              setIsShowUsersForm={setIsShowUsersForm}
-              setShowDelete={setShowDelete}
-              isDelete={isDelete}
-              setIsDelete={setIsDelete}
+              setIsShowClientsForm={setIsShowClientsForm}
             />
           </>
         )}

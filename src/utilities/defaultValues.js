@@ -1,4 +1,4 @@
-export const defaultUsersValues = {
+export const defaultClientsValues = {
   firstName: "",
   lastName: "",
   email: "",

@@ -1,13 +1,15 @@
+import { ROUTES_PATH } from "../../consts";
+
 const ButtonMobile = ({
-  setIsShowUsersForm,
+  setIsShowClientsForm,
   setIsShowTasksForm,
   setUpdate,
   activePage,
 }) => {
   const handleClick = () => {
-    if (activePage === "/clients") {
-      setIsShowUsersForm(true);
-    } else if (activePage === "/tasks") {
+    if (activePage === ROUTES_PATH.CLIENTS) {
+      setIsShowClientsForm(true);
+    } else if (activePage === ROUTES_PATH.TASKS) {
       setIsShowTasksForm(true);
     }
     setUpdate(null);

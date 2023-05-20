@@ -11,16 +11,11 @@ const TasksForm = ({
 }) => {
   const { titleId, descriptionId } = useId();
 
-  const clearUpdate = () => {
-    reset(defaultTasksValues);
-  };
-
+  //* Cerramos el formulario si el usuario ha presionado la tecla "ESC"
   const checkKeyPress = (e) => {
     const { keyCode } = e;
 
-    if (keyCode === 13) {
-      handleSubmit(submitTaskData);
-    } else if (keyCode === 27) {
+    if (keyCode === 27) {
       setIsShowTasksForm(false);
     }
   };
@@ -68,7 +63,7 @@ const TasksForm = ({
       </button>
       {update && (
         <button
-          onClick={clearUpdate}
+          onClick={() => reset(defaultTasksValues)}
           className="mx-auto mt-2 py-2 px-4 flex justify-center items-center gap-3 bg-red-400 dark:bg-red-600 text-gray-200 text-base rounded drop-shadow-lg transition ease-in-out duration-150 hover:drop-shadow-xl hover:bg-red-500 dark:hover:bg-red-700"
         >
           <h4>Clear Fields</h4>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+
 import ButtonHeader from "../container/ButtonHeader";
 import TaskListRender from "./TaskListRender";
 
@@ -8,12 +9,8 @@ const TasksCard = ({
   getAllTasks,
   setIsShowTasksForm,
   setUpdate,
-  isDelete,
-  setIsDelete,
-  setShowDelete,
   activePage,
   filterTasks,
-  setIsLoading,
   isReload,
   setIsReload,
 }) => {
@@ -21,7 +18,6 @@ const TasksCard = ({
 
   const setSort = () => {
     setIsSort(!isSort);
-    //! Filter task completed and not completed
   };
 
   const reloadTasks = () => {
@@ -102,12 +98,8 @@ const TasksCard = ({
                   getAllTasks={getAllTasks}
                   setIsShowTasksForm={setIsShowTasksForm}
                   setUpdate={setUpdate}
-                  isDelete={isDelete}
-                  setIsDelete={setIsDelete}
-                  setShowDelete={setShowDelete}
                   filterTasks={filterTasks}
                   setIsReload={setIsReload}
-                  setIsLoading={setIsLoading}
                 />
               )}
             </article>

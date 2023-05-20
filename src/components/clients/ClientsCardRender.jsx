@@ -1,60 +1,29 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { deleteClient } from "../../services/clientsServices";
+
 
 const ClientsCardRender = ({
-  users,
-  filterUsers,
-  getAllUsers,
+  clients,
+  filterClients,
+  getAllClients,
   setUpdate,
-  setIsShowUsersForm,
-  setShowDelete,
-  isDelete,
-  setIsDelete,
+  setIsShowClientsForm,
 }) => {
-  const [idUser, setIdUser] = useState(null);
-  const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    isDelete && deleteUserConfirm();
-  }, [isDelete]);
-
-  const deleteUserConfirm = (id) => {
-    setIdUser(id);
-    if (isDelete) {
-      deleteUser(idUser);
-    } else {
-      setShowDelete(true);
-    }
-  };
-
-  const deleteUser = (id) => {
-    const URL = `https://crud-api-express.onrender.com/api/v1/clients/${id}/`;
-
-    axios
-      .delete(URL, {
-        headers: {
-          Authorization: `JWT ${token}`,
-        },
-      })
+  //* Eliminar cliente
+  const handleDelete = (id) => {
+    deleteClient(id)
       .then(() => {
-        // console.log(`User with ID: ${id}, deleted succesfully!`);
-        getAllUsers();
-        setIsDelete(false);
-        setShowDelete(false);
-        setIdUser(null);
+        getAllClients();
       })
-      .catch((err) => {
-        console.log(err);
-        setIsDelete(false);
-        setShowDelete(false);
-        setIdUser(null);
+      .catch(() => {
+        console.error("Error when deleting client");
       });
   };
 
   const updateUser = (user) => {
     setUpdate(user);
-    setIsShowUsersForm(true);
+    setIsShowClientsForm(true);
   };
 
   return (
@@ -67,8 +36,8 @@ const ClientsCardRender = ({
           delay: 1,
         }}
       >
-        {filterUsers
-          ? filterUsers?.map((user, i) => (
+        {filterClients
+          ? filterClients?.map((user, i) => (
             <motion.article
               initial={{ opacity: 0, translateY: -30 }}
               animate={{ opacity: 1, translateY: 0 }}
@@ -102,7 +71,7 @@ const ClientsCardRender = ({
                       <i className="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button
-                      onClick={() => deleteUserConfirm(user.id)}
+                      onClick={() => handleDelete(user.id)}
                       className="text-red-500 text-lg"
                     >
                       <i className="fa-solid fa-trash-can"></i>
@@ -138,7 +107,7 @@ const ClientsCardRender = ({
               </article>
             </motion.article>
           ))
-          : users?.map((user, i) => (
+          : clients?.map((user, i) => (
             <motion.article
               className={`${
                 user.status === "not_active"
@@ -171,7 +140,7 @@ const ClientsCardRender = ({
                       <i className="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button
-                      onClick={() => deleteUserConfirm(user.id)}
+                      onClick={() => handleDelete(user.id)}
                       className="text-red-500 text-lg"
                     >
                       <i className="fa-solid fa-trash-can"></i>

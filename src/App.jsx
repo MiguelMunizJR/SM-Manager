@@ -19,7 +19,7 @@ const Loading = lazy(() => import("./components/Loading"));
 
 function App() {
   const [isLogin, setIsLogin] = useState();
-  const [isShowUsersForm, setIsShowUsersForm] = useState(false);
+  const [isShowClientsForm, setIsShowClientsForm] = useState(false);
   const [isShowTasksForm, setIsShowTasksForm] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [activePage, setActivePage] = useState(null);
@@ -102,8 +102,8 @@ function App() {
               element={
                 <Clients
                   isLogin={isLogin}
-                  isShowUsersForm={isShowUsersForm}
-                  setIsShowUsersForm={setIsShowUsersForm}
+                  isShowClientsForm={isShowClientsForm}
+                  setIsShowClientsForm={setIsShowClientsForm}
                   update={update}
                   setUpdate={setUpdate}
                   showDelete={showDelete}

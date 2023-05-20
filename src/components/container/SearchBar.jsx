@@ -1,26 +1,30 @@
+import { ROUTES_PATH } from "../../consts";
+
 const SearchBar = ({
   activePage,
-  setFilterUsers,
+  setFilterClients,
   setFilterTasks,
-  users,
+  clients,
   tasks,
 }) => {
+
   const handleInput = (e) => {
     const value = e.target.value;
 
-    if (activePage === "/clients") {
-
-      const filterUsers = users?.filter((user) => {
-        if (e.target.value === "") return users;
-        return user?.firstName.toLowerCase().includes(value.toLowerCase());
+    if (activePage === ROUTES_PATH.CLIENTS) {
+      const filterClients = clients?.filter((client) => {
+        if (e.target.value === "") return clients;
+        return client?.firstName.toLowerCase().includes(value.toLowerCase());
       });
-      setFilterUsers(filterUsers);
-    } else if (activePage === "/tasks") {
 
+      setFilterClients(filterClients);
+
+    } else if (activePage === ROUTES_PATH.TASKS) {
       const filterTasks = tasks?.filter((task) => {
         if (e.target.value === "") return tasks;
         return task?.title.toLowerCase().includes(value.toLowerCase());
       });
+      
       setFilterTasks(filterTasks);
     }
   };
@@ -42,7 +46,7 @@ const SearchBar = ({
         id="search"
         onChange={handleInput}
         placeholder={
-          activePage === "/clients"
+          activePage === ROUTES_PATH.CLIENTS
             ? "Search Clients"
             : "Search Tasks"
         }

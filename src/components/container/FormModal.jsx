@@ -1,25 +1,27 @@
+// Dependencies
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
-import UsersForm from "../clients/ClientsForm";
+// Components & utils
 import {
-  defaultUsersValues,
+  defaultClientsValues,
   defaultTasksValues,
 } from "../../utilities/defaultValues";
-import { useEffect } from "react";
 import TasksForm from "../tasks/TasksForm";
+import ClientsForm from "../clients/ClientsForm";
+import { ROUTES_PATH } from "../../consts";
+import { createNewTask, updateTask } from "../../services/tasksServices";
+import { createNewClient, updateClient } from "../../services/clientsServices";
 
 const FormModal = ({
   activePage,
   setIsShowTasksForm,
-  setIsShowUsersForm,
+  setIsShowClientsForm,
   getAllTasks,
-  getAllUsers,
+  getAllClients,
   update,
   setUpdate,
-  setIsLoading,
 }) => {
   const { register, handleSubmit, reset } = useForm();
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (update) {
@@ -27,118 +29,66 @@ const FormModal = ({
     }
   }, [update]);
 
-  const submitUsersData = (data) => {
-    setIsLoading(true);
+  //* Crear o actualizar un cliente
+  const submitClientData = (data) => {
     if (update) {
-      const URL = `https://crud-api-express.onrender.com/api/v1/clients/${update.id}/`;
-
-      axios
-        .patch(URL, data, {
-          headers: {
-            Authorization: `JWT ${token}`,
-          },
-        })
+      //* Actualizamos un cliente
+      updateClient(data, update)
         .then(() => {
-          setIsShowUsersForm(false);
-          getAllUsers();
-          reset(defaultUsersValues);
+          setIsShowClientsForm(false);
+          getAllClients();
+          reset(defaultClientsValues);
           setUpdate(null);
-          setIsLoading(false);
         })
-        .catch((err) => {
-          console.log(err);
-          setIsLoading(false);
+        .catch(() => {
+          console.error("Error when updating client");
         });
     } else {
-      const URL = "https://crud-api-express.onrender.com/api/v1/clients/";
-
-      axios
-        .post(URL, data, {
-          headers: {
-            Authorization: `JWT ${token}`,
-          },
-        })
+      //* Creamos un nuevo cliente
+      createNewClient(data)
         .then(() => {
-          setIsShowUsersForm(false);
-          getAllUsers();
-          reset(defaultUsersValues);
-          setIsLoading(false);
+          setIsShowClientsForm(false);
+          getAllClients();
+          reset(defaultClientsValues);
         })
-        .catch((err) => {
-          console.log(err);
-          setIsLoading(false);
+        .catch(() => {
+          console.error("Error when creating a new client");
         });
     }
   };
 
+  //* Crear o actualizar una tarea
   const submitTaskData = (data) => {
-    setIsLoading(true);
     if (update) {
-      const URL = `https://crud-api-express.onrender.com/api/v1/tasks/${update.id}/`;
-
-      axios
-        .patch(
-          URL,
-          {
-            title: data.title,
-            description: !data.description
-              ? "No description"
-              : data.description,
-            isCompleted: data.isCompleted,
-          },
-          {
-            headers: {
-              Authorization: `JWT ${token}`,
-            },
-          }
-        )
+      //* Actualizamos una tarea
+      updateTask(data, update)
         .then(() => {
           setIsShowTasksForm(false);
           getAllTasks();
           reset(defaultTasksValues);
           setUpdate(null);
-          setIsLoading(false);
         })
-        .catch((err) => {
-          console.log(err);
-          setIsLoading(false);
+        .catch(() => {
+          console.error("Error while updating the task");
         });
     } else {
-      const URL = "https://crud-api-express.onrender.com/api/v1/tasks/";
-
-      axios
-        .post(
-          URL,
-          {
-            title: data.title,
-            description: !data.description
-              ? "No description"
-              : data.description,
-            isCompleted: data.isCompleted,
-          },
-          {
-            headers: {
-              Authorization: `JWT ${token}`,
-            },
-          }
-        )
+      //* Creamos una nueva tarea
+      createNewTask(data)
         .then(() => {
           setIsShowTasksForm(false);
           getAllTasks();
           reset(defaultTasksValues);
-          setIsLoading(false);
         })
-        .catch((err) => {
-          console.log(err);
-          setIsLoading(false);
+        .catch(() => {
+          console.error("Error when creating a new task");
         });
     }
   };
 
   const closeModal = () => {
-    if (activePage === "/clients") {
-      setIsShowUsersForm(false);
-    } else if (activePage === "/tasks") {
+    if (activePage === ROUTES_PATH.CLIENTS) {
+      setIsShowClientsForm(false);
+    } else if (activePage === ROUTES_PATH.TASKS) {
       setIsShowTasksForm(false);
     }
   };
@@ -149,16 +99,20 @@ const FormModal = ({
         <div className="mt-6 ml-6 flex items-center gap-2">
           {update ? (
             <h3 className="font-default text-2xl text-black dark:text-gray-300 font-normal">
-              {activePage === "/clients" ? "Update Client" : "Update Task"}
+              {activePage === ROUTES_PATH.CLIENTS
+                ? "Update Client"
+                : "Update Task"}
             </h3>
           ) : (
             <h3 className="font-default text-2xl text-black dark:text-gray-300 font-normal">
-              {activePage === "/clients" ? "Create Client" : "Create Task"}
+              {activePage === ROUTES_PATH.CLIENTS
+                ? "Create Client"
+                : "Create Task"}
             </h3>
           )}
           <i
             className={
-              activePage === "/clients"
+              activePage === ROUTES_PATH.CLIENTS
                 ? "fa-solid fa-user text-black dark:text-gray-300"
                 : "fa-solid fa-list-check text-black dark:text-gray-300"
             }
@@ -171,14 +125,14 @@ const FormModal = ({
           <i className="fa-solid fa-xmark text-black dark:text-gray-400"></i>
         </button>
       </header>
-      {activePage === "/clients" ? (
-        <UsersForm
+      {activePage === ROUTES_PATH.CLIENTS ? (
+        <ClientsForm
           register={register}
           handleSubmit={handleSubmit}
-          submitUsersData={submitUsersData}
+          submitClientData={submitClientData}
           update={update}
           reset={reset}
-          setIsShowUsersForm={setIsShowUsersForm}
+          setIsShowClientsForm={setIsShowClientsForm}
         />
       ) : (
         <TasksForm

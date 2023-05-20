@@ -1,78 +1,35 @@
-import axios from "axios";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+
+import { completeTask, deleteTask } from "../../services/tasksServices";
 
 const TaskListRender = ({
   tasks,
   getAllTasks,
   setIsShowTasksForm,
   setUpdate,
-  isDelete,
-  setIsDelete,
-  setShowDelete,
   filterTasks,
   setIsReload,
-  setIsLoading,
 }) => {
-  const [idTask, setIdTask] = useState(null);
-  const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    isDelete && deleteTaskConfirm();
-  }, [isDelete]);
-
-  const deleteTaskConfirm = (id) => {
-    setIdTask(id);
-    if (isDelete) {
-      deleteTask(idTask);
-    } else {
-      setShowDelete(true);
-    }
-  };
-
-  const deleteTask = (id) => {
-    const URL = `https://crud-api-express.onrender.com/api/v1/tasks/${id}/`;
-
-    axios
-      .delete(URL, {
-        headers: {
-          Authorization: `JWT ${token}`,
-        },
-      })
+  //* Eliminar tarea
+  const handleDelete = (id) => {
+    deleteTask(id)
       .then(() => {
         getAllTasks();
-        setIsDelete(false);
-        setShowDelete(false);
-        setIdTask(null);
-        setIsLoading(false);
       })
-      .catch((err) => {
-        console.log(err);
-        setIsDelete(false);
-        setShowDelete(false);
-        setIdTask(null);
-        setIsLoading(false);
+      .catch(() => {
+        console.error("Error when deleting task");
       });
   };
 
+  //* Completar tarea
   const handleCompleted = (task) => {
     setIsReload(true);
-    const URL = `https://crud-api-express.onrender.com/api/v1/tasks/${task?.id}`;
 
-    axios
-      .patch(
-        URL,
-        {
-          status: task?.status === "completed" ? "not_completed" : "completed",
-        },
-        {
-          headers: {
-            Authorization: `JWT ${token}`,
-          },
-        }
-      )
+    completeTask(task)
       .then(() => {
         getAllTasks();
+        setIsReload(false);
       })
       .catch((err) => {
         console.log(err);
@@ -163,7 +120,7 @@ const TaskListRender = ({
                     <i className="fa-solid fa-pen"></i>
                   </button>
                   <button
-                    onClick={() => deleteTaskConfirm(task.id)}
+                    onClick={() => handleDelete(task?.id)}
                     className="ring-2 ring-red-400 text-red-400 dark:bg-red-500 dark:text-gray-300 dark:ring-red-500 dark:hover:bg-red-600 dark:hover:ring-red-600 p-1 text-sm rounded-md shadow-md transition duration-100 hover:bg-red-500 hover:ring-red-500 hover:text-gray-300 active:bg-red-600 active:ring-red-600"
                   >
                     <i className="fa-solid fa-trash"></i>
@@ -239,7 +196,7 @@ const TaskListRender = ({
                     <i className="fa-solid fa-pen"></i>
                   </button>
                   <button
-                    onClick={() => deleteTaskConfirm(task.id)}
+                    onClick={() => handleDelete(task?.id)}
                     className="ring-2 ring-red-400 text-red-400 dark:bg-red-500 dark:text-gray-300 dark:ring-red-500 dark:hover:bg-red-600 dark:hover:ring-red-600 p-1 text-sm rounded-md shadow-md transition duration-100 hover:bg-red-500 hover:ring-red-500 hover:text-gray-300 active:bg-red-600 active:ring-red-600"
                   >
                     <i className="fa-solid fa-trash"></i>

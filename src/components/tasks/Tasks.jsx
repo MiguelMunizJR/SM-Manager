@@ -2,15 +2,14 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 // Components & utils
-import ModalDelete from "../container/ModalDelete";
 import SearchBar from "../container/SearchBar";
 import TimelineNav from "../container/TimelineNav";
 import ButtonMobile from "../navbar/ButtonMobile";
 import FormModal from "../container/FormModal";
 import TasksCard from "./TasksCard";
 import ReturnButton from "../container/ReturnButton";
-import { ROUTES_PATH } from "../../consts";
 import useTasks from "../../hooks/useTasks";
+import { ROUTES_PATH } from "../../consts";
 
 const Tasks = ({
   isLogin,
@@ -18,16 +17,13 @@ const Tasks = ({
   setIsShowTasksForm,
   update,
   setUpdate,
-  showDelete,
-  setShowDelete,
   activePage,
   setActivePage,
-  setShowSideBar
+  setShowSideBar,
 }) => {
   const [filterTasks, setFilterTasks] = useState(null);
-  const [isDelete, setIsDelete] = useState(false);
   const [isReload, setIsReload] = useState(false);
-  const {tasks, getAllTasks} = useTasks();
+  const { tasks, getAllTasks } = useTasks();
 
   useEffect(() => {
     isLogin && getAllTasks();
@@ -55,24 +51,6 @@ const Tasks = ({
             setUpdate={setUpdate}
           />
           <section className="w-screen h-screen opacity-30 dark:opacity-30 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
-        </motion.section>
-      )}
-      {/* Modal Delete Confirm */}
-      {showDelete && (
-        <motion.section
-          className="fixed inset-0 z-40"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.1,
-          }}
-        >
-          <ModalDelete
-            setShowDelete={setShowDelete}
-            setIsDelete={setIsDelete}
-            activePage={activePage}
-          />
-          <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
         </motion.section>
       )}
       <section className="w-full min-h-screen lg:ml-44 md:pl-8 flex flex-col justify-between bg-gray-50">
@@ -105,20 +83,20 @@ const Tasks = ({
         >
           <article className="mt-6 pl-4 font-default text-gray-800">
             <h4 className="text-xl font-medium text-blue-700">
-              Hi,{" "}
+              Hi,
               <span className="text-gray-800">
                 {/* {userSession?.firstName.charAt(0).toUpperCase() +
                   userSession?.firstName.slice(1)} */}
               </span>
             </h4>
-            <h2 className="mt-1 pl-4 font-semibold text-2xl text-gray-800">
-              You have{" "}
+            <h2 className="mt-1 pl-4 font-semibold flex items-center gap-2 text-2xl text-gray-800">
+              You have
               <span className="text-blue-700">
                 {
                   tasks?.filter((task) => task.status === "not_completed")
                     .length
                 }
-              </span>{" "}
+              </span>
               pending tasks today
             </h2>
           </article>
@@ -143,9 +121,6 @@ const Tasks = ({
           getAllTasks={getAllTasks}
           setIsShowTasksForm={setIsShowTasksForm}
           setUpdate={setUpdate}
-          isDelete={isDelete}
-          setIsDelete={setIsDelete}
-          setShowDelete={setShowDelete}
           activePage={activePage}
           filterTasks={filterTasks}
           isReload={isReload}

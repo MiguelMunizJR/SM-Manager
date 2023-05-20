@@ -2,10 +2,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 // Components & utils
+import ClientsCard from "./ClientsCard";
 import SearchBar from "../container/SearchBar";
-import UsersCard from "./ClientsCard";
 import FormModal from "../container/FormModal";
-import ModalDelete from "../container/ModalDelete";
 import ButtonMobile from "../navbar/ButtonMobile";
 import TimelineNav from "../container/TimelineNav";
 import ReturnButton from "../container/ReturnButton";
@@ -14,18 +13,15 @@ import useClients from "../../hooks/useClients";
 
 const Clients = ({
   isLogin,
-  isShowUsersForm,
-  setIsShowUsersForm,
+  isShowClientsForm,
+  setIsShowClientsForm,
   update,
   setUpdate,
-  showDelete,
-  setShowDelete,
   activePage,
   setActivePage,
   setShowSideBar,
 }) => {
-  const [filterUsers, setFilterUsers] = useState(null);
-  const [isDelete, setIsDelete] = useState(false);
+  const [filterClients, setFilterClients] = useState(null);
   const {clients, getAllClients} = useClients();
 
   useEffect(() => {
@@ -37,7 +33,7 @@ const Clients = ({
   return (
     <>
       {/* Form Animation */}
-      {isShowUsersForm && (
+      {isShowClientsForm && (
         <motion.section
           className="fixed inset-0 z-40"
           initial={{ opacity: 0 }}
@@ -48,31 +44,12 @@ const Clients = ({
         >
           <FormModal
             activePage={activePage}
-            setIsShowUsersForm={setIsShowUsersForm}
+            setIsShowClientsForm={setIsShowClientsForm}
             getAllClients={getAllClients}
             update={update}
             setUpdate={setUpdate}
           />
           <section className="w-screen h-screen opacity-10 absolute inset-0 bg-slate-800 z-10"></section>
-        </motion.section>
-      )}
-      {/* Modal Delete Confirm */}
-      {showDelete && (
-        <motion.section
-          className="fixed inset-0 z-40"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.1,
-          }}
-        >
-          {/* MODAL DELETE CONFIRM HERE! */}
-          <ModalDelete
-            setShowDelete={setShowDelete}
-            setIsDelete={setIsDelete}
-            activePage={activePage}
-          />
-          <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
         </motion.section>
       )}
       <section className="w-full min-h-screen lg:ml-44 md:pl-8 flex flex-col justify-between bg-gray-50">
@@ -110,7 +87,7 @@ const Clients = ({
                   userSession?.firstName.slice(1)} */}
               </span>
             </h4>
-            <h2 className="mt-1 pl-4 font-semibold text-2xl text-gray-800">
+            <h2 className="mt-1 pl-4 font-semibold flex items-center gap-2 text-2xl text-gray-800">
               You have
               <span className="text-blue-700">
                 {clients?.filter((user) => user.status === "active").length}
@@ -130,24 +107,21 @@ const Clients = ({
         >
           <SearchBar
             activePage={activePage}
-            setFilterUsers={setFilterUsers}
+            setFilterClients={setFilterClients}
             clients={clients}
           />
         </motion.div>
-        <UsersCard
+        <ClientsCard
           getAllClients={getAllClients}
           clients={clients}
-          filterUsers={filterUsers}
-          setFilterUsers={setFilterUsers}
+          filterClients={filterClients}
+          setFilterClients={setFilterClients}
           setUpdate={setUpdate}
-          setIsShowUsersForm={setIsShowUsersForm}
-          setShowDelete={setShowDelete}
-          isDelete={isDelete}
-          setIsDelete={setIsDelete}
+          setIsShowClientsForm={setIsShowClientsForm}
           activePage={activePage}
         />
         <ButtonMobile
-          setIsShowUsersForm={setIsShowUsersForm}
+          setIsShowClientsForm={setIsShowClientsForm}
           setUpdate={setUpdate}
           activePage={activePage}
         />
