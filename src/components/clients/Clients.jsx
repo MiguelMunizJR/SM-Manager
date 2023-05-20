@@ -1,59 +1,38 @@
+// Dependencies
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { motion } from "framer-motion";
+// Components & utils
 import SearchBar from "../container/SearchBar";
-import UsersCard from "./UsersCard";
+import UsersCard from "./ClientsCard";
 import FormModal from "../container/FormModal";
 import ModalDelete from "../container/ModalDelete";
 import ButtonMobile from "../navbar/ButtonMobile";
 import TimelineNav from "../container/TimelineNav";
-import { useNavigate } from "react-router-dom";
 import ReturnButton from "../container/ReturnButton";
+import { ROUTES_PATH } from "../../consts";
+import useClients from "../../hooks/useClients";
 
-const Users = ({
+const Clients = ({
+  isLogin,
   isShowUsersForm,
   setIsShowUsersForm,
   update,
   setUpdate,
-  setIsLoading,
   showDelete,
   setShowDelete,
   activePage,
   setActivePage,
   setShowSideBar,
-  userSession,
 }) => {
-  const [users, setUsers] = useState(null);
   const [filterUsers, setFilterUsers] = useState(null);
   const [isDelete, setIsDelete] = useState(false);
-  const token = localStorage.getItem("token");
-  const navigate = useNavigate();
+  const {clients, getAllClients} = useClients();
 
   useEffect(() => {
-    !token && navigate("/auth/login");
-    !users && setIsLoading(true);
-    getAllUsers();
-    setActivePage("/clients");
+    isLogin && getAllClients();
+    setActivePage(ROUTES_PATH.CLIENTS);
     setShowSideBar(false);
   }, []);
-
-  const getAllUsers = () => {
-    const URL = "https://crud-api-express.onrender.com/api/v1/clients";
-
-    axios
-      .get(URL, {
-        headers: {
-          Authorization: `JWT ${token}`,
-        },
-      })
-      .then((res) => {
-        setUsers(res.data?.data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <>
@@ -70,10 +49,9 @@ const Users = ({
           <FormModal
             activePage={activePage}
             setIsShowUsersForm={setIsShowUsersForm}
-            getAllUsers={getAllUsers}
+            getAllClients={getAllClients}
             update={update}
             setUpdate={setUpdate}
-            setIsLoading={setIsLoading}
           />
           <section className="w-screen h-screen opacity-10 absolute inset-0 bg-slate-800 z-10"></section>
         </motion.section>
@@ -93,7 +71,6 @@ const Users = ({
             setShowDelete={setShowDelete}
             setIsDelete={setIsDelete}
             activePage={activePage}
-            setIsLoading={setIsLoading}
           />
           <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
         </motion.section>
@@ -127,17 +104,17 @@ const Users = ({
         >
           <article className="mt-6 pl-4 font-default text-gray-800">
             <h4 className="text-xl font-medium text-blue-700">
-              Hi,{" "}
+              Hi,
               <span className="text-gray-900">
-                {userSession?.firstName.charAt(0).toUpperCase() +
-                  userSession?.firstName.slice(1)}
+                {/* {userSession?.firstName.charAt(0).toUpperCase() +
+                  userSession?.firstName.slice(1)} */}
               </span>
             </h4>
             <h2 className="mt-1 pl-4 font-semibold text-2xl text-gray-800">
-              You have{" "}
+              You have
               <span className="text-blue-700">
-                {users?.filter((user) => user.status === "active").length}
-              </span>{" "}
+                {clients?.filter((user) => user.status === "active").length}
+              </span>
               active clients today
             </h2>
           </article>
@@ -154,13 +131,12 @@ const Users = ({
           <SearchBar
             activePage={activePage}
             setFilterUsers={setFilterUsers}
-            users={users}
+            clients={clients}
           />
         </motion.div>
         <UsersCard
-          getAllUsers={getAllUsers}
-          users={users}
-          setUsers={setUsers}
+          getAllClients={getAllClients}
+          clients={clients}
           filterUsers={filterUsers}
           setFilterUsers={setFilterUsers}
           setUpdate={setUpdate}
@@ -169,7 +145,6 @@ const Users = ({
           isDelete={isDelete}
           setIsDelete={setIsDelete}
           activePage={activePage}
-          setIsLoading={setIsLoading}
         />
         <ButtonMobile
           setIsShowUsersForm={setIsShowUsersForm}
@@ -181,4 +156,4 @@ const Users = ({
   );
 };
 
-export default Users;
+export default Clients;

@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
-import axios from "axios";
+// Dependencies
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+// Components & utils
 import ModalDelete from "../container/ModalDelete";
 import SearchBar from "../container/SearchBar";
 import TimelineNav from "../container/TimelineNav";
@@ -8,51 +9,31 @@ import ButtonMobile from "../navbar/ButtonMobile";
 import FormModal from "../container/FormModal";
 import TasksCard from "./TasksCard";
 import ReturnButton from "../container/ReturnButton";
+import { ROUTES_PATH } from "../../consts";
+import useTasks from "../../hooks/useTasks";
 
 const Tasks = ({
+  isLogin,
   isShowTasksForm,
   setIsShowTasksForm,
-  setIsLoading,
   update,
   setUpdate,
   showDelete,
   setShowDelete,
   activePage,
   setActivePage,
-  setShowSideBar,
-  userSession,
+  setShowSideBar
 }) => {
-  const [tasks, setTasks] = useState(null);
   const [filterTasks, setFilterTasks] = useState(null);
   const [isDelete, setIsDelete] = useState(false);
   const [isReload, setIsReload] = useState(false);
-  const token = localStorage.getItem("token");
+  const {tasks, getAllTasks} = useTasks();
 
   useEffect(() => {
-    !tasks && setIsLoading(true);
-    getAllTasks();
-    setActivePage("/tasks");
+    isLogin && getAllTasks();
+    setActivePage(ROUTES_PATH.TASKS);
     setShowSideBar(false);
   }, []);
-
-  const getAllTasks = () => {
-    const URL = "https://crud-api-express.onrender.com/api/v1/tasks";
-
-    axios
-      .get(URL, {
-        headers: {
-          Authorization: `JWT ${token}`,
-        },
-      })
-      .then((res) => {
-        setTasks(res.data?.data);
-        setIsLoading(false);
-        setIsReload();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <>
@@ -72,7 +53,6 @@ const Tasks = ({
             getAllTasks={getAllTasks}
             update={update}
             setUpdate={setUpdate}
-            setIsLoading={setIsLoading}
           />
           <section className="w-screen h-screen opacity-30 dark:opacity-30 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
         </motion.section>
@@ -91,7 +71,6 @@ const Tasks = ({
             setShowDelete={setShowDelete}
             setIsDelete={setIsDelete}
             activePage={activePage}
-            setIsLoading={setIsLoading}
           />
           <section className="w-screen h-screen opacity-30 dark:opacity-50 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
         </motion.section>
@@ -128,8 +107,8 @@ const Tasks = ({
             <h4 className="text-xl font-medium text-blue-700">
               Hi,{" "}
               <span className="text-gray-800">
-                {userSession?.firstName.charAt(0).toUpperCase() +
-                  userSession?.firstName.slice(1)}
+                {/* {userSession?.firstName.charAt(0).toUpperCase() +
+                  userSession?.firstName.slice(1)} */}
               </span>
             </h4>
             <h2 className="mt-1 pl-4 font-semibold text-2xl text-gray-800">
@@ -163,7 +142,6 @@ const Tasks = ({
           tasks={tasks}
           getAllTasks={getAllTasks}
           setIsShowTasksForm={setIsShowTasksForm}
-          setIsLoading={setIsLoading}
           setUpdate={setUpdate}
           isDelete={isDelete}
           setIsDelete={setIsDelete}

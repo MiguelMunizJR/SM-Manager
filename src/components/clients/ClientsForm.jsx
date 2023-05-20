@@ -1,7 +1,7 @@
 import { useId } from "react";
 import { defaultUsersValues } from "../../utilities/defaultValues";
 
-const UsersForm = ({
+const ClientsForm = ({
   register,
   handleSubmit,
   submitUsersData,
@@ -166,4 +166,4 @@ const UsersForm = ({
   );
 };
 
-export default UsersForm;
+export default ClientsForm;

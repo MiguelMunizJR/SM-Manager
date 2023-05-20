@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import UsersForm from "../users/UsersForm";
+import UsersForm from "../clients/ClientsForm";
 import {
   defaultUsersValues,
   defaultTasksValues,

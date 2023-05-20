@@ -1,12 +1,14 @@
+// Dependencies
 import { useState } from "react";
-import ButtonHeader from "../container/ButtonHeader";
-import UserListRender from "./UserListRender";
-import UsersCardsRender from "./UsersCardsRender";
 import { motion } from "framer-motion";
+// Components & utils
+import ButtonHeader from "../container/ButtonHeader";
+import ClientsListRender from "./ClientsListRender";
+import ClientsCardRender from "./ClientsCardRender";
 
-const UsersCard = ({
-  getAllUsers,
-  users,
+const ClientsCard = ({
+  clients,
+  getAllClients,
   filterUsers,
   setUpdate,
   setIsShowUsersForm,
@@ -14,7 +16,6 @@ const UsersCard = ({
   isDelete,
   setIsDelete,
   activePage,
-  // setIsLoading,
 }) => {
   const [isSort, setIsSort] = useState(false);
   const [reload, setReload] = useState(false);
@@ -25,11 +26,11 @@ const UsersCard = ({
 
   const reloadUsers = () => {
     setReload(true);
-    getAllUsers();
+    getAllClients();
   };
 
   const usersReady = () => {
-    if (users) {
+    if (clients) {
       setReload(false);
     }
     setReload(false);
@@ -87,7 +88,7 @@ const UsersCard = ({
             <i className="fa-solid fa-bars-progress text-8xl"></i>
             <h2 className="font-default text-2xl ">Loading Data ...</h2>
           </div>
-        ) : users?.length === 0 ? (
+        ) : clients?.length === 0 ? (
           <article className="w-full h-full flex flex-col justify-center items-center font-default text-gray-400 gap-2">
             <i className="fa-regular fa-face-frown text-7xl"></i>
             <h2 className="font-medium text-3xl">Empty Clients</h2>
@@ -119,9 +120,9 @@ const UsersCard = ({
                 </tr>
               </thead>
               <tbody>
-                <UserListRender
-                  getAllUsers={getAllUsers}
-                  users={users}
+                <ClientsListRender
+                  getAllClients={getAllClients}
+                  clients={clients}
                   filterUsers={filterUsers}
                   setUpdate={setUpdate}
                   setIsShowUsersForm={setIsShowUsersForm}
@@ -131,10 +132,10 @@ const UsersCard = ({
                 />
               </tbody>
             </table>
-            <UsersCardsRender
-              users={users}
+            <ClientsCardRender
+              clients={clients}
               filterUsers={filterUsers}
-              getAllUsers={getAllUsers}
+              getAllClients={getAllClients}
               setUpdate={setUpdate}
               setIsShowUsersForm={setIsShowUsersForm}
               setShowDelete={setShowDelete}
@@ -148,4 +149,4 @@ const UsersCard = ({
   );
 };
 
-export default UsersCard;
+export default ClientsCard;

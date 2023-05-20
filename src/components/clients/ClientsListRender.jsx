@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const UserListRender = ({
+const ClientsListRender = ({
   getAllUsers,
   users,
   filterUsers,
@@ -154,4 +154,4 @@ const UserListRender = ({
   );
 };
 
-export default UserListRender;
+export default ClientsListRender;

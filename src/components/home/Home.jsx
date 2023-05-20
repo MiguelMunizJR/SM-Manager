@@ -1,12 +1,16 @@
+// Dependencies
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+// Components & utils
 import SecureInfo from "./SecureInfo";
 import HomeRender from "./HomeRender";
 import WelcomeInfo from "./WelcomeInfo";
+import { ROUTES_PATH } from "../../consts";
 
-const Home = ({ setActivePage, setShowSideBar, userSession }) => {
+const Home = ({ setActivePage, setShowSideBar, isLogin }) => {
+
   useEffect(() => {
-    setActivePage("/");
+    setActivePage(ROUTES_PATH.HOME);
     setShowSideBar(false);
   }, []);
 
@@ -29,7 +33,7 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.2, delay: 0.5 }}
           >
-            <WelcomeInfo userSession={userSession} />
+            <WelcomeInfo />
           </motion.header>
           <motion.article
             className="md:w-11/12 md:flex md:mx-auto"
@@ -39,21 +43,21 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
           >
             <article className="w-full hidden md:flex flex-col gap-3 font-default text-gray-800">
               <article className="hidden md:flex flex-col font-default text-gray-800">
-                {userSession ? (
+                {isLogin ? (
                   <div className="flex gap-1 items-center mt-5 text-xl md:text-2xl lg:text-3xl font-semibold">
                     <h4 className="text-blue-700">Welcome back,</h4>
                     <span className="text-gray-800">
-                      {userSession
+                      {/* {isLogin
                         ? userSession?.firstName.charAt(0).toUpperCase() +
                           userSession?.firstName.slice(1)
-                        : null}
+                        : null} */}
                       !
                     </span>
                   </div>
                 ) : (
                   <div className="flex gap-1 items-center mt-5 text-xl md:text-2xl font-semibold">
-                    <h4 className="text-gray-700">
-                      Welcome to{" "}
+                    <h4 className="text-gray-700 flex items-center gap-2">
+                      Welcome to
                       <span className="text-blue-700">SM Manager!</span>
                     </h4>
                   </div>
@@ -73,7 +77,7 @@ const Home = ({ setActivePage, setShowSideBar, userSession }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3, delay: 0.8 }}
           >
-            <HomeRender userSession={userSession} />
+            <HomeRender isLogin={isLogin} />
           </motion.section>
         </section>
       </section>

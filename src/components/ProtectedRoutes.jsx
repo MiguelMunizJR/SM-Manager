@@ -1,13 +1,15 @@
+import { toast } from "sonner";
 import { useNavigate, Outlet } from "react-router-dom";
+import { ROUTES_PATH } from "../consts";
 
-const ProtectedRoutes = () => {
-  const isLogged = localStorage.getItem("token");
+const ProtectedRoutes = ({ isLogin }) => {
   const navigate = useNavigate();
 
-  if (isLogged) {
+  if (isLogin) {
     return <Outlet />;
   } else {
-    navigate("/");
+    toast("You need to login to continue");
+    navigate(ROUTES_PATH.LOGIN);
   }
 };
 

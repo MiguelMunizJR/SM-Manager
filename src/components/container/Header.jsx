@@ -14,7 +14,6 @@ const Header = ({
   isLogin
 }) => {
 
-
   const handleSidebar = () => {
     setShowSideBar(!showSideBar);
   };

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const UsersCardsRender = ({
+const ClientsCardRender = ({
   users,
   filterUsers,
   getAllUsers,
@@ -212,4 +212,4 @@ const UsersCardsRender = ({
   );
 };
 
-export default UsersCardsRender;
+export default ClientsCardRender;

@@ -1,14 +1,17 @@
+// Dependencies
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
+// Components & utils
 import itemsHome from "../../utilities/home/itemsHome";
+import { ROUTES_PATH } from "../../consts";
 
-const HomeRender = ({ userSession }) => {
+const HomeRender = ({ isLogin }) => {
   return (
     <>
-      {itemsHome.map((item, i) => (
+      {itemsHome?.map((item, i) => (
         <NavLink
           key={item.id}
-          to={userSession ? item.route : "/auth/login"}
+          to={isLogin ? item.route : ROUTES_PATH.LOGIN}
           className={item.className}
         >
           <motion.article
@@ -24,7 +27,7 @@ const HomeRender = ({ userSession }) => {
                 <div className="w-full min-h-max flex items-center gap-2">
                   <i className="fa-solid fa-pie-chart"></i>
                   <small className="">
-                    <span>{}4 </span>/ 20
+                    <span>4 </span>/ 20
                   </small>
                 </div>
                 <button className="transition-all duration-100 hover:scale-125">

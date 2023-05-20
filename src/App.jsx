@@ -6,7 +6,7 @@ import useUser from "./hooks/useUser";
 import { ROUTES_PATH } from "./consts";
 import { Toaster } from "sonner";
 // Components & utils
-const Users = lazy(() => import("./components/users/Users"));
+const Clients = lazy(() => import("./components/clients/Clients"));
 const Home = lazy(() => import("./components/home/Home"));
 const NotFound = lazy(() => import("./components/NotFound"));
 const Tasks = lazy(() => import("./components/tasks/Tasks"));
@@ -66,7 +66,7 @@ function App() {
                 activePage={activePage}
                 setActivePage={setActivePage}
                 setShowSideBar={setShowSideBar}
-                showSideBar={showSideBar}
+                isLogin={isLogin}
               />
             }
           />
@@ -95,12 +95,13 @@ function App() {
           <Route path={ROUTES_PATH.NOT_FOUND} element={<NotFound />} />
 
           {/* Protected Routes */}
-          <Route element={<ProtectedRoutes />}>
+          <Route element={<ProtectedRoutes isLogin={isLogin} />}>
             {/* Clients Route */}
             <Route
               path={ROUTES_PATH.CLIENTS}
               element={
-                <Users
+                <Clients
+                  isLogin={isLogin}
                   isShowUsersForm={isShowUsersForm}
                   setIsShowUsersForm={setIsShowUsersForm}
                   update={update}
@@ -119,6 +120,7 @@ function App() {
               path={ROUTES_PATH.TASKS}
               element={
                 <Tasks
+                  isLogin={isLogin}
                   isShowTasksForm={isShowTasksForm}
                   setIsShowTasksForm={setIsShowTasksForm}
                   update={update}
