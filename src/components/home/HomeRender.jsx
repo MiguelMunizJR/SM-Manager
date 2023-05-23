@@ -4,8 +4,13 @@ import { motion } from "framer-motion";
 // Components & utils
 import itemsHome from "../../utilities/home/itemsHome";
 import { ROUTES_PATH } from "../../consts";
+import useClients from "../../hooks/useClients";
+import useTasks from "../../hooks/useTasks";
 
 const HomeRender = ({ isLogin }) => {
+  const { clients } = useClients();
+  const { tasks } = useTasks();
+  
   return (
     <>
       {itemsHome?.map((item, i) => (
@@ -23,14 +28,29 @@ const HomeRender = ({ isLogin }) => {
             <div className="py-1 px-4 flex gap-2 items-center">
               <i className={item.icon}></i>
               <h2 className="font-bold text-xl">{item.title}</h2>
-              <div className="w-5/6 min-h-max absolute bottom-3 flex items-center font-semibold text-sm">
+              <div className="w-5/6 min-h-max absolute bottom-3 flex items-center font-semibold text-md">
                 <div className="w-full min-h-max flex items-center gap-2">
-                  <i className="fa-solid fa-pie-chart"></i>
-                  <small className="">
-                    <span>4 </span>/ 20
-                  </small>
+                  {item.title === "Clients" ? (
+                    <>
+                      <i className="fa-solid fa-users"></i>
+                      <small className="">
+                        {
+                          clients?.length
+                        }
+                      </small>
+                    </>
+                  ) : (
+                    <>
+                      <i className="fa-solid fa-list-check"></i>
+                      <small className="">
+                        {
+                          tasks?.length
+                        }
+                      </small>
+                    </>
+                  )}
                 </div>
-                <button className="transition-all duration-100 hover:scale-125">
+                <button >
                   <i className="fa-solid fa-long-arrow-right text-gray-100 text-2xl"></i>
                 </button>
               </div>

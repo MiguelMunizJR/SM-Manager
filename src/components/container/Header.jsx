@@ -4,41 +4,15 @@ import { NavLink } from "react-router-dom";
 // Components & utils
 import LoginButtons from "../auth/authButtons";
 import UserMenu from "../navbar/UserMenu";
-import NavBar from "../navbar/NavBar";
 import { ROUTES_PATH } from "../../consts";
 
-const Header = ({
-  showSideBar,
-  setShowSideBar,
-  activePage,
-  isLogin
-}) => {
-
+const Header = ({ showSideBar, setShowSideBar, activePage, isLogin }) => {
   const handleSidebar = () => {
     setShowSideBar(!showSideBar);
   };
 
   return (
     <>
-      <motion.section
-        className={"bg-gray-50 z-40 fixed left-0 inset-y-auto hidden lg:flex"}
-        initial={{ translateX: -175 }}
-        animate={{ translateX: 175 }}
-        transition={{ duration: 0.4, delay: 0.4 }}
-      >
-        <NavBar isLogin={isLogin} />
-      </motion.section>
-      {/* Sidebar Animation */}
-      {showSideBar && (
-        <motion.section
-          className={"fixed inset-0 z-30"}
-          initial={{ translateX: -175 }}
-          animate={{ translateX: 175 }}
-          transition={{ duration: 0.3 }}
-        >
-          <NavBar isLogin={isLogin} />
-        </motion.section>
-      )}
       {showSideBar && (
         <motion.section
           className={"fixed inset-0 z-20"}
@@ -52,7 +26,7 @@ const Header = ({
       )}
       {/* Header */}
       <motion.header
-        className="w-full h-14 px-4 md:px-6 flex justify-between drop-shadow-sm items-center bg-gray-50 z-50 fixed top-0 left-0"
+        className="w-full h-14 px-4 md:px-16 flex justify-between drop-shadow-sm items-center bg-slate-50 z-50 fixed top-0 left-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{
@@ -63,14 +37,12 @@ const Header = ({
         <section className="w-full flex gap-4 items-center text-gray-800">
           {isLogin && (
             <button className="flex lg:hidden" onClick={handleSidebar}>
-              <i className="fa-solid fa-bars text-lg"></i>
+              <i className="fa-solid fa-bars text-md"></i>
             </button>
           )}
-          <NavLink
-            to={ROUTES_PATH.HOME}
-          >
-            <h1 className="py-2 font-default flex items-center gap-1 text-xl md:text-xl font-semibold drop-shadow-sm">
-              <span className="py-1 px-2 rounded-md bg-blue-700 text-gray-50 font-bold drop-shadow-md">
+          <NavLink to={ROUTES_PATH.HOME}>
+            <h1 className="py-2 font-default flex items-center gap-1 text-lg text-gray-900 md:text-xl font-semibold drop-shadow-sm">
+              <span className="py-1 px-2 rounded bg-blue-700 text-gray-50 font-bold drop-shadow-md">
                 SM
               </span>
               Manager

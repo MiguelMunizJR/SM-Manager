@@ -3,6 +3,8 @@ import { useEffect, useState, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { motion } from "framer-motion";
 import useUser from "./hooks/useUser";
+import useClients from "./hooks/useClients";
+import useTasks from "./hooks/useTasks";
 import { ROUTES_PATH } from "./consts";
 import { Toaster } from "sonner";
 // Components & utils
@@ -25,6 +27,9 @@ function App() {
   const [showSideBar, setShowSideBar] = useState(false);
   const [update, setUpdate] = useState();
   const { getUserInfo } = useUser();
+  const { getAllTasks } = useTasks();
+  const { getAllClients } = useClients();
+  
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -33,10 +38,15 @@ function App() {
       setIsLogin(true);
       getUserInfo();
     }
+
+    if (isLogin) {
+      getAllClients();
+      getAllTasks();
+    }
   }, [isLogin]);
 
   return (
-    <div className="flex">
+    <div className="w-full min-h-screen bg-slate-100">
       <Toaster richColors />
       <Suspense fallback={<Loading />}>
         {/* ROUTES */}
