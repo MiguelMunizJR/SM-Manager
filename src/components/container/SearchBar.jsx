@@ -30,7 +30,7 @@ const SearchBar = ({
   };
 
   return (
-    <article className="mt-5 flex items-center drop-shadow-sm mx-auto w-5/6">
+    <article className="my-6 flex items-center drop-shadow-sm mx-auto">
       <span className="w-max pl-1 absolute flex items-center">
         <svg
           fill="none"
@@ -50,7 +50,7 @@ const SearchBar = ({
             ? "Search Clients"
             : "Search Tasks"
         }
-        className="w-full h-12 pl-12 rounded outline-none shadow-sm focus:ring-1 focus:ring-blue-400 bg-gray-100"
+        className="w-full h-12 pl-12 rounded outline-none shadow-sm focus:ring-1 focus:ring-blue-400 bg-slate-200"
       />
     </article>
   );

@@ -12,6 +12,7 @@ import useTasks from "../../hooks/useTasks";
 import { ROUTES_PATH } from "../../consts";
 
 const Tasks = ({
+  user,
   isLogin,
   isShowTasksForm,
   setIsShowTasksForm,
@@ -53,14 +54,15 @@ const Tasks = ({
           <section className="w-screen h-screen opacity-30 dark:opacity-30 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
         </motion.section>
       )}
-      <section className="w-full min-h-screen lg:ml-44 md:pl-8 flex flex-col justify-between bg-gray-50">
+
+      <section className="w-full min-h-screen flex flex-col bg-slate-100">
         <motion.div
           className="w-full min-h-max flex justify-between"
           initial={{ opacity: 0, translateY: -10 }}
           animate={{ opacity: 1, translateY: 0 }}
           transition={{
             duration: 0.4,
-            delay: 0.3,
+            delay: .1,
             ease: "easeInOut",
           }}
         >
@@ -77,16 +79,16 @@ const Tasks = ({
           animate={{ opacity: 1, translateY: 0 }}
           transition={{
             duration: 0.4,
-            delay: 0.4,
+            delay: .2,
             ease: "easeInOut",
           }}
         >
           <article className="mt-6 pl-4 font-default text-gray-800">
-            <h4 className="text-xl font-medium text-blue-700">
+            <h4 className="flex items-center gap-1 text-xl font-medium text-blue-700">
               Hi,
               <span className="text-gray-800">
-                {/* {userSession?.firstName.charAt(0).toUpperCase() +
-                  userSession?.firstName.slice(1)} */}
+                {user?.firstName.charAt(0).toUpperCase() +
+                  user?.firstName.slice(1)}
               </span>
             </h4>
             <h2 className="mt-1 pl-4 font-semibold flex items-center gap-2 text-2xl text-gray-800">

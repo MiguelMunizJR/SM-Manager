@@ -34,7 +34,7 @@ const ClientsCard = ({
   };
 
   return (
-    <section className="w-full h-5/6 mt-7 mx-auto relative z-0 flex flex-col justify-center gap-4">
+    <section className="w-full mt-7 mx-auto px-4 relative z-0 flex flex-col justify-center gap-3">
       <motion.article
         initial={{ opacity: 0, translateY: -10 }}
         animate={{ opacity: 1, translateY: 0 }}
@@ -45,11 +45,11 @@ const ClientsCard = ({
         }}
       >
         <article className="w-full flex justify-between items-center">
-          <div className="sm:ml-3 md:ml-6 lg:ml-8 flex items-center text-gray-900 dark:text-gray-300">
-            <h2 className="ml-4 font-default text-2xl font-medium">Clients</h2>
+          <div className="flex items-center text-gray-900 dark:text-gray-300">
+            <h2 className="font-default text-2xl font-medium">Clients</h2>
             <i className="fa-solid fa-users pl-2 text-md"></i>
           </div>
-          <div className="mr-4 sm:mr-8 md:mr-10 lg:mr-24 flex justify-center items-center gap-2">
+          <div className="flex justify-center items-center gap-2">
             <div className="mr-2 md:hidden">
               <ButtonHeader
                 setIsShowClientsForm={setIsShowClientsForm}
@@ -79,15 +79,15 @@ const ClientsCard = ({
           </div>
         </article>
       </motion.article>
-      <article className="w-11/12 mx-auto mb-4 rounded h-full md:h-5/6 md:rounded-lg bg-gray-100 dark:bg-gray-800 drop-shadow-md dark:drop-shadow-lg dark:shadow-black z-0 overflow-y-auto">
+      <article className="w-full min-h-max mx-auto mb-4 rounded drop-shadow-md">
         {reload ? (
-          <div className="w-full h-full flex flex-col justify-center items-center text-neutral-400 dark:text-gray-600 animate-pulse">
+          <div className="w-full h-full flex flex-col justify-center items-center text-neutral-600 dark:text-gray-600 animate-pulse">
             <i className="fa-solid fa-bars-progress text-8xl"></i>
             <h2 className="font-default text-2xl ">Loading Data ...</h2>
           </div>
         ) : clients?.length === 0 ? (
-          <article className="w-full h-full flex flex-col justify-center items-center font-default text-gray-400 gap-2">
-            <i className="fa-regular fa-face-frown text-7xl"></i>
+          <article className="w-full h-full flex flex-col py-8 justify-center items-center font-default text-gray-600 gap-2">
+            <i className="fa-regular fa-face-frown text-5xl"></i>
             <h2 className="font-medium text-3xl">Empty Clients</h2>
             <h4 className="text-xl">Press + to add new clients</h4>
           </article>

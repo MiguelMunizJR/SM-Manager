@@ -25,7 +25,7 @@ function App() {
   const [activePage, setActivePage] = useState(null);
   const [showSideBar, setShowSideBar] = useState(false);
   const [update, setUpdate] = useState();
-  const { getUserInfo } = useUser();
+  const { user, getUserInfo } = useUser();
   const { getAllTasks } = useTasks();
   const { getAllClients } = useClients();
 
@@ -92,6 +92,7 @@ function App() {
               path={ROUTES_PATH.CLIENTS}
               element={
                 <Clients
+                  user={user}
                   isLogin={isLogin}
                   isShowClientsForm={isShowClientsForm}
                   setIsShowClientsForm={setIsShowClientsForm}
@@ -108,6 +109,7 @@ function App() {
               path={ROUTES_PATH.TASKS}
               element={
                 <Tasks
+                  user={user}
                   isLogin={isLogin}
                   isShowTasksForm={isShowTasksForm}
                   setIsShowTasksForm={setIsShowTasksForm}
