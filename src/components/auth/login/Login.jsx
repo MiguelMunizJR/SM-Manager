@@ -17,10 +17,10 @@ const Login = ({ isLogin, setIsLogin, setActivePage }) => {
     setActivePage(ROUTES_PATH.LOGIN);
   }, []);
 
-  const submitForm = async (data) => {
+  const submitForm = (data) => {
     const URL = `${URL_API}${ROUTES_PATH.LOGIN}`;
 
-    await axios
+    axios
       .post(URL, data)
       .then((res) => {
         localStorage.setItem("token", res.data?.token);
@@ -32,27 +32,20 @@ const Login = ({ isLogin, setIsLogin, setActivePage }) => {
           password: "",
         });
       })
-      .catch(() => toast.error("Error trying to log in"));
+      .catch((err) => {
+        toast.error("Error trying to log in");
+        console.error(err.message);
+      });
   };
 
   return (
     <>
-      <section className="w-full h-screen flex flex-col bg-gray-50 overflow-y-hidden">
-        <section className="w-full h-screen sm:h-screen mt-14 pt-6 flex justify-center bg-gray-50 overflow-y-hidden">
-          <article className="w-full max-h-screen hidden sm:block absolute inset-0 z-0 bg-slate-500">
-            <img
-              src="https://i.postimg.cc/Hs6JF90v/home-hero.jpg"
-              alt="hero_background"
-              className="w-full h-full object-cover filter blur-sm opacity-70 bg-gray-800"
-              draggable={false}
-            />
-          </article>
-          <LoginCard
-            handleSubmit={handleSubmit}
-            submitForm={submitForm}
-            register={register}
-          />
-        </section>
+      <section className="w-full min-h-screen flex justify-center sm:items-center bg-slate-200">
+        <LoginCard
+          handleSubmit={handleSubmit}
+          submitForm={submitForm}
+          register={register}
+        />
       </section>
     </>
   );

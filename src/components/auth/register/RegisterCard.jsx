@@ -4,8 +4,8 @@ import RegisterForm from "./RegisterForm";
 
 const RegisterCard = ({ handleSubmit, submitForm, register }) => {
   return (
-    <article className="w-11/12 max-w-3xl min-h-max pt-20 sm:pt-0 font-default flex flex-col bg-gray-50 sm:mt-20 sm:w-3/5 sm:min-h-max sm:items-center sm:absolute sm:inset-0 sm:inset-x-auto sm:z-10 sm:shadow-lg sm:rounded-lg md:w-3/6 md:flex-row lg:w-2/3">
-      <div className="w-full min-h-max px-4 sm:py-4 flex flex-col">
+    <article className="w-full sm:max-w-sm min-h-max pt-28 sm:pt-8 sm:pb-4 px-4 font-default flex flex-col bg-gray-50 sm:items-center sm:mt-12 sm:mb-10 sm:shadow-lg sm:rounded-lg">
+      <div className="w-full min-h-max px-4 flex flex-col">
         <motion.div
           className="min-w-full flex flex-row-reverse"
           initial={{ opacity: 0, translateY: -10 }}
@@ -44,9 +44,9 @@ const RegisterCard = ({ handleSubmit, submitForm, register }) => {
             register={register}
           />
         </motion.article>
-        <div className="w-full min-h-max flex justify-center fixed sm:relative bottom-6 sm:bottom-0 sm:top-4 lg:top-8 left-1/2 -translate-x-1/2">
+        <div className="w-full min-h-max flex justify-center mt-4">
           <motion.h5
-            className="mx-auto mt-2 text-sm font-medium text-gray-500"
+            className="mx-auto mt-2 text-sm font-normal text-gray-400"
             initial={{ opacity: 0, translateY: -20 }}
             animate={{ opacity: 1, translateY: 0 }}
             transition={{
@@ -65,15 +65,6 @@ const RegisterCard = ({ handleSubmit, submitForm, register }) => {
             </NavLink>
           </motion.h5>
         </div>
-      </div>
-      {/* Signup Image Card */}
-      <div className="w-full min-h-full lg:h-5/6 hidden rounded-r-lg lg:flex">
-        <img
-          src="https://i.postimg.cc/fyXwDFLZ/signup-card.jpg"
-          alt="signup-card"
-          className="w-full h-full rounded-r-lg object-contain"
-          draggable={false}
-        />
       </div>
     </article>
   );

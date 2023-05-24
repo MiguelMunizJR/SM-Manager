@@ -6,10 +6,10 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
 
   return (
     <form
-      className="w-full min-h-max mt-8 flex flex-col gap-4 md:gap-1 justify-center items-center"
+      className="w-full min-h-max mt-8 flex flex-col gap-1 justify-center items-center"
       onSubmit={handleSubmit(submitForm)}
     >
-      <div className="w-full min-h-max flex justify-between items-center sm:w-5/6">
+      <div className="w-full min-h-max flex sm:flex-col gap-1 items-center">
         <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
           <label
             htmlFor={firstNameId}
@@ -42,13 +42,14 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
             className="w-full lg:w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
             {...register("lastName")}
             required
+
           />
         </div>
       </div>
       <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
         <label
           htmlFor={emailId}
-          className="sm:pl-6 flex items-center gap-2 font-semibold text-gray-700 text-sm"
+          className="flex items-center gap-2 font-semibold text-gray-700 text-sm"
         >
           <i className="fa-solid fa-envelope"></i>
           Email: *
@@ -57,7 +58,7 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
           id={emailId}
           type="email"
           placeholder="Email"
-          className="w-full sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
+          className="w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
           {...register("email")}
           required
         />
@@ -65,7 +66,7 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
       <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
         <label
           htmlFor={passwordId}
-          className="sm:pl-6 flex items-center gap-2 font-semibold text-gray-700 text-sm"
+          className="flex items-center gap-2 font-semibold text-gray-700 text-sm"
         >
           <i className="fa-solid fa-key"></i>
           Password: *
@@ -74,13 +75,13 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
           id={passwordId}
           type="password"
           placeholder="Password"
-          className="w-full sm:w-5/6 lg:w-4/5 h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
+          className="w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
           {...register("password")}
           required
         />
       </div>
       <motion.button
-        className="w-2/5 h-10 flex justify-center items-center gap-2 self-end mt-4 rounded drop-shadow-lg text-gray-50 bg-blue-600 transition-all duration-100 hover:bg-blue-700"
+        className="w-2/5 h-10 flex justify-center items-center gap-2 self-end my-6 rounded drop-shadow-lg text-gray-50 bg-blue-600 transition-all duration-100 hover:bg-blue-700"
         initial={{ opacity: 0, translateY: -20 }}
         animate={{ opacity: 1, translateY: 0 }}
         transition={{
@@ -88,6 +89,7 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
           delay: 1.3,
           ease: "easeInOut",
         }}
+        onClick={handleSubmit(submitForm)}
       >
         Sign up
         <i className="fa-solid fa-arrow-right-long"></i>

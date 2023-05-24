@@ -1,5 +1,4 @@
 // Dependencies
-import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 // Components & utils
 import LoginButtons from "../auth/authButtons";
@@ -13,31 +12,20 @@ const Header = ({ showSideBar, setShowSideBar, activePage, isLogin }) => {
 
   return (
     <>
+      {/* Side Menu */}
       {showSideBar && (
-        <motion.section
-          className={"fixed inset-0 z-20"}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2 }}
-          onClick={() => setShowSideBar(false)}
-        >
-          <section className="w-screen h-screen opacity-20 absolute inset-0 bg-gray-600 z-10"></section>
-        </motion.section>
+        <section
+          className="w-screen min-h-screen opacity-20 absolute bg-gray-800 z-10"
+          onClick={handleSidebar}
+        ></section>
       )}
       {/* Header */}
-      <motion.header
-        className="w-full h-14 px-4 md:px-16 flex justify-between drop-shadow-sm items-center bg-slate-50 z-50 fixed top-0 left-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          duration: 0.4,
-          delay: 0.8,
-        }}
-      >
-        <section className="w-full flex gap-4 items-center text-gray-800">
+      <section className="w-screen h-14 px-4 md:px-10 fixed flex items-center justify-between bg-slate-100 text-gray-800">
+        <article className="flex items-center gap-3">
+          {/* Side Menu Button */}
           {isLogin && (
-            <button className="flex lg:hidden" onClick={handleSidebar}>
-              <i className="fa-solid fa-bars text-md"></i>
+            <button className="flex md:hidden" onClick={handleSidebar}>
+              <i className="fa-solid fa-bars text-lg"></i>
             </button>
           )}
           <NavLink to={ROUTES_PATH.HOME}>
@@ -48,31 +36,51 @@ const Header = ({ showSideBar, setShowSideBar, activePage, isLogin }) => {
               Manager
             </h1>
           </NavLink>
+        </article>
+        <section className="min-w-max flex items-center gap-14">
+          {isLogin && (
+            <article className="hidden md:flex gap-8 font-default font-medium text-gray-700">
+              <NavLink
+                className="flex items-center gap-2"
+                to={ROUTES_PATH.CLIENTS}
+              >
+                <i className="fa-solid fa-users"></i>
+                Clients
+              </NavLink>
+              <NavLink
+                className="flex items-center gap-2"
+                to={ROUTES_PATH.TASKS}
+              >
+                <i className="fa-solid fa-list-check"></i>
+                Tasks
+              </NavLink>
+            </article>
+          )}
+          {isLogin ? (
+            <UserMenu />
+          ) : activePage === ROUTES_PATH.HOME ? (
+            <LoginButtons />
+          ) : activePage === ROUTES_PATH.LOGIN ? (
+            <article className="w-full py-2 flex gap-3 md:gap-5 items-center justify-end font-default">
+              <NavLink
+                to={ROUTES_PATH.REGISTER}
+                className="px-2 md:px-6 py-2 transition-all duration-150 text-gray-50 text-sm md:text-base bg-blue-600 hover:bg-blue-700 rounded-md drop-shadow-sm cursor-pointer"
+              >
+                Sign up
+              </NavLink>
+            </article>
+          ) : activePage === ROUTES_PATH.REGISTER ? (
+            <article className="w-full py-2 flex gap-3 md:gap-5 items-center justify-end font-default">
+              <NavLink
+                to={ROUTES_PATH.LOGIN}
+                className="px-2 md:px-6 py-2 transition-all duration-150 text-blue-700 text-sm md:text-base font-medium ring-2 ring-blue-600 hover:bg-blue-600 hover:text-gray-50 rounded-sm drop-shadow-sm cursor-pointer"
+              >
+                Login
+              </NavLink>
+            </article>
+          ) : null}
         </section>
-        {isLogin ? (
-          <UserMenu />
-        ) : activePage === ROUTES_PATH.HOME ? (
-          <LoginButtons />
-        ) : activePage === ROUTES_PATH.LOGIN ? (
-          <article className="w-full py-2 flex gap-3 md:gap-5 items-center justify-end font-default">
-            <NavLink
-              to={ROUTES_PATH.REGISTER}
-              className="px-2 md:px-6 py-2 transition-all duration-150 text-gray-50 text-sm md:text-base bg-blue-600 hover:bg-blue-700 rounded-md drop-shadow-sm cursor-pointer"
-            >
-              Sign up
-            </NavLink>
-          </article>
-        ) : activePage === ROUTES_PATH.REGISTER ? (
-          <article className="w-full py-2 flex gap-3 md:gap-5 items-center justify-end font-default">
-            <NavLink
-              to={ROUTES_PATH.LOGIN}
-              className="px-2 md:px-6 py-2 transition-all duration-150 text-blue-700 text-sm md:text-base font-medium ring-2 ring-blue-600 hover:bg-blue-600 hover:text-gray-50 rounded-sm drop-shadow-sm cursor-pointer"
-            >
-              Login
-            </NavLink>
-          </article>
-        ) : null}
-      </motion.header>
+      </section>
     </>
   );
 };

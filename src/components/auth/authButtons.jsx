@@ -2,10 +2,10 @@ import { NavLink } from "react-router-dom";
 
 const authButtons = () => {
   return (
-    <article className="min-w-max flex gap-4 md:gap-6 items-center font-default">
+    <article className="min-w-max flex gap-4 md:gap-5 md:pr-4 items-center font-default">
       <NavLink
         to="/auth/login"
-        className="px-2 md:px-4 py-1 transition-all duration-200 text-blue-700 text-sm md:text-base font-medium ring-2 ring-blue-600 hover:bg-blue-600 hover:text-gray-50 rounded drop-shadow-sm cursor-pointer"
+        className="px-2 md:px-4 py-1 transition-all duration-200 text-blue-700 text-sm md:text-base font-normal ring-2 ring-blue-600 hover:bg-blue-600 hover:text-gray-50 rounded drop-shadow-sm cursor-pointer"
       >
         Login
       </NavLink>

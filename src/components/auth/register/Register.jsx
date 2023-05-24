@@ -37,22 +37,12 @@ const Register = ({ setActivePage, isLogin }) => {
 
   return (
     <>
-      <section className="w-full min-h-screen flex flex-col pb-14">
-        <section className="w-full min-h-screen sm:h-screen mt-4 pt-6 flex justify-center bg-gray-50 overflow-y-hidden">
-          <article className="w-full md:mt-10 hidden sm:block fixed inset-0 z-0 bg-slate-800">
-            <img
-              src="https://i.postimg.cc/XqTJLs6p/signup-background.jpg"
-              alt="signup_background"
-              className="w-full h-full object-cover filter blur-sm opacity-70 bg-gray-200"
-              draggable={false}
-            />
-          </article>
-          <RegisterCard
-            handleSubmit={handleSubmit}
-            submitForm={submitForm}
-            register={register}
-          />
-        </section>
+      <section className="w-full min-h-screen flex justify-center sm:items-center bg-slate-200">
+        <RegisterCard
+          handleSubmit={handleSubmit}
+          submitForm={submitForm}
+          register={register}
+        />
       </section>
     </>
   );
