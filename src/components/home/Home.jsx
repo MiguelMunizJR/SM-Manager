@@ -7,16 +7,15 @@ import HomeRender from "./HomeRender";
 import WelcomeInfo from "./WelcomeInfo";
 import { ROUTES_PATH } from "../../consts";
 
-const Home = ({ setActivePage, setShowSideBar, isLogin }) => {
+const Home = ({ setActivePage, isLogin }) => {
 
   useEffect(() => {
     setActivePage(ROUTES_PATH.HOME);
-    setShowSideBar(false);
   }, []);
 
   return (
     <>
-      <section className="w-full m-auto min-h-screen pt-14 md:pt-20 px-4 md:px-14 lg:px-32">
+      <section className="w-full m-auto min-h-screen pt-14 md:pt-20 px-4 md:px-14 lg:pl-56">
         <motion.article
           className="flex flex-col md:flex-row gap-4"
           initial={{ opacity: 0 }}

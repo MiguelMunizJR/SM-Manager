@@ -23,7 +23,6 @@ function App() {
   const [isShowClientsForm, setIsShowClientsForm] = useState(false);
   const [isShowTasksForm, setIsShowTasksForm] = useState(false);
   const [activePage, setActivePage] = useState(null);
-  const [showSideBar, setShowSideBar] = useState(false);
   const [update, setUpdate] = useState();
   const { user, getUserInfo } = useUser();
   const { getAllTasks } = useTasks();
@@ -47,8 +46,6 @@ function App() {
         {/* ROUTES */}
         <Header
           activePage={activePage}
-          setShowSideBar={setShowSideBar}
-          showSideBar={showSideBar}
           isLogin={isLogin}
         />
         <Routes>
@@ -59,7 +56,6 @@ function App() {
               <Home
                 activePage={activePage}
                 setActivePage={setActivePage}
-                setShowSideBar={setShowSideBar}
                 isLogin={isLogin}
               />
             }
@@ -100,7 +96,6 @@ function App() {
                   setUpdate={setUpdate}
                   activePage={activePage}
                   setActivePage={setActivePage}
-                  setShowSideBar={setShowSideBar}
                 />
               }
             />
@@ -117,7 +112,6 @@ function App() {
                   setUpdate={setUpdate}
                   activePage={activePage}
                   setActivePage={setActivePage}
-                  setShowSideBar={setShowSideBar}
                 />
               }
             />
@@ -128,8 +122,6 @@ function App() {
                 <Account
                   activePage={activePage}
                   setActivePage={setActivePage}
-                  setShowSideBar={setShowSideBar}
-                  showSideBar={showSideBar}
                 />
               }
             />

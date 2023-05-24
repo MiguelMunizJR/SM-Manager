@@ -20,7 +20,6 @@ const Tasks = ({
   setUpdate,
   activePage,
   setActivePage,
-  setShowSideBar,
 }) => {
   const [filterTasks, setFilterTasks] = useState(null);
   const [isReload, setIsReload] = useState(false);
@@ -29,7 +28,6 @@ const Tasks = ({
   useEffect(() => {
     isLogin && getAllTasks();
     setActivePage(ROUTES_PATH.TASKS);
-    setShowSideBar(false);
   }, []);
 
   return (
@@ -55,7 +53,7 @@ const Tasks = ({
         </motion.section>
       )}
 
-      <section className="w-full min-h-screen flex flex-col bg-slate-100">
+      <section className="w-full min-h-screen md:px-10 lg:pl-52 flex flex-col bg-slate-100">
         <motion.div
           className="w-full min-h-max flex justify-between"
           initial={{ opacity: 0, translateY: -10 }}

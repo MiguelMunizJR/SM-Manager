@@ -130,7 +130,7 @@ const ClientsCard = ({
               clients={clients}
               filterClients={filterClients}
               getAllClients={getAllClients}
-              setUpdate={setUpdate}
+              setUpdate={setUpdate} 
               setIsShowClientsForm={setIsShowClientsForm}
             />
           </>

@@ -5,31 +5,22 @@ import LoginButtons from "../auth/authButtons";
 import UserMenu from "../navbar/UserMenu";
 import { ROUTES_PATH } from "../../consts";
 
-const Header = ({ showSideBar, setShowSideBar, activePage, isLogin }) => {
-  const handleSidebar = () => {
-    setShowSideBar(!showSideBar);
-  };
+const Header = ({ activePage, isLogin }) => {
+
 
   return (
     <>
       {/* Side Menu */}
-      {showSideBar && (
-        <section
-          className="w-screen min-h-screen opacity-20 absolute bg-gray-800 z-10"
-          onClick={handleSidebar}
-        ></section>
-      )}
+      <aside
+        className="w-44 h-screen hidden lg:flex bg-slate-200 fixed top-14 shadow-md z-40"
+      >
+        Hola Mundo
+      </aside>
       {/* Header */}
-      <section className="w-screen h-14 px-4 md:px-14 lg:px-32 fixed flex items-center justify-between bg-slate-100 text-gray-800">
+      <section className="w-screen h-14 px-4 md:px-14 lg:px-4 fixed flex items-center justify-between bg-slate-100 text-gray-800 z-40">
         <article className="flex items-center gap-3">
-          {/* Side Menu Button */}
-          {isLogin && (
-            <button className="flex md:hidden" onClick={handleSidebar}>
-              <i className="fa-solid fa-bars text-lg"></i>
-            </button>
-          )}
           <NavLink to={ROUTES_PATH.HOME}>
-            <h1 className="py-2 font-default flex items-center gap-1 text-lg text-gray-900 md:text-xl font-semibold drop-shadow-sm">
+            <h1 className="py-2 font-default flex items-center gap-1 text-lg text-gray-800 md:text-xl font-semibold drop-shadow-sm">
               <span className="py-1 px-2 rounded bg-blue-700 text-gray-50 font-bold drop-shadow-md">
                 SM
               </span>

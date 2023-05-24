@@ -20,7 +20,6 @@ const Clients = ({
   setUpdate,
   activePage,
   setActivePage,
-  setShowSideBar,
 }) => {
   const [filterClients, setFilterClients] = useState(null);
   const {clients, getAllClients} = useClients();
@@ -28,7 +27,6 @@ const Clients = ({
   useEffect(() => {
     isLogin && getAllClients();
     setActivePage(ROUTES_PATH.CLIENTS);
-    setShowSideBar(false);
   }, []);
 
   return (
@@ -54,7 +52,7 @@ const Clients = ({
         </motion.section>
       )}
 
-      <section className="w-full min-h-screen md:px-10 lg:px-28 flex flex-col bg-slate-100">
+      <section className="w-full min-h-screen md:px-10 lg:pl-52 flex flex-col bg-slate-100">
         <TimelineNav
           actualPage="Clients"
           actualIcon="fa-solid fa-users"
@@ -75,14 +73,17 @@ const Clients = ({
             <h4 className="flex items-center gap-1 text-xl font-medium text-blue-700">
               Hi,
               <span className="text-gray-900">
-                {user?.firstName.charAt(0).toUpperCase() +
-                  user?.firstName.slice(1)}
+                { clients ? (user?.firstName.charAt(0).toUpperCase() +
+                  user?.firstName.slice(1)) : "User"
+                }
               </span>
             </h4>
             <h2 className="mt-4 pl-2 font-semibold flex items-center gap-1 text-[22px] md:text-2xl text-gray-800">
               You have
               <span className="text-blue-700">
-                {clients?.filter((user) => user.status === "active").length}
+                {
+                  clients ? clients?.filter((user) => user.status === "active").length : 0
+                }
               </span>
               active clients today
             </h2>
