@@ -1,7 +1,6 @@
 // Dependencies
 import { useEffect, useState, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { motion } from "framer-motion";
 import useUser from "./hooks/useUser";
 import useClients from "./hooks/useClients";
 import useTasks from "./hooks/useTasks";
@@ -29,7 +28,6 @@ function App() {
   const { getUserInfo } = useUser();
   const { getAllTasks } = useTasks();
   const { getAllClients } = useClients();
-  
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -37,9 +35,6 @@ function App() {
     if (token) {
       setIsLogin(true);
       getUserInfo();
-    }
-
-    if (isLogin) {
       getAllClients();
       getAllTasks();
     }
@@ -50,22 +45,12 @@ function App() {
       <Toaster richColors />
       <Suspense fallback={<Loading />}>
         {/* ROUTES */}
-        <motion.header
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.5,
-            delay: 0.3,
-          }}
-        >
-          <Header
-            activePage={activePage}
-            setShowSideBar={setShowSideBar}
-            showSideBar={showSideBar}
-            isLogin={isLogin}
-          />
-        </motion.header>
-
+        <Header
+          activePage={activePage}
+          setShowSideBar={setShowSideBar}
+          showSideBar={showSideBar}
+          isLogin={isLogin}
+        />
         <Routes>
           {/* Home Route */}
           <Route
@@ -93,10 +78,7 @@ function App() {
           <Route
             path={ROUTES_PATH.REGISTER}
             element={
-              <Register
-                isLogin={isLogin}
-                setActivePage={setActivePage}
-              />
+              <Register isLogin={isLogin} setActivePage={setActivePage} />
             }
           />
 

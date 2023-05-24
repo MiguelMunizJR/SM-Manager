@@ -20,7 +20,7 @@ const Header = ({ showSideBar, setShowSideBar, activePage, isLogin }) => {
         ></section>
       )}
       {/* Header */}
-      <section className="w-screen h-14 px-4 md:px-10 fixed flex items-center justify-between bg-slate-100 text-gray-800">
+      <section className="w-screen h-14 px-4 md:px-14 lg:px-32 fixed flex items-center justify-between bg-slate-100 text-gray-800">
         <article className="flex items-center gap-3">
           {/* Side Menu Button */}
           {isLogin && (

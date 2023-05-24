@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useId } from "react";
 
 const RegisterForm = ({ handleSubmit, submitForm, register }) => {
@@ -80,20 +79,13 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
           required
         />
       </div>
-      <motion.button
+      <button
         className="w-2/5 h-10 flex justify-center items-center gap-2 self-end my-6 rounded drop-shadow-lg text-gray-50 bg-blue-600 transition-all duration-100 hover:bg-blue-700"
-        initial={{ opacity: 0, translateY: -20 }}
-        animate={{ opacity: 1, translateY: 0 }}
-        transition={{
-          duration: 0.4,
-          delay: 1.3,
-          ease: "easeInOut",
-        }}
         onClick={handleSubmit(submitForm)}
       >
         Sign up
         <i className="fa-solid fa-arrow-right-long"></i>
-      </motion.button>
+      </button>
       <div className="w-full h-min-max mt-2 hidden py-5 items-center">
         <div className="flex-grow border-t border-gray-300"></div>
         <span className="flex-shrink mx-4 text-gray-300">Or sign up with</span>

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 import axios from "axios";
 // Components & utils
 import RegisterCard from "./RegisterCard";
@@ -38,11 +39,21 @@ const Register = ({ setActivePage, isLogin }) => {
   return (
     <>
       <section className="w-full min-h-screen flex justify-center sm:items-center bg-slate-200">
-        <RegisterCard
-          handleSubmit={handleSubmit}
-          submitForm={submitForm}
-          register={register}
-        />
+        <motion.section
+          className="w-full flex justify-center sm:items-center"
+          initial={{ opacity: 0, translateY: -10 }}
+          animate={{ opacity: 1, translateY: 0 }}
+          transition={{
+            duration: 0.5,
+            ease: "easeIn",
+          }}
+        >
+          <RegisterCard
+            handleSubmit={handleSubmit}
+            submitForm={submitForm}
+            register={register}
+          />
+        </motion.section>
       </section>
     </>
   );
