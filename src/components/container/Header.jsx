@@ -1,35 +1,43 @@
 // Dependencies
+import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 // Components & utils
 import LoginButtons from "../auth/authButtons";
 import { ROUTES_PATH } from "../../consts";
 import SideNav from "./SideNav";
-import { motion } from "framer-motion";
-import { useState } from "react";
 
-const Header = ({ user, activePage, isLogin }) => {
-  const [showSideNav, setShowSideNav] = useState(false);
-
+const Header = ({ user, activePage, isLogin, showSideNav, setShowSideNav }) => {
   const handleSideNav = () => {
     setShowSideNav(!showSideNav);
   };
 
   return (
     <>
+      {/* Side Nav */}
       <motion.aside
         className="fixed z-40"
         initial={{ translateX: "-208px" }}
-        animate={{ translateX: showSideNav ? "208px" : "-208px"}}
+        animate={{ translateX: showSideNav ? "208px" : "-208px" }}
         transition={{
-          duration: .3,
-          ease: "easeInOut"
+          duration: 0.3,
+          ease: "easeInOut",
         }}
       >
         {activePage === ROUTES_PATH.LOGIN ||
-          (activePage !== ROUTES_PATH.REGISTER && (
-            <SideNav user={user} />
-          ))}
+          (activePage !== ROUTES_PATH.REGISTER && <SideNav user={user} setShowSideNav={setShowSideNav} />)}
       </motion.aside>
+      {/* Side Nav Background */}
+      {showSideNav && (
+        <motion.section
+          className="w-screen h-screen absolute inset-0 z-30 bg-slate-500"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: .1 }}
+          transition={{
+            duration: 0.1,
+          }}
+          onClick={() => setShowSideNav(false)}
+        ></motion.section>
+      )}
       {/* Header */}
       <section className="w-screen h-14 px-4 md:px-12 lg:px-8 fixed flex items-center justify-between bg-slate-50 text-gray-800 shadow-sm shadow-slate-200 z-40">
         <article className="flex items-center gap-4">

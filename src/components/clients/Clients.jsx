@@ -16,6 +16,7 @@ const Clients = ({
   isLogin,
   isShowClientsForm,
   setIsShowClientsForm,
+  setShowSideNav,
   update,
   setUpdate,
   activePage,
@@ -27,6 +28,7 @@ const Clients = ({
   useEffect(() => {
     isLogin && getAllClients();
     setActivePage(ROUTES_PATH.CLIENTS);
+    setShowSideNav(false);
   }, []);
 
   return (
@@ -38,17 +40,18 @@ const Clients = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
-            duration: 0.1,
+            duration: .12,
           }}
         >
           <FormModal
             activePage={activePage}
             setIsShowClientsForm={setIsShowClientsForm}
+            setShowSideNav={setShowSideNav}
             getAllClients={getAllClients}
             update={update}
             setUpdate={setUpdate}
           />
-          <section className="w-screen h-screen opacity-10 absolute inset-0 bg-slate-800 z-10"></section>
+          <section className="w-screen h-screen opacity-10 absolute inset-0 bg-slate-800 z-10" onClick={() => setIsShowClientsForm(false)}></section>
         </motion.section>
       )}
       

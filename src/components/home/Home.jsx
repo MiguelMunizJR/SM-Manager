@@ -7,9 +7,10 @@ import HomeRender from "./HomeRender";
 import WelcomeInfo from "./WelcomeInfo";
 import { ROUTES_PATH } from "../../consts";
 
-const Home = ({ setActivePage, isLogin }) => {
+const Home = ({ setActivePage, isLogin, setShowSideNav }) => {
   useEffect(() => {
     setActivePage(ROUTES_PATH.HOME);
+    setShowSideNav(false);
   }, []);
 
   return (

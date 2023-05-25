@@ -17,6 +17,7 @@ const FormModal = ({
   activePage,
   setIsShowTasksForm,
   setIsShowClientsForm,
+  setShowSideNav,
   getAllTasks,
   getAllClients,
   update,
@@ -54,6 +55,7 @@ const FormModal = ({
           reset(defaultClientsValues);
           setUpdate(null);
           toast.success("User successfully updated");
+          setShowSideNav(false);
         })
         .catch(() => {
           toast.error("Error when updating client");
@@ -66,6 +68,7 @@ const FormModal = ({
           getAllClients();
           reset(defaultClientsValues);
           toast.success("User successfully created");
+          setShowSideNav(false);
         })
         .catch(() => {
           toast.error("Error when creating a new client");
@@ -97,6 +100,7 @@ const FormModal = ({
           reset(defaultTasksValues);
           setUpdate(null);
           toast.success("Task successfully updated");
+          setShowSideNav(false);
         })
         .catch(() => {
           toast.error("Error while updating the task");
@@ -109,6 +113,7 @@ const FormModal = ({
           getAllTasks();
           reset(defaultTasksValues);
           toast.success("Task successfully created");
+          setShowSideNav(false);
         })
         .catch(() => {
           toast.error("Error when creating a new task");

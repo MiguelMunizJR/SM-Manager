@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { ROUTES_PATH } from "../../consts";
 
-const SideNav = ({ user }) => {
+const SideNav = ({ user, setShowSideNav }) => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -46,7 +46,16 @@ const SideNav = ({ user }) => {
       <article className="w-full pt-6 px-4 flex flex-col gap-2 font-default transition-colors">
         <NavLink
           className="w-full h-12 px-2 flex items-center gap-2 rounded text-lg text-gray-700 hover:bg-gray-200 hover:text-gray-900"
+          to={ROUTES_PATH.HOME}
+          onClick={() => setShowSideNav(false)}
+        >
+          <i className="fa-solid fa-home"></i>
+            Home
+        </NavLink>
+        <NavLink
+          className="w-full h-12 px-2 flex items-center gap-2 rounded text-lg text-gray-700 hover:bg-gray-200 hover:text-gray-900"
           to={ROUTES_PATH.CLIENTS}
+          onClick={() => setShowSideNav(false)}
         >
           <i className="fa-solid fa-users"></i>
             Clients
@@ -54,6 +63,7 @@ const SideNav = ({ user }) => {
         <NavLink
           className="w-full h-12 px-2 flex items-center gap-2 rounded text-lg text-gray-700 hover:bg-gray-200 hover:text-gray-900"
           to={ROUTES_PATH.TASKS}
+          onClick={() => setShowSideNav(false)}
         >
           <i className="fa-solid fa-list-check"></i>
             Tasks

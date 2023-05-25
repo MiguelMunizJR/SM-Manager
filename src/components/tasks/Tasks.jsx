@@ -16,6 +16,7 @@ const Tasks = ({
   isLogin,
   isShowTasksForm,
   setIsShowTasksForm,
+  setShowSideNav,
   update,
   setUpdate,
   activePage,
@@ -27,6 +28,7 @@ const Tasks = ({
   useEffect(() => {
     isLogin && getAllTasks();
     setActivePage(ROUTES_PATH.TASKS);
+    setShowSideNav(false);
   }, []);
 
   return (
@@ -38,17 +40,18 @@ const Tasks = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
-            duration: 0.1,
+            duration: .12,
           }}
         >
           <FormModal
             activePage={activePage}
             setIsShowTasksForm={setIsShowTasksForm}
+            setShowSideNav={setShowSideNav}
             getAllTasks={getAllTasks}
             update={update}
             setUpdate={setUpdate}
           />
-          <section className="w-screen h-screen opacity-30 dark:opacity-30 absolute inset-0 bg-slate-800 dark:bg-gray-800 z-10"></section>
+          <section className="w-screen h-screen opacity-10 absolute inset-0 bg-slate-800 z-10" onClick={() => setIsShowTasksForm(false)}></section>
         </motion.section>
       )}
 

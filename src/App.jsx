@@ -18,6 +18,7 @@ const Loading = lazy(() => import("./components/Loading"));
 
 function App() {
   const [isLogin, setIsLogin] = useState();
+  const [showSideNav, setShowSideNav] = useState(false);
   const [isShowClientsForm, setIsShowClientsForm] = useState(false);
   const [isShowTasksForm, setIsShowTasksForm] = useState(false);
   const [activePage, setActivePage] = useState(null);
@@ -39,7 +40,13 @@ function App() {
         <Toaster richColors />
         <Suspense fallback={<Loading />}>
           {/* ROUTES */}
-          <Header user={user} activePage={activePage} isLogin={isLogin} />
+          <Header 
+            user={user} 
+            activePage={activePage} 
+            isLogin={isLogin}
+            showSideNav={showSideNav}
+            setShowSideNav={setShowSideNav}
+          />
           <Routes>
             {/* Home Route */}
             <Route
@@ -49,6 +56,7 @@ function App() {
                   activePage={activePage}
                   setActivePage={setActivePage}
                   isLogin={isLogin}
+                  setShowSideNav={setShowSideNav}
                 />
               }
             />
@@ -83,6 +91,7 @@ function App() {
                     isLogin={isLogin}
                     isShowClientsForm={isShowClientsForm}
                     setIsShowClientsForm={setIsShowClientsForm}
+                    setShowSideNav={setShowSideNav}
                     update={update}
                     setUpdate={setUpdate}
                     activePage={activePage}
@@ -99,6 +108,7 @@ function App() {
                     isLogin={isLogin}
                     isShowTasksForm={isShowTasksForm}
                     setIsShowTasksForm={setIsShowTasksForm}
+                    setShowSideNav={setShowSideNav}
                     update={update}
                     setUpdate={setUpdate}
                     activePage={activePage}
