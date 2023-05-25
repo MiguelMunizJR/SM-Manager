@@ -19,7 +19,7 @@ const SecureInfo = () => {
             <img
               src="https://i.postimg.cc/HsR5vt90/estrella-removebg-preview.png"
               alt="star-icon"
-              className="w-6 object-cover pb-1"
+              className="w-6 h-6 object-cover pb-1"
               draggable={false}
             />
           </div>
