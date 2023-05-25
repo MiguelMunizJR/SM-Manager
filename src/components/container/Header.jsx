@@ -32,11 +32,11 @@ const Header = ({ user, activePage, isLogin }) => {
       </motion.aside>
       {/* Header */}
       <section className="w-screen h-14 px-4 md:px-12 lg:px-8 fixed flex items-center justify-between bg-slate-50 text-gray-800 shadow-sm shadow-slate-200 z-40">
-        <article className="flex items-center gap-3">
+        <article className="flex items-center gap-4">
           {/* Side Menu Button */}
           {isLogin && (
             <button className="flex lg:hidden" onClick={handleSideNav}>
-              <i className="fa-solid fa-bars text-lg"></i>
+              <i className="fa-solid fa-bars text-2xl"></i>
             </button>
           )}
           <NavLink to={ROUTES_PATH.HOME}>
