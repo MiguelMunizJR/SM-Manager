@@ -9,10 +9,12 @@ const ClientsCardRender = ({
   getAllClients,
   setUpdate,
   setIsShowClientsForm,
+  setReload
 }) => {
 
   //* Eliminar cliente
   const handleDelete = (client) => {
+    setReload(true);
     deleteClient(client?.id)
       .then(() => {
         getAllClients();
@@ -30,12 +32,14 @@ const ClientsCardRender = ({
                 status: client?.status
               });
               getAllClients();
+              setReload(false);
             }
           },
         });
       })
       .catch(() => {
         toast.error("Error when deleting client");
+        setReload(false);
       });
   };
 

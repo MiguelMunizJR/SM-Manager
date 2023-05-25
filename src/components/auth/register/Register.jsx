@@ -19,6 +19,13 @@ const Register = ({ setActivePage, isLogin }) => {
   }, []);
 
   const submitForm = (data) => {
+    const { firstName, lastName, email, password } = data;
+
+    if (email.trim() === "" || password.trim() === "" || lastName.trim() === "" || firstName.trim() === "") {
+      toast.error("Please complete all fields");
+      return;
+    }
+
     const URL = `${URL_API}${ROUTES_PATH.REGISTER}`;
 
     axios
@@ -33,7 +40,13 @@ const Register = ({ setActivePage, isLogin }) => {
         });
         navigate(ROUTES_PATH.LOGIN);
       })
-      .catch(() => toast.error("Error when trying to register"));
+      .catch((err) => {
+        if (err.response.status === 400) {
+          toast.error("This email is already taken by another user");
+          return;
+        }
+        toast.error("An unexpected error occurred, try again later.");
+      });
   };
 
   return (

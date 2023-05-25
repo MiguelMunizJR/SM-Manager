@@ -123,6 +123,7 @@ const ClientsCard = ({
                   filterClients={filterClients}
                   setUpdate={setUpdate}
                   setIsShowClientsForm={setIsShowClientsForm}
+                  setReload={setReload}
                 />
               </tbody>
             </table>
@@ -132,6 +133,7 @@ const ClientsCard = ({
               getAllClients={getAllClients}
               setUpdate={setUpdate} 
               setIsShowClientsForm={setIsShowClientsForm}
+              setReload={setReload}
             />
           </>
         )}

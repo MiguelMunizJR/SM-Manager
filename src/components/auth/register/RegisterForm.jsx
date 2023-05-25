@@ -12,7 +12,7 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
         <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
           <label
             htmlFor={firstNameId}
-            className="flex items-center gap-2 font-semibold text-gray-700 text-sm"
+            className="flex items-center gap-2 font-semibold text-gray-600 text-sm"
           >
             <i className="fa-solid fa-id-card"></i>
             First Name: *
@@ -20,7 +20,7 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
           <input
             id={firstNameId}
             type="text"
-            placeholder="First name"
+            placeholder="Miguel"
             className="w-full lg:w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
             {...register("firstName")}
             required
@@ -29,7 +29,7 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
         <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
           <label
             htmlFor={lastNameId}
-            className="flex items-center gap-2 font-semibold text-gray-700 text-sm"
+            className="flex items-center gap-2 font-semibold text-gray-600 text-sm"
           >
             <i className="fa-solid fa-id-card"></i>
             Last Name: *
@@ -37,18 +37,17 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
           <input
             id={lastNameId}
             type="text"
-            placeholder="Last name"
+            placeholder="Muñiz"
             className="w-full lg:w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
             {...register("lastName")}
             required
-
           />
         </div>
       </div>
       <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
         <label
           htmlFor={emailId}
-          className="flex items-center gap-2 font-semibold text-gray-700 text-sm"
+          className="flex items-center gap-2 font-semibold text-gray-600 text-sm"
         >
           <i className="fa-solid fa-envelope"></i>
           Email: *
@@ -56,7 +55,7 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
         <input
           id={emailId}
           type="email"
-          placeholder="Email"
+          placeholder="miguel@hotmail.com"
           className="w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
           {...register("email")}
           required
@@ -65,7 +64,7 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
       <div className="w-full min-h-max flex flex-col gap-2 p-2 justify-center">
         <label
           htmlFor={passwordId}
-          className="flex items-center gap-2 font-semibold text-gray-700 text-sm"
+          className="flex items-center gap-2 font-semibold text-gray-600 text-sm"
         >
           <i className="fa-solid fa-key"></i>
           Password: *
@@ -73,7 +72,7 @@ const RegisterForm = ({ handleSubmit, submitForm, register }) => {
         <input
           id={passwordId}
           type="password"
-          placeholder="Password"
+          placeholder="*********"
           className="w-full h-10 pl-2 sm:mx-auto bg-transparent border-b-2 border-b-gray-300 outline-none transition-all duration-150 focus:border-blue-600 hover:border-blue-600 focus:bg-blue-50 hover:bg-blue-50 text-md font-medium placeholder:font-medium text-gray-500"
           {...register("password")}
           required

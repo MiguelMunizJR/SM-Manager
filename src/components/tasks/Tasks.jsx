@@ -22,7 +22,6 @@ const Tasks = ({
   setActivePage,
 }) => {
   const [filterTasks, setFilterTasks] = useState(null);
-  const [isReload, setIsReload] = useState(false);
   const { tasks, getAllTasks } = useTasks();
 
   useEffect(() => {
@@ -124,8 +123,6 @@ const Tasks = ({
           setUpdate={setUpdate}
           activePage={activePage}
           filterTasks={filterTasks}
-          isReload={isReload}
-          setIsReload={setIsReload}
         />
         <ButtonMobile
           setIsShowTasksForm={setIsShowTasksForm}

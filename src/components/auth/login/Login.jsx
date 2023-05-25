@@ -19,6 +19,13 @@ const Login = ({ isLogin, setIsLogin, setActivePage }) => {
   }, []);
 
   const submitForm = (data) => {
+    const { email, password } = data;
+
+    if (email === "" || password === "") {
+      toast.error("Please enter your email and password");
+      return;
+    }
+
     const URL = `${URL_API}${ROUTES_PATH.LOGIN}`;
 
     axios
@@ -34,8 +41,12 @@ const Login = ({ isLogin, setIsLogin, setActivePage }) => {
         });
         window.location.reload();
       })
-      .catch(() => {
-        toast.error("Error trying to log in");
+      .catch((err) => {
+        if (err.response.status === 401) {
+          toast.error("Incorrect email or password");
+          return;
+        }
+        toast.error("An unexpected error occurred, try again later.");
       });
   };
 

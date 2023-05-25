@@ -9,11 +9,12 @@ const TaskListRender = ({
   setIsShowTasksForm,
   setUpdate,
   filterTasks,
-  setIsReload,
+  setReload
 }) => {
 
   //* Eliminar tarea
   const handleDelete = (task) => {
+    setReload(true);
     deleteTask(task.id)
       .then(() => {
         getAllTasks();
@@ -27,28 +28,29 @@ const TaskListRender = ({
                 status: task?.status
               });
               getAllTasks();
+              setReload(false);
             }
           },
         });
       })
       .catch(() => {
         toast.error("Error when deleting task");
+        setReload(false);
       });
   };
 
   //* Completar tarea
   const handleCompleted = (task) => {
-    setIsReload(true);
-
+    setReload(true);
     completeTask(task)
       .then(() => {
         getAllTasks();
-        setIsReload(false);
         toast.success("Task successfully completed");
+        setReload(false);
       })
       .catch(() => {
         toast.error("Error when completing task");
-        setIsReload(false);
+        setReload(false);
       });
   };
 

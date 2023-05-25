@@ -33,20 +33,20 @@ const HomeRender = ({ isLogin }) => {
                   {item.title === "Clients" ? (
                     <>
                       <i className="fa-solid fa-users"></i>
-                      <small className="">
+                      <p>
                         {
                           clients?.length
                         }
-                      </small>
+                      </p>
                     </>
                   ) : (
                     <>
                       <i className="fa-solid fa-list-check"></i>
-                      <small className="">
+                      <p>
                         {
                           tasks?.length
                         }
-                      </small>
+                      </p>
                     </>
                   )}
                 </div>

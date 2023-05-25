@@ -32,6 +32,19 @@ const FormModal = ({
 
   //* Crear o actualizar un cliente
   const submitClientData = (data) => {
+    const { firstName, lastName, password } = data;
+
+    //! Validaciones
+    if (firstName.trim() === "" || lastName.trim() === "" || password?.trim() === "") {
+      toast.error("Please complete all fields");
+      return;
+    }
+
+    if (!isNaN(firstName) || !isNaN(lastName)) {
+      toast.error("Sorry, you cannot use numbers in the name fields.");
+      return;
+    }
+
     if (update) {
       //* Actualizamos un cliente
       updateClient(data, update)
@@ -62,6 +75,19 @@ const FormModal = ({
 
   //* Crear o actualizar una tarea
   const submitTaskData = (data) => {
+    const { title, description } = data;
+
+    //! Validaciones
+    if (title.trim() === "" || description.trim() === "") {
+      toast.error("Please complete all fields");
+      return;
+    }
+
+    if (!isNaN(title) || !isNaN(description)) {
+      toast.error("Sorry, you cannot use numbers in the name fields.");
+      return;
+    }
+
     if (update) {
       //* Actualizamos una tarea
       updateTask(data, update)

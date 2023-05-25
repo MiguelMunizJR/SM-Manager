@@ -10,11 +10,10 @@ const TasksCard = ({
   setIsShowTasksForm,
   setUpdate,
   activePage,
-  filterTasks,
-  isReload,
-  setIsReload,
+  filterTasks
 }) => {
   const [isSort, setIsSort] = useState(false);
+  const [reload, setReload] = useState(false);
 
   const setSort = () => {
     setIsSort(!isSort);
@@ -22,14 +21,14 @@ const TasksCard = ({
 
   const reloadTasks = () => {
     getAllTasks();
-    setIsReload(true);
+    setReload(true);
   };
 
   const tasksReady = () => {
     if (tasks) {
-      setIsReload(false);
+      setReload(false);
     }
-    setIsReload(false);
+    setReload(false);
   };
   return (
     <section className="w-full mt-7 mx-auto px-4 relative z-0 flex flex-col justify-center gap-3">
@@ -61,7 +60,7 @@ const TasksCard = ({
               onAnimationEnd={tasksReady}
             >
               <i
-                className={`${isReload && "animate-reload"} fa-solid fa-rotate`}
+                className={`${reload && "animate-reload"} fa-solid fa-rotate`}
               ></i>
             </button>
             <button
@@ -78,7 +77,7 @@ const TasksCard = ({
         </article>
       </motion.article>
       <article className="w-full relative mb-6 drop-shadow-xl md:rounded-ml">
-        {isReload ? (
+        {reload ? (
           <div className="w-full h-full flex flex-col justify-center items-center text-neutral-400 dark:text-gray-600 animate-pulse">
             <i className="fa-solid fa-bars-progress text-8xl"></i>
             <h2 className="font-default text-2xl ">Loading Data ...</h2>
@@ -87,8 +86,8 @@ const TasksCard = ({
           <>
             <article className="w-full h-full mx-auto">
               {tasks?.length === 0 ? (
-                <article className="w-full h-full flex flex-col justify-center items-center font-default text-gray-400 gap-2">
-                  <i className="fa-regular fa-face-frown text-7xl"></i>
+                <article className="w-full h-full flex flex-col py-8 justify-center items-center font-default text-gray-600 gap-2">
+                  <i className="fa-regular fa-face-frown text-5xl"></i>
                   <h2 className="font-medium text-3xl">Empty Tasks</h2>
                   <h4 className="text-xl">Press + to add new tasks</h4>
                 </article>
@@ -99,7 +98,7 @@ const TasksCard = ({
                   setIsShowTasksForm={setIsShowTasksForm}
                   setUpdate={setUpdate}
                   filterTasks={filterTasks}
-                  setIsReload={setIsReload}
+                  setReload={setReload}
                 />
               )}
             </article>

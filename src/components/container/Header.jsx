@@ -31,7 +31,7 @@ const Header = ({ user, activePage, isLogin }) => {
           ))}
       </motion.aside>
       {/* Header */}
-      <section className="w-screen h-14 px-4 md:px-12 lg:px-8 fixed flex items-center justify-between bg-slate-50 text-gray-800 shadow-sm shadow-slate-100 z-40">
+      <section className="w-screen h-14 px-4 md:px-12 lg:px-8 fixed flex items-center justify-between bg-slate-50 text-gray-800 shadow-sm shadow-slate-200 z-40">
         <article className="flex items-center gap-3">
           {/* Side Menu Button */}
           {isLogin && (
