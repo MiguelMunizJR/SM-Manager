@@ -4,14 +4,41 @@ import { NavLink } from "react-router-dom";
 import LoginButtons from "../auth/authButtons";
 import { ROUTES_PATH } from "../../consts";
 import SideNav from "./SideNav";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const Header = ({ activePage, isLogin }) => {
+  const [showSideNav, setShowSideNav] = useState(false);
+
+  const handleSideNav = () => {
+    setShowSideNav(!showSideNav);
+  };
+
   return (
     <>
-      {activePage === ROUTES_PATH.LOGIN || activePage !== ROUTES_PATH.REGISTER &&  <SideNav isLogin={isLogin} />}
+      <motion.aside
+        className="fixed z-40"
+        initial={{ translateX: "-208px" }}
+        animate={{ translateX: showSideNav ? "208px" : "-208px"}}
+        transition={{
+          duration: .3,
+          ease: "easeInOut"
+        }}
+      >
+        {activePage === ROUTES_PATH.LOGIN ||
+          (activePage !== ROUTES_PATH.REGISTER && (
+            <SideNav isLogin={isLogin} />
+          ))}
+      </motion.aside>
       {/* Header */}
       <section className="w-screen h-14 px-4 md:px-12 lg:px-8 fixed flex items-center justify-between bg-slate-50 text-gray-800 shadow-sm shadow-slate-100 z-40">
         <article className="flex items-center gap-3">
+          {/* Side Menu Button */}
+          {isLogin && (
+            <button className="flex lg:hidden" onClick={handleSideNav}>
+              <i className="fa-solid fa-bars text-lg"></i>
+            </button>
+          )}
           <NavLink to={ROUTES_PATH.HOME}>
             <h1 className="py-2 font-default flex items-center gap-1 text-lg text-gray-800 md:text-xl font-semibold drop-shadow-sm">
               <span className="py-1 px-2 rounded bg-blue-700 text-gray-50 font-bold drop-shadow-md">

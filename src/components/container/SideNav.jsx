@@ -15,8 +15,8 @@ const SideNav = ({ isLogin }) => {
     return <Loading />;
   } else {
     return (
-      <aside className="w-52 h-screen pt-4 hidden lg:flex flex-col fixed bg-slate-100 top-14 shadow-md shadow-gray-400 z-40 transition-all">
-        <article className="w-5/6 h-2/5 mx-auto pt-4 flex flex-col items-center border-b border-gray-200">
+      <aside className="w-52 h-screen pt-4 lg:flex flex-col fixed bg-slate-100 top-14 shadow-md shadow-gray-400 z-40 -translate-x-52 lg:translate-x-52 transition-all">
+        <article className="w-5/6 h-62 mx-auto pt-4 flex flex-col items-center border-b border-gray-200">
           <div className="w-20 h-20 rounded-full">
             <img
               src="https://i.postimg.cc/Hk0x00Zk/profile-img.jpg"
