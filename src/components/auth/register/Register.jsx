@@ -21,8 +21,14 @@ const Register = ({ setActivePage, isLogin }) => {
   const submitForm = (data) => {
     const { firstName, lastName, email, password } = data;
 
+    //! Validaciones
     if (email.trim() === "" || password.trim() === "" || lastName.trim() === "" || firstName.trim() === "") {
       toast.error("Please complete all fields");
+      return;
+    }
+
+    if (!isNaN(firstName) || !isNaN(lastName)) {
+      toast.error("Sorry, you cannot use numbers in the name fields.");
       return;
     }
 

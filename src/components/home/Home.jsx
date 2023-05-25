@@ -19,7 +19,7 @@ const Home = ({ setActivePage, isLogin }) => {
           className="flex flex-col md:flex-row gap-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.2, delay: 0.6 }}
+          transition={{ duration: 0.3 }}
         >
           <WelcomeInfo />
           <SecureInfo />
@@ -28,7 +28,7 @@ const Home = ({ setActivePage, isLogin }) => {
           className="mt-10 md:mt-14 flex justify-center items-center gap-8 lg:gap-16 font-default"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.8 }}
+          transition={{ duration: .3, delay: 1 }}
         >
           <HomeRender isLogin={isLogin} />
         </motion.section>

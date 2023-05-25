@@ -40,8 +40,7 @@ const ClientsCard = ({
         animate={{ opacity: 1, translateY: 0 }}
         transition={{
           duration: 0.4,
-          delay: 0.6,
-          ease: "easeInOut",
+          delay: .2
         }}
       >
         <article className="w-full flex justify-between items-center">
@@ -86,11 +85,18 @@ const ClientsCard = ({
             <h2 className="font-default text-2xl ">Loading Data ...</h2>
           </div>
         ) : clients?.length === 0 ? (
-          <article className="w-full h-full flex flex-col py-8 justify-center items-center font-default text-gray-600 gap-2">
+          <motion.article 
+            className="w-full h-full flex flex-col py-8 justify-center items-center font-default text-gray-600 gap-2"
+            initial={{ opacity: 0, translateY: -10 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            transition={{
+              duration: 0.4
+            }}
+          >
             <i className="fa-regular fa-face-frown text-5xl"></i>
             <h2 className="font-medium text-3xl">Empty Clients</h2>
             <h4 className="text-xl">Press + to add new clients</h4>
-          </article>
+          </motion.article>
         ) : (
           <>
             <table className="w-full hidden md:table relative px-5 table-fixed text-center drop-shadow-md">
