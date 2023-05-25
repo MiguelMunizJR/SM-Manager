@@ -1,6 +1,5 @@
 // Dependencies
 import { NavLink } from "react-router-dom";
-import { motion } from "framer-motion";
 // Components & utils
 import itemsHome from "../../utilities/home/itemsHome";
 import { ROUTES_PATH } from "../../consts";
@@ -13,16 +12,13 @@ const HomeRender = ({ isLogin }) => {
   
   return (
     <>
-      {itemsHome?.map((item, i) => (
+      {itemsHome?.map((item) => (
         <NavLink
           key={item.id}
           to={isLogin ? item.route : ROUTES_PATH.LOGIN}
           className={item.className}
         >
-          <motion.article
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.2, delay: i + 0.1 }}
+          <article
             key={item.id}
           >
             <div className="py-1 px-4 flex gap-2 items-center">
@@ -55,7 +51,7 @@ const HomeRender = ({ isLogin }) => {
                 </button>
               </div>
             </div>
-          </motion.article>
+          </article>
         </NavLink>
       ))}
     </>
