@@ -50,7 +50,7 @@ const ClientsCard = ({
             <i className="fa-solid fa-users pl-2 text-md"></i>
           </div>
           <div className="flex justify-center items-center gap-2">
-            <div className="mr-2 md:hidden">
+            <div className="mr-2 md:mr-8">
               <ButtonHeader
                 setIsShowClientsForm={setIsShowClientsForm}
                 setUpdate={setUpdate}
@@ -79,7 +79,7 @@ const ClientsCard = ({
           </div>
         </article>
       </motion.article>
-      <article className="w-full min-h-max mx-auto mb-4 rounded drop-shadow-md">
+      <article className="relative mb-6">
         {reload ? (
           <div className="w-full h-full flex flex-col justify-center items-center text-neutral-600 dark:text-gray-600 animate-pulse">
             <i className="fa-solid fa-bars-progress text-8xl"></i>
@@ -93,7 +93,7 @@ const ClientsCard = ({
           </article>
         ) : (
           <>
-            <table className="invisible absolute -z-10 md:visible md:relative md:z-0 table-fixed w-full text-center">
+            <table className="w-full hidden md:table relative px-5 table-fixed text-center drop-shadow-md">
               <thead>
                 <tr>
                   <th className="text-sm font-medium text-slate-400 py-3">

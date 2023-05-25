@@ -2,22 +2,15 @@
 import { NavLink } from "react-router-dom";
 // Components & utils
 import LoginButtons from "../auth/authButtons";
-import UserMenu from "../navbar/UserMenu";
 import { ROUTES_PATH } from "../../consts";
+import SideNav from "./SideNav";
 
 const Header = ({ activePage, isLogin }) => {
-
-
   return (
     <>
-      {/* Side Menu */}
-      <aside
-        className="w-44 h-screen hidden lg:flex bg-slate-200 fixed top-14 shadow-md z-40"
-      >
-        Hola Mundo
-      </aside>
+      {activePage === ROUTES_PATH.LOGIN || activePage !== ROUTES_PATH.REGISTER &&  <SideNav isLogin={isLogin} />}
       {/* Header */}
-      <section className="w-screen h-14 px-4 md:px-14 lg:px-4 fixed flex items-center justify-between bg-slate-100 text-gray-800 z-40">
+      <section className="w-screen h-14 px-4 md:px-12 lg:px-8 fixed flex items-center justify-between bg-slate-50 text-gray-800 shadow-sm shadow-slate-100 z-40">
         <article className="flex items-center gap-3">
           <NavLink to={ROUTES_PATH.HOME}>
             <h1 className="py-2 font-default flex items-center gap-1 text-lg text-gray-800 md:text-xl font-semibold drop-shadow-sm">
@@ -28,28 +21,8 @@ const Header = ({ activePage, isLogin }) => {
             </h1>
           </NavLink>
         </article>
-        <section className="min-w-max flex items-center gap-14">
-          {isLogin && (
-            <article className="hidden md:flex gap-8 font-default font-medium text-gray-700">
-              <NavLink
-                className="flex items-center gap-2"
-                to={ROUTES_PATH.CLIENTS}
-              >
-                <i className="fa-solid fa-users"></i>
-                Clients
-              </NavLink>
-              <NavLink
-                className="flex items-center gap-2"
-                to={ROUTES_PATH.TASKS}
-              >
-                <i className="fa-solid fa-list-check"></i>
-                Tasks
-              </NavLink>
-            </article>
-          )}
-          {isLogin ? (
-            <UserMenu />
-          ) : activePage === ROUTES_PATH.HOME ? (
+        <section className="min-w-max pr-4 md:pr-2 lg:pr-14 flex items-center gap-14">
+          {!isLogin && activePage === ROUTES_PATH.HOME ? (
             <LoginButtons />
           ) : activePage === ROUTES_PATH.LOGIN ? (
             <article className="w-full py-2 flex gap-3 md:gap-5 items-center justify-end font-default">

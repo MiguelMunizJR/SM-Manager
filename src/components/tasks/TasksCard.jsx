@@ -32,7 +32,7 @@ const TasksCard = ({
     setIsReload(false);
   };
   return (
-    <section className="w-full h-5/6 mt-7 mx-auto relative z-0 flex flex-col justify-center gap-4">
+    <section className="w-full mt-7 mx-auto px-4 relative z-0 flex flex-col justify-center gap-3">
       <motion.article
         initial={{ opacity: 0, translateY: -10 }}
         animate={{ opacity: 1, translateY: 0 }}
@@ -43,12 +43,12 @@ const TasksCard = ({
         }}
       >
         <article className="w-full flex justify-between items-center">
-          <div className="sm:ml-3 md:ml-6 lg:ml-8 flex items-center text-gray-900 dark:text-gray-300">
-            <h2 className="ml-4 font-default font-medium text-2xl">Tasks</h2>
+          <div className="flex items-center text-gray-900 dark:text-gray-300">
+            <h2 className="font-default font-medium text-2xl">Tasks</h2>
             <i className="fa-solid fa-list-check pl-2 text-md"></i>
           </div>
-          <div className="mr-4 sm:mr-8 md:mr-10 lg:mr-24 flex justify-center items-center gap-3">
-            <div className="mr-2 md:hidden">
+          <div className="flex justify-center items-center gap-2">
+            <div className="mr-2 md:mr-8">
               <ButtonHeader
                 setIsShowTasksForm={setIsShowTasksForm}
                 setUpdate={setUpdate}
@@ -77,7 +77,7 @@ const TasksCard = ({
           </div>
         </article>
       </motion.article>
-      <article className="w-11/12 mx-auto mb-4 rounded h-full md:h-5/6 md:rounded-lg bg-gray-100 dark:bg-gray-800 drop-shadow-md dark:drop-shadow-lg dark:shadow-black z-0 overflow-y-auto">
+      <article className="w-full relative mb-6 drop-shadow-xl md:rounded-ml">
         {isReload ? (
           <div className="w-full h-full flex flex-col justify-center items-center text-neutral-400 dark:text-gray-600 animate-pulse">
             <i className="fa-solid fa-bars-progress text-8xl"></i>

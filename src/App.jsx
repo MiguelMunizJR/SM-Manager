@@ -2,8 +2,6 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import useUser from "./hooks/useUser";
-import useClients from "./hooks/useClients";
-import useTasks from "./hooks/useTasks";
 import { ROUTES_PATH } from "./consts";
 import { Toaster } from "sonner";
 // Components & utils
@@ -24,30 +22,21 @@ function App() {
   const [isShowTasksForm, setIsShowTasksForm] = useState(false);
   const [activePage, setActivePage] = useState(null);
   const [update, setUpdate] = useState();
-  const { user, getUserInfo } = useUser();
-  const { getAllTasks } = useTasks();
-  const { getAllClients } = useClients();
+  const { user } = useUser();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     if (token) {
       setIsLogin(true);
-      getUserInfo();
-      getAllClients();
-      getAllTasks();
     }
   }, [isLogin]);
 
   return (
-    <div className="w-full min-h-screen bg-slate-100">
+    <div className="w-full min-h-screen bg-slate-50">
       <Toaster richColors />
       <Suspense fallback={<Loading />}>
         {/* ROUTES */}
-        <Header
-          activePage={activePage}
-          isLogin={isLogin}
-        />
+        <Header activePage={activePage} isLogin={isLogin} />
         <Routes>
           {/* Home Route */}
           <Route
@@ -80,7 +69,6 @@ function App() {
 
           {/* Route not found 404 */}
           <Route path={ROUTES_PATH.NOT_FOUND} element={<NotFound />} />
-
           {/* Protected Routes */}
           <Route element={<ProtectedRoutes isLogin={isLogin} />}>
             {/* Clients Route */}

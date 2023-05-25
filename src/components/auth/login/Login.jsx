@@ -32,6 +32,7 @@ const Login = ({ isLogin, setIsLogin, setActivePage }) => {
           email: "",
           password: "",
         });
+        window.location.reload();
       })
       .catch(() => {
         toast.error("Error trying to log in");

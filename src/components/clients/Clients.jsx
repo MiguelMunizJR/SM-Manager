@@ -52,7 +52,7 @@ const Clients = ({
         </motion.section>
       )}
 
-      <section className="w-full min-h-screen md:px-10 lg:pl-52 flex flex-col bg-slate-100">
+      <section className="w-full min-h-screen md:px-10 lg:pl-60 flex flex-col bg-slate-50">
         <TimelineNav
           actualPage="Clients"
           actualIcon="fa-solid fa-users"

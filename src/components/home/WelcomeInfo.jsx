@@ -10,7 +10,7 @@ const WelcomeInfo = () => {
           </div>
         </article>
         <article className="w-full min-h-max flex items-center">
-          <h2 className="md:w-11/12 flex flex-col gap-3 font-semibold text-3xl md:text-4xl text-gray-800">
+          <h2 className="flex flex-col gap-3 font-semibold text-3xl md:text-4xl text-gray-800">
           Control your customers and simplify your tasks with ease
             <span className="text-blue-700 font-bold text-3xl md:text-4xl">Your ally for efficient management!</span>
           </h2>
