@@ -32,7 +32,7 @@ const Header = ({ user, activePage, isLogin, showSideNav, setShowSideNav }) => {
       {/* Side Nav Background */}
       {showSideNav && (
         <section
-          className="w-screen h-screen absolute inset-0 z-30 bg-slate-500"
+          className="w-screen h-screen absolute inset-0 z-30 bg-slate-500 opacity-10"
           onClick={() => setShowSideNav(false)}
         ></section>
       )}
