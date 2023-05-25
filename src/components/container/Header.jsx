@@ -7,6 +7,7 @@ import { ROUTES_PATH } from "../../consts";
 import SideNav from "./SideNav";
 
 const Header = ({ user, activePage, isLogin, showSideNav, setShowSideNav }) => {
+
   const handleSideNav = () => {
     setShowSideNav(!showSideNav);
   };
@@ -23,15 +24,17 @@ const Header = ({ user, activePage, isLogin, showSideNav, setShowSideNav }) => {
           ease: "easeInOut",
         }}
       >
-        {activePage === ROUTES_PATH.LOGIN ||
-          (activePage !== ROUTES_PATH.REGISTER && <SideNav user={user} setShowSideNav={setShowSideNav} />)}
+        {(activePage === ROUTES_PATH.LOGIN ||
+          activePage !== ROUTES_PATH.REGISTER) && (
+          <SideNav user={user} setShowSideNav={setShowSideNav} />
+        )}
       </motion.aside>
       {/* Side Nav Background */}
       {showSideNav && (
         <motion.section
           className="w-screen h-screen absolute inset-0 z-30 bg-slate-500"
           initial={{ opacity: 0 }}
-          animate={{ opacity: .1 }}
+          animate={{ opacity: 0.1 }}
           transition={{
             duration: 0.1,
           }}

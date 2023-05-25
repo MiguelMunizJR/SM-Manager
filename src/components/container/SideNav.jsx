@@ -1,7 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { ROUTES_PATH } from "../../consts";
+import useClients from "../../hooks/useClients";
+import useTasks from "../../hooks/useTasks";
 
-const SideNav = ({ user, setShowSideNav }) => {
+const SideNav = ({
+  user,
+  setShowSideNav,
+}) => {
+  const { clients } = useClients();
+  const { tasks } = useTasks();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -10,7 +17,7 @@ const SideNav = ({ user, setShowSideNav }) => {
 
   return (
     <aside className="w-52 h-screen pt-4 lg:flex flex-col fixed bg-slate-100 top-14 shadow-md shadow-gray-400 z-40 -translate-x-52 lg:translate-x-52 transition-all">
-      <article className="w-5/6 h-62 mx-auto pt-4 flex flex-col items-center border-b border-gray-200">
+      <article className="w-11/12 h-62 mx-auto pt-4 flex flex-col items-center border-b border-gray-200">
         <div className="w-20 h-20 rounded-full">
           <img
             src="https://i.postimg.cc/Hk0x00Zk/profile-img.jpg"
@@ -43,30 +50,40 @@ const SideNav = ({ user, setShowSideNav }) => {
           </NavLink>
         )}
       </article>
-      <article className="w-full pt-6 px-4 flex flex-col gap-2 font-default transition-colors">
+      <article className="w-11/12 mx-auto pt-4 flex flex-col gap-2 font-default transition-colors">
         <NavLink
-          className="w-full h-12 px-2 flex items-center gap-2 rounded text-lg text-gray-700 hover:bg-gray-200 hover:text-gray-900"
+          className="mb-2 w-full h-12 px-2 flex items-center gap-2 rounded text-gray-700 hover:bg-gray-200 hover:text-gray-900"
           to={ROUTES_PATH.HOME}
           onClick={() => setShowSideNav(false)}
         >
-          <i className="fa-solid fa-home"></i>
-            Home
+          <i className="fa-solid fa-home text-lg"></i>
+          Home
         </NavLink>
         <NavLink
-          className="w-full h-12 px-2 flex items-center gap-2 rounded text-lg text-gray-700 hover:bg-gray-200 hover:text-gray-900"
+          className="w-full h-12 px-2 flex items-center justify-between rounded text-gray-700 hover:bg-gray-200 hover:text-gray-900"
           to={ROUTES_PATH.CLIENTS}
           onClick={() => setShowSideNav(false)}
         >
-          <i className="fa-solid fa-users"></i>
+          <div className="flex items-center gap-2">
+            <i className="fa-solid fa-users text-lg"></i>
             Clients
+          </div>
+          <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
+            {clients?.length || 0}
+          </small>
         </NavLink>
         <NavLink
-          className="w-full h-12 px-2 flex items-center gap-2 rounded text-lg text-gray-700 hover:bg-gray-200 hover:text-gray-900"
+          className="w-full h-12 px-2 flex items-center justify-between rounded text-gray-700 hover:bg-gray-200 hover:text-gray-900"
           to={ROUTES_PATH.TASKS}
           onClick={() => setShowSideNav(false)}
         >
-          <i className="fa-solid fa-list-check"></i>
+          <div className="flex items-center gap-2">
+            <i className="fa-solid fa-list-check text-lg"></i>
             Tasks
+          </div>
+          <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
+            {tasks?.length || 0}
+          </small>
         </NavLink>
       </article>
     </aside>
