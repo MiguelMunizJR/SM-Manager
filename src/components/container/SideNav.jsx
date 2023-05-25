@@ -29,7 +29,7 @@ const SideNav = ({
         <h4 className="mt-2 font-default text-xl font-semibold text-gray-800">
           {user ? `${user?.firstName} ${user?.lastName}` : "Welcome"}
         </h4>
-        <p className="font-default text-gray-500 text-sm font-normal">
+        <p className="w-full text-center break-words font-default text-gray-500 text-sm font-normal">
           {user ? user?.email : "Please login to continue"}
         </p>
         {user ? (

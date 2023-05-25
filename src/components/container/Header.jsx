@@ -24,10 +24,10 @@ const Header = ({ user, activePage, isLogin, showSideNav, setShowSideNav }) => {
           ease: "easeInOut",
         }}
       >
-        {(activePage === ROUTES_PATH.LOGIN ||
-          activePage !== ROUTES_PATH.REGISTER) && (
-          <SideNav user={user} setShowSideNav={setShowSideNav} />
-        )}
+        {activePage === ROUTES_PATH.LOGIN ||
+          activePage !== ROUTES_PATH.REGISTER && (
+            <SideNav user={user} setShowSideNav={setShowSideNav} />
+          )}
       </motion.aside>
       {/* Side Nav Background */}
       {showSideNav && (
