@@ -5,7 +5,7 @@ import useTasks from "../../hooks/useTasks";
 
 const SideNav = ({
   user,
-  setShowSideNav,
+  setShowSideNav
 }) => {
   const { clients } = useClients();
   const { tasks } = useTasks();

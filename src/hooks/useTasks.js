@@ -3,6 +3,8 @@ import axios from "axios";
 
 import { ROUTES_PATH, URL_API } from "../consts";
 import getConfig from "../utilities/getConfig";
+const token = localStorage.getItem("token");
+
 
 const useTasks = () => {
   const [tasks, setTasks] = useState(null);
@@ -24,7 +26,9 @@ const useTasks = () => {
   };
 
   useEffect(() => {
-    getAllTasks();
+    if (token) {
+      getAllTasks();
+    }
   }, []);
   
   

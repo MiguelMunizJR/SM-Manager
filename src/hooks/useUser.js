@@ -1,7 +1,9 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import axios from "axios";
+
 import { ROUTES_PATH, URL_API } from "../consts";
 import getConfig from "../utilities/getConfig";
+const token = localStorage.getItem("token");
 
 const useUser = () => {
   const [user, setUser] = useState(null);
@@ -10,7 +12,7 @@ const useUser = () => {
 
   const getUserInfo = () => {
     const URL = `${URL_API}${ROUTES_PATH.USER}`;
-
+      
     axios
       .get(URL, getConfig())
       .then((res) => {
@@ -23,7 +25,9 @@ const useUser = () => {
   };
 
   useEffect(() => {
-    getUserInfo();
+    if (token) {
+      getUserInfo();
+    }
   }, []);
   
   return { user, loading, error, getUserInfo };
