@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import ClientsCard from "./ClientsCard";
 import SearchBar from "../container/SearchBar";
 import FormModal from "../container/FormModal";
-import ButtonMobile from "../navbar/ButtonMobile";
+import ButtonMobile from "../container/ButtonMobile";
 import TimelineNav from "../container/TimelineNav";
 import ReturnButton from "../container/ReturnButton";
 import { ROUTES_PATH } from "../../consts";
@@ -78,7 +78,7 @@ const Clients = ({
                 }
               </span>
             </h4>
-            <h2 className="mt-4 pl-2 font-semibold flex items-center gap-1 text-[22px] md:text-2xl text-gray-800">
+            <h2 className="mt-4 pl-2 font-semibold flex items-center gap-1 text-[20px] md:text-2xl text-gray-800">
               You have
               <span className="text-blue-700">
                 {

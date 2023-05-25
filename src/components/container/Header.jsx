@@ -7,7 +7,7 @@ import SideNav from "./SideNav";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const Header = ({ activePage, isLogin }) => {
+const Header = ({ user, activePage, isLogin }) => {
   const [showSideNav, setShowSideNav] = useState(false);
 
   const handleSideNav = () => {
@@ -27,7 +27,7 @@ const Header = ({ activePage, isLogin }) => {
       >
         {activePage === ROUTES_PATH.LOGIN ||
           (activePage !== ROUTES_PATH.REGISTER && (
-            <SideNav isLogin={isLogin} />
+            <SideNav user={user} />
           ))}
       </motion.aside>
       {/* Header */}
@@ -55,7 +55,8 @@ const Header = ({ activePage, isLogin }) => {
             <article className="w-full py-2 flex gap-3 md:gap-5 items-center justify-end font-default">
               <NavLink
                 to={ROUTES_PATH.REGISTER}
-                className="px-2 md:px-6 py-2 transition-all duration-150 text-gray-50 text-sm md:text-base bg-blue-600 hover:bg-blue-700 rounded-md drop-shadow-sm cursor-pointer"
+                className="px-2 md:px-6 py-1 transition-all duration-200 text-gray-50 ring-2
+                ring-blue-600 text-sm md:text-base bg-blue-600 hover:bg-blue-700 hover:ring-blue-700 rounded drop-shadow-sm cursor-pointer"
               >
                 Sign up
               </NavLink>
@@ -64,7 +65,7 @@ const Header = ({ activePage, isLogin }) => {
             <article className="w-full py-2 flex gap-3 md:gap-5 items-center justify-end font-default">
               <NavLink
                 to={ROUTES_PATH.LOGIN}
-                className="px-2 md:px-6 py-2 transition-all duration-150 text-blue-700 text-sm md:text-base font-medium ring-2 ring-blue-600 hover:bg-blue-600 hover:text-gray-50 rounded-sm drop-shadow-sm cursor-pointer"
+                className="px-2 md:px-6 py-1 transition-all duration-200 text-blue-700 text-sm md:text-base font-normal ring-2 ring-blue-600 hover:bg-blue-600 hover:text-gray-50 rounded drop-shadow-sm cursor-pointer"
               >
                 Login
               </NavLink>

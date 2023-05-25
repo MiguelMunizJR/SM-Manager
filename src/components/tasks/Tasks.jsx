@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 // Components & utils
 import SearchBar from "../container/SearchBar";
 import TimelineNav from "../container/TimelineNav";
-import ButtonMobile from "../navbar/ButtonMobile";
+import ButtonMobile from "../container/ButtonMobile";
 import FormModal from "../container/FormModal";
 import TasksCard from "./TasksCard";
 import ReturnButton from "../container/ReturnButton";
@@ -90,7 +90,7 @@ const Tasks = ({
                 }
               </span>
             </h4>
-            <h2 className="mt-1 pl-4 font-semibold flex items-center gap-2 text-2xl text-gray-800">
+            <h2 className="mt-4 pl-2 font-semibold flex items-center gap-1 text-[20px] md:text-2xl text-gray-800">
               You have
               <span className="text-blue-700">
                 {
