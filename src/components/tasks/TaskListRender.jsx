@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { toast } from "sonner";
 
 import { completeTask, createNewTask, deleteTask } from "../../services/tasksServices";
@@ -63,12 +62,7 @@ const TaskListRender = ({
     <>
       {filterTasks
         ? filterTasks?.map((task) => (
-          <motion.article
-            initial={{ opacity: 0, translateY: -30 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            transition={{
-              duration: 0.2,
-            }}
+          <article
             key={task.id}
           >
             <article
@@ -135,15 +129,10 @@ const TaskListRender = ({
                 </button>
               </div>
             </article>
-          </motion.article>
+          </article>
         ))
         : tasks?.map((task) => (
-          <motion.article
-            initial={{ opacity: 0, translateY: -30 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            transition={{
-              duration: 0.3,
-            }}
+          <article
             key={task.id}
           >
             <article
@@ -210,7 +199,7 @@ const TaskListRender = ({
                 </button>
               </div>
             </article>
-          </motion.article>
+          </article>
         ))}
     </>
   );

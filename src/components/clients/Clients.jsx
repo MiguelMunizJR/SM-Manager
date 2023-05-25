@@ -40,7 +40,7 @@ const Clients = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
-            duration: .12,
+            duration: .1,
           }}
         >
           <FormModal
@@ -89,21 +89,16 @@ const Clients = ({
               active clients today
             </h2>
           </article>
+          <div
+            className="px-4"
+          >
+            <SearchBar
+              activePage={activePage}
+              setFilterClients={setFilterClients}
+              clients={clients}
+            />
+          </div>
         </motion.article>
-        <motion.div
-          className="px-4"
-          initial={{ opacity: 0, translateY: -10 }}
-          animate={{ opacity: 1, translateY: 0 }}
-          transition={{
-            duration: 0.4,
-          }}
-        >
-          <SearchBar
-            activePage={activePage}
-            setFilterClients={setFilterClients}
-            clients={clients}
-          />
-        </motion.div>
         <ClientsCard
           getAllClients={getAllClients}
           clients={clients}

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { createNewClient, deleteClient } from "../../services/clientsServices";
 
@@ -52,12 +51,7 @@ const ClientsCardRender = ({
     <>
       {filterClients
         ? filterClients?.map((client) => (
-          <motion.article
-            initial={{ opacity: 0, translateY: -10 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            transition={{
-              duration: 0.3,
-            }}
+          <article
             key={client.id}
           >
             <article
@@ -118,20 +112,15 @@ const ClientsCardRender = ({
                 </div>
               </div>
             </article>
-          </motion.article>
+          </article>
         ))
         : clients?.map((client) => (
-          <motion.article
+          <article
             className={`${
               client.status === "not_active"
                 ? "border-l-red-500"
                 : "border-l-green-500"
             } md:hidden mb-2 py-2 px-4 border-l-8 border-b border-b-gray-300 dark:border-b-gray-700 flex flex-col font-default bg-gray-200 dark:bg-gray-800 odd:bg-gray-100 dark:odd:bg-gray-900`}
-            initial={{ opacity: 0, translateY: -20 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            transition={{
-              duration: .3,
-            }}
             key={client.id}
           >
             <article>
@@ -186,7 +175,7 @@ const ClientsCardRender = ({
                 </div>
               </div>
             </article>
-          </motion.article>
+          </article>
         ))}
     </>
   );

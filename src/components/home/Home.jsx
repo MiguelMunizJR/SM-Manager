@@ -25,14 +25,9 @@ const Home = ({ setActivePage, isLogin, setShowSideNav }) => {
           <WelcomeInfo />
           <SecureInfo />
         </motion.article>
-        <motion.section
-          className="mt-10 md:mt-14 flex justify-center items-center gap-8 lg:gap-16 font-default"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: .3, delay: 1 }}
-        >
+        <section className="mt-10 md:mt-14 flex justify-center items-center gap-8 lg:gap-16 font-default">
           <HomeRender isLogin={isLogin} />
-        </motion.section>
+        </section>
       </section>
     </>
   );
