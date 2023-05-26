@@ -3,7 +3,7 @@ import LoginForm from "./LoginForm";
 
 const LoginCard = ({ handleSubmit, submitForm, register }) => {
   return (
-    <article className="w-full sm:max-w-sm min-h-max px-4 pt-28 sm:py-4 font-default flex flex-col bg-gray-50 sm:mt-20 sm:mb-10 sm:items-center sm:shadow-lg sm:rounded-lg">
+    <article className="w-full sm:max-w-sm min-h-max px-14 md:px-6 lg:px-4 pt-28 sm:py-4 font-default flex flex-col bg-gray-50 sm:mt-20 sm:mb-10 sm:items-center sm:shadow-lg sm:rounded-lg">
       <div className="w-full min-h-max sm:py-6 sm:px-6 flex flex-col">
         <article
           className="min-w-full flex flex-row-reverse"

@@ -3,7 +3,7 @@ import RegisterForm from "./RegisterForm";
 
 const RegisterCard = ({ handleSubmit, submitForm, register }) => {
   return (
-    <article className="w-full sm:max-w-sm min-h-max pt-28 sm:pt-8 sm:pb-4 px-4 font-default flex flex-col bg-gray-50 sm:items-center sm:mt-20 sm:mb-10 sm:shadow-lg sm:rounded-lg">
+    <article className="w-full sm:max-w-sm min-h-max pt-28 sm:pt-8 sm:pb-4 px-6 md:px-6 lg:px-4 font-default flex flex-col bg-gray-50 sm:items-center sm:mt-20 sm:mb-10 sm:shadow-lg sm:rounded-lg">
       <div className="w-full min-h-max px-4 flex flex-col">
         <article className="min-w-full flex flex-row-reverse">
           <div className="w-full min-h-max flex flex-col">
