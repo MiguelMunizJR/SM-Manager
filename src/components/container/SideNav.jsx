@@ -3,10 +3,7 @@ import { ROUTES_PATH } from "../../consts";
 import useClients from "../../hooks/useClients";
 import useTasks from "../../hooks/useTasks";
 
-const SideNav = ({
-  user,
-  setShowSideNav
-}) => {
+const SideNav = ({ user, setShowSideNav }) => {
   const { clients } = useClients();
   const { tasks } = useTasks();
 
@@ -68,9 +65,11 @@ const SideNav = ({
             <i className="fa-solid fa-users text-lg"></i>
             Clients
           </div>
-          <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
-            {clients?.length || 0}
-          </small>
+          {user && (
+            <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
+              {clients?.length || 0}
+            </small>
+          )}
         </NavLink>
         <NavLink
           className="w-full h-12 px-2 flex items-center justify-between rounded text-gray-700 hover:bg-gray-200 hover:text-gray-900"
@@ -81,9 +80,11 @@ const SideNav = ({
             <i className="fa-solid fa-list-check text-lg"></i>
             Tasks
           </div>
-          <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
-            {tasks?.length || 0}
-          </small>
+          {user && (
+            <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
+              {tasks?.length || 0}
+            </small>
+          )}
         </NavLink>
       </article>
     </aside>
