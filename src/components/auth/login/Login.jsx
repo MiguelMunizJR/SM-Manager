@@ -9,13 +9,12 @@ import { toast } from "sonner";
 import { ROUTES_PATH, URL_API } from "../../../consts";
 import LoginCard from "./LoginCard";
 
-const Login = ({ isLogin, setIsLogin, setActivePage }) => {
+const Login = ({ isLogin, setIsLogin }) => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
   useEffect(() => {
     isLogin && navigate(ROUTES_PATH.HOME);
-    setActivePage(ROUTES_PATH.LOGIN);
   }, []);
 
   const submitForm = (data) => {

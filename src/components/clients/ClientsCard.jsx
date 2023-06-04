@@ -12,7 +12,6 @@ const ClientsCard = ({
   filterClients,
   setUpdate,
   setIsShowClientsForm,
-  activePage,
 }) => {
   const [isSort, setIsSort] = useState(false);
   const [reload, setReload] = useState(false);
@@ -52,7 +51,6 @@ const ClientsCard = ({
               <ButtonHeader
                 setIsShowClientsForm={setIsShowClientsForm}
                 setUpdate={setUpdate}
-                activePage={activePage}
               />
             </div>
             <button

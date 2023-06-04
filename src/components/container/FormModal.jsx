@@ -12,9 +12,9 @@ import ClientsForm from "../clients/ClientsForm";
 import { ROUTES_PATH } from "../../consts";
 import { createNewTask, updateTask } from "../../services/tasksServices";
 import { createNewClient, updateClient } from "../../services/clientsServices";
+import { useLocation } from "react-router-dom";
 
 const FormModal = ({
-  activePage,
   setIsShowTasksForm,
   setIsShowClientsForm,
   setShowSideNav,
@@ -24,6 +24,7 @@ const FormModal = ({
   setUpdate,
 }) => {
   const { register, handleSubmit, reset } = useForm();
+  const activePage = useLocation().pathname;
 
   useEffect(() => {
     if (update) {

@@ -1,12 +1,13 @@
+import { useLocation } from "react-router-dom";
 import { ROUTES_PATH } from "../../consts";
 
 const SearchBar = ({
-  activePage,
   setFilterClients,
   setFilterTasks,
   clients,
   tasks,
 }) => {
+  const activePage = useLocation().pathname;
 
   const handleInput = (e) => {
     const value = e.target.value;

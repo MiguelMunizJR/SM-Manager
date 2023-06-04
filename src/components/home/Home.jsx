@@ -5,11 +5,9 @@ import { motion } from "framer-motion";
 import SecureInfo from "./SecureInfo";
 import HomeRender from "./HomeRender";
 import WelcomeInfo from "./WelcomeInfo";
-import { ROUTES_PATH } from "../../consts";
 
-const Home = ({ setActivePage, isLogin, setShowSideNav }) => {
+const Home = ({ isLogin, setShowSideNav }) => {
   useEffect(() => {
-    setActivePage(ROUTES_PATH.HOME);
     setShowSideNav(false);
   }, []);
 

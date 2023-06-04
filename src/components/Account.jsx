@@ -2,11 +2,9 @@ import { useEffect } from "react";
 import TimelineNav from "./container/TimelineNav";
 
 const Dashboard = ({
-  setActivePage,
   setShowSideBar,
 }) => {
   useEffect(() => {
-    setActivePage("/users/me");
     setShowSideBar(false);
   }, []);
 

@@ -8,7 +8,6 @@ import FormModal from "../container/FormModal";
 import ButtonMobile from "../container/ButtonMobile";
 import TimelineNav from "../container/TimelineNav";
 import ReturnButton from "../container/ReturnButton";
-import { ROUTES_PATH } from "../../consts";
 import useClients from "../../hooks/useClients";
 
 const Clients = ({
@@ -19,15 +18,12 @@ const Clients = ({
   setShowSideNav,
   update,
   setUpdate,
-  activePage,
-  setActivePage,
 }) => {
   const [filterClients, setFilterClients] = useState(null);
   const {clients, getAllClients} = useClients();
 
   useEffect(() => {
     isLogin && getAllClients();
-    setActivePage(ROUTES_PATH.CLIENTS);
     setShowSideNav(false);
   }, []);
 
@@ -44,7 +40,6 @@ const Clients = ({
           }}
         >
           <FormModal
-            activePage={activePage}
             setIsShowClientsForm={setIsShowClientsForm}
             setShowSideNav={setShowSideNav}
             getAllClients={getAllClients}
@@ -93,7 +88,6 @@ const Clients = ({
             className="px-4"
           >
             <SearchBar
-              activePage={activePage}
               setFilterClients={setFilterClients}
               clients={clients}
             />
@@ -106,12 +100,10 @@ const Clients = ({
           setFilterClients={setFilterClients}
           setUpdate={setUpdate}
           setIsShowClientsForm={setIsShowClientsForm}
-          activePage={activePage}
         />
         <ButtonMobile
           setIsShowClientsForm={setIsShowClientsForm}
           setUpdate={setUpdate}
-          activePage={activePage}
         />
       </section>
     </>

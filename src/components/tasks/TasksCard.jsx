@@ -9,7 +9,6 @@ const TasksCard = ({
   getAllTasks,
   setIsShowTasksForm,
   setUpdate,
-  activePage,
   filterTasks
 }) => {
   const [isSort, setIsSort] = useState(false);
@@ -49,7 +48,6 @@ const TasksCard = ({
               <ButtonHeader
                 setIsShowTasksForm={setIsShowTasksForm}
                 setUpdate={setUpdate}
-                activePage={activePage}
               />
             </div>
             <button

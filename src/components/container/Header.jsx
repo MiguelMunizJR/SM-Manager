@@ -1,12 +1,13 @@
 // Dependencies
 import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 // Components & utils
 import LoginButtons from "../auth/authButtons";
 import { ROUTES_PATH } from "../../consts";
 import SideNav from "./SideNav";
 
-const Header = ({ user, activePage, isLogin, showSideNav, setShowSideNav }) => {
+const Header = ({ user, isLogin, showSideNav, setShowSideNav }) => {
+  const activePage = useLocation().pathname;
 
   const handleSideNav = () => {
     setShowSideNav(!showSideNav);

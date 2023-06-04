@@ -9,13 +9,12 @@ import axios from "axios";
 import RegisterCard from "./RegisterCard";
 import { ROUTES_PATH, URL_API } from "../../../consts";
 
-const Register = ({ setActivePage, isLogin }) => {
+const Register = ({ isLogin }) => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
   useEffect(() => {
     isLogin && navigate(ROUTES_PATH.HOME);
-    setActivePage(ROUTES_PATH.REGISTER);
   }, []);
 
   const submitForm = (data) => {

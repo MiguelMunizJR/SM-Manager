@@ -1,6 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
-const TimelineNav = ({ activePage, actualPage, prevPag, actualIcon, prevIcon }) => {
+const TimelineNav = ({ actualPage, prevPag, actualIcon, prevIcon }) => {
+  const activePage = useLocation().pathname;
 
   if (activePage === "/auth/login" || activePage === "/auth/register") {
     return (

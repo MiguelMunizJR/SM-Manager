@@ -1,11 +1,13 @@
+import { useLocation } from "react-router-dom";
 import { ROUTES_PATH } from "../../consts";
 
 const ButtonMobile = ({
   setIsShowClientsForm,
   setIsShowTasksForm,
-  setUpdate,
-  activePage,
+  setUpdate
 }) => {
+  const activePage = useLocation().pathname;
+
   const handleClick = () => {
     if (activePage === ROUTES_PATH.CLIENTS) {
       setIsShowClientsForm(true);

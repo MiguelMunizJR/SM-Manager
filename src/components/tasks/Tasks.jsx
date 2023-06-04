@@ -9,7 +9,6 @@ import FormModal from "../container/FormModal";
 import TasksCard from "./TasksCard";
 import ReturnButton from "../container/ReturnButton";
 import useTasks from "../../hooks/useTasks";
-import { ROUTES_PATH } from "../../consts";
 
 const Tasks = ({
   user,
@@ -19,15 +18,12 @@ const Tasks = ({
   setShowSideNav,
   update,
   setUpdate,
-  activePage,
-  setActivePage,
 }) => {
   const [filterTasks, setFilterTasks] = useState(null);
   const { tasks, getAllTasks } = useTasks();
 
   useEffect(() => {
     isLogin && getAllTasks();
-    setActivePage(ROUTES_PATH.TASKS);
     setShowSideNav(false);
   }, []);
 
@@ -44,7 +40,6 @@ const Tasks = ({
           }}
         >
           <FormModal
-            activePage={activePage}
             setIsShowTasksForm={setIsShowTasksForm}
             setShowSideNav={setShowSideNav}
             getAllTasks={getAllTasks}
@@ -93,7 +88,6 @@ const Tasks = ({
             className="px-4"
           >
             <SearchBar
-              activePage={activePage}
               setFilterTasks={setFilterTasks}
               tasks={tasks}
             />
@@ -104,13 +98,11 @@ const Tasks = ({
           getAllTasks={getAllTasks}
           setIsShowTasksForm={setIsShowTasksForm}
           setUpdate={setUpdate}
-          activePage={activePage}
           filterTasks={filterTasks}
         />
         <ButtonMobile
           setIsShowTasksForm={setIsShowTasksForm}
           setUpdate={setUpdate}
-          activePage={activePage}
         />
       </section>
     </>
