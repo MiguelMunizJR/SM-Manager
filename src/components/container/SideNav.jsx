@@ -9,9 +9,9 @@ const SideNav = ({ setShowSideNav }) => {
   const { user, loading } = useUser();
 
   useEffect(() => {
-    // console.log("montado");
+    console.log("montado");
   }, []);
-  
+
   const handleLogout = () => {
     logout();
   };
@@ -20,7 +20,7 @@ const SideNav = ({ setShowSideNav }) => {
     <aside className="w-52 h-screen pt-4 lg:flex flex-col fixed bg-slate-100 top-14 shadow-md shadow-gray-400 z-40 -translate-x-52 lg:translate-x-52 transition-all">
       <article className="w-11/12 h-60 mx-auto pt-4 flex flex-col items-center border-b border-gray-200">
         {loading ? (
-          <CustomLoading 
+          <CustomLoading
             className="w-full h-full flex justify-center items-center"
             spinSize="w-16 h-16"
           />
@@ -32,6 +32,7 @@ const SideNav = ({ setShowSideNav }) => {
                 alt="profile-image"
                 className="w-full h-full object-contain rounded-full"
                 draggable={false}
+                loading="lazy"
               />
             </div>
             <h4 className="mt-2 font-default text-xl font-semibold text-gray-800">
