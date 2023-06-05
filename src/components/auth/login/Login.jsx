@@ -9,13 +9,12 @@ import { toast } from "sonner";
 import { ROUTES_PATH, URL_API } from "../../../consts";
 import LoginCard from "./LoginCard";
 
-const Login = ({ isLogin }) => {
+const Login = ({ isLogin, setIsLogin }) => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
   useEffect(() => {
     isLogin && navigate(ROUTES_PATH.HOME);
-    console.log("login", isLogin);
   }, []);
 
   const submitForm = (data) => {
@@ -33,8 +32,9 @@ const Login = ({ isLogin }) => {
       .then((res) => {
         const token = res?.data.token;
         localStorage.setItem("token", token);
-        toast.success("You are logged in");
         navigate(ROUTES_PATH.HOME);
+        toast.success("You are logged in");
+        setIsLogin(true);
         reset({
           email: "",
           password: "",
@@ -42,7 +42,7 @@ const Login = ({ isLogin }) => {
         window.location.reload();
       })
       .catch((err) => {
-        if (err.response.status === 401) {
+        if (err.response?.status === 401) {
           toast.error("Incorrect email or password");
           return;
         }

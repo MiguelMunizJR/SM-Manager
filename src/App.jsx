@@ -16,6 +16,7 @@ const Login = lazy(() => import("./components/auth/login/Login"));
 const Register = lazy(() => import("./components/auth/register/Register"));
 const Header = lazy(() => import("./components/container/Header"));
 const Loading = lazy(() => import("./components/Loading"));
+import { startTokenCheck } from "./utilities/auth/authServices";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -23,12 +24,13 @@ function App() {
   const [isShowClientsForm, setIsShowClientsForm] = useState(false);
   const [isShowTasksForm, setIsShowTasksForm] = useState(false);
   const [update, setUpdate] = useState();
-  const { user  } = useUser();
+  const { user } = useUser();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       setIsLogin(true);
+      startTokenCheck();
     }
   }, [isLogin]);
 
@@ -51,7 +53,7 @@ function App() {
           {/* Auth routes */}
           <Route
             path={ROUTES_PATH.LOGIN}
-            element={<Login isLogin={isLogin} />}
+            element={<Login isLogin={isLogin} setIsLogin={setIsLogin} />}
           />
           <Route
             path={ROUTES_PATH.REGISTER}

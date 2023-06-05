@@ -3,18 +3,17 @@ import { NavLink } from "react-router-dom";
 import { ROUTES_PATH } from "../../consts";
 import useUser from "../../hooks/useUser";
 import CustomLoading from "./CustomLoading";
+import { logout } from "../../utilities/auth/authServices";
 
 const SideNav = ({ setShowSideNav }) => {
   const { user, loading } = useUser();
 
   useEffect(() => {
-    console.log("montado");
+    // console.log("montado");
   }, []);
   
-
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
+    logout();
   };
 
   return (
