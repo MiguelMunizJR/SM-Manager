@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 import { ROUTES_PATH, URL_API } from "../consts";
 import getConfig from "../utilities/getConfig";
-const token = localStorage.getItem("token");
 
 
 const useTasks = () => {
@@ -25,13 +24,6 @@ const useTasks = () => {
       });
   };
 
-  useEffect(() => {
-    if (token) {
-      getAllTasks();
-    }
-  }, []);
-  
-  
   return { tasks, loading, error, getAllTasks };
 };
 
