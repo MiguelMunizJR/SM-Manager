@@ -9,12 +9,13 @@ import { toast } from "sonner";
 import { ROUTES_PATH, URL_API } from "../../../consts";
 import LoginCard from "./LoginCard";
 
-const Login = ({ isLogin, setIsLogin }) => {
+const Login = ({ isLogin }) => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
   useEffect(() => {
     isLogin && navigate(ROUTES_PATH.HOME);
+    console.log("login", isLogin);
   }, []);
 
   const submitForm = (data) => {
@@ -33,7 +34,6 @@ const Login = ({ isLogin, setIsLogin }) => {
         const token = res?.data.token;
         localStorage.setItem("token", token);
         toast.success("You are logged in");
-        setIsLogin(true);
         navigate(ROUTES_PATH.HOME);
         reset({
           email: "",

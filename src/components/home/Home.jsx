@@ -6,7 +6,7 @@ import SecureInfo from "./SecureInfo";
 import HomeRender from "./HomeRender";
 import WelcomeInfo from "./WelcomeInfo";
 
-const Home = ({ isLogin, setShowSideNav }) => {
+const Home = ({ setShowSideNav }) => {
 
   useEffect(() => {
     setShowSideNav(false);
@@ -25,7 +25,7 @@ const Home = ({ isLogin, setShowSideNav }) => {
           <SecureInfo />
         </motion.article>
         <section className="mt-10 md:mt-14 flex justify-center items-center gap-8 lg:gap-16 font-default">
-          <HomeRender isLogin={isLogin} />
+          <HomeRender />
         </section>
       </section>
     </>

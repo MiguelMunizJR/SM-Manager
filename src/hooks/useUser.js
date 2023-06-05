@@ -13,7 +13,7 @@ const useUser = () => {
   const getUserInfo = () => {
     setLoading(true);
     const URL = `${URL_API}${ROUTES_PATH.USER}`;
-      
+
     axios
       .get(URL, getConfig())
       .then((res) => {
@@ -27,12 +27,13 @@ const useUser = () => {
   };
 
   useEffect(() => {
-    if (token !== null) {
+    if (token) {
       getUserInfo();
+    } else {
+      setLoading(false);
     }
-    !token && setLoading(false);
   }, [token]);
-  
+
   return { user, loading, error, getUserInfo };
 };
 

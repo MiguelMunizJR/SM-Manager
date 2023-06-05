@@ -15,11 +15,11 @@ import { createNewClient, updateClient } from "../../services/clientsServices";
 import { useLocation } from "react-router-dom";
 
 const FormModal = ({
+  getAllTasks,
+  getAllClients,
   setIsShowTasksForm,
   setIsShowClientsForm,
   setShowSideNav,
-  getAllTasks,
-  getAllClients,
   update,
   setUpdate,
   setReload
@@ -119,9 +119,8 @@ const FormModal = ({
           toast.success("Task successfully created");
           setShowSideNav(false);
         })
-        .catch((err) => {
-          // toast.error("Error when creating a new task");
-          console.log(err);
+        .catch(() => {
+          toast.error("Error when creating a new task");
         });
     }
   };

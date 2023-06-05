@@ -1,9 +1,10 @@
 // Dependencies
-import { useEffect, useState, lazy, Suspense } from "react";
+import { useState, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import useUser from "./hooks/useUser";
 import { ROUTES_PATH } from "./consts";
 import { Toaster } from "sonner";
+import { useEffect } from "react";
 // Components & utils
 const Clients = lazy(() => import("./components/clients/Clients"));
 const Home = lazy(() => import("./components/home/Home"));
@@ -17,12 +18,12 @@ const Header = lazy(() => import("./components/container/Header"));
 const Loading = lazy(() => import("./components/Loading"));
 
 function App() {
-  const [isLogin, setIsLogin] = useState();
+  const [isLogin, setIsLogin] = useState(false);
   const [showSideNav, setShowSideNav] = useState(false);
   const [isShowClientsForm, setIsShowClientsForm] = useState(false);
   const [isShowTasksForm, setIsShowTasksForm] = useState(false);
   const [update, setUpdate] = useState();
-  const { user } = useUser();
+  const { user  } = useUser();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -45,12 +46,12 @@ function App() {
           {/* Home Route */}
           <Route
             path={ROUTES_PATH.HOME}
-            element={<Home isLogin={isLogin} setShowSideNav={setShowSideNav} />}
+            element={<Home setShowSideNav={setShowSideNav} />}
           />
           {/* Auth routes */}
           <Route
             path={ROUTES_PATH.LOGIN}
-            element={<Login isLogin={isLogin} setIsLogin={setIsLogin} />}
+            element={<Login isLogin={isLogin} />}
           />
           <Route
             path={ROUTES_PATH.REGISTER}
@@ -60,14 +61,13 @@ function App() {
           {/* Route not found 404 */}
           <Route path={ROUTES_PATH.NOT_FOUND} element={<NotFound />} />
           {/* Protected Routes */}
-          <Route element={<ProtectedRoutes isLogin={isLogin} />}>
+          <Route element={<ProtectedRoutes isLogin={user} />}>
             {/* Clients Route */}
             <Route
               path={ROUTES_PATH.CLIENTS}
               element={
                 <Clients
                   user={user}
-                  isLogin={isLogin}
                   isShowClientsForm={isShowClientsForm}
                   setIsShowClientsForm={setIsShowClientsForm}
                   setShowSideNav={setShowSideNav}
@@ -82,7 +82,6 @@ function App() {
               element={
                 <Tasks
                   user={user}
-                  isLogin={isLogin}
                   isShowTasksForm={isShowTasksForm}
                   setIsShowTasksForm={setIsShowTasksForm}
                   setShowSideNav={setShowSideNav}

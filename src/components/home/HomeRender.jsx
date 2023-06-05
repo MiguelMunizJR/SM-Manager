@@ -3,19 +3,17 @@ import { NavLink } from "react-router-dom";
 // Components & utils
 import itemsHome from "../../utilities/home/itemsHome";
 import { ROUTES_PATH } from "../../consts";
-import useClients from "../../hooks/useClients";
-import useTasks from "../../hooks/useTasks";
+import useUser from "../../hooks/useUser";
 
-const HomeRender = ({ isLogin }) => {
-  const { clients } = useClients();
-  const { tasks } = useTasks();
+const HomeRender = () => {
+  const { user } = useUser();
   
   return (
     <>
       {itemsHome?.map((item) => (
         <NavLink
           key={item.id}
-          to={isLogin ? item.route : ROUTES_PATH.LOGIN}
+          to={user ? item.route : ROUTES_PATH.LOGIN}
           className={item.className}
         >
           <article key={item.id}>
@@ -24,16 +22,16 @@ const HomeRender = ({ isLogin }) => {
               <h2 className="font-bold text-xl">{item.title}</h2>
               <div className="w-5/6 min-h-max absolute bottom-3 flex items-center font-semibold text-md">
                 <div className="w-full min-h-max flex items-center gap-2">
-                  {isLogin &&
+                  {user &&
                     (item.title === "Clients" ? (
                       <>
                         <i className="fa-solid fa-users"></i>
-                        <p>{clients?.length}</p>
+                        <p>{user.clients?.length}</p>
                       </>
                     ) : (
                       <>
                         <i className="fa-solid fa-list-check"></i>
-                        <p>{tasks?.length}</p>
+                        <p>{user.tasks?.length}</p>
                       </>
                     ))}
                 </div>

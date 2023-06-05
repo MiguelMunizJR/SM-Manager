@@ -8,12 +8,12 @@ import ButtonMobile from "../container/ButtonMobile";
 import FormModal from "../container/FormModal";
 import TasksCard from "./TasksCard";
 import ReturnButton from "../container/ReturnButton";
-import useTasks from "../../hooks/useTasks";
 import CustomLoading from "../container/CustomLoading";
+
+import useTasks from "../../hooks/useTasks";
 
 const Tasks = ({
   user,
-  isLogin,
   isShowTasksForm,
   setIsShowTasksForm,
   setShowSideNav,
@@ -24,7 +24,7 @@ const Tasks = ({
   const { tasks, loading, getAllTasks } = useTasks();
 
   useEffect(() => {
-    isLogin && getAllTasks();
+    user && getAllTasks();
     setShowSideNav(false);
   }, []);
 
@@ -41,9 +41,9 @@ const Tasks = ({
           }}
         >
           <FormModal
+            getAllTasks={getAllTasks}
             setIsShowTasksForm={setIsShowTasksForm}
             setShowSideNav={setShowSideNav}
-            getAllTasks={getAllTasks}
             update={update}
             setUpdate={setUpdate}
           />
@@ -55,7 +55,7 @@ const Tasks = ({
       )}
       <section className="w-full min-h-screen md:px-10 lg:pl-60 flex flex-col bg-slate-50">
         {loading ? (
-          <CustomLoading 
+          <CustomLoading
             className="w-full min-h-screen flex justify-center items-center"
             spinSize="w-16 h-16"
           />

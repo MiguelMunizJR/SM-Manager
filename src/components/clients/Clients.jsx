@@ -13,7 +13,6 @@ import CustomLoading from "../container/CustomLoading";
 
 const Clients = ({
   user,
-  isLogin,
   isShowClientsForm,
   setIsShowClientsForm,
   setShowSideNav,
@@ -25,7 +24,7 @@ const Clients = ({
   const { clients, loading, getAllClients } = useClients();
 
   useEffect(() => {
-    isLogin && getAllClients();
+    user && getAllClients();
     setShowSideNav(false);
   }, []);
 
@@ -42,9 +41,9 @@ const Clients = ({
           }}
         >
           <FormModal
+            getAllClients={getAllClients}
             setIsShowClientsForm={setIsShowClientsForm}
             setShowSideNav={setShowSideNav}
-            getAllClients={getAllClients}
             update={update}
             setUpdate={setUpdate}
             setReload={setReload}
@@ -90,10 +89,8 @@ const Clients = ({
                 <h2 className="mt-4 pl-2 font-semibold flex items-center gap-1 text-[20px] md:text-2xl text-gray-800">
                   You have
                   <span className="text-blue-700">
-                    {clients
-                      ? clients?.filter((user) => user.status === "active")
-                        .length
-                      : 0}
+                    {clients?.filter((user) => user.status === "active")
+                      .length || 0}
                   </span>
                   active clients today
                 </h2>
@@ -109,7 +106,6 @@ const Clients = ({
               getAllClients={getAllClients}
               clients={clients}
               filterClients={filterClients}
-              setFilterClients={setFilterClients}
               setUpdate={setUpdate}
               setIsShowClientsForm={setIsShowClientsForm}
               setReload={setReload}

@@ -1,14 +1,16 @@
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { ROUTES_PATH } from "../../consts";
-import useClients from "../../hooks/useClients";
-import useTasks from "../../hooks/useTasks";
 import useUser from "../../hooks/useUser";
 import CustomLoading from "./CustomLoading";
 
 const SideNav = ({ setShowSideNav }) => {
-  const { clients } = useClients();
-  const { tasks } = useTasks();
   const { user, loading } = useUser();
+
+  useEffect(() => {
+    console.log("montado");
+  }, []);
+  
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -79,7 +81,7 @@ const SideNav = ({ setShowSideNav }) => {
           </div>
           {user && (
             <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
-              {clients?.length}
+              {user.clients?.length}
             </small>
           )}
         </NavLink>
@@ -94,7 +96,7 @@ const SideNav = ({ setShowSideNav }) => {
           </div>
           {user && (
             <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
-              {tasks?.length}
+              {user.tasks?.length}
             </small>
           )}
         </NavLink>
