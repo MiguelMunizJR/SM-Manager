@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import { createNewClient, deleteClient } from "../../services/clientsServices";
+import { deleteClient } from "../../services/clientsServices";
 
 const ClientsListRender = ({
   getAllClients,
@@ -15,24 +15,7 @@ const ClientsListRender = ({
     deleteClient(client?.id)
       .then(() => {
         getAllClients();
-        toast("Client successfully eliminated", {
-          action: {
-            label: "Undo",
-            onClick: async () => {
-              await createNewClient({
-                firstName: client?.firstName,
-                lastName: client?.lastName,
-                // Edit the model for remove password
-                email: client?.email,
-                password: client?.password,
-                birthday: client?.birthday,
-                status: client?.status,
-              });
-              getAllClients();
-              setReload(false);
-            },
-          },
-        });
+        toast("Client successfully eliminated");
       })
       .catch(() => {
         toast.error("Error when deleting client");

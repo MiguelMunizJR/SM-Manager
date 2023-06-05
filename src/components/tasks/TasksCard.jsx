@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 import ButtonHeader from "../container/ButtonHeader";
 import TaskListRender from "./TaskListRender";
+import { useEffect } from "react";
 
 const TasksCard = ({
   tasks,
@@ -14,21 +15,19 @@ const TasksCard = ({
   const [isSort, setIsSort] = useState(false);
   const [reload, setReload] = useState(false);
 
+  useEffect(() => {
+    setReload(false);
+  }, [tasks]);
+
   const setSort = () => {
     setIsSort(!isSort);
   };
 
   const reloadTasks = () => {
-    getAllTasks();
     setReload(true);
+    getAllTasks();
   };
 
-  const tasksReady = () => {
-    if (tasks) {
-      setReload(false);
-    }
-    setReload(false);
-  };
   return (
     <section className="w-full mt-7 mx-auto px-4 relative z-0 flex flex-col justify-center gap-3">
       <motion.article
@@ -53,7 +52,6 @@ const TasksCard = ({
             <button
               className="p-2 text-lg drop-shadow-sm text-gray-800"
               onClick={reloadTasks}
-              onAnimationEnd={tasksReady}
             >
               <i
                 className={`${reload && "animate-reload"} fa-solid fa-rotate`}

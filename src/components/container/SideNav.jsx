@@ -1,22 +1,14 @@
-import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { ROUTES_PATH } from "../../consts";
 import useClients from "../../hooks/useClients";
 import useTasks from "../../hooks/useTasks";
 import useUser from "../../hooks/useUser";
-import UserLoading from "./UserLoading";
+import CustomLoading from "./CustomLoading";
 
-const SideNav = ({ setShowSideNav, isLogin }) => {
-  const { clients, getAllClients } = useClients();
-  const { tasks, getAllTasks } = useTasks();
+const SideNav = ({ setShowSideNav }) => {
+  const { clients } = useClients();
+  const { tasks } = useTasks();
   const { user, loading } = useUser();
-
-  useEffect(() => {
-    if (isLogin) {
-      getAllTasks();
-      getAllClients();
-    }
-  }, [tasks, clients]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -27,7 +19,10 @@ const SideNav = ({ setShowSideNav, isLogin }) => {
     <aside className="w-52 h-screen pt-4 lg:flex flex-col fixed bg-slate-100 top-14 shadow-md shadow-gray-400 z-40 -translate-x-52 lg:translate-x-52 transition-all">
       <article className="w-11/12 h-60 mx-auto pt-4 flex flex-col items-center border-b border-gray-200">
         {loading ? (
-          <UserLoading />
+          <CustomLoading 
+            className="w-full h-full flex justify-center items-center"
+            spinSize="w-16 h-16"
+          />
         ) : (
           <>
             <div className="w-20 h-20 rounded-full">
@@ -82,9 +77,11 @@ const SideNav = ({ setShowSideNav, isLogin }) => {
             <i className="fa-solid fa-users text-lg"></i>
             Clients
           </div>
-          <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
-            {clients?.length || 0}
-          </small>
+          {user && (
+            <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
+              {clients?.length}
+            </small>
+          )}
         </NavLink>
         <NavLink
           className="w-full h-12 px-2 flex items-center justify-between rounded text-gray-700 hover:bg-gray-200 hover:text-gray-900"
@@ -95,9 +92,11 @@ const SideNav = ({ setShowSideNav, isLogin }) => {
             <i className="fa-solid fa-list-check text-lg"></i>
             Tasks
           </div>
-          <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
-            {tasks?.length || 0}
-          </small>
+          {user && (
+            <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
+              {tasks?.length}
+            </small>
+          )}
         </NavLink>
       </article>
     </aside>

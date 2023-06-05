@@ -32,7 +32,7 @@ module.exports = {
         },
       },
       animation: {
-        reload: "reload .45s linear",
+        reload: "reload .6s linear infinite",
         modalForm: "modalForm 1s linear",
       },
       backgroundImage: {

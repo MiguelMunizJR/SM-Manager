@@ -1,6 +1,5 @@
 import { toast } from "sonner";
-
-import { completeTask, createNewTask, deleteTask } from "../../services/tasksServices";
+import { completeTask, deleteTask } from "../../services/tasksServices";
 
 const TaskListRender = ({
   tasks,
@@ -17,20 +16,7 @@ const TaskListRender = ({
     deleteTask(task.id)
       .then(() => {
         getAllTasks();
-        toast("Task successfully eliminated", {
-          action: {
-            label: "Undo",
-            onClick: async () => {
-              await createNewTask({
-                title: task?.title,
-                description: task?.description,
-                status: task?.status
-              });
-              getAllTasks();
-              setReload(false);
-            }
-          },
-        });
+        toast("Task successfully eliminated");
       })
       .catch(() => {
         toast.error("Error when deleting task");
@@ -45,7 +31,6 @@ const TaskListRender = ({
       .then(() => {
         getAllTasks();
         toast.success("Task successfully completed");
-        setReload(false);
       })
       .catch(() => {
         toast.error("Error when completing task");

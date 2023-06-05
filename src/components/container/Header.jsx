@@ -27,7 +27,7 @@ const Header = ({ isLogin, showSideNav, setShowSideNav }) => {
       >
         {activePage === ROUTES_PATH.LOGIN ||
           activePage !== ROUTES_PATH.REGISTER && (
-            <SideNav setShowSideNav={setShowSideNav} isLogin={isLogin} />
+            <SideNav setShowSideNav={setShowSideNav} />
           )}
       </motion.aside>
       {/* Side Nav Background */}

@@ -5,13 +5,10 @@ import { motion } from "framer-motion";
 import SecureInfo from "./SecureInfo";
 import HomeRender from "./HomeRender";
 import WelcomeInfo from "./WelcomeInfo";
-import useUser from "../../hooks/useUser";
 
 const Home = ({ isLogin, setShowSideNav }) => {
-  const { getUserInfo } = useUser();
 
   useEffect(() => {
-    isLogin && getUserInfo();
     setShowSideNav(false);
   }, []);
 

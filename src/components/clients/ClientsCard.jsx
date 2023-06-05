@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import ButtonHeader from "../container/ButtonHeader";
 import ClientsListRender from "./ClientsListRender";
 import ClientsCardRender from "./ClientsCardRender";
+import { useEffect } from "react";
 
 const ClientsCard = ({
   clients,
@@ -12,9 +13,14 @@ const ClientsCard = ({
   filterClients,
   setUpdate,
   setIsShowClientsForm,
+  reload,
+  setReload
 }) => {
   const [isSort, setIsSort] = useState(false);
-  const [reload, setReload] = useState(false);
+
+  useEffect(() => {
+    setReload(false);
+  }, [clients]);
 
   const setSort = () => {
     setIsSort(!isSort);
@@ -25,12 +31,6 @@ const ClientsCard = ({
     getAllClients();
   };
 
-  const usersReady = () => {
-    if (clients) {
-      setReload(false);
-    }
-    setReload(false);
-  };
 
   return (
     <section className="w-full mt-7 mx-auto px-4 relative z-0 flex flex-col justify-center gap-3">
@@ -56,7 +56,6 @@ const ClientsCard = ({
             <button
               className="p-2 text-lg drop-shadow-sm text-gray-800"
               onClick={reloadUsers}
-              onAnimationEnd={usersReady}
             >
               <i
                 className={`${reload && "animate-reload"} fa-solid fa-rotate`}

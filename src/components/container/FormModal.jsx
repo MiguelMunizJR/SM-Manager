@@ -22,6 +22,7 @@ const FormModal = ({
   getAllClients,
   update,
   setUpdate,
+  setReload
 }) => {
   const { register, handleSubmit, reset } = useForm();
   const activePage = useLocation().pathname;
@@ -51,6 +52,7 @@ const FormModal = ({
       //* Actualizamos un cliente
       updateClient(data, update)
         .then(() => {
+          setReload(true);
           setIsShowClientsForm(false);
           getAllClients();
           reset(defaultClientsValues);
@@ -60,6 +62,7 @@ const FormModal = ({
         })
         .catch(() => {
           toast.error("Error when updating client");
+          setReload(false);
         });
     } else {
       //* Creamos un nuevo cliente
