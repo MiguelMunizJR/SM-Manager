@@ -31,7 +31,7 @@ const HomeRender = ({ isLogin }) => {
                       <i className="fa-solid fa-users"></i>
                       <p>
                         {
-                          clients?.length
+                          clients?.length || 0
                         }
                       </p>
                     </>
@@ -40,7 +40,7 @@ const HomeRender = ({ isLogin }) => {
                       <i className="fa-solid fa-list-check"></i>
                       <p>
                         {
-                          tasks?.length
+                          tasks?.length || 0
                         }
                       </p>
                     </>

@@ -37,7 +37,6 @@ function App() {
       <Suspense fallback={<Loading />}>
         {/* ROUTES */}
         <Header
-          user={user}
           isLogin={isLogin}
           showSideNav={showSideNav}
           setShowSideNav={setShowSideNav}

@@ -22,6 +22,7 @@ const Tasks = ({
   const [filterTasks, setFilterTasks] = useState(null);
   const { tasks, getAllTasks } = useTasks();
 
+
   useEffect(() => {
     isLogin && getAllTasks();
     setShowSideNav(false);
@@ -69,8 +70,9 @@ const Tasks = ({
             <h4 className="flex items-center gap-1 text-xl font-medium text-blue-700">
             Hi,
               <span className="text-gray-900">
-                { tasks ? (user?.firstName.charAt(0).toUpperCase() +
-                  user?.firstName.slice(1)) : "User"
+                {
+                  (user?.firstName[0].toUpperCase() +
+                  user?.firstName.slice(1)).toString()
                 }
               </span>
             </h4>
@@ -78,7 +80,7 @@ const Tasks = ({
               You have
               <span className="text-blue-700">
                 {
-                  tasks ? tasks?.filter((task) => task.status !== "completed").length : 0
+                  tasks?.filter((task) => task.status !== "completed")?.length || "0"
                 }
               </span>
               pending tasks today

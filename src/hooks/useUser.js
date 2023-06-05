@@ -11,6 +11,7 @@ const useUser = () => {
   const [error, setError] = useState(null);
 
   const getUserInfo = () => {
+    setLoading(true);
     const URL = `${URL_API}${ROUTES_PATH.USER}`;
       
     axios
@@ -21,14 +22,16 @@ const useUser = () => {
       })
       .catch((err) => {
         setError(err.message);
+        setLoading(false);
       });
   };
 
   useEffect(() => {
-    if (token) {
+    if (token !== null) {
       getUserInfo();
     }
-  }, []);
+    !token && setLoading(false);
+  }, [token]);
   
   return { user, loading, error, getUserInfo };
 };

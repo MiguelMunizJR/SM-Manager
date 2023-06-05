@@ -69,8 +69,8 @@ const Clients = ({
             <h4 className="flex items-center gap-1 text-xl font-medium text-blue-700">
               Hi,
               <span className="text-gray-900">
-                { clients ? (user?.firstName.charAt(0).toUpperCase() +
-                  user?.firstName.slice(1)) : "User"
+                {(user?.firstName.charAt(0).toUpperCase() +
+                  user?.firstName.slice(1)).toString()
                 }
               </span>
             </h4>

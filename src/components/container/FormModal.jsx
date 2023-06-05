@@ -116,8 +116,9 @@ const FormModal = ({
           toast.success("Task successfully created");
           setShowSideNav(false);
         })
-        .catch(() => {
-          toast.error("Error when creating a new task");
+        .catch((err) => {
+          // toast.error("Error when creating a new task");
+          console.log(err);
         });
     }
   };

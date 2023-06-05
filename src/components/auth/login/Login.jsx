@@ -30,9 +30,10 @@ const Login = ({ isLogin, setIsLogin }) => {
     axios
       .post(URL, data)
       .then((res) => {
-        localStorage.setItem("token", res.data?.token);
-        setIsLogin(true);
+        const token = res?.data.token;
+        localStorage.setItem("token", token);
         toast.success("You are logged in");
+        setIsLogin(true);
         navigate(ROUTES_PATH.HOME);
         reset({
           email: "",
