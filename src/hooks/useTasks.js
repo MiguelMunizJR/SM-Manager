@@ -4,7 +4,6 @@ import axios from "axios";
 import { ROUTES_PATH, URL_API } from "../consts";
 import getConfig from "../utilities/getConfig";
 
-
 const useTasks = () => {
   const [tasks, setTasks] = useState(null);
   const [loading, setLoading] = useState(true);

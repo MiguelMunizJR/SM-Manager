@@ -22,18 +22,17 @@ const HomeRender = () => {
               <h2 className="font-bold text-xl">{item.title}</h2>
               <div className="w-5/6 min-h-max absolute bottom-3 flex items-center font-semibold text-md">
                 <div className="w-full min-h-max flex items-center gap-2">
-                  {user &&
-                    (item.title === "Clients" ? (
-                      <>
-                        <i className="fa-solid fa-users"></i>
-                        <p>{user.clients?.length}</p>
-                      </>
-                    ) : (
-                      <>
-                        <i className="fa-solid fa-list-check"></i>
-                        <p>{user.tasks?.length}</p>
-                      </>
-                    ))}
+                  {item.title === "Clients" ? (
+                    <>
+                      <i className="fa-solid fa-users"></i>
+                      <p>{user?.clients?.length}</p>
+                    </>
+                  ) : (
+                    <>
+                      <i className="fa-solid fa-list-check"></i>
+                      <p>{user?.tasks?.length}</p>
+                    </>
+                  )}
                 </div>
                 <button>
                   <i className="fa-solid fa-long-arrow-right text-gray-100 text-2xl"></i>
