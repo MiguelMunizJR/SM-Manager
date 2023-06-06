@@ -38,7 +38,7 @@ const Header = ({ isLogin, showSideNav, setShowSideNav }) => {
         ></section>
       )}
       {/* Header */}
-      <section className="w-screen h-14 px-4 md:px-12 lg:px-8 fixed flex items-center justify-between bg-slate-50 text-gray-800 shadow-sm shadow-slate-200 z-40">
+      <header className="w-screen h-14 px-4 md:px-10 lg:px-8 fixed flex items-center justify-between bg-slate-50 text-gray-800 shadow-sm shadow-slate-200 z-40">
         <article className="flex items-center gap-4">
           {/* Side Menu Button */}
           {isLogin && (
@@ -55,7 +55,7 @@ const Header = ({ isLogin, showSideNav, setShowSideNav }) => {
             </h1>
           </NavLink>
         </article>
-        <section className="min-w-max pr-4 md:pr-2 lg:pr-14 flex items-center gap-14">
+        <section className="min-w-max pr-0 lg:pr-10 flex items-center gap-14">
           {!isLogin && activePage === ROUTES_PATH.HOME ? (
             <LoginButtons />
           ) : activePage === ROUTES_PATH.LOGIN ? (
@@ -79,7 +79,7 @@ const Header = ({ isLogin, showSideNav, setShowSideNav }) => {
             </article>
           ) : null}
         </section>
-      </section>
+      </header>
     </>
   );
 };
