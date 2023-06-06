@@ -24,12 +24,12 @@ const useUser = () => {
       .catch((err) => {
         const token = err?.config?.headers?.Authorization;
         const status = err?.request?.status;
-
+        
         //* Comprobamos que el token siga valido al entrar
         if (token && status === 401) {
           logout();
         }
-
+        
         setError(err.message);
         setLoading(false);
       });

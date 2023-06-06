@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { ROUTES_PATH } from "../../consts";
 import useUser from "../../hooks/useUser";
@@ -7,10 +6,6 @@ import { logout } from "../../utilities/auth/authServices";
 
 const SideNav = ({ setShowSideNav }) => {
   const { user, loading } = useUser();
-
-  useEffect(() => {
-    // console.log("montado");
-  }, []);
 
   const handleLogout = () => {
     logout();

@@ -13,6 +13,7 @@ import { ROUTES_PATH } from "../../consts";
 import { createNewTask, updateTask } from "../../services/tasksServices";
 import { createNewClient, updateClient } from "../../services/clientsServices";
 import { useLocation } from "react-router-dom";
+import useUser from "../../hooks/useUser";
 
 const FormModal = ({
   getAllTasks,
@@ -25,6 +26,7 @@ const FormModal = ({
   setReload
 }) => {
   const { register, handleSubmit, reset } = useForm();
+  const { getUserInfo } = useUser();
   const activePage = useLocation().pathname;
 
   useEffect(() => {
@@ -114,6 +116,7 @@ const FormModal = ({
       createNewTask(data)
         .then(() => {
           setIsShowTasksForm(false);
+          getUserInfo();
           getAllTasks();
           reset(defaultTasksValues);
           toast.success("Task successfully created");
