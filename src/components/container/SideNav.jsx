@@ -9,7 +9,7 @@ const SideNav = ({ setShowSideNav }) => {
   const { user, loading } = useUser();
 
   useEffect(() => {
-    console.log("montado");
+    // console.log("montado");
   }, []);
 
   const handleLogout = () => {

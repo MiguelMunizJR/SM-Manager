@@ -1,19 +1,25 @@
+import { toast } from "sonner";
+
 export const logout = () => {
   localStorage.removeItem("token");
   window.location.reload();
 };
 
-export const checkTokenValidity = () => {
+export const checkTokenValidity = (userToken) => {
   const token = localStorage.getItem("token");
-  //! Verificar la validez del token en API 
-  //TODO PENDIENTE
 
-  !token && logout();
+  //* Comprobamos el token
+  if (userToken !== token) {
+    toast.error("Token has expirated");
+    setTimeout(() => {
+      logout();
+    }, 3000); //* Delay de 3 segundos
+  }
+  return;
 };
 
-export const startTokenCheck = () => {
+export const startTokenCheck = (userToken) => {
   setInterval(() => {
-    checkTokenValidity();
-  }, 1 * 30 * 1000);
+    checkTokenValidity(userToken);
+  }, 1 * 60 * 1000); //* Validamos el token cada minuto
 };
-

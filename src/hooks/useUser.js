@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { ROUTES_PATH, URL_API } from "../consts";
 import getConfig from "../utilities/getConfig";
+import { logout } from "../utilities/auth/authServices";
 const token = localStorage.getItem("token");
 
 const useUser = () => {
@@ -21,6 +22,14 @@ const useUser = () => {
         setLoading(false);
       })
       .catch((err) => {
+        const token = err?.config?.headers?.Authorization;
+        const status = err?.request?.status;
+
+        //* Comprobamos que el token siga valido al entrar
+        if (token && status === 401) {
+          logout();
+        }
+
         setError(err.message);
         setLoading(false);
       });

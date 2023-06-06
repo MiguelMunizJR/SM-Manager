@@ -17,9 +17,10 @@ const Register = lazy(() => import("./components/auth/register/Register"));
 const Header = lazy(() => import("./components/container/Header"));
 const Loading = lazy(() => import("./components/Loading"));
 import { startTokenCheck } from "./utilities/auth/authServices";
+const storedToken = localStorage.getItem("token");
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(null);
   const [showSideNav, setShowSideNav] = useState(false);
   const [isShowClientsForm, setIsShowClientsForm] = useState(false);
   const [isShowTasksForm, setIsShowTasksForm] = useState(false);
@@ -27,12 +28,11 @@ function App() {
   const { user } = useUser();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
+    if (storedToken) {
+      startTokenCheck(storedToken);
       setIsLogin(true);
-      startTokenCheck();
     }
-  }, [isLogin]);
+  }, [isLogin, storedToken]);
 
   return (
     <div className="w-full min-h-screen bg-slate-50">
