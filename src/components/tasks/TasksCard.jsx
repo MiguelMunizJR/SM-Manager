@@ -8,6 +8,7 @@ import { useEffect } from "react";
 const TasksCard = ({
   tasks,
   getAllTasks,
+  setTasksCounter,
   setIsShowTasksForm,
   setUpdate,
   filterTasks
@@ -92,6 +93,7 @@ const TasksCard = ({
                 <TaskListRender
                   tasks={tasks}
                   getAllTasks={getAllTasks}
+                  setTasksCounter={setTasksCounter}
                   setIsShowTasksForm={setIsShowTasksForm}
                   setUpdate={setUpdate}
                   filterTasks={filterTasks}

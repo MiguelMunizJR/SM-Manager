@@ -7,9 +7,15 @@ import HomeRender from "./HomeRender";
 import WelcomeInfo from "./WelcomeInfo";
 import { checkTokenValidity } from "../../utilities/auth/authServices";
 
-const Home = ({ user, setShowSideNav, storedToken }) => {
+const Home = ({
+  isLogin,
+  clientsCounter,
+  tasksCounter,
+  setShowSideNav,
+  storedToken,
+}) => {
   useEffect(() => {
-    if (user) {
+    if (isLogin) {
       checkTokenValidity(storedToken);
     }
     setShowSideNav(false);
@@ -28,7 +34,11 @@ const Home = ({ user, setShowSideNav, storedToken }) => {
           <SecureInfo />
         </motion.article>
         <section className="mt-10 md:mt-14 flex justify-center items-center gap-8 lg:gap-16 font-default">
-          <HomeRender />
+          <HomeRender
+            isLogin={isLogin}
+            clientsCounter={clientsCounter}
+            tasksCounter={tasksCounter}
+          />
         </section>
       </section>
     </>

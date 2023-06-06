@@ -14,6 +14,7 @@ import { checkTokenValidity } from "../../utilities/auth/authServices";
 
 const Clients = ({
   user,
+  setClientsCounter,
   isShowClientsForm,
   setIsShowClientsForm,
   setShowSideNav,
@@ -47,6 +48,7 @@ const Clients = ({
         >
           <FormModal
             getAllClients={getAllClients}
+            setClientsCounter={setClientsCounter}
             setIsShowClientsForm={setIsShowClientsForm}
             setShowSideNav={setShowSideNav}
             update={update}
@@ -108,8 +110,9 @@ const Clients = ({
               </div>
             </motion.article>
             <ClientsCard
-              getAllClients={getAllClients}
               clients={clients}
+              getAllClients={getAllClients}
+              setClientsCounter={setClientsCounter}
               filterClients={filterClients}
               setUpdate={setUpdate}
               setIsShowClientsForm={setIsShowClientsForm}

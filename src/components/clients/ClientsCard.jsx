@@ -10,6 +10,7 @@ import { useEffect } from "react";
 const ClientsCard = ({
   clients,
   getAllClients,
+  setClientsCounter,
   filterClients,
   setUpdate,
   setIsShowClientsForm,
@@ -115,8 +116,9 @@ const ClientsCard = ({
               </thead>
               <tbody>
                 <ClientsListRender
-                  getAllClients={getAllClients}
                   clients={clients}
+                  getAllClients={getAllClients}
+                  setClientsCounter={setClientsCounter}
                   filterClients={filterClients}
                   setUpdate={setUpdate}
                   setIsShowClientsForm={setIsShowClientsForm}
@@ -126,8 +128,9 @@ const ClientsCard = ({
             </table>
             <ClientsCardRender
               clients={clients}
-              filterClients={filterClients}
               getAllClients={getAllClients}
+              setClientsCounter={setClientsCounter}
+              filterClients={filterClients}
               setUpdate={setUpdate} 
               setIsShowClientsForm={setIsShowClientsForm}
               setReload={setReload}

@@ -18,6 +18,8 @@ import useUser from "../../hooks/useUser";
 const FormModal = ({
   getAllTasks,
   getAllClients,
+  setClientsCounter,
+  setTasksCounter,
   setIsShowTasksForm,
   setIsShowClientsForm,
   setShowSideNav,
@@ -74,6 +76,7 @@ const FormModal = ({
           getAllClients();
           reset(defaultClientsValues);
           toast.success("User successfully created");
+          setClientsCounter((prevState) => prevState + 1);
           setShowSideNav(false);
         })
         .catch(() => {
@@ -120,6 +123,7 @@ const FormModal = ({
           getAllTasks();
           reset(defaultTasksValues);
           toast.success("Task successfully created");
+          setTasksCounter((prevState) => prevState + 1);
           setShowSideNav(false);
         })
         .catch(() => {

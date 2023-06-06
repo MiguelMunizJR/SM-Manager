@@ -2,8 +2,9 @@ import { toast } from "sonner";
 import { deleteClient } from "../../services/clientsServices";
 
 const ClientsListRender = ({
-  getAllClients,
   clients,
+  getAllClients,
+  setClientsCounter,
   filterClients,
   setUpdate,
   setIsShowClientsForm,
@@ -16,6 +17,7 @@ const ClientsListRender = ({
       .then(() => {
         getAllClients();
         toast("Client successfully eliminated");
+        setClientsCounter((prevState) => prevState - 1);
       })
       .catch(() => {
         toast.error("Error when deleting client");

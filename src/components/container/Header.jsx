@@ -6,7 +6,13 @@ import LoginButtons from "../auth/authButtons";
 import { ROUTES_PATH } from "../../consts";
 import SideNav from "./SideNav";
 
-const Header = ({ isLogin, showSideNav, setShowSideNav }) => {
+const Header = ({
+  isLogin,
+  showSideNav,
+  setShowSideNav,
+  tasksCounter,
+  clientsCounter,
+}) => {
   const activePage = useLocation().pathname;
 
   const handleSideNav = () => {
@@ -26,9 +32,13 @@ const Header = ({ isLogin, showSideNav, setShowSideNav }) => {
         }}
       >
         {activePage === ROUTES_PATH.LOGIN ||
-          activePage !== ROUTES_PATH.REGISTER && (
-            <SideNav setShowSideNav={setShowSideNav} />
-          )}
+          (activePage !== ROUTES_PATH.REGISTER && (
+            <SideNav
+              setShowSideNav={setShowSideNav}
+              tasksCounter={tasksCounter}
+              clientsCounter={clientsCounter}
+            />
+          ))}
       </motion.aside>
       {/* Side Nav Background */}
       {showSideNav && (

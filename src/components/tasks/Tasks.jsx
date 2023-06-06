@@ -15,6 +15,7 @@ import { checkTokenValidity } from "../../utilities/auth/authServices";
 
 const Tasks = ({
   user,
+  setTasksCounter,
   isShowTasksForm,
   setIsShowTasksForm,
   setShowSideNav,
@@ -47,6 +48,7 @@ const Tasks = ({
         >
           <FormModal
             getAllTasks={getAllTasks}
+            setTasksCounter={setTasksCounter}
             setIsShowTasksForm={setIsShowTasksForm}
             setShowSideNav={setShowSideNav}
             update={update}
@@ -106,6 +108,7 @@ const Tasks = ({
             <TasksCard
               tasks={tasks}
               getAllTasks={getAllTasks}
+              setTasksCounter={setTasksCounter}
               setIsShowTasksForm={setIsShowTasksForm}
               setUpdate={setUpdate}
               filterTasks={filterTasks}

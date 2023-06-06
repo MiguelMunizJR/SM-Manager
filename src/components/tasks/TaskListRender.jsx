@@ -4,6 +4,7 @@ import { completeTask, deleteTask } from "../../services/tasksServices";
 const TaskListRender = ({
   tasks,
   getAllTasks,
+  setTasksCounter,
   setIsShowTasksForm,
   setUpdate,
   filterTasks,
@@ -17,6 +18,7 @@ const TaskListRender = ({
       .then(() => {
         getAllTasks();
         toast("Task successfully eliminated");
+        setTasksCounter((prevState) => prevState - 1);
       })
       .catch(() => {
         toast.error("Error when deleting task");

@@ -4,8 +4,9 @@ import { deleteClient } from "../../services/clientsServices";
 
 const ClientsCardRender = ({
   clients,
-  filterClients,
   getAllClients,
+  setClientsCounter,
+  filterClients,
   setUpdate,
   setIsShowClientsForm,
   setReload
@@ -18,6 +19,7 @@ const ClientsCardRender = ({
       .then(() => {
         getAllClients();
         toast("Client successfully eliminated");
+        setClientsCounter((prevState) => prevState - 1);
       })
       .catch(() => {
         toast.error("Error when deleting client");

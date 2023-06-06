@@ -4,7 +4,8 @@ import useUser from "../../hooks/useUser";
 import CustomLoading from "./CustomLoading";
 import { logout } from "../../utilities/auth/authServices";
 
-const SideNav = ({ setShowSideNav }) => {
+const SideNav = ({ setShowSideNav, tasksCounter,
+  clientsCounter, }) => {
   const { user, loading } = useUser();
 
   const handleLogout = () => {
@@ -76,7 +77,7 @@ const SideNav = ({ setShowSideNav }) => {
           </div>
           {user && (
             <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
-              {user.clients?.length}
+              {clientsCounter}
             </small>
           )}
         </NavLink>
@@ -91,7 +92,7 @@ const SideNav = ({ setShowSideNav }) => {
           </div>
           {user && (
             <small className="w-9 h-6 flex justify-center items-center rounded-full font-medium bg-slate-300 transition-colors">
-              {user.tasks?.length}
+              {tasksCounter}
             </small>
           )}
         </NavLink>

@@ -3,17 +3,15 @@ import { NavLink } from "react-router-dom";
 // Components & utils
 import itemsHome from "../../utilities/home/itemsHome";
 import { ROUTES_PATH } from "../../consts";
-import useUser from "../../hooks/useUser";
 
-const HomeRender = () => {
-  const { user } = useUser();
+const HomeRender = ({ isLogin, clientsCounter, tasksCounter }) => {
   
   return (
     <>
       {itemsHome?.map((item) => (
         <NavLink
           key={item.id}
-          to={user ? item.route : ROUTES_PATH.LOGIN}
+          to={isLogin ? item.route : ROUTES_PATH.LOGIN}
           className={item.className}
         >
           <article key={item.id}>
@@ -25,12 +23,12 @@ const HomeRender = () => {
                   {item.title === "Clients" ? (
                     <>
                       <i className="fa-solid fa-users"></i>
-                      <p>{user?.clients?.length}</p>
+                      <p>{clientsCounter}</p>
                     </>
                   ) : (
                     <>
                       <i className="fa-solid fa-list-check"></i>
-                      <p>{user?.tasks?.length}</p>
+                      <p>{tasksCounter}</p>
                     </>
                   )}
                 </div>

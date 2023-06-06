@@ -1,10 +1,8 @@
 // Dependencies
-import { useState, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import useUser from "./hooks/useUser";
 import { ROUTES_PATH } from "./consts";
 import { Toaster } from "sonner";
-import { useEffect } from "react";
 // Components & utils
 const Clients = lazy(() => import("./components/clients/Clients"));
 const Home = lazy(() => import("./components/home/Home"));
@@ -16,7 +14,9 @@ const Login = lazy(() => import("./components/auth/login/Login"));
 const Register = lazy(() => import("./components/auth/register/Register"));
 const Header = lazy(() => import("./components/container/Header"));
 const Loading = lazy(() => import("./components/Loading"));
+import useUser from "./hooks/useUser";
 import { startTokenCheck } from "./utilities/auth/authServices";
+
 const storedToken = localStorage.getItem("token");
 
 function App() {
@@ -25,14 +25,18 @@ function App() {
   const [isShowClientsForm, setIsShowClientsForm] = useState(false);
   const [isShowTasksForm, setIsShowTasksForm] = useState(false);
   const [update, setUpdate] = useState();
+  const [tasksCounter, setTasksCounter] = useState(null);
+  const [clientsCounter, setClientsCounter] = useState(null);
   const { user } = useUser();
 
   useEffect(() => {
     if (storedToken) {
       startTokenCheck(storedToken);
       setIsLogin(true);
+      setClientsCounter(user?.clients?.length);
+      setTasksCounter(user?.tasks?.length);
     }
-  }, [isLogin]);
+  }, [isLogin, user]);
 
   return (
     <div className="w-full min-h-screen bg-slate-50">
@@ -43,6 +47,8 @@ function App() {
           isLogin={isLogin}
           showSideNav={showSideNav}
           setShowSideNav={setShowSideNav}
+          tasksCounter={tasksCounter}
+          clientsCounter={clientsCounter}
         />
         <Routes>
           {/* Home Route */}
@@ -50,7 +56,9 @@ function App() {
             path={ROUTES_PATH.HOME}
             element={
               <Home
-                user={user}
+                isLogin={isLogin}
+                clientsCounter={clientsCounter}
+                tasksCounter={tasksCounter}
                 setShowSideNav={setShowSideNav}
                 storedToken={storedToken}
               />
@@ -76,6 +84,7 @@ function App() {
               element={
                 <Clients
                   user={user}
+                  setClientsCounter={setClientsCounter}
                   isShowClientsForm={isShowClientsForm}
                   setIsShowClientsForm={setIsShowClientsForm}
                   setShowSideNav={setShowSideNav}
@@ -91,6 +100,7 @@ function App() {
               element={
                 <Tasks
                   user={user}
+                  setTasksCounter={setTasksCounter}
                   isShowTasksForm={isShowTasksForm}
                   setIsShowTasksForm={setIsShowTasksForm}
                   setShowSideNav={setShowSideNav}
