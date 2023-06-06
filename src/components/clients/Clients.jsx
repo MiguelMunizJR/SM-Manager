@@ -10,6 +10,7 @@ import TimelineNav from "../container/TimelineNav";
 import ReturnButton from "../container/ReturnButton";
 import useClients from "../../hooks/useClients";
 import CustomLoading from "../container/CustomLoading";
+import { checkTokenValidity } from "../../utilities/auth/authServices";
 
 const Clients = ({
   user,
@@ -18,13 +19,17 @@ const Clients = ({
   setShowSideNav,
   update,
   setUpdate,
+  storedToken,
 }) => {
   const [filterClients, setFilterClients] = useState(null);
   const [reload, setReload] = useState(false);
   const { clients, loading, getAllClients } = useClients();
 
   useEffect(() => {
-    user && getAllClients();
+    if (user) {
+      checkTokenValidity(storedToken);
+      getAllClients();
+    }
     setShowSideNav(false);
   }, []);
 

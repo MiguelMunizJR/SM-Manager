@@ -32,7 +32,7 @@ function App() {
       startTokenCheck(storedToken);
       setIsLogin(true);
     }
-  }, [isLogin, storedToken]);
+  }, [isLogin]);
 
   return (
     <div className="w-full min-h-screen bg-slate-50">
@@ -48,7 +48,13 @@ function App() {
           {/* Home Route */}
           <Route
             path={ROUTES_PATH.HOME}
-            element={<Home setShowSideNav={setShowSideNav} />}
+            element={
+              <Home
+                user={user}
+                setShowSideNav={setShowSideNav}
+                storedToken={storedToken}
+              />
+            }
           />
           {/* Auth routes */}
           <Route
@@ -75,6 +81,7 @@ function App() {
                   setShowSideNav={setShowSideNav}
                   update={update}
                   setUpdate={setUpdate}
+                  storedToken={storedToken}
                 />
               }
             />
@@ -89,6 +96,7 @@ function App() {
                   setShowSideNav={setShowSideNav}
                   update={update}
                   setUpdate={setUpdate}
+                  storedToken={storedToken}
                 />
               }
             />

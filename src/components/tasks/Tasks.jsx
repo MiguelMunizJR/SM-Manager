@@ -11,6 +11,7 @@ import ReturnButton from "../container/ReturnButton";
 import CustomLoading from "../container/CustomLoading";
 
 import useTasks from "../../hooks/useTasks";
+import { checkTokenValidity } from "../../utilities/auth/authServices";
 
 const Tasks = ({
   user,
@@ -19,12 +20,16 @@ const Tasks = ({
   setShowSideNav,
   update,
   setUpdate,
+  storedToken
 }) => {
   const [filterTasks, setFilterTasks] = useState(null);
   const { tasks, loading, getAllTasks } = useTasks();
 
   useEffect(() => {
-    user && getAllTasks();
+    if (user) {
+      checkTokenValidity(storedToken);
+      getAllTasks();
+    }
     setShowSideNav(false);
   }, []);
 

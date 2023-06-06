@@ -5,10 +5,13 @@ import { motion } from "framer-motion";
 import SecureInfo from "./SecureInfo";
 import HomeRender from "./HomeRender";
 import WelcomeInfo from "./WelcomeInfo";
+import { checkTokenValidity } from "../../utilities/auth/authServices";
 
-const Home = ({ setShowSideNav }) => {
-
+const Home = ({ user, setShowSideNav, storedToken }) => {
   useEffect(() => {
+    if (user) {
+      checkTokenValidity(storedToken);
+    }
     setShowSideNav(false);
   }, []);
 
