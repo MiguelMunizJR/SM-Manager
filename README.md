@@ -1,7 +1,7 @@
 
-# SM Manager
+# Ecommerce
 
-Descubre un espacio intuitivo que te permite gestionar eficientemente los datos de tus clientes, brindándote la libertad de agregar, actualizar y eliminar información de manera sencilla. Además, aprovecha las herramientas integradas para administrar tus tareas y listas de pendientes de forma cómoda. Con opciones de búsqueda y ordenamiento, encontrar la información que necesitas nunca ha sido tan fácil.
+Descubre nuestro increíble ecommerce, donde podrás explorar una amplia variedad de productos, agregarlos fácilmente al carrito de compras y realizar tus pedidos de manera rápida y segura. Cuenta con potentes filtros de búsqueda que te permitirán encontrar exactamente lo que necesitas, así como una sección de artículos relacionados para que descubras opciones adicionales. Además, ofrecemos una práctica sección de autorización donde podrás gestionar tu cuenta y acceder a tu historial de compras.
 
 
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://portafolio-miguelmuniz.vercel.app/)
@@ -10,14 +10,12 @@ Descubre un espacio intuitivo que te permite gestionar eficientemente los datos 
 
 
 
-![App Screenshot](https://i.postimg.cc/XNfY24xx/SM-Manager-cover.png)
+![App Screenshot](https://i.postimg.cc/mg77T36H/Ecommerce-cover.jpg)
 
 
 ## Demo
 
-[SM Manager Vercel](https://crud-tailwindcss-react.vercel.app/)
-
-[SM Manager Netlify](https://sparkly-lokum-ed7995.netlify.app/)
+[Ecommerce Netlify](https://ecommerce-miguelmunizb.netlify.app/)
 
 
 ## Caracteristicas
@@ -30,14 +28,14 @@ Descubre un espacio intuitivo que te permite gestionar eficientemente los datos 
 
 ## Tecnologías
 
-**Client:** React, Javascript, TailwindCSS, Vite
+**Client:** React, Javascript, CSS, Vite
 
 **Server:** NodeJS, Express, Sequelize, PostgreSQL
 
 
 ## API Documentation
 
-[Documentation](https://crud-api-express.onrender.com/api/docs/)
+[Documentation](https://ecommerce-api-express-2dx2.onrender.com/api/docs/)
 
 
 ## Autor
