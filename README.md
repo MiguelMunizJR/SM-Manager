@@ -1,7 +1,8 @@
 
-# Ecommerce
+# SM Manager
 
-Descubre nuestro increíble ecommerce, donde podrás explorar una amplia variedad de productos, agregarlos fácilmente al carrito de compras y realizar tus pedidos de manera rápida y segura. Cuenta con potentes filtros de búsqueda que te permitirán encontrar exactamente lo que necesitas, así como una sección de artículos relacionados para que descubras opciones adicionales. Además, ofrecemos una práctica sección de autorización donde podrás gestionar tu cuenta y acceder a tu historial de compras.
+Este proyecto es una plataforma de gestión de tareas y clientes diseñada para simplificar y optimizar los procesos de trabajo. Con esta herramienta, podrás crear, administrar y realizar un seguimiento del progreso de las tareas. También podrás gestionar clientes, mantener un registro de su información y asignar tareas o proyectos específicos. Facilitamos la colaboración en equipo y ofrecemos integraciones con otras herramientas de productividad. 
+Simplifica tu flujo de trabajo y maximiza tu eficiencia con nuestra plataforma intuitiva y poderosa.
 
 
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://portafolio-miguelmuniz.vercel.app/)
@@ -10,12 +11,13 @@ Descubre nuestro increíble ecommerce, donde podrás explorar una amplia varieda
 
 
 
-![App Screenshot](https://i.postimg.cc/mg77T36H/Ecommerce-cover.jpg)
+![App Screenshot](https://i.postimg.cc/9QPcmzPM/SM-Manager-cover.jpg)
 
 
 ## Demo
 
-[Ecommerce Netlify](https://ecommerce-miguelmunizb.netlify.app/)
+[SM Manager Netlify](https://sm-manager.netlify.app/)
+[SM Manager Vercel](https://sm-manager-miguelmuniz.vercel.app/)
 
 
 ## Caracteristicas
@@ -28,18 +30,17 @@ Descubre nuestro increíble ecommerce, donde podrás explorar una amplia varieda
 
 ## Tecnologías
 
-**Client:** React, Javascript, CSS, Vite
+**Client:** React, Javascript, TailwindCSS, Vite
 
 **Server:** NodeJS, Express, Sequelize, PostgreSQL
 
 
 ## API Documentation
 
-[Documentation](https://ecommerce-api-express-2dx2.onrender.com/api/docs/)
+[Documentation](https://crud-api-express.onrender.com/api/docs/)
 
 
 ## Autor
-
 
 [@MiguelMunizJR](https://www.github.com/MiguelMunizJR)
 
